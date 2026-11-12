@@ -152,6 +152,7 @@ function initDashboard() {
 
   setupSlider();
   initChart();
+  populateParroquiaSelect('total', 'total');
   renderActiveView();
 }
 
@@ -238,15 +239,85 @@ function getCandidateKey(c) {
   return parts[parts.length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
-// Motor de Filtros Sociodemográficos Concatenados en Cascada
+// Motor de Filtros Sociodemográficos Concatenados en Cascada (Circunscripción <-> Parroquia <-> Género <-> Edad <-> Ingresos)
+function populateParroquiaSelect(circFilter, selectedParroquia = 'total') {
+  const select = document.getElementById('filterParroquia');
+  if (!select || !rawDecryptedData) return;
+
+  const parroquiasPorCirc = rawDecryptedData.parroquias_por_circunscripcion || {};
+  let html = '<option value="total">Parroquia (Todas)</option>';
+
+  if (circFilter && circFilter !== 'total' && parroquiasPorCirc[circFilter]) {
+    parroquiasPorCirc[circFilter].forEach(p => {
+      const sel = p === selectedParroquia ? ' selected' : '';
+      html += `<option value="${p}"${sel}>${p}</option>`;
+    });
+  } else {
+    const ordenCirc = ['Urbana Norte', 'Urbana Centro', 'Urbana Sur', 'Rural'];
+    ordenCirc.forEach(circ => {
+      const parrs = parroquiasPorCirc[circ] || [];
+      if (parrs.length > 0) {
+        html += `<optgroup label="${circ}">`;
+        parrs.forEach(p => {
+          const sel = p === selectedParroquia ? ' selected' : '';
+          html += `<option value="${p}"${sel}>${p}</option>`;
+        });
+        html += `</optgroup>`;
+      }
+    });
+  }
+
+  select.innerHTML = html;
+  select.value = selectedParroquia;
+}
+
+function onCircunscripcionChange() {
+  const circSelect = document.getElementById('filterCirc');
+  const parrSelect = document.getElementById('filterParroquia');
+  const circ = circSelect ? circSelect.value : 'total';
+  let curParr = parrSelect ? parrSelect.value : 'total';
+
+  if (circ !== 'total' && curParr !== 'total') {
+    const map = rawDecryptedData ? (rawDecryptedData.parroquia_a_circunscripcion || {}) : {};
+    if (map[curParr] !== circ) {
+      curParr = 'total';
+    }
+  }
+
+  populateParroquiaSelect(circ, curParr);
+  renderActiveView();
+}
+
+function onParroquiaChange() {
+  const circSelect = document.getElementById('filterCirc');
+  const parrSelect = document.getElementById('filterParroquia');
+  const parr = parrSelect ? parrSelect.value : 'total';
+
+  if (parr !== 'total' && rawDecryptedData) {
+    const map = rawDecryptedData.parroquia_a_circunscripcion || {};
+    const circParr = map[parr];
+    if (circParr && circSelect && circSelect.value !== circParr) {
+      circSelect.value = circParr;
+      populateParroquiaSelect(circParr, parr);
+    }
+  }
+
+  renderActiveView();
+}
+
 function getFiltrosConcatenados() {
   const circ = document.getElementById('filterCirc') ? document.getElementById('filterCirc').value : 'total';
+  const parroquia = document.getElementById('filterParroquia') ? document.getElementById('filterParroquia').value : 'total';
   const genero = document.getElementById('filterGenero') ? document.getElementById('filterGenero').value : 'total';
   const edad = document.getElementById('filterEdad') ? document.getElementById('filterEdad').value : 'total';
   const ingresos = document.getElementById('filterIngresos') ? document.getElementById('filterIngresos').value : 'total';
 
   const activos = [];
-  if (circ !== 'total') activos.push(circ);
+  if (parroquia !== 'total') {
+    activos.push(parroquia);
+  } else if (circ !== 'total') {
+    activos.push(circ);
+  }
   if (genero !== 'total') activos.push(genero === 'Hombre' ? 'Hombres' : 'Mujeres');
   if (edad !== 'total') activos.push(edad);
   if (ingresos !== 'total') activos.push(`Ingresos ${ingresos}`);
@@ -255,6 +326,7 @@ function getFiltrosConcatenados() {
     hayFiltros: activos.length > 0,
     etiqueta: activos.join(' · '),
     circ,
+    parroquia,
     genero,
     edad,
     ingresos
@@ -267,16 +339,19 @@ function filtrarCasos() {
 
   const casos = rawDecryptedData.microdatos_casos || [];
   return casos.filter(c => {
+    // c[0]: circunscripcion, c[1]: parroquia, c[2]: genero, c[3]: edad, c[4]: ingresos, c[5]: alcalde, c[6]: prefecto, c[7]: antivoto
+    if (f.parroquia !== 'total' && c[1] !== f.parroquia) return false;
     if (f.circ !== 'total' && c[0] !== f.circ) return false;
-    if (f.genero !== 'total' && c[1] !== f.genero) return false;
-    if (f.edad !== 'total' && c[2] !== f.edad) return false;
-    if (f.ingresos !== 'total' && c[3] !== f.ingresos) return false;
+    if (f.genero !== 'total' && c[2] !== f.genero) return false;
+    if (f.edad !== 'total' && c[3] !== f.edad) return false;
+    if (f.ingresos !== 'total' && c[4] !== f.ingresos) return false;
     return true;
   });
 }
 
 function resetFilters() {
   if (document.getElementById('filterCirc')) document.getElementById('filterCirc').value = 'total';
+  populateParroquiaSelect('total', 'total');
   if (document.getElementById('filterGenero')) document.getElementById('filterGenero').value = 'total';
   if (document.getElementById('filterEdad')) document.getElementById('filterEdad').value = 'total';
   if (document.getElementById('filterIngresos')) document.getElementById('filterIngresos').value = 'total';
@@ -366,7 +441,7 @@ function renderCandidateCards() {
 
     // Si hay filtros concatenados activos, calcular distribución real de la muestra concatenada
     if (casosFiltrados && casosFiltrados.length > 0) {
-      const colIdx = isAlcalde ? 4 : 5;
+      const colIdx = isAlcalde ? 5 : 6;
       const matchCount = casosFiltrados.filter(item => item[colIdx] === id).length;
       valActual = (matchCount / casosFiltrados.length) * 100.0;
     }
@@ -434,8 +509,8 @@ function renderPiramide() {
     return;
   }
 
-  const nHombres = casos.filter(c => c[1] === 'Hombre').length;
-  const nMujeres = casos.filter(c => c[1] === 'Mujer').length;
+  const nHombres = casos.filter(c => c[2] === 'Hombre').length;
+  const nMujeres = casos.filter(c => c[2] === 'Mujer').length;
   const pctHombres = ((nHombres / total) * 100).toFixed(1);
   const pctMujeres = ((nMujeres / total) * 100).toFixed(1);
 
@@ -451,8 +526,8 @@ function renderPiramide() {
 
   let maxPct = 0;
   cohortes.forEach(co => {
-    const nH = casos.filter(c => c[1] === 'Hombre' && c[2] === co.id).length;
-    const nM = casos.filter(c => c[1] === 'Mujer' && c[2] === co.id).length;
+    const nH = casos.filter(c => c[2] === 'Hombre' && c[3] === co.id).length;
+    const nM = casos.filter(c => c[2] === 'Mujer' && c[3] === co.id).length;
     const hPct = (nH / total) * 100;
     const mPct = (nM / total) * 100;
     if (hPct > maxPct) maxPct = hPct;
@@ -462,8 +537,8 @@ function renderPiramide() {
 
   let html = '';
   cohortes.forEach(co => {
-    const nH = casos.filter(c => c[1] === 'Hombre' && c[2] === co.id).length;
-    const nM = casos.filter(c => c[1] === 'Mujer' && c[2] === co.id).length;
+    const nH = casos.filter(c => c[2] === 'Hombre' && c[3] === co.id).length;
+    const nM = casos.filter(c => c[2] === 'Mujer' && c[3] === co.id).length;
     const pctH = ((nH / total) * 100).toFixed(1);
     const pctM = ((nM / total) * 100).toFixed(1);
 
@@ -507,7 +582,7 @@ function renderAntivoto() {
     const id = getCandidateKey(c);
     let val = anti[id] && anti[id][idx] !== null && anti[id][idx] !== undefined ? anti[id][idx] : 0;
     if (casosFiltrados && casosFiltrados.length > 0) {
-      const matchCount = casosFiltrados.filter(item => item[6] === id).length;
+      const matchCount = casosFiltrados.filter(item => item[7] === id).length;
       val = (matchCount / casosFiltrados.length) * 100.0;
     }
     return { c, val };
@@ -689,3 +764,13 @@ function updateChartProgress() {
 
   chartInstance.update();
 }
+
+// Exportar controladores al scope global
+window.onCircunscripcionChange = onCircunscripcionChange;
+window.onParroquiaChange = onParroquiaChange;
+window.resetFilters = resetFilters;
+window.renderActiveView = renderActiveView;
+window.setScenario = setScenario;
+window.stepReport = stepReport;
+window.handleAuth = handleAuth;
+

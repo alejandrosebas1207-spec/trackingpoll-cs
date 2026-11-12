@@ -125,7 +125,7 @@
         </div>
 
         <!-- 1. Circunscripción -->
-        <select id="filterCirc" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+        <select id="filterCirc" onchange="onCircunscripcionChange()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
           <option value="total">Circunscripción (Todas)</option>
           <option value="Urbana Norte">Urbana Norte</option>
           <option value="Urbana Centro">Urbana Centro</option>
@@ -133,7 +133,12 @@
           <option value="Rural">Rural</option>
         </select>
 
-        <!-- 2. Género -->
+        <!-- 2. Parroquia (en cascada) -->
+        <select id="filterParroquia" onchange="onParroquiaChange()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer max-w-[170px] truncate">
+          <option value="total">Parroquia (Todas)</option>
+        </select>
+
+        <!-- 3. Género -->
         <select id="filterGenero" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
           <option value="total">Género (Todos)</option>
           <option value="Hombre">Hombres</option>
@@ -346,6 +351,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v14"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v15"></script>
 </body>
 </html>
