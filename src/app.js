@@ -490,7 +490,8 @@ function renderPiramide() {
   const container = document.getElementById('piramideRows');
   if (!container || !rawDecryptedData || !rawDecryptedData.microdatos_casos) return;
 
-  const casos = filtrarCasos() || rawDecryptedData.microdatos_casos;
+  const f = getFiltrosConcatenados();
+  const casos = filtrarCasos();
   const total = casos ? casos.length : 0;
   const tagH = document.getElementById('pyramidTagH');
   const tagM = document.getElementById('pyramidTagM');
@@ -501,7 +502,7 @@ function renderPiramide() {
   if (total === 0) {
     container.innerHTML = `
       <div class="text-center py-4 text-[10px] text-slate-400">
-        Sin casos en la selección
+        ${f.hayFiltros ? 'Sin casos en la selección' : 'En espera de nuevos datos diarios'}
       </div>
     `;
     if (tagH) tagH.innerText = '♂ 0%';
