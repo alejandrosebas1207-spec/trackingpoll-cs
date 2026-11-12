@@ -184,10 +184,15 @@ app.post("/api/kobo/sync", async (req, res) => {
   }
 });
 
-// 4. SERVIR ARCHIVOS ESTÁTICOS PÚBLICOS (HTML Y ASSETS MINIFICADOS)
+// 4. SERVIR ARCHIVOS ESTÁTICOS PÚBLICOS (HTML Y ASSETS MINIFICADOS) CON ZERO-CACHE
 app.use(express.static(path.join(__dirname, "public"), {
-  etag: true,
-  maxAge: "1h"
+  etag: false,
+  maxAge: 0,
+  setHeaders: (res, path) => {
+    res.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+    res.set("Pragma", "no-cache");
+    res.set("Expires", "0");
+  }
 }));
 
 // Health check para Render
