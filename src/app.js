@@ -271,7 +271,18 @@ function renderActiveView() {
 }
 
 function getCandidateKey(c) {
-  const parts = c.nombre.toLowerCase().split(' ');
+  if (c.id) return c.id;
+  const nameLower = (c.nombre || '').toLowerCase();
+  if (nameLower.includes('pabel') || nameLower.includes('muñoz') || nameLower.includes('munoz')) return 'pabel';
+  if (nameLower.includes('burbano')) return 'burbano';
+  if (nameLower.includes('yunda')) return 'yunda';
+  if (nameLower.includes('merino')) return 'merino';
+  if (nameLower.includes('tonello')) return 'tonello';
+  if (nameLower.includes('ubidia')) return 'ubidia';
+  if (nameLower.includes('cevallos')) return 'cevallos';
+  if (nameLower.includes('zapata')) return 'zapata';
+  if (nameLower.includes('churuchumbi')) return 'churuchumbi';
+  const parts = nameLower.split(' ');
   return parts[parts.length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 

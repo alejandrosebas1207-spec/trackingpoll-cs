@@ -25,126 +25,146 @@
   "total_puntos": 18,
   "candidatos_alcalde": [
     {
+      "id": "pabel",
       "nombre": "Pabel Muñoz",
       "partido": "Alianza Ciudadana (2-17-70)",
       "lista": "RC5",
-      "color": "#00b4d8"
+      "color": "#dc2626"
     },
     {
+      "id": "burbano",
       "nombre": "Harold Burbano",
       "partido": "Acción Democrática Nacional",
       "lista": "ADN 7",
       "color": "#7b2cbf"
     },
     {
+      "id": "yunda",
       "nombre": "Jorge Yunda",
       "partido": "Avanza",
       "lista": "Lista 8",
-      "color": "#f72585"
+      "color": "#0ea5e9"
     },
     {
+      "id": "merino",
       "nombre": "Wilson Merino",
       "partido": "Imparables",
       "lista": "Lista 79",
-      "color": "#ffb703"
+      "color": "#16a34a"
     },
     {
+      "id": "jijon",
       "nombre": "Bernardo Jijón",
       "partido": "Sociedad Patriótica",
       "lista": "PSP 3",
-      "color": "#2a9d8f"
+      "color": "#f59e0b"
     },
     {
+      "id": "larrea",
       "nombre": "Carla Larrea",
       "partido": "CREO",
       "lista": "Lista 21",
-      "color": "#3a86ff"
+      "color": "#3b82f6"
     },
     {
+      "id": "almeida",
       "nombre": "Galo Almeida",
       "partido": "Centro Democrático",
       "lista": "CD 1",
-      "color": "#fb8500"
+      "color": "#f97316"
     },
     {
+      "id": "romero",
       "nombre": "Linda Romero",
       "partido": "Partido Social Cristiano",
       "lista": "PSC 6",
-      "color": "#e63946"
+      "color": "#ef4444"
     },
     {
+      "id": "diaz",
       "nombre": "César Díaz",
       "partido": "Pueblo Igualdad Democracia",
       "lista": "PID 4",
-      "color": "#457b9d"
+      "color": "#64748b"
     },
     {
+      "id": "desamblanc",
       "nombre": "Paúl Desamblanc",
       "partido": "Movimiento Futuro",
       "lista": "Lista 20",
-      "color": "#8338ec"
+      "color": "#8b5cf6"
     }
   ],
   "candidatos_prefecto": [
     {
+      "id": "tonello",
       "nombre": "Alexandro Tonello",
       "partido": "Alianza Ciudadana (2-17-70)",
       "lista": "RC5",
-      "color": "#00b4d8"
+      "color": "#dc2626"
     },
     {
+      "id": "ubidia",
       "nombre": "Giovanna Ubidia",
       "partido": "Acción Democrática Nacional",
       "lista": "ADN 7",
       "color": "#7b2cbf"
     },
     {
-      "nombre": "Juan Zapata",
-      "partido": "Imparables",
-      "lista": "Lista 79",
-      "color": "#ffb703"
-    },
-    {
+      "id": "cevallos",
       "nombre": "Carla Cevallos",
       "partido": "Avanza",
       "lista": "Lista 8",
-      "color": "#f72585"
+      "color": "#0ea5e9"
     },
     {
+      "id": "zapata",
+      "nombre": "Juan Zapata",
+      "partido": "Imparables",
+      "lista": "Lista 79",
+      "color": "#16a34a"
+    },
+    {
+      "id": "churuchumbi",
       "nombre": "Guillermo Churuchumbi",
       "partido": "Pachakutik",
       "lista": "PK 18",
-      "color": "#2a9d8f"
+      "color": "#b45309"
     },
     {
+      "id": "pinto",
       "nombre": "Jorge Pinto",
       "partido": "Sociedad Patriótica",
       "lista": "PSP 3",
-      "color": "#e76f51"
+      "color": "#f59e0b"
     },
     {
+      "id": "calvache",
       "nombre": "Mishelle Calvache",
       "partido": "CREO",
       "lista": "Lista 21",
-      "color": "#3a86ff"
+      "color": "#3b82f6"
     },
     {
+      "id": "ormaza",
       "nombre": "Claudia Ormaza",
       "partido": "Partido Social Cristiano",
       "lista": "PSC 6",
-      "color": "#e63946"
+      "color": "#ef4444"
     },
     {
+      "id": "moreno",
       "nombre": "Alonso Moreno",
       "partido": "Pueblo Igualdad Democracia",
       "lista": "PID 4",
-      "color": "#457b9d"
+      "color": "#64748b"
     },
     {
+      "id": "morales",
       "nombre": "Wilmer Morales",
       "partido": "Movimiento Futuro",
       "lista": "Lista 20",
-      "color": "#8338ec"
+      "color": "#8b5cf6"
     }
   ],
   "series_alcalde": {
@@ -229,10 +249,10 @@
       null
     ],
     "otros": [
-      7.3,
-      9.9,
-      9.7,
-      9.5,
+      5.2,
+      7.6,
+      7.5,
+      7.2,
       null,
       null,
       null,
@@ -273,6 +293,26 @@
       17.4,
       18.1,
       17.8,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "jijon": [
+      2.1,
+      2.3,
+      2.2,
+      2.3,
       null,
       null,
       null,
