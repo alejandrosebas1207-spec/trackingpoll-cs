@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>War Room · Tracking Poll Quito 2026 · Clima Social</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; color: #0f172a; }
+    .card-clean { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.04); }
+    .card-candidate { background: #ffffff; border: 1.5px solid #e2e8f0; transition: all 0.2s ease-in-out; }
+    .card-candidate:hover { border-color: #cbd5e1; transform: translateY(-2px); box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.08); }
+    input[type=range] { accent-color: #0f172a; }
+    .blur-gate { filter: blur(14px); pointer-events: none; user-select: none; }
+  </style>
+</head>
+<body class="p-3 md:p-6 min-h-screen">
+
+  <!-- MODAL DE BLOQUEO Y ACCESO PRIVADO (GATEKEEPER) -->
+  <div id="authGateModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4 transition-all duration-300">
+    <div class="bg-white max-w-md w-full p-8 rounded-3xl shadow-2xl border border-slate-100 text-center relative overflow-hidden">
+      <div class="flex justify-center mb-5">
+        <img src="./assets/Clima_Social_Logo_Completo_HD.png" alt="Clima Social" class="h-12 w-auto object-contain">
+      </div>
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold uppercase tracking-wider mb-2">
+        <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+        Acceso Restringido · War Room
+      </div>
+      <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Tracking Poll Quito 2026</h2>
+      <p class="text-xs text-slate-500 mt-1 mb-6">
+        Información confidencial para la Dirección Política y el Cuarto de Guerra. Ingrese el PIN de seguridad para desencriptar el tablero.
+      </p>
+
+      <form id="authForm" onsubmit="handleAuth(event)" class="space-y-4">
+        <div class="text-left">
+          <label class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1">PIN o Clave de Acceso</label>
+          <input type="password" id="secretKeyInput" placeholder="Ingrese PIN (ej. 2026)..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold focus:outline-none focus:border-slate-800 focus:ring-2 focus:ring-slate-800/10 transition-all text-center tracking-widest" autofocus>
+          <div id="authErrorMsg" class="text-xs font-semibold text-rose-600 mt-1.5 hidden">Clave no autorizada. Acceso denegado.</div>
+        </div>
+
+        <button type="submit" class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition-all">
+          Desbloquear y Entrar al Tablero
+        </button>
+
+        <div class="text-center mt-3">
+          <button type="button" onclick="quickAccessDemo()" class="text-xs text-slate-400 hover:text-slate-700 underline font-semibold">
+            Acceso Rápido (PIN: 2026)
+          </button>
+        </div>
+      </form>
+
+      <div class="mt-6 pt-4 border-t border-slate-100 text-[11px] text-slate-400">
+        Clima Social Investigaciones Metodológicas · Cifrado en Memoria
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENEDOR PRINCIPAL DEL DASHBOARD (PROTEGIDO) -->
+  <div id="dashboardApp" class="blur-gate transition-all duration-500 max-w-7xl mx-auto space-y-6">
+
+    <!-- CABECERA INSTITUCIONAL -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-center pb-5 border-b border-slate-200 gap-4">
+      <div class="flex items-center gap-4">
+        <img src="./assets/Clima_Social_Logo_Completo_HD.png" alt="Clima Social" class="h-11 md:h-13 w-auto object-contain">
+        <div class="h-9 w-px bg-slate-200 hidden sm:block"></div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded bg-slate-900 text-white">
+              War Room Oficial
+            </span>
+            <span class="text-xs font-semibold text-slate-500">Elecciones Seccionales Quito 2026</span>
+          </div>
+          <h1 class="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight mt-0.5" id="heroTitle">
+            Tracking Diario · Alcaldía de Quito
+          </h1>
+        </div>
+      </div>
+
+      <!-- SELECTOR DE LOS 13 REPORTES OFICIALES (16 AL 28 NOV) -->
+      <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex flex-col gap-1.5 w-full md:w-auto">
+        <div class="flex justify-between items-center gap-3">
+          <div>
+            <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Reporte Activo (Móvil 3 Días)</div>
+            <div class="text-sm font-extrabold text-slate-900" id="currentReportLabel">Reporte I · 16 de Noviembre</div>
+          </div>
+          <div class="flex items-center gap-1">
+            <button onclick="stepReport(-1)" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-200 transition-all">
+              ◀ Anterior
+            </button>
+            <button onclick="stepReport(1)" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-200 transition-all">
+              Siguiente ▶
+            </button>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-[10px] font-bold text-slate-400">Rep I (16N)</span>
+          <input type="range" id="reportSlider" min="0" max="12" value="0" class="w-full md:w-48 cursor-pointer">
+          <span class="text-[10px] font-bold text-slate-400">Rep XIII (28N)</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- BARRA DE SELECCIÓN DE PESTAÑA: ALCALDE VS. PREFECTO Y FILTROS -->
+    <div class="flex flex-wrap justify-between items-center gap-3 bg-white p-3 rounded-2xl border border-slate-200 shadow-sm">
+      
+      <!-- SWITCH ESCENARIO: ALCALDÍA / PREFECTURA -->
+      <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
+        <button id="btnTabAlcalde" onclick="setScenario('alcalde')" class="px-4 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all">
+          Alcaldía de Quito
+        </button>
+        <button id="btnTabPrefecto" onclick="setScenario('prefecto')" class="px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all">
+          Prefectura de Pichincha
+        </button>
+      </div>
+
+      <!-- FILTRO DE CIRCUNSCRIPCIÓN -->
+      <div class="flex items-center gap-2 text-xs">
+        <span class="text-slate-400 font-bold uppercase tracking-wider">Circunscripción:</span>
+        <select id="circSelect" onchange="renderActiveView()" class="bg-slate-50 border border-slate-300 text-slate-800 font-bold rounded-xl px-3 py-1.5 focus:outline-none">
+          <option value="total">Distrito Metropolitano (Total Cantón)</option>
+          <option value="1">Urbana Norte (Cuota 43/día)</option>
+          <option value="2">Urbana Centro (Cuota 42/día)</option>
+          <option value="3">Urbana Sur (Cuota 43/día)</option>
+          <option value="4">Rural (Cuota 42/día)</option>
+        </select>
+      </div>
+
+      <!-- BADGE DE AUDITORÍA MUESTRAL -->
+      <div class="text-xs font-semibold text-slate-500 flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span id="sampleBadge">Muestra móvil n = 510 · Margen ±4.3%</span>
+      </div>
+    </div>
+
+    <!-- TARJETAS DE LOS CANDIDATOS PRINCIPALES -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5" id="candidateCardsContainer">
+      <!-- Se inyecta dinámicamente -->
+    </div>
+
+    <!-- GRÁFICA DE EVOLUCIÓN TEMPORAL VIVA (SE ALIMENTA DÍA A DÍA) -->
+    <div class="card-clean p-6 rounded-2xl">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 mb-4 border-b border-slate-100 gap-2">
+        <div>
+          <h2 class="text-lg font-extrabold text-slate-900 tracking-tight" id="chartSectionTitle">
+            Evolución de Intención de Voto (Acumulado Móvil 3 Días)
+          </h2>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 text-xs font-bold" id="legendContainer">
+          <!-- Leyenda dinámica -->
+        </div>
+      </div>
+
+      <div class="relative h-80 md:h-96 w-full">
+        <canvas id="mainChartCanvas"></canvas>
+      </div>
+
+      <div class="flex justify-between items-center pt-3 mt-3 border-t border-slate-100 text-xs text-slate-400">
+        <div>Fuente: Base KoboToolbox auditada GPS · Clima Social</div>
+        <div id="reportIndicatorText" class="font-bold text-slate-600">Reporte 1 de 13 publicado</div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN INFERIOR: ANTIVOTO, FIRMEZA Y EVALUACIÓN DE GESTIÓN -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+      <!-- TASA DE RECHAZO (ANTIVOTO) -->
+      <div class="card-clean p-5 rounded-2xl">
+        <div class="flex justify-between items-center mb-3">
+          <div>
+            <h3 class="text-sm font-extrabold text-slate-900">Rechazo / Antivoto</h3>
+            <p class="text-[11px] text-slate-500">"¿Por cuál nunca votaría?"</p>
+          </div>
+          <span class="text-[10px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded">
+            Techo Electoral
+          </span>
+        </div>
+        <div class="space-y-3 mt-3" id="antivotoList"></div>
+      </div>
+
+      <!-- FIRMEZA DE VOTO -->
+      <div class="card-clean p-5 rounded-2xl flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <div>
+              <h3 class="text-sm font-extrabold text-slate-900">Firmeza de la Decisión</h3>
+              <p class="text-[11px] text-slate-500">Voto Duro vs. Voto Blando</p>
+            </div>
+            <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded">
+              Volatilidad
+            </span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 text-center mt-3">
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+              <div class="text-[10px] font-bold text-slate-500 uppercase">Seguro</div>
+              <div class="text-lg font-black text-emerald-600 mt-0.5" id="kpiSeguro">--</div>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+              <div class="text-[10px] font-bold text-slate-500 uppercase">Blando</div>
+              <div class="text-lg font-black text-indigo-600 mt-0.5" id="kpiBlando">--</div>
+            </div>
+            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
+              <div class="text-[10px] font-bold text-slate-500 uppercase">Indeciso</div>
+              <div class="text-lg font-black text-amber-600 mt-0.5" id="kpiIndeciso">--</div>
+            </div>
+          </div>
+
+          <div class="w-full bg-slate-100 rounded-full h-3 mt-4 flex overflow-hidden shadow-inner">
+            <div id="barSeguro" class="bg-emerald-600 h-full" style="width: 50%;"></div>
+            <div id="barBlando" class="bg-indigo-600 h-full" style="width: 30%;"></div>
+            <div id="barIndeciso" class="bg-amber-400 h-full" style="width: 20%;"></div>
+          </div>
+        </div>
+        <div class="text-[11px] text-slate-500 pt-3 border-t border-slate-100 flex justify-between mt-3">
+          <span>Decididos: <strong id="txtDecididos">--</strong></span>
+          <span>En disputa: <strong id="txtEnDisputa">--</strong></span>
+        </div>
+      </div>
+
+      <!-- EVALUACIÓN DE GESTIÓN (PABEL Y NOBOA) -->
+      <div class="card-clean p-5 rounded-2xl flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <div>
+              <h3 class="text-sm font-extrabold text-slate-900">Evaluación de Gestión</h3>
+              <p class="text-[11px] text-slate-500">Aprobación y Saldo Neto</p>
+            </div>
+            <span class="text-[10px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">
+              Contexto Político
+            </span>
+          </div>
+
+          <div class="space-y-3.5 mt-2">
+            <!-- Pabel Muñoz -->
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <div class="flex justify-between items-center text-xs font-bold mb-1">
+                <span class="text-slate-800">Alcalde Pabel Muñoz</span>
+                <span class="text-emerald-700 font-extrabold" id="pabelSaldo">Saldo +17.0%</span>
+              </div>
+              <div class="flex justify-between text-[11px] text-slate-500">
+                <span>Positiva: <strong id="pabelPos" class="text-slate-800">56.4%</strong></span>
+                <span>Negativa: <strong id="pabelNeg" class="text-slate-800">39.4%</strong></span>
+              </div>
+            </div>
+
+            <!-- Daniel Noboa -->
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <div class="flex justify-between items-center text-xs font-bold mb-1">
+                <span class="text-slate-800">Presidente Daniel Noboa</span>
+                <span class="text-rose-700 font-extrabold" id="noboaSaldo">Saldo -11.4%</span>
+              </div>
+              <div class="flex justify-between text-[11px] text-slate-500">
+                <span>Positiva: <strong id="noboaPos" class="text-slate-800">42.5%</strong></span>
+                <span>Negativa: <strong id="noboaNeg" class="text-slate-800">53.9%</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-[11px] text-slate-400 pt-3 border-t border-slate-100 flex justify-between mt-3">
+          <span>Escala: Muy bien / Bien vs. Mal / Muy mal</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SCRIPT CON DATOS CIFRADOS (SOPORTE NATIVO file://) -->
+  <script src="./data/tracking_data.js"></script>
+
+  <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN -->
+  <script>
+    let rawDecryptedData = null;
+    let currentScenario = 'alcalde';
+    let currentReportIdx = 0;
+    let chartInstance = null;
+
+    function quickAccessDemo() {
+      document.getElementById('secretKeyInput').value = '2026';
+      handleAuth(new Event('submit'));
+    }
+
+    async function handleAuth(event) {
+      if (event && event.preventDefault) event.preventDefault();
+      let inputKey = document.getElementById('secretKeyInput').value.trim();
+      const errEl = document.getElementById('authErrorMsg');
+
+      // Mapeo amigable de PINs
+      if (inputKey === '2026' || inputKey === '1234') {
+        inputKey = 'CS_QUITO_WARROOM_2026';
+      }
+
+      try {
+        const encData = window.ENCRYPTED_TRACKING_DATA;
+        if (!encData || !encData.payload) {
+          throw new Error('No se cargó el archivo tracking_data.js');
+        }
+
+        const decryptedStr = decryptPayload(encData.payload, inputKey);
+        const parsed = JSON.parse(decryptedStr);
+
+        rawDecryptedData = parsed;
+        errEl.classList.add('hidden');
+
+        document.getElementById('authGateModal').classList.add('hidden');
+        document.getElementById('dashboardApp').classList.remove('blur-gate');
+
+        initDashboard();
+      } catch (err) {
+        console.error('Error de autenticación:', err);
+        errEl.classList.remove('hidden');
+      }
+    }
+
+    function decryptPayload(b64Cipher, key) {
+      const rawBinary = atob(b64Cipher);
+      const keyBytes = sha256Bytes(key);
+      const uint8 = new Uint8Array(rawBinary.length);
+
+      for (let i = 0; i < rawBinary.length; i++) {
+        uint8[i] = rawBinary.charCodeAt(i) ^ keyBytes[i % keyBytes.length];
+      }
+
+      return new TextDecoder('utf-8').decode(uint8);
+    }
+
+    function sha256Bytes(ascii) {
+      function rrot(w, n) { return (w >>> n) | (w << (32 - n)); }
+      const K = [
+        0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+        0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+        0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+        0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+        0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+        0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+        0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+        0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2
+      ];
+      let H = [0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19];
+      const bytes = [];
+      for (let i = 0; i < ascii.length; i++) bytes.push(ascii.charCodeAt(i));
+      bytes.push(0x80);
+      while ((bytes.length % 64) !== 56) bytes.push(0);
+      const bitLen = ascii.length * 8;
+      for (let i = 7; i >= 0; i--) bytes.push((bitLen >>> (i * 8)) & 0xff);
+
+      for (let chunk = 0; chunk < bytes.length; chunk += 64) {
+        const W = new Array(64);
+        for (let i = 0; i < 16; i++) {
+          W[i] = (bytes[chunk + i * 4] << 24) | (bytes[chunk + i * 4 + 1] << 16) | (bytes[chunk + i * 4 + 2] << 8) | bytes[chunk + i * 4 + 3];
+        }
+        for (let i = 16; i < 64; i++) {
+          const s0 = rrot(W[i - 15], 7) ^ rrot(W[i - 15], 18) ^ (W[i - 15] >>> 3);
+          const s1 = rrot(W[i - 2], 17) ^ rrot(W[i - 2], 19) ^ (W[i - 2] >>> 10);
+          W[i] = (W[i - 16] + s0 + W[i - 7] + s1) | 0;
+        }
+        let [a, b, c, d, e, f, g, h] = H;
+        for (let i = 0; i < 64; i++) {
+          const S1 = rrot(e, 6) ^ rrot(e, 11) ^ rrot(e, 25);
+          const ch = (e & f) ^ ((~e) & g);
+          const temp1 = (h + S1 + ch + K[i] + W[i]) | 0;
+          const S0 = rrot(a, 2) ^ rrot(a, 13) ^ rrot(a, 22);
+          const maj = (a & b) ^ (a & c) ^ (b & c);
+          const temp2 = (S0 + maj) | 0;
+          h = g; g = f; f = e; e = (d + temp1) | 0; d = c; c = b; b = a; a = (temp1 + temp2) | 0;
+        }
+        H = [H[0] + a | 0, H[1] + b | 0, H[2] + c | 0, H[3] + d | 0, H[4] + e | 0, H[5] + f | 0, H[6] + g | 0, H[7] + h | 0];
+      }
+      const out = [];
+      H.forEach(w => {
+        out.push((w >>> 24) & 0xff, (w >>> 16) & 0xff, (w >>> 8) & 0xff, w & 0xff);
+      });
+      return out;
+    }
+
+    function initDashboard() {
+      setupSlider();
+      initChart();
+      renderActiveView();
+    }
+
+    function setupSlider() {
+      const slider = document.getElementById('reportSlider');
+      slider.addEventListener('input', function() {
+        setReportIndex(parseInt(this.value));
+      });
+    }
+
+    function setReportIndex(idx) {
+      currentReportIdx = Math.max(0, Math.min(12, idx));
+      document.getElementById('reportSlider').value = currentReportIdx;
+      const dateName = rawDecryptedData.fechas_reportes[currentReportIdx];
+      document.getElementById('currentReportLabel').innerText = `Reporte ${toRoman(currentReportIdx + 1)} · ${dateName}`;
+      document.getElementById('reportIndicatorText').innerText = `Reporte ${currentReportIdx + 1} de 13 publicado (${dateName})`;
+      renderActiveView();
+    }
+
+    function stepReport(delta) {
+      setReportIndex(currentReportIdx + delta);
+    }
+
+    function toRoman(num) {
+      const map = { 1:'I', 2:'II', 3:'III', 4:'IV', 5:'V', 6:'VI', 7:'VII', 8:'VIII', 9:'IX', 10:'X', 11:'XI', 12:'XII', 13:'XIII' };
+      return map[num] || num;
+    }
+
+    function setScenario(scen) {
+      currentScenario = scen;
+      const btnA = document.getElementById('btnTabAlcalde');
+      const btnP = document.getElementById('btnTabPrefecto');
+      const title = document.getElementById('heroTitle');
+
+      if (scen === 'alcalde') {
+        btnA.className = 'px-4 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
+        btnP.className = 'px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
+        title.innerText = 'Tracking Diario · Alcaldía de Quito';
+      } else {
+        btnP.className = 'px-4 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
+        btnA.className = 'px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
+        title.innerText = 'Tracking Diario · Prefectura de Pichincha';
+      }
+
+      updateChartDatasets();
+      renderActiveView();
+    }
+
+    function renderActiveView() {
+      if (!rawDecryptedData) return;
+
+      const idx = currentReportIdx;
+      const isAlcalde = currentScenario === 'alcalde';
+      const candList = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 5) : rawDecryptedData.candidatos_prefecto.slice(0, 5);
+      const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+
+      const container = document.getElementById('candidateCardsContainer');
+      container.innerHTML = '';
+
+      candList.forEach(c => {
+        const id = c.nombre.toLowerCase().split(' ')[c.nombre.toLowerCase().split(' ').length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const series = seriesDict[id] || seriesDict['pabel'] || [0];
+        const currentVal = series[idx];
+        const prevVal = idx > 0 ? series[idx - 1] : currentVal;
+        const diffDay = (currentVal - prevVal).toFixed(1);
+        const diffDayClass = diffDay > 0 ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : diffDay < 0 ? 'text-rose-700 bg-rose-50 border-rose-200' : 'text-slate-600 bg-slate-50 border-slate-200';
+        const diffDaySign = diffDay > 0 ? `+${diffDay}` : `${diffDay}`;
+
+        const initialVal = series[0];
+        const diffTotal = (currentVal - initialVal).toFixed(1);
+        const diffTotalClass = diffTotal > 0 ? 'text-emerald-600' : diffTotal < 0 ? 'text-rose-600' : 'text-slate-400';
+        const diffTotalSign = diffTotal > 0 ? `+${diffTotal}` : `${diffTotal}`;
+
+        const card = document.createElement('div');
+        card.className = 'card-candidate p-4 rounded-2xl flex flex-col justify-between';
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center gap-3">
+              ${c.foto ? `<img src="${c.foto}" alt="${c.nombre}" class="w-14 h-14 rounded-full object-cover border-2 shadow-sm shrink-0" style="border-color: ${c.color}">` : `<div class="w-14 h-14 rounded-full flex items-center justify-center font-bold text-white text-lg shrink-0 shadow-sm" style="background-color: ${c.color}">${c.nombre[0]}</div>`}
+              <div class="min-w-0">
+                <h4 class="text-sm font-extrabold text-slate-900 leading-tight">${c.nombre}</h4>
+                <p class="text-xs font-semibold text-slate-600 leading-snug mt-0.5 break-words">${c.partido}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100">
+            <div class="flex items-baseline justify-between">
+              <span class="text-3xl font-black text-slate-900 tracking-tight">${currentVal.toFixed(1)}<span class="text-base font-semibold text-slate-400">%</span></span>
+              <span class="text-xs font-extrabold px-2 py-0.5 rounded-md border ${diffDayClass}">
+                ${diffDaySign}% vs rep. anterior
+              </span>
+            </div>
+            <div class="text-[11px] font-semibold text-slate-500 mt-1 flex justify-between items-center">
+              <span>Evolución total:</span>
+              <span class="font-bold ${diffTotalClass}">${diffTotalSign}% desde inicio</span>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      renderAntivoto(idx);
+      renderFirmeza(idx);
+      renderGestion(idx);
+      updateChartLine();
+    }
+
+    function renderAntivoto(idx) {
+      const container = document.getElementById('antivotoList');
+      container.innerHTML = '';
+      const av = rawDecryptedData.antivoto_alcalde;
+      const list = [
+        { name: 'Jorge Yunda', val: av.yunda[idx] },
+        { name: 'Pabel Muñoz', val: av.pabel[idx] },
+        { name: 'Harold Burbano', val: av.burbano[idx] },
+        { name: 'Wilson Merino', val: av.merino[idx] },
+        { name: 'Bernardo Jijón', val: av.jijon[idx] }
+      ].sort((a, b) => b.val - a.val);
+
+      list.forEach(item => {
+        const row = document.createElement('div');
+        row.className = 'space-y-1';
+        row.innerHTML = `
+          <div class="flex justify-between items-center text-xs font-bold">
+            <span class="text-slate-800">${item.name}</span>
+            <span class="text-rose-600 font-extrabold">${item.val.toFixed(1)}%</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+            <div class="bg-rose-500 h-full rounded-full transition-all" style="width: ${item.val}%"></div>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function renderFirmeza(idx) {
+      const f = rawDecryptedData.firmeza_alcalde;
+      const s = f.seguro[idx];
+      const b = f.blando[idx];
+      const ind = f.indeciso[idx];
+
+      document.getElementById('kpiSeguro').innerText = `${s.toFixed(1)}%`;
+      document.getElementById('kpiBlando').innerText = `${b.toFixed(1)}%`;
+      document.getElementById('kpiIndeciso').innerText = `${ind.toFixed(1)}%`;
+
+      document.getElementById('barSeguro').style.width = `${s}%`;
+      document.getElementById('barBlando').style.width = `${b}%`;
+      document.getElementById('barIndeciso').style.width = `${ind}%`;
+
+      document.getElementById('txtDecididos').innerText = `${s.toFixed(1)}%`;
+      document.getElementById('txtEnDisputa').innerText = `${(b + ind).toFixed(1)}%`;
+    }
+
+    function renderGestion(idx) {
+      const p = rawDecryptedData.gestion_pabel;
+      const n = rawDecryptedData.gestion_noboa;
+
+      document.getElementById('pabelSaldo').innerText = `Saldo ${p.saldo[idx] > 0 ? '+' : ''}${p.saldo[idx].toFixed(1)}%`;
+      document.getElementById('pabelPos').innerText = `${p.positiva[idx].toFixed(1)}%`;
+      document.getElementById('pabelNeg').innerText = `${p.negativa[idx].toFixed(1)}%`;
+
+      document.getElementById('noboaSaldo').innerText = `Saldo ${n.saldo[idx] > 0 ? '+' : ''}${n.saldo[idx].toFixed(1)}%`;
+      document.getElementById('noboaPos').innerText = `${n.positiva[idx].toFixed(1)}%`;
+      document.getElementById('noboaNeg').innerText = `${n.negativa[idx].toFixed(1)}%`;
+    }
+
+    function initChart() {
+      const ctx = document.getElementById('mainChartCanvas').getContext('2d');
+      chartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: rawDecryptedData.fechas_reportes,
+          datasets: []
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#0f172a',
+              titleColor: '#ffffff',
+              titleFont: { size: 13, weight: 'bold', family: 'Poppins' },
+              bodyColor: '#e2e8f0',
+              bodyFont: { size: 12, family: 'Poppins' },
+              padding: 12,
+              cornerRadius: 10,
+              boxPadding: 6,
+              callbacks: {
+                label: (ctx) => {
+                  if (ctx.raw === null || ctx.raw === undefined) return null;
+                  return ` ${ctx.dataset.label}: ${ctx.raw.toFixed(1)}%`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: '#f1f5f9' },
+              ticks: { color: '#64748b', font: { size: 11, weight: '600', family: 'Poppins' } }
+            },
+            y: {
+              min: 0,
+              max: 42,
+              grid: { color: '#f1f5f9' },
+              ticks: {
+                color: '#64748b',
+                callback: (val) => val + '%',
+                font: { size: 11, weight: '600', family: 'Poppins' },
+                stepSize: 5
+              }
+            }
+          }
+        }
+      });
+
+      updateChartDatasets();
+    }
+
+    function updateChartDatasets() {
+      if (!chartInstance || !rawDecryptedData) return;
+
+      const isAlcalde = currentScenario === 'alcalde';
+      const candList = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 5) : rawDecryptedData.candidatos_prefecto.slice(0, 5);
+      const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+
+      const legendBox = document.getElementById('legendContainer');
+      legendBox.innerHTML = '';
+      candList.forEach(c => {
+        legendBox.innerHTML += `
+          <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200">
+            <span class="w-3 h-3 rounded-full" style="background-color: ${c.color}"></span>
+            <span class="text-slate-800">${c.nombre}</span>
+          </div>
+        `;
+      });
+
+      chartInstance.data.datasets = candList.map(c => {
+        const id = c.nombre.toLowerCase().split(' ')[c.nombre.toLowerCase().split(' ').length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const series = seriesDict[id] || seriesDict['pabel'] || [0];
+
+        return {
+          label: c.nombre,
+          data: rawDecryptedData.fechas_reportes.map((_, i) => (i <= currentReportIdx ? series[i] : null)),
+          borderColor: c.color,
+          backgroundColor: c.color,
+          borderWidth: 3.5,
+          pointRadius: rawDecryptedData.fechas_reportes.map((_, i) => (i > currentReportIdx ? 0 : (i === currentReportIdx ? 8 : 4))),
+          pointHoverRadius: 8,
+          pointBackgroundColor: '#ffffff',
+          pointBorderWidth: 2.5,
+          pointBorderColor: c.color,
+          tension: 0.25,
+          spanGaps: false,
+          fill: false
+        };
+      });
+
+      chartInstance.update();
+    }
+
+    function updateChartLine() {
+      if (!chartInstance || !rawDecryptedData) return;
+      const isAlcalde = currentScenario === 'alcalde';
+      const candList = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 5) : rawDecryptedData.candidatos_prefecto.slice(0, 5);
+      const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+
+      chartInstance.data.datasets.forEach((ds, idxCand) => {
+        const c = candList[idxCand];
+        const id = c.nombre.toLowerCase().split(' ')[c.nombre.toLowerCase().split(' ').length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        const series = seriesDict[id] || [0];
+
+        ds.data = rawDecryptedData.fechas_reportes.map((_, i) => (i <= currentReportIdx ? series[i] : null));
+        ds.pointRadius = rawDecryptedData.fechas_reportes.map((_, i) => (i > currentReportIdx ? 0 : (i === currentReportIdx ? 8 : 4)));
+      });
+
+      chartInstance.update();
+    }
+  </script>
+</body>
+</html>
