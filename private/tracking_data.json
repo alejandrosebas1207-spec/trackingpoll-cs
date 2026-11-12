@@ -1,4 +1,4 @@
-window.TRACKING_DATA = {
+{
   "proyecto": "Tracking Poll Diario Quito 2026",
   "empresa": "Clima Social Investigaciones Metodológicas",
   "fechas_reportes": [
@@ -625,4 +625,4 @@ window.TRACKING_DATA = {
       -16.1
     ]
   }
-};
+}
