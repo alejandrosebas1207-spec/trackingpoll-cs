@@ -29,7 +29,7 @@
     .blur-gate { filter: blur(14px); pointer-events: none; user-select: none; }
   </style>
 </head>
-<body class="p-3 md:p-6 min-h-screen" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+<body class="p-2 sm:p-4 min-h-screen" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
   <!-- ESCUDO DE SEGURIDAD ANTI-INSPECCIÓN -->
   <div id="devToolsShield" class="fixed inset-0 z-[999] bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center text-center p-6 hidden">
@@ -88,144 +88,114 @@
   </div>
 
   <!-- CONTENEDOR PRINCIPAL DEL DASHBOARD (PROTEGIDO) -->
-  <div id="dashboardApp" class="blur-gate transition-all duration-500 max-w-7xl mx-auto space-y-6">
+  <div id="dashboardApp" class="blur-gate transition-all duration-500 max-w-7xl mx-auto space-y-2.5">
 
-    <!-- CABECERA INSTITUCIONAL -->
-    <header class="flex flex-col md:flex-row justify-between items-start md:items-center pb-5 border-b border-slate-200 gap-4">
-      <div class="flex items-center gap-4">
-        <img src="./assets/Clima_Social_Logo_Completo_HD.png" alt="Clima Social" class="h-11 md:h-13 w-auto object-contain">
-        <div class="h-9 w-px bg-slate-200 hidden sm:block"></div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="text-xs uppercase tracking-wider font-extrabold px-2.5 py-0.5 rounded bg-slate-900 text-white">
-              War Room Oficial
-            </span>
-            <span class="text-xs font-semibold text-slate-500">Elecciones Seccionales Quito 2026</span>
-          </div>
-          <h1 class="text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight mt-0.5" id="heroTitle">
+    <!-- CABECERA INSTITUCIONAL UNIFICADA (TOP BAR ULTRACOMPACTA) -->
+    <header class="card-clean px-3.5 py-2 rounded-2xl flex flex-wrap items-center justify-between gap-2.5">
+      <!-- Lado Izquierdo: Marca + War Room + Título -->
+      <div class="flex items-center gap-3">
+        <img src="./assets/Clima_Social_Logo_Completo_HD.png" alt="Clima Social" class="h-7 sm:h-8 w-auto object-contain">
+        <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+        <div class="flex items-center gap-2">
+          <span class="text-[9px] uppercase tracking-wider font-black px-2 py-0.5 rounded bg-slate-900 text-white">
+            War Room
+          </span>
+          <h1 class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight" id="heroTitle">
             Tracking Diario · Alcaldía de Quito
           </h1>
         </div>
       </div>
 
-      <!-- SELECTOR TEMPORAL: LÍNEA BASE HISTÓRICA Y TRACKING DIARIO -->
-      <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex flex-col gap-1.5 w-full md:w-auto">
-        <div class="flex justify-between items-center gap-3">
-          <div>
-            <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Corte Activo / Línea de Tiempo</div>
-            <div class="text-sm font-extrabold text-slate-900" id="currentReportLabel">Línea Base III · Nov 2026</div>
-          </div>
-          <div class="flex items-center gap-1">
-            <button onclick="stepReport(-1)" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-200 transition-all">
-              ◀ Anterior
-            </button>
-            <button onclick="stepReport(1)" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-200 transition-all">
-              Siguiente ▶
-            </button>
-          </div>
+      <!-- Centro: Switcher Alcaldía / Prefectura -->
+      <div class="flex items-center gap-1 bg-slate-100 p-0.5 rounded-xl border border-slate-200">
+        <button id="btnTabAlcalde" onclick="setScenario('alcalde')" class="px-3 py-1 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all">
+          Alcaldía
+        </button>
+        <button id="btnTabPrefecto" onclick="setScenario('prefecto')" class="px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all">
+          Prefectura
+        </button>
+      </div>
+
+      <!-- Lado Derecho: Controlador Temporal Compacto -->
+      <div class="flex items-center gap-2 bg-slate-50 px-2.5 py-1 rounded-xl border border-slate-200">
+        <div class="text-right">
+          <div class="text-[9px] uppercase font-bold text-slate-400 tracking-wider leading-none">Corte Activo</div>
+          <div class="text-xs font-black text-slate-900 leading-tight" id="currentReportLabel">Línea Base III · Nov 2026</div>
         </div>
-        <div class="flex items-center gap-2">
-          <span class="text-[10px] font-bold text-slate-400">Sep 2026</span>
-          <input type="range" id="reportSlider" min="0" max="2" value="2" class="w-full md:w-52 cursor-pointer">
-          <span class="text-[10px] font-bold text-slate-400">28 Nov</span>
+        <div class="flex items-center gap-1 ml-1">
+          <button onclick="stepReport(-1)" class="w-6 h-6 flex items-center justify-center text-[10px] font-bold rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 transition-all cursor-pointer" title="Corte anterior">◀</button>
+          <input type="range" id="reportSlider" min="0" max="2" value="2" class="w-20 sm:w-28 cursor-pointer h-1.5 accent-slate-900">
+          <button onclick="stepReport(1)" class="w-6 h-6 flex items-center justify-center text-[10px] font-bold rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 transition-all cursor-pointer" title="Corte siguiente">▶</button>
         </div>
       </div>
     </header>
 
-    <!-- BARRA DE SELECCIÓN DE PESTAÑA: ALCALDE VS. PREFECTO Y FILTROS SOCIODEMOGRÁFICOS -->
-    <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-      <div class="flex flex-wrap justify-between items-center gap-3 pb-3 border-b border-slate-100">
-        <!-- SWITCH ESCENARIO: ALCALDÍA / PREFECTURA -->
-        <div class="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
-          <button id="btnTabAlcalde" onclick="setScenario('alcalde')" class="px-4 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all">
-            Alcaldía de Quito
-          </button>
-          <button id="btnTabPrefecto" onclick="setScenario('prefecto')" class="px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all">
-            Prefectura de Pichincha
-          </button>
+    <!-- BARRA TOOLBAR COMPACTA DE FILTROS SOCIODEMOGRÁFICOS -->
+    <div class="card-clean px-3 py-2 rounded-xl flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="flex items-center gap-1.5 text-slate-600 font-extrabold text-[11px] uppercase tracking-wider pr-1">
+          <svg class="w-3.5 h-3.5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+          <span>Filtros:</span>
         </div>
 
-        <!-- BADGE DE AUDITORÍA MUESTRAL -->
-        <div class="text-xs font-semibold text-slate-500 flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-          <span id="sampleBadge">Corte Oficial Noviembre 2026 · n = 2.450 (±2.0%)</span>
-        </div>
-      </div>
+        <!-- 1. Circunscripción -->
+        <select id="filterCirc" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+          <option value="total">Circunscripción (Todas)</option>
+          <option value="Urbana Norte">Urbana Norte</option>
+          <option value="Urbana Centro">Urbana Centro</option>
+          <option value="Urbana Sur">Urbana Sur</option>
+          <option value="Rural">Rural</option>
+        </select>
 
-      <!-- BARRA DE CONTROL DE FILTROS SOCIODEMOGRÁFICOS EN CASCADA -->
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 pt-1 pb-1">
-        <div class="text-[11px] font-extrabold uppercase tracking-wider text-slate-600 flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
-          Segmentación Concatenada en Cascada
-        </div>
-        <button type="button" onclick="resetFilters()" id="btnResetFilters" class="px-3.5 py-1.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer">
-          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-          Limpiar Filtros
+        <!-- 2. Género -->
+        <select id="filterGenero" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+          <option value="total">Género (Todos)</option>
+          <option value="Hombre">Hombres</option>
+          <option value="Mujer">Mujeres</option>
+        </select>
+
+        <!-- 3. Grupo de Edad -->
+        <select id="filterEdad" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+          <option value="total">Edad (Todas)</option>
+          <option value="16 a 29 años">16 a 29 años</option>
+          <option value="30 a 44 años">30 a 44 años</option>
+          <option value="45 a 60 años">45 a 60 años</option>
+          <option value="61 o más años">61+ años</option>
+        </select>
+
+        <!-- 4. Nivel de Ingresos -->
+        <select id="filterIngresos" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+          <option value="total">Ingresos (Todos)</option>
+          <option value="Bajo">Ingresos Bajos</option>
+          <option value="Medio bajo">Ingresos Medio-Bajos</option>
+          <option value="Medio">Ingresos Medios</option>
+          <option value="Medio alto o alto">Ingresos Medios-Altos / Altos</option>
+        </select>
+
+        <!-- Botón Limpiar -->
+        <button type="button" onclick="resetFilters()" id="btnResetFilters" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-400 font-medium text-xs flex items-center gap-1 transition-all cursor-pointer" title="Limpiar todos los filtros">
+          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          <span>Limpiar</span>
         </button>
       </div>
 
-      <!-- SELECTORES SOCIODEMOGRÁFICOS (BLOQUE A) -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
-        <!-- 1. Circunscripción -->
-        <div>
-          <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Circunscripción</label>
-          <select id="filterCirc" onchange="renderActiveView()" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-bold rounded-xl px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-slate-900">
-            <option value="total">Distrito Metropolitano (Total)</option>
-            <option value="Urbana Norte">Urbana Norte</option>
-            <option value="Urbana Centro">Urbana Centro</option>
-            <option value="Urbana Sur">Urbana Sur</option>
-            <option value="Rural">Rural</option>
-          </select>
-        </div>
-
-        <!-- 2. Género -->
-        <div>
-          <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Género / Sexo</label>
-          <select id="filterGenero" onchange="renderActiveView()" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-bold rounded-xl px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-slate-900">
-            <option value="total">Todos los géneros</option>
-            <option value="Hombre">Hombres</option>
-            <option value="Mujer">Mujeres</option>
-          </select>
-        </div>
-
-        <!-- 3. Grupo de Edad -->
-        <div>
-          <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Grupo de Edad</label>
-          <select id="filterEdad" onchange="renderActiveView()" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-bold rounded-xl px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-slate-900">
-            <option value="total">Todas las edades</option>
-            <option value="16 a 29 años">Jóvenes (16 a 29 años)</option>
-            <option value="30 a 44 años">Adultos (30 a 44 años)</option>
-            <option value="45 a 60 años">Adultos (45 a 60 años)</option>
-            <option value="61 o más años">Adultos mayores (61+ años)</option>
-          </select>
-        </div>
-
-        <!-- 4. Nivel de Ingresos -->
-        <div>
-          <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Nivel de Ingresos</label>
-          <select id="filterIngresos" onchange="renderActiveView()" class="w-full bg-slate-50 border border-slate-300 text-slate-800 font-bold rounded-xl px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-slate-900">
-            <option value="total">Todos los ingresos</option>
-            <option value="Bajo">Ingresos Bajos</option>
-            <option value="Medio bajo">Ingresos Medio-Bajos</option>
-            <option value="Medio">Ingresos Medios</option>
-            <option value="Medio alto o alto">Ingresos Medios-Altos / Altos</option>
-          </select>
-        </div>
+      <!-- Badge de Muestra -->
+      <div class="text-xs font-semibold text-slate-500 flex items-center gap-1.5 ml-auto">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span id="sampleBadge" class="font-bold text-slate-700">Nov 2026 · n = 2.450 (±2.0%)</span>
       </div>
     </div>
 
-    <!-- TARJETAS DE LOS 4 CANDIDATOS PROTAGÓNICOS (GRID 4 COLUMNAS) -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5" id="candidateCardsContainer">
-      <!-- Se inyecta dinámicamente -->
-    </div>
+    <!-- TARJETAS HORIZONTALES COMPACTAS DE LOS 4 CANDIDATOS -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5" id="candidateCardsContainer">
       <!-- Se inyecta dinámicamente -->
     </div>
 
     <!-- GRÁFICA DE EVOLUCIÓN TEMPORAL VIVA (SE ALIMENTA DÍA A DÍA) -->
-    <div class="card-clean p-6 rounded-2xl">
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 mb-4 border-b border-slate-100 gap-2">
+    <div class="card-clean p-3.5 sm:p-4 rounded-xl">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-2.5 mb-2.5 border-b border-slate-100 gap-2">
         <div>
-          <h2 class="text-lg font-extrabold text-slate-900 tracking-tight" id="chartSectionTitle">
+          <h2 class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight" id="chartSectionTitle">
             Evolución de Intención de Voto (Acumulado Móvil 3 Días)
           </h2>
         </div>
@@ -234,113 +204,113 @@
         </div>
       </div>
 
-      <div class="relative h-80 md:h-96 w-full">
+      <div class="relative h-64 sm:h-72 lg:h-[300px] w-full">
         <canvas id="mainChartCanvas"></canvas>
       </div>
 
-      <div class="flex justify-between items-center pt-3 mt-3 border-t border-slate-100 text-xs text-slate-400">
+      <div class="flex justify-between items-center pt-2 mt-2 border-t border-slate-100 text-[11px] text-slate-400">
         <div>Fuente: Tablas Depuradas Oficiales (Corte Diario 18:00h) · Clima Social</div>
         <div id="reportIndicatorText" class="font-bold text-slate-600">Reporte 1 de 13 publicado</div>
       </div>
     </div>
 
     <!-- SECCIÓN INFERIOR: ANTIVOTO, FIRMEZA Y EVALUACIÓN DE GESTIÓN -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
 
       <!-- TASA DE RECHAZO (ANTIVOTO) -->
-      <div class="card-clean p-5 rounded-2xl">
-        <div class="flex justify-between items-center mb-3">
+      <div class="card-clean p-3.5 sm:p-4 rounded-xl">
+        <div class="flex justify-between items-center mb-2.5">
           <div>
-            <h3 class="text-sm font-extrabold text-slate-900">Rechazo / Antivoto</h3>
-            <p class="text-[11px] text-slate-500">"¿Por cuál nunca votaría?"</p>
+            <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Rechazo / Antivoto</h3>
+            <p class="text-[10px] text-slate-500">"¿Por cuál nunca votaría?"</p>
           </div>
-          <span class="text-[10px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded">
+          <span class="text-[9px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded">
             Techo Electoral
           </span>
         </div>
-        <div class="space-y-3 mt-3" id="antivotoList"></div>
+        <div class="space-y-2.5 mt-2" id="antivotoList"></div>
       </div>
 
       <!-- FIRMEZA DE VOTO -->
-      <div class="card-clean p-5 rounded-2xl flex flex-col justify-between">
+      <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between">
         <div>
-          <div class="flex justify-between items-center mb-3">
+          <div class="flex justify-between items-center mb-2.5">
             <div>
-              <h3 class="text-sm font-extrabold text-slate-900">Firmeza de la Decisión</h3>
-              <p class="text-[11px] text-slate-500">Voto Duro vs. Voto Blando</p>
+              <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Firmeza de la Decisión</h3>
+              <p class="text-[10px] text-slate-500">Voto Duro vs. Voto Blando</p>
             </div>
-            <span class="text-[10px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded">
+            <span class="text-[9px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-1.5 py-0.2 rounded">
               Volatilidad
             </span>
           </div>
 
-          <div class="grid grid-cols-3 gap-2 text-center mt-3">
-            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-              <div class="text-[10px] font-bold text-slate-500 uppercase">Seguro</div>
-              <div class="text-lg font-black text-emerald-600 mt-0.5" id="kpiSeguro">--</div>
+          <div class="grid grid-cols-3 gap-1.5 text-center mt-2">
+            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
+              <div class="text-[9px] font-bold text-slate-500 uppercase">Seguro</div>
+              <div class="text-base font-black text-emerald-600 mt-0.5" id="kpiSeguro">--</div>
             </div>
-            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-              <div class="text-[10px] font-bold text-slate-500 uppercase">Blando</div>
-              <div class="text-lg font-black text-indigo-600 mt-0.5" id="kpiBlando">--</div>
+            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
+              <div class="text-[9px] font-bold text-slate-500 uppercase">Blando</div>
+              <div class="text-base font-black text-indigo-600 mt-0.5" id="kpiBlando">--</div>
             </div>
-            <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-200">
-              <div class="text-[10px] font-bold text-slate-500 uppercase">Indeciso</div>
-              <div class="text-lg font-black text-amber-600 mt-0.5" id="kpiIndeciso">--</div>
+            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
+              <div class="text-[9px] font-bold text-slate-500 uppercase">Indeciso</div>
+              <div class="text-base font-black text-amber-600 mt-0.5" id="kpiIndeciso">--</div>
             </div>
           </div>
 
-          <div class="w-full bg-slate-100 rounded-full h-3 mt-4 flex overflow-hidden shadow-inner">
+          <div class="w-full bg-slate-100 rounded-full h-2.5 mt-3 flex overflow-hidden shadow-inner">
             <div id="barSeguro" class="bg-emerald-600 h-full" style="width: 50%;"></div>
             <div id="barBlando" class="bg-indigo-600 h-full" style="width: 30%;"></div>
             <div id="barIndeciso" class="bg-amber-400 h-full" style="width: 20%;"></div>
           </div>
         </div>
-        <div class="text-[11px] text-slate-500 pt-3 border-t border-slate-100 flex justify-between mt-3">
+        <div class="text-[10px] text-slate-500 pt-2 border-t border-slate-100 flex justify-between mt-2.5">
           <span>Decididos: <strong id="txtDecididos">--</strong></span>
           <span>En disputa: <strong id="txtEnDisputa">--</strong></span>
         </div>
       </div>
 
       <!-- EVALUACIÓN DE GESTIÓN (PABEL Y NOBOA) -->
-      <div class="card-clean p-5 rounded-2xl flex flex-col justify-between">
+      <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between">
         <div>
-          <div class="flex justify-between items-center mb-3">
+          <div class="flex justify-between items-center mb-2.5">
             <div>
-              <h3 class="text-sm font-extrabold text-slate-900">Evaluación de Gestión</h3>
-              <p class="text-[11px] text-slate-500">Aprobación y Saldo Neto</p>
+              <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Evaluación de Gestión</h3>
+              <p class="text-[10px] text-slate-500">Aprobación y Saldo Neto</p>
             </div>
-            <span class="text-[10px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">
+            <span class="text-[9px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-1.5 py-0.2 rounded">
               Contexto Político
             </span>
           </div>
 
-          <div class="space-y-3.5 mt-2">
+          <div class="space-y-2 mt-1.5">
             <!-- Pabel Muñoz -->
-            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
-              <div class="flex justify-between items-center text-xs font-bold mb-1">
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+              <div class="flex justify-between items-center text-xs font-bold mb-0.5">
                 <span class="text-slate-800">Alcalde Pabel Muñoz</span>
-                <span class="text-emerald-700 font-extrabold" id="pabelSaldo">Saldo +17.0%</span>
+                <span class="text-emerald-700 font-extrabold text-xs" id="pabelSaldo">Saldo +17.0%</span>
               </div>
-              <div class="flex justify-between text-[11px] text-slate-500">
+              <div class="flex justify-between text-[10px] text-slate-500">
                 <span>Positiva: <strong id="pabelPos" class="text-slate-800">56.4%</strong></span>
                 <span>Negativa: <strong id="pabelNeg" class="text-slate-800">39.4%</strong></span>
               </div>
             </div>
 
             <!-- Daniel Noboa -->
-            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
-              <div class="flex justify-between items-center text-xs font-bold mb-1">
+            <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+              <div class="flex justify-between items-center text-xs font-bold mb-0.5">
                 <span class="text-slate-800">Presidente Daniel Noboa</span>
-                <span class="text-rose-700 font-extrabold" id="noboaSaldo">Saldo -11.4%</span>
+                <span class="text-rose-700 font-extrabold text-xs" id="noboaSaldo">Saldo -11.4%</span>
               </div>
-              <div class="flex justify-between text-[11px] text-slate-500">
+              <div class="flex justify-between text-[10px] text-slate-500">
                 <span>Positiva: <strong id="noboaPos" class="text-slate-800">42.5%</strong></span>
                 <span>Negativa: <strong id="noboaNeg" class="text-slate-800">53.9%</strong></span>
               </div>
             </div>
           </div>
         </div>
-        <div class="text-[11px] text-slate-400 pt-3 border-t border-slate-100 flex justify-between mt-3">
+        <div class="text-[10px] text-slate-400 pt-2 border-t border-slate-100 flex justify-between mt-2.5">
           <span>Escala: Muy bien / Bien vs. Mal / Muy mal</span>
         </div>
       </div>
@@ -350,6 +320,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v7"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v8"></script>
 </body>
 </html>

@@ -229,13 +229,13 @@ function setScenario(scen) {
   const chartTitle = document.getElementById('chartSectionTitle');
 
   if (scen === 'alcalde') {
-    btnA.className = 'px-4 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
-    btnP.className = 'px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
+    btnA.className = 'px-3 py-1 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
+    btnP.className = 'px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
     title.innerText = 'Tracking Diario · Alcaldía de Quito';
     chartTitle.innerText = 'Evolución Histórica y Tracking Diario · Alcaldía de Quito';
   } else {
-    btnP.className = 'px-4 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
-    btnA.className = 'px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
+    btnP.className = 'px-3 py-1 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
+    btnA.className = 'px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
     title.innerText = 'Tracking Diario · Prefectura de Pichincha';
     chartTitle.innerText = 'Evolución Histórica y Tracking Diario · Prefectura de Pichincha';
   }
@@ -327,28 +327,28 @@ function renderCandidateCards() {
 
   if (btnReset) {
     if (f.hayFiltros) {
-      btnReset.className = 'px-3.5 py-1.5 rounded-xl border border-rose-300 bg-rose-50 hover:bg-rose-100 text-rose-700 font-extrabold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer';
+      btnReset.className = 'px-2.5 py-1 rounded-lg border border-rose-300 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs flex items-center gap-1 shadow-2xs transition-all cursor-pointer';
     } else {
-      btnReset.className = 'px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-400 font-medium text-xs flex items-center gap-1.5 transition-all cursor-pointer';
+      btnReset.className = 'px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-400 font-medium text-xs flex items-center gap-1 transition-all cursor-pointer';
     }
   }
 
   if (sampleBadge) {
     if (f.hayFiltros) {
       const nCasos = casosFiltrados ? casosFiltrados.length : 0;
-      sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>Filtros concatenados: <strong>${f.etiqueta}</strong> <span class="bg-indigo-50 border border-indigo-200 text-indigo-800 text-[11px] px-2 py-0.5 rounded font-bold ml-1.5">(n = ${nCasos})</span>`;
+      sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span><span>${f.etiqueta}</span> <span class="bg-indigo-50 border border-indigo-200 text-indigo-800 text-[10px] px-1.5 py-0.2 rounded font-bold ml-1">(n = ${nCasos})</span>`;
     } else {
-      sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span>Corte Oficial Noviembre 2026 · Total Cantón (n = 2.450)`;
+      sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Nov 2026 · n = 2.450 (±2.0%)</span>`;
     }
   }
 
   // Si hay filtros pero no hay casos coincidentes
   if (casosFiltrados && casosFiltrados.length === 0) {
     container.innerHTML = `
-      <div class="col-span-full p-6 rounded-2xl bg-amber-50 border border-amber-200 text-center">
+      <div class="col-span-full p-4 rounded-xl bg-amber-50 border border-amber-200 text-center">
         <div class="text-xs font-bold text-amber-800 uppercase tracking-wider mb-1">Muestra insuficiente para este cruce específico</div>
         <p class="text-xs text-amber-700">No se registraron entrevistas que cumplan simultáneamente: <strong>${f.etiqueta}</strong>.</p>
-        <button onclick="resetFilters()" class="mt-2.5 px-3 py-1 rounded-lg bg-amber-700 text-white text-xs font-bold">Restablecer filtros</button>
+        <button onclick="resetFilters()" class="mt-2 px-3 py-1 rounded-lg bg-amber-700 text-white text-xs font-bold">Restablecer filtros</button>
       </div>
     `;
     return;
@@ -372,34 +372,36 @@ function renderCandidateCards() {
 
     const delta = valActual - valPrev;
 
-    let deltaHtml = '<span class="text-slate-400 font-medium text-xs">Línea base</span>';
+    let deltaHtml = '<span class="text-slate-400 font-medium text-[10px]">Línea base</span>';
     if (!f.hayFiltros && idx > 0) {
       if (delta > 0.05) {
-        deltaHtml = `<span class="inline-flex items-center text-emerald-600 font-bold text-xs"><svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>+${delta.toFixed(1)}%</span>`;
+        deltaHtml = `<span class="inline-flex items-center text-emerald-600 font-bold text-[10px]"><svg class="w-2.5 h-2.5 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>+${delta.toFixed(1)}%</span>`;
       } else if (delta < -0.05) {
-        deltaHtml = `<span class="inline-flex items-center text-rose-600 font-bold text-xs"><svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>${delta.toFixed(1)}%</span>`;
+        deltaHtml = `<span class="inline-flex items-center text-rose-600 font-bold text-[10px]"><svg class="w-2.5 h-2.5 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>${delta.toFixed(1)}%</span>`;
       } else {
-        deltaHtml = `<span class="text-slate-400 font-medium text-xs">= 0.0%</span>`;
+        deltaHtml = `<span class="text-slate-400 font-medium text-[10px]">= 0.0%</span>`;
       }
     } else if (f.hayFiltros) {
-      deltaHtml = `<span class="text-indigo-600 font-bold text-[11px] bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded">Segmento</span>`;
+      deltaHtml = `<span class="text-indigo-600 font-bold text-[10px] bg-indigo-50 border border-indigo-200 px-1.5 py-0.2 rounded">Segmento</span>`;
     }
 
     html += `
-      <div class="card-candidate p-4 rounded-2xl flex flex-col justify-between">
-        <div>
-          <div class="flex justify-between items-start mb-2">
-            <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded text-white" style="background-color: ${c.color}">
-              #${rank + 1} · ${c.lista}
-            </span>
-            ${deltaHtml}
+      <div class="card-candidate p-2 sm:p-2.5 rounded-xl border border-slate-200 bg-white flex items-center justify-between hover:border-slate-300 transition-all shadow-2xs">
+        <div class="flex items-center gap-2 min-w-0 pr-1">
+          <div class="w-1 h-8 rounded-full flex-shrink-0" style="background-color: ${c.color}"></div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-1">
+              <span class="text-[9px] font-black uppercase px-1.5 py-0.2 rounded text-white flex-shrink-0" style="background-color: ${c.color}">
+                #${rank + 1}
+              </span>
+              <span class="text-xs sm:text-sm font-extrabold text-slate-900 truncate leading-tight">${c.nombre}</span>
+            </div>
+            <div class="text-[10px] text-slate-400 truncate mt-0.5">${c.partido || c.lista}</div>
           </div>
-          <div class="text-sm font-extrabold text-slate-900 leading-snug">${c.nombre}</div>
-          <div class="text-[11px] text-slate-500 truncate mb-3">${c.partido}</div>
         </div>
-        <div class="pt-2 border-t border-slate-100 flex items-baseline justify-between">
-          <span class="text-[11px] text-slate-400 font-medium">Intención</span>
-          <span class="text-2xl font-black text-slate-900 tracking-tight">${valActual.toFixed(1)}%</span>
+        <div class="text-right flex-shrink-0 pl-1">
+          <div class="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-none">${valActual.toFixed(1)}%</div>
+          <div class="mt-0.5">${deltaHtml}</div>
         </div>
       </div>
     `;
