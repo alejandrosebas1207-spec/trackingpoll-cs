@@ -387,21 +387,21 @@ function renderCandidateCards() {
     }
 
     html += `
-      <div class="card-candidate p-2 sm:p-2.5 rounded-xl border border-slate-200 bg-white flex items-center justify-between hover:border-slate-300 transition-all shadow-2xs">
-        <div class="flex items-center gap-2 min-w-0 pr-1">
-          <div class="w-1 h-8 rounded-full flex-shrink-0" style="background-color: ${c.color}"></div>
+      <div class="card-candidate p-2.5 rounded-xl border border-slate-300 bg-white flex items-center justify-between hover:border-slate-400 transition-all shadow-xs">
+        <div class="flex items-center gap-2.5 min-w-0 pr-1">
+          <div class="w-1.5 h-8 rounded-full flex-shrink-0" style="background-color: ${c.color}"></div>
           <div class="min-w-0">
-            <div class="flex items-center gap-1">
-              <span class="text-[9px] font-black uppercase px-1.5 py-0.2 rounded text-white flex-shrink-0" style="background-color: ${c.color}">
+            <div class="flex items-center gap-1.5">
+              <span class="text-[10px] font-black uppercase px-1.5 py-0.2 rounded text-white flex-shrink-0" style="background-color: ${c.color}">
                 #${rank + 1}
               </span>
               <span class="text-xs sm:text-sm font-extrabold text-slate-900 truncate leading-tight">${c.nombre}</span>
             </div>
-            <div class="text-[10px] text-slate-400 truncate mt-0.5">${c.partido || c.lista}</div>
+            <div class="text-[11px] text-slate-500 truncate mt-0.5">${c.partido || c.lista}</div>
           </div>
         </div>
         <div class="text-right flex-shrink-0 pl-1">
-          <div class="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-none">${valActual.toFixed(1)}%</div>
+          <div class="text-lg sm:text-xl font-black text-slate-900 tracking-tight leading-none">${valActual.toFixed(1)}%</div>
           <div class="mt-0.5">${deltaHtml}</div>
         </div>
       </div>
@@ -471,17 +471,17 @@ function renderPiramide() {
     const barW_M = Math.min(100, Math.max(nM > 0 ? 6 : 0, (nM / total / (maxPct / 100)) * 100));
 
     html += `
-      <div class="grid grid-cols-12 items-center text-[10px] font-semibold h-4.5 gap-1" title="${co.id}: ${nH} hombres (${pctH}%), ${nM} mujeres (${pctM}%)">
+      <div class="grid grid-cols-12 items-center text-[10px] font-semibold h-5 gap-1" title="${co.id}: ${nH} hombres (${pctH}%), ${nM} mujeres (${pctM}%)">
         <div class="col-span-3 text-right truncate">
           ${nH > 0 ? `<span class="text-sky-700 font-bold">${nH}</span> <span class="text-[9px] text-slate-400">(${pctH}%)</span>` : '<span class="text-slate-300">-</span>'}
         </div>
-        <div class="col-span-2 flex justify-end h-2 bg-slate-100 rounded-l overflow-hidden">
+        <div class="col-span-2 flex justify-end h-2.5 bg-slate-100 rounded-l overflow-hidden">
           <div class="bg-sky-500 h-full rounded-l transition-all duration-300" style="width: ${barW_H}%;"></div>
         </div>
-        <div class="col-span-2 text-center text-[9px] font-bold text-slate-500 whitespace-nowrap px-0.5">
+        <div class="col-span-2 text-center text-[10px] font-bold text-slate-600 whitespace-nowrap px-0.5">
           ${co.label}
         </div>
-        <div class="col-span-2 flex justify-start h-2 bg-slate-100 rounded-r overflow-hidden">
+        <div class="col-span-2 flex justify-start h-2.5 bg-slate-100 rounded-r overflow-hidden">
           <div class="bg-rose-500 h-full rounded-r transition-all duration-300" style="width: ${barW_M}%;"></div>
         </div>
         <div class="col-span-3 text-left truncate">

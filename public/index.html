@@ -27,6 +27,23 @@
     .card-candidate:hover { border-color: #94a3b8; transform: translateY(-1px); box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08); }
     input[type=range] { accent-color: #10b981; }
     .blur-gate { filter: blur(14px); pointer-events: none; user-select: none; }
+
+    /* Escala nativa ejecutiva (equivalente a 140%-150% de zoom) en laptops y monitores */
+    @media (min-width: 768px) {
+      #dashboardApp {
+        zoom: 1.25;
+      }
+    }
+    @media (min-width: 1100px) {
+      #dashboardApp {
+        zoom: 1.35;
+      }
+    }
+    @media (min-width: 1440px) {
+      #dashboardApp {
+        zoom: 1.45;
+      }
+    }
   </style>
 </head>
 <body class="p-2 sm:p-4 min-h-screen bg-slate-100" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
@@ -340,6 +357,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v12"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v13"></script>
 </body>
 </html>
