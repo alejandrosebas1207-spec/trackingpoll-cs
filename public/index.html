@@ -21,15 +21,15 @@
       user-select: auto;
       -webkit-user-select: auto;
     }
-    body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; color: #0f172a; }
-    .card-clean { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.04); }
-    .card-candidate { background: #ffffff; border: 1.5px solid #e2e8f0; transition: all 0.2s ease-in-out; }
-    .card-candidate:hover { border-color: #cbd5e1; transform: translateY(-2px); box-shadow: 0 6px 16px -2px rgba(0, 0, 0, 0.08); }
-    input[type=range] { accent-color: #0f172a; }
+    body { font-family: 'Poppins', sans-serif; background-color: #f1f5f9; color: #0f172a; }
+    .card-clean { background: #ffffff; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04); }
+    .card-candidate { background: #ffffff; border: 1.5px solid #cbd5e1; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03); transition: all 0.2s ease-in-out; }
+    .card-candidate:hover { border-color: #94a3b8; transform: translateY(-1px); box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08); }
+    input[type=range] { accent-color: #10b981; }
     .blur-gate { filter: blur(14px); pointer-events: none; user-select: none; }
   </style>
 </head>
-<body class="p-2 sm:p-4 min-h-screen" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+<body class="p-2 sm:p-4 min-h-screen bg-slate-100" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
   <!-- ESCUDO DE SEGURIDAD ANTI-INSPECCIÓN -->
   <div id="devToolsShield" class="fixed inset-0 z-[999] bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center text-center p-6 hidden">
@@ -90,42 +90,44 @@
   <!-- CONTENEDOR PRINCIPAL DEL DASHBOARD (PROTEGIDO) -->
   <div id="dashboardApp" class="blur-gate transition-all duration-500 max-w-7xl mx-auto space-y-2.5">
 
-    <!-- CABECERA INSTITUCIONAL UNIFICADA (TOP BAR ULTRACOMPACTA) -->
-    <header class="card-clean px-3.5 py-2 rounded-2xl flex flex-wrap items-center justify-between gap-2.5">
+    <!-- CABECERA INSTITUCIONAL UNIFICADA (TOP BAR ULTRACOMPACTA EN SLATE 900) -->
+    <header class="bg-slate-900 px-3.5 py-2 rounded-2xl flex flex-wrap items-center justify-between gap-2.5 shadow-md border border-slate-800 text-white">
       <!-- Lado Izquierdo: Marca + War Room + Título -->
       <div class="flex items-center gap-3">
-        <img src="./assets/Clima_Social_Logo_Completo_HD.png" alt="Clima Social" class="h-7 sm:h-8 w-auto object-contain">
-        <div class="h-6 w-px bg-slate-200 hidden sm:block"></div>
+        <div class="bg-white/95 px-2 py-0.5 rounded-lg flex items-center justify-center shadow-xs">
+          <img src="./assets/Clima_Social_Logo_Completo_HD.png" alt="Clima Social" class="h-6 sm:h-7 w-auto object-contain">
+        </div>
+        <div class="h-6 w-px bg-slate-700 hidden sm:block"></div>
         <div class="flex items-center gap-2">
-          <span class="text-[9px] uppercase tracking-wider font-black px-2 py-0.5 rounded bg-slate-900 text-white">
+          <span class="text-[9px] uppercase tracking-wider font-black px-2 py-0.5 rounded bg-rose-600 text-white shadow-xs">
             War Room
           </span>
-          <h1 class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight" id="heroTitle">
+          <h1 class="text-xs sm:text-sm font-extrabold text-white tracking-tight" id="heroTitle">
             Tracking Diario · Alcaldía de Quito
           </h1>
         </div>
       </div>
 
       <!-- Centro: Switcher Alcaldía / Prefectura -->
-      <div class="flex items-center gap-1 bg-slate-100 p-0.5 rounded-xl border border-slate-200">
-        <button id="btnTabAlcalde" onclick="setScenario('alcalde')" class="px-3 py-1 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all">
+      <div class="flex items-center gap-1 bg-slate-800 p-0.5 rounded-xl border border-slate-700">
+        <button id="btnTabAlcalde" onclick="setScenario('alcalde')" class="px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all">
           Alcaldía
         </button>
-        <button id="btnTabPrefecto" onclick="setScenario('prefecto')" class="px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all">
+        <button id="btnTabPrefecto" onclick="setScenario('prefecto')" class="px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all">
           Prefectura
         </button>
       </div>
 
       <!-- Lado Derecho: Controlador Temporal Compacto -->
-      <div class="flex items-center gap-2 bg-slate-50 px-2.5 py-1 rounded-xl border border-slate-200">
+      <div class="flex items-center gap-2 bg-slate-800 px-2.5 py-1 rounded-xl border border-slate-700">
         <div class="text-right">
           <div class="text-[9px] uppercase font-bold text-slate-400 tracking-wider leading-none">Corte Activo</div>
-          <div class="text-xs font-black text-slate-900 leading-tight" id="currentReportLabel">Línea Base III · Nov 2026</div>
+          <div class="text-xs font-black text-white leading-tight" id="currentReportLabel">Línea Base III · Nov 2026</div>
         </div>
         <div class="flex items-center gap-1 ml-1">
-          <button onclick="stepReport(-1)" class="w-6 h-6 flex items-center justify-center text-[10px] font-bold rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 transition-all cursor-pointer" title="Corte anterior">◀</button>
-          <input type="range" id="reportSlider" min="0" max="2" value="2" class="w-20 sm:w-28 cursor-pointer h-1.5 accent-slate-900">
-          <button onclick="stepReport(1)" class="w-6 h-6 flex items-center justify-center text-[10px] font-bold rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 transition-all cursor-pointer" title="Corte siguiente">▶</button>
+          <button onclick="stepReport(-1)" class="w-6 h-6 flex items-center justify-center text-[10px] font-bold rounded-lg border border-slate-600 bg-slate-700 text-white hover:bg-slate-600 transition-all cursor-pointer" title="Corte anterior">◀</button>
+          <input type="range" id="reportSlider" min="0" max="2" value="2" class="w-20 sm:w-28 cursor-pointer h-1.5 accent-emerald-400">
+          <button onclick="stepReport(1)" class="w-6 h-6 flex items-center justify-center text-[10px] font-bold rounded-lg border border-slate-600 bg-slate-700 text-white hover:bg-slate-600 transition-all cursor-pointer" title="Corte siguiente">▶</button>
         </div>
       </div>
     </header>
@@ -221,10 +223,43 @@
       </div>
     </div>
 
-    <!-- SECCIÓN INFERIOR: ANTIVOTO, FIRMEZA Y EVALUACIÓN DE GESTIÓN -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+    <!-- SECCIÓN INFERIOR: PIRÁMIDE POBLACIONAL, ANTIVOTO, FIRMEZA Y GESTIÓN -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
 
-      <!-- TASA DE RECHAZO (ANTIVOTO) -->
+      <!-- 1. PIRÁMIDE POBLACIONAL (SEXO Y EDAD) -->
+      <div class="card-clean p-3 sm:p-3.5 rounded-xl flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-2">
+            <div>
+              <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Pirámide Poblacional</h3>
+              <p class="text-[10px] text-slate-500">Sexo y Grupos de Edad</p>
+            </div>
+            <div class="flex items-center gap-1">
+              <span id="pyramidTagH" class="text-[9px] font-bold text-sky-700 bg-sky-50 border border-sky-200 px-1.5 py-0.2 rounded">♂ 49.6%</span>
+              <span id="pyramidTagM" class="text-[9px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded">♀ 50.4%</span>
+            </div>
+          </div>
+
+          <!-- Leyendas de Columnas -->
+          <div class="grid grid-cols-12 items-center text-[9px] font-extrabold uppercase text-slate-400 border-b border-slate-100 pb-1 mb-1 text-center">
+            <div class="col-span-5 text-right text-sky-700 pr-1">Hombres</div>
+            <div class="col-span-2 text-slate-400">Edad</div>
+            <div class="col-span-5 text-left text-rose-700 pl-1">Mujeres</div>
+          </div>
+
+          <!-- Filas de la Pirámide -->
+          <div class="space-y-1.5 mt-1.5" id="piramideRows">
+            <!-- Inyectado dinámicamente -->
+          </div>
+        </div>
+
+        <div class="text-[10px] text-slate-400 pt-2 border-t border-slate-100 flex justify-between mt-2">
+          <span>Base clasificada: <strong id="pyramidTotal" class="text-slate-700">1.257</strong></span>
+          <span class="text-emerald-600 font-bold">Muestra Activa</span>
+        </div>
+      </div>
+
+      <!-- 2. TASA DE RECHAZO (ANTIVOTO) -->
       <div class="card-clean p-3.5 sm:p-4 rounded-xl">
         <div class="flex justify-between items-center mb-2.5">
           <div>
@@ -238,7 +273,7 @@
         <div class="space-y-2.5 mt-2" id="antivotoList"></div>
       </div>
 
-      <!-- FIRMEZA DE VOTO -->
+      <!-- 3. FIRMEZA DE VOTO -->
       <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between">
         <div>
           <div class="flex justify-between items-center mb-2.5">
@@ -278,7 +313,7 @@
         </div>
       </div>
 
-      <!-- EVALUACIÓN DE GESTIÓN (PABEL Y NOBOA) -->
+      <!-- 4. EVALUACIÓN DE GESTIÓN (PABEL Y NOBOA) -->
       <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between">
         <div>
           <div class="flex justify-between items-center mb-2.5">
@@ -327,6 +362,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v9"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v10"></script>
 </body>
 </html>

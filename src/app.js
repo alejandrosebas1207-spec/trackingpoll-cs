@@ -229,13 +229,13 @@ function setScenario(scen) {
   const chartTitle = document.getElementById('chartSectionTitle');
 
   if (scen === 'alcalde') {
-    btnA.className = 'px-3 py-1 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
-    btnP.className = 'px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
+    btnA.className = 'px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all';
+    btnP.className = 'px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all';
     title.innerText = 'Tracking Diario · Alcaldía de Quito';
     chartTitle.innerText = 'Evolución Histórica y Tracking Diario · Alcaldía de Quito';
   } else {
-    btnP.className = 'px-3 py-1 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
-    btnA.className = 'px-3 py-1 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
+    btnP.className = 'px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all';
+    btnA.className = 'px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all';
     title.innerText = 'Tracking Diario · Prefectura de Pichincha';
     chartTitle.innerText = 'Evolución Histórica y Tracking Diario · Prefectura de Pichincha';
   }
@@ -307,6 +307,7 @@ function resetFilters() {
 function renderActiveView() {
   if (!rawDecryptedData) return;
   renderCandidateCards();
+  renderPiramide();
   renderAntivoto();
   renderFirmeza();
   renderGestion();
@@ -423,6 +424,89 @@ function renderCandidateCards() {
         <div class="text-right flex-shrink-0 pl-1">
           <div class="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-none">${valActual.toFixed(1)}%</div>
           <div class="mt-0.5">${deltaHtml}</div>
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+function renderPiramide() {
+  const container = document.getElementById('piramideRows');
+  if (!container || !rawDecryptedData || !rawDecryptedData.microdatos_casos) return;
+
+  const casos = filtrarCasos();
+  const total = casos ? casos.length : 0;
+  const tagH = document.getElementById('pyramidTagH');
+  const tagM = document.getElementById('pyramidTagM');
+  const txtTotal = document.getElementById('pyramidTotal');
+
+  if (txtTotal) txtTotal.innerText = total.toLocaleString('es-EC');
+
+  if (total === 0) {
+    container.innerHTML = `
+      <div class="text-center py-4 text-[10px] text-slate-400">
+        Sin casos en la selección
+      </div>
+    `;
+    if (tagH) tagH.innerText = '♂ 0%';
+    if (tagM) tagM.innerText = '♀ 0%';
+    return;
+  }
+
+  const nHombres = casos.filter(c => c[1] === 'Hombre').length;
+  const nMujeres = casos.filter(c => c[1] === 'Mujer').length;
+  const pctHombres = ((nHombres / total) * 100).toFixed(1);
+  const pctMujeres = ((nMujeres / total) * 100).toFixed(1);
+
+  if (tagH) tagH.innerText = `♂ ${pctHombres}%`;
+  if (tagM) tagM.innerText = `♀ ${pctMujeres}%`;
+
+  const cohortes = [
+    { id: '16 a 29 años', label: '16-29' },
+    { id: '30 a 44 años', label: '30-44' },
+    { id: '45 a 60 años', label: '45-60' },
+    { id: '61 o más años', label: '61+' }
+  ];
+
+  let maxPct = 0;
+  cohortes.forEach(co => {
+    const nH = casos.filter(c => c[1] === 'Hombre' && c[2] === co.id).length;
+    const nM = casos.filter(c => c[1] === 'Mujer' && c[2] === co.id).length;
+    const hPct = (nH / total) * 100;
+    const mPct = (nM / total) * 100;
+    if (hPct > maxPct) maxPct = hPct;
+    if (mPct > maxPct) maxPct = mPct;
+  });
+  if (maxPct <= 0) maxPct = 25;
+
+  let html = '';
+  cohortes.forEach(co => {
+    const nH = casos.filter(c => c[1] === 'Hombre' && c[2] === co.id).length;
+    const nM = casos.filter(c => c[1] === 'Mujer' && c[2] === co.id).length;
+    const pctH = ((nH / total) * 100).toFixed(1);
+    const pctM = ((nM / total) * 100).toFixed(1);
+
+    const barW_H = Math.min(100, Math.max(nH > 0 ? 6 : 0, (nH / total / (maxPct / 100)) * 100));
+    const barW_M = Math.min(100, Math.max(nM > 0 ? 6 : 0, (nM / total / (maxPct / 100)) * 100));
+
+    html += `
+      <div class="grid grid-cols-12 items-center text-[10px] font-semibold h-4.5 gap-1" title="${co.id}: ${nH} hombres (${pctH}%), ${nM} mujeres (${pctM}%)">
+        <div class="col-span-3 text-right truncate">
+          ${nH > 0 ? `<span class="text-sky-700 font-bold">${nH}</span> <span class="text-[9px] text-slate-400">(${pctH}%)</span>` : '<span class="text-slate-300">-</span>'}
+        </div>
+        <div class="col-span-2 flex justify-end h-2 bg-slate-100 rounded-l overflow-hidden">
+          <div class="bg-sky-500 h-full rounded-l transition-all duration-300" style="width: ${barW_H}%;"></div>
+        </div>
+        <div class="col-span-2 text-center text-[9px] font-bold text-slate-500 whitespace-nowrap px-0.5">
+          ${co.label}
+        </div>
+        <div class="col-span-2 flex justify-start h-2 bg-slate-100 rounded-r overflow-hidden">
+          <div class="bg-rose-500 h-full rounded-r transition-all duration-300" style="width: ${barW_M}%;"></div>
+        </div>
+        <div class="col-span-3 text-left truncate">
+          ${nM > 0 ? `<span class="text-rose-700 font-bold">${nM}</span> <span class="text-[9px] text-slate-400">(${pctM}%)</span>` : '<span class="text-slate-300">-</span>'}
         </div>
       </div>
     `;
