@@ -1065,5 +1065,11320 @@
       "nulo_blanco": 2.3,
       "indecisos": 20.8
     }
-  }
+  },
+  "microdatos_casos": [
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "yunda",
+      "otros",
+      "merino"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "yunda",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "nulo_blanco",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "otros",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "yunda",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "otros",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "merino",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "yunda",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "zapata",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "yunda",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "yunda",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "zapata",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "nulo_blanco",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "yunda",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "pabel",
+      "nulo_blanco",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "nulo_blanco",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "nulo_blanco",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "nulo_blanco",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Bajo",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Bajo",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "cevallos",
+      "merino"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "tonello",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "merino",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Bajo",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "nulo_blanco",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "otros",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "otros",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "zapata",
+      "merino"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "otros",
+      "tonello",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "merino",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "churuchumbi",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Bajo",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "yunda",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio alto o alto",
+      "nulo_blanco",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "indecisos",
+      "tonello",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "otros",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "yunda",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "nulo_blanco",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "otros",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "otros",
+      "otros",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "otros",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "yunda",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "yunda",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "churuchumbi",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "yunda",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "yunda",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "otros",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "yunda",
+      "tonello",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "burbano",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "nulo_blanco",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "merino",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "cevallos",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "zapata",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "tonello",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "nulo_blanco",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio alto o alto",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "merino",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "ubidia",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Bajo",
+      "yunda",
+      "churuchumbi",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "cevallos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "indecisos",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "churuchumbi",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "merino",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "nulo_blanco",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Bajo",
+      "pabel",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "zapata",
+      "merino"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "otros",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "merino",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "otros",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "yunda",
+      "churuchumbi",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "otros",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "otros",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "otros",
+      "cevallos",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "yunda",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "otros",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "nulo_blanco",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio alto o alto",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio alto o alto",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio alto o alto",
+      "otros",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "otros",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "pabel",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "churuchumbi",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "yunda",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "tonello",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "churuchumbi",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "merino",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "churuchumbi",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "yunda",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "yunda",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "yunda",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "yunda",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "indecisos",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Rural",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "otros",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "otros",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "otros",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "merino",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "churuchumbi",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "otros",
+      "churuchumbi",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "yunda",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "otros",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "nulo_blanco",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio alto o alto",
+      "burbano",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "churuchumbi",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "churuchumbi",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "indecisos",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Bajo",
+      "nulo_blanco",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "otros",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "otros",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Bajo",
+      "yunda",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "merino",
+      "churuchumbi",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Bajo",
+      "merino",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Bajo",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "nulo_blanco",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "yunda",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "churuchumbi",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "churuchumbi",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "yunda",
+      "nulo_blanco",
+      "merino"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "yunda",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "otros",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "yunda",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "churuchumbi",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "yunda",
+      "cevallos",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "61 o más años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "merino",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "merino"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "churuchumbi",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "merino",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "churuchumbi",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "churuchumbi",
+      "merino"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "indecisos",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "merino",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "cevallos",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "churuchumbi",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "yunda",
+      "zapata",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "yunda",
+      "churuchumbi",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "indecisos",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "yunda",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Bajo",
+      "nulo_blanco",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "yunda",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "yunda",
+      "zapata",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Bajo",
+      "yunda",
+      "cevallos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "yunda",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "otros",
+      "otros",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "45 a 60 años",
+      "Bajo",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "45 a 60 años",
+      "Medio",
+      "merino",
+      "cevallos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "burbano"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "zapata",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "61 o más años",
+      "Medio",
+      "yunda",
+      "churuchumbi",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "yunda",
+      "cevallos",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "45 a 60 años",
+      "Bajo",
+      "pabel",
+      "otros",
+      "otros"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio alto o alto",
+      "otros",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Sur",
+      "Mujer",
+      "61 o más años",
+      "Medio bajo",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Sur",
+      "Hombre",
+      "16 a 29 años",
+      "Medio alto o alto",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "otros",
+      "otros",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "burbano",
+      "ubidia",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "indecisos",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "indecisos",
+      "yunda"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Hombre",
+      "45 a 60 años",
+      "Medio",
+      "nulo_blanco",
+      "indecisos",
+      "pabel"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "otros"
+    ],
+    [
+      "Urbana Centro",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "pabel",
+      "tonello",
+      "burbano"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "pabel",
+      "cevallos",
+      "yunda"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "45 a 60 años",
+      "Medio bajo",
+      "merino",
+      "zapata",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "30 a 44 años",
+      "Medio",
+      "merino",
+      "otros",
+      "pabel"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "16 a 29 años",
+      "Bajo",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Mujer",
+      "16 a 29 años",
+      "Medio",
+      "nulo_blanco",
+      "nulo_blanco",
+      "otros"
+    ],
+    [
+      "Urbana Norte",
+      "Hombre",
+      "61 o más años",
+      "Medio bajo",
+      "yunda",
+      "zapata",
+      "merino"
+    ]
+  ]
 }

@@ -259,19 +259,49 @@ function getCandidateKey(c) {
   return parts[parts.length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
-// Lógica de cruces sociodemográficos
-function getFiltroActivo() {
+// Motor de Filtros Sociodemográficos Concatenados en Cascada
+function getFiltrosConcatenados() {
   const circ = document.getElementById('filterCirc') ? document.getElementById('filterCirc').value : 'total';
   const genero = document.getElementById('filterGenero') ? document.getElementById('filterGenero').value : 'total';
   const edad = document.getElementById('filterEdad') ? document.getElementById('filterEdad').value : 'total';
   const ingresos = document.getElementById('filterIngresos') ? document.getElementById('filterIngresos').value : 'total';
 
-  if (circ !== 'total') return { tipo: 'Circunscripción', valor: circ, key: `Circunscripción_${circ}` };
-  if (genero !== 'total') return { tipo: 'Sexo', valor: genero, key: `Sexo_${genero}` };
-  if (edad !== 'total') return { tipo: 'Grupos de edad', valor: edad, key: `Grupos de edad_${edad}` };
-  if (ingresos !== 'total') return { tipo: 'Nivel de ingresos', valor: ingresos, key: `Nivel de ingresos_${ingresos}` };
+  const activos = [];
+  if (circ !== 'total') activos.push(circ);
+  if (genero !== 'total') activos.push(genero === 'Hombre' ? 'Hombres' : 'Mujeres');
+  if (edad !== 'total') activos.push(edad);
+  if (ingresos !== 'total') activos.push(`Ingresos ${ingresos}`);
 
-  return null;
+  return {
+    hayFiltros: activos.length > 0,
+    etiqueta: activos.join(' · '),
+    circ,
+    genero,
+    edad,
+    ingresos
+  };
+}
+
+function filtrarCasos() {
+  const f = getFiltrosConcatenados();
+  if (!f.hayFiltros) return null;
+
+  const casos = rawDecryptedData.microdatos_casos || [];
+  return casos.filter(c => {
+    if (f.circ !== 'total' && c[0] !== f.circ) return false;
+    if (f.genero !== 'total' && c[1] !== f.genero) return false;
+    if (f.edad !== 'total' && c[2] !== f.edad) return false;
+    if (f.ingresos !== 'total' && c[3] !== f.ingresos) return false;
+    return true;
+  });
+}
+
+function resetFilters() {
+  if (document.getElementById('filterCirc')) document.getElementById('filterCirc').value = 'total';
+  if (document.getElementById('filterGenero')) document.getElementById('filterGenero').value = 'total';
+  if (document.getElementById('filterEdad')) document.getElementById('filterEdad').value = 'total';
+  if (document.getElementById('filterIngresos')) document.getElementById('filterIngresos').value = 'total';
+  renderActiveView();
 }
 
 function renderActiveView() {
@@ -288,17 +318,31 @@ function renderCandidateCards() {
   const isAlcalde = currentScenario === 'alcalde';
   const cands = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 4) : rawDecryptedData.candidatos_prefecto.slice(0, 4);
   const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
-  const cruzadasDict = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
   const idx = currentReportIdx;
 
-  const filtro = getFiltroActivo();
+  const f = getFiltrosConcatenados();
+  const casosFiltrados = filtrarCasos();
   const sampleBadge = document.getElementById('sampleBadge');
+
   if (sampleBadge) {
-    if (filtro) {
-      sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-500"></span>Filtro activo: <strong>${filtro.tipo} · ${filtro.valor}</strong>`;
+    if (f.hayFiltros) {
+      const nCasos = casosFiltrados ? casosFiltrados.length : 0;
+      sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>Filtros concatenados: <strong>${f.etiqueta}</strong> <span class="bg-indigo-50 border border-indigo-200 text-indigo-800 text-[11px] px-2 py-0.5 rounded font-bold ml-1.5">(n = ${nCasos})</span><button onclick="resetFilters()" class="ml-2 text-[10px] text-slate-400 hover:text-slate-700 underline font-semibold">✕ Restablecer</button>`;
     } else {
       sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span>Corte Oficial Noviembre 2026 · Total Cantón (n = 2.450)`;
     }
+  }
+
+  // Si hay filtros pero no hay casos coincidentes
+  if (casosFiltrados && casosFiltrados.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full p-6 rounded-2xl bg-amber-50 border border-amber-200 text-center">
+        <div class="text-xs font-bold text-amber-800 uppercase tracking-wider mb-1">Muestra insuficiente para este cruce específico</div>
+        <p class="text-xs text-amber-700">No se registraron entrevistas que cumplan simultáneamente: <strong>${f.etiqueta}</strong>.</p>
+        <button onclick="resetFilters()" class="mt-2.5 px-3 py-1 rounded-lg bg-amber-700 text-white text-xs font-bold">Restablecer filtros</button>
+      </div>
+    `;
+    return;
   }
 
   let html = '';
@@ -310,15 +354,17 @@ function renderCandidateCards() {
     let valActual = series[idx] !== null && series[idx] !== undefined ? series[idx] : 0;
     let valPrev = idx > 0 && series[idx - 1] !== null && series[idx - 1] !== undefined ? series[idx - 1] : valActual;
 
-    // Si hay filtro sociodemográfico activo y estamos en el corte de Noviembre (o actual)
-    if (filtro && cruzadasDict && cruzadasDict[filtro.key] && cruzadasDict[filtro.key][id] !== undefined) {
-      valActual = cruzadasDict[filtro.key][id];
+    // Si hay filtros concatenados activos, calcular distribución real de la muestra concatenada
+    if (casosFiltrados && casosFiltrados.length > 0) {
+      const colIdx = isAlcalde ? 4 : 5;
+      const matchCount = casosFiltrados.filter(item => item[colIdx] === id).length;
+      valActual = (matchCount / casosFiltrados.length) * 100.0;
     }
 
     const delta = valActual - valPrev;
 
     let deltaHtml = '<span class="text-slate-400 font-medium text-xs">Línea base</span>';
-    if (!filtro && idx > 0) {
+    if (!f.hayFiltros && idx > 0) {
       if (delta > 0.05) {
         deltaHtml = `<span class="inline-flex items-center text-emerald-600 font-bold text-xs"><svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>+${delta.toFixed(1)}%</span>`;
       } else if (delta < -0.05) {
@@ -326,8 +372,8 @@ function renderCandidateCards() {
       } else {
         deltaHtml = `<span class="text-slate-400 font-medium text-xs">= 0.0%</span>`;
       }
-    } else if (filtro) {
-      deltaHtml = `<span class="text-indigo-600 font-bold text-[11px] bg-indigo-50 px-2 py-0.5 rounded">Segmento</span>`;
+    } else if (f.hayFiltros) {
+      deltaHtml = `<span class="text-indigo-600 font-bold text-[11px] bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded">Segmento</span>`;
     }
 
     html += `
@@ -359,10 +405,16 @@ function renderAntivoto() {
   const anti = rawDecryptedData.antivoto_alcalde;
   const cands = rawDecryptedData.candidatos_alcalde.slice(0, 4);
 
+  const casosFiltrados = filtrarCasos();
+
   // Ordenar de mayor a menor rechazo
   const items = cands.map(c => {
     const id = getCandidateKey(c);
-    const val = anti[id] && anti[id][idx] !== null && anti[id][idx] !== undefined ? anti[id][idx] : 0;
+    let val = anti[id] && anti[id][idx] !== null && anti[id][idx] !== undefined ? anti[id][idx] : 0;
+    if (casosFiltrados && casosFiltrados.length > 0) {
+      const matchCount = casosFiltrados.filter(item => item[6] === id).length;
+      val = (matchCount / casosFiltrados.length) * 100.0;
+    }
     return { c, val };
   }).sort((a, b) => b.val - a.val);
 
@@ -372,7 +424,7 @@ function renderAntivoto() {
       <div>
         <div class="flex justify-between items-center text-xs mb-1">
           <span class="font-bold text-slate-800">${item.c.nombre}</span>
-          <span class="font-extrabold text-rose-600">${item.val.toFixed(1)}%</span>
+          <span class="font-extrabold text-rose-600">${valActualFormat(item.val)}%</span>
         </div>
         <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden shadow-inner">
           <div class="bg-rose-500 h-2 rounded-full transition-all duration-300" style="width: ${Math.min(100, item.val * 2.5)}%"></div>
@@ -381,6 +433,10 @@ function renderAntivoto() {
     `;
   });
   el.innerHTML = html;
+}
+
+function valActualFormat(v) {
+  return typeof v === 'number' ? v.toFixed(1) : '0.0';
 }
 
 function renderFirmeza() {
