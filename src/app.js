@@ -72,12 +72,6 @@ let currentReportIdx = 2; // Inicia en Nov 2026 (índice 2)
 let maxAvailableIdx = 2;  // Mediciones consolidadas actuales (0=Sep, 1=Oct, 2=Nov)
 let chartInstance = null;
 
-// Acceso rápido con PIN 2026
-async function quickAccessDemo() {
-  document.getElementById('secretKeyInput').value = '2026';
-  await handleAuth(new Event('submit'));
-}
-
 // Petición autenticada de datos al servidor BFF
 async function fetchTrackingData(token) {
   const resp = await fetch('/api/tracking/data', {
@@ -88,7 +82,7 @@ async function fetchTrackingData(token) {
   return json.data;
 }
 
-// Verificación de credenciales
+// Verificación de credenciales (requiere ingreso en cada carga)
 async function handleAuth(event) {
   if (event && event.preventDefault) event.preventDefault();
   const inputKey = document.getElementById('secretKeyInput').value.trim();
@@ -96,7 +90,7 @@ async function handleAuth(event) {
   const submitBtn = document.querySelector('#authForm button[type="submit"]');
 
   if (!inputKey) {
-    errEl.innerText = 'Por favor ingrese el PIN de acceso.';
+    errEl.innerText = 'Por favor ingrese la clave de acceso.';
     errEl.classList.remove('hidden');
     return;
   }
@@ -104,7 +98,7 @@ async function handleAuth(event) {
   try {
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerText = 'Verificando con Servidor...';
+      submitBtn.innerText = 'Verificando...';
     }
     errEl.classList.add('hidden');
 
@@ -116,11 +110,12 @@ async function handleAuth(event) {
 
     const authJson = await authResp.json();
     if (!authResp.ok || !authJson.ok) {
-      throw new Error(authJson.error || 'Credencial no autorizada');
+      throw new Error(authJson.error || 'Clave de acceso incorrecta');
     }
 
     const token = authJson.token;
-    sessionStorage.setItem('cs_warroom_token', token);
+    // No se almacena en sessionStorage para exigir clave en cada recarga
+    try { sessionStorage.removeItem('cs_warroom_token'); } catch {}
 
     const data = await fetchTrackingData(token);
     rawDecryptedData = data;
@@ -129,32 +124,16 @@ async function handleAuth(event) {
     document.getElementById('dashboardApp').classList.remove('blur-gate');
     initDashboard();
   } catch (err) {
-    errEl.innerText = err.message || 'Acceso denegado.';
+    errEl.innerText = err.message || 'Clave de acceso incorrecta.';
     errEl.classList.remove('hidden');
     document.getElementById('secretKeyInput').focus();
   } finally {
     if (submitBtn) {
       submitBtn.disabled = false;
-      submitBtn.innerText = 'Desbloquear y Entrar al Tablero';
+      submitBtn.innerText = 'Entrar al Tablero';
     }
   }
 }
-
-// Auto-login con token de sesión en memoria
-window.addEventListener('DOMContentLoaded', async () => {
-  const savedToken = sessionStorage.getItem('cs_warroom_token');
-  if (savedToken) {
-    try {
-      const data = await fetchTrackingData(savedToken);
-      rawDecryptedData = data;
-      document.getElementById('authGateModal').classList.add('hidden');
-      document.getElementById('dashboardApp').classList.remove('blur-gate');
-      initDashboard();
-    } catch {
-      sessionStorage.removeItem('cs_warroom_token');
-    }
-  }
-});
 
 // Inicialización del Dashboard
 function initDashboard() {

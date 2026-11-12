@@ -50,40 +50,23 @@
 
   <!-- MODAL DE BLOQUEO Y ACCESO PRIVADO (GATEKEEPER) -->
   <div id="authGateModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4 transition-all duration-300">
-    <div class="bg-white max-w-md w-full p-8 rounded-3xl shadow-2xl border border-slate-100 text-center relative overflow-hidden">
-      <div class="flex justify-center mb-5">
-        <img src="./assets/01_ClimaSocial_EquipoTecnico_Horizontal_Transparente.png" alt="Clima Social · Equipo Técnico" class="h-11 w-auto object-contain">
+    <div class="bg-white max-w-sm w-full p-8 rounded-3xl shadow-2xl border border-slate-100 text-center relative overflow-hidden">
+      <div class="flex justify-center mb-6">
+        <img src="./assets/01_ClimaSocial_EquipoTecnico_Horizontal_Transparente.png" alt="Clima Social · Equipo Técnico" class="h-10 w-auto object-contain">
       </div>
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider mb-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-        Acceso Restringido · Equipo Técnico
-      </div>
-      <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Tracking Poll Quito 2026</h2>
-      <p class="text-xs text-slate-500 mt-1 mb-6">
-        Información confidencial para la Dirección Política y el Equipo Técnico. Ingrese el PIN de seguridad para acceder al tablero.
-      </p>
+      <h2 class="text-xl font-extrabold text-slate-900 tracking-tight mb-6">Tracking Poll Quito 2026</h2>
 
       <form id="authForm" onsubmit="handleAuth(event)" class="space-y-4">
         <div class="text-left">
-          <label class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1">PIN o Clave de Acceso</label>
-          <input type="password" id="secretKeyInput" placeholder="Ingrese PIN (ej. 2026)..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold focus:outline-none focus:border-slate-800 focus:ring-2 focus:ring-slate-800/10 transition-all text-center tracking-widest" autofocus>
-          <div id="authErrorMsg" class="text-xs font-semibold text-rose-600 mt-1.5 hidden">Clave no autorizada. Acceso denegado.</div>
+          <label class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1">Clave de Acceso</label>
+          <input type="password" id="secretKeyInput" placeholder="Contraseña..." class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm font-semibold focus:outline-none focus:border-slate-800 focus:ring-2 focus:ring-slate-800/10 transition-all text-center tracking-widest" autofocus>
+          <div id="authErrorMsg" class="text-xs font-semibold text-rose-600 mt-1.5 hidden">Clave incorrecta. Acceso denegado.</div>
         </div>
 
-        <button type="submit" class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition-all">
-          Desbloquear y Entrar al Tablero
+        <button type="submit" class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition-all cursor-pointer">
+          Entrar al Tablero
         </button>
-
-        <div class="text-center mt-3">
-          <button type="button" onclick="quickAccessDemo()" class="text-xs text-slate-400 hover:text-slate-700 underline font-semibold">
-            Acceso Rápido (PIN: 2026)
-          </button>
-        </div>
       </form>
-
-      <div class="mt-6 pt-4 border-t border-slate-100 text-[11px] text-slate-400">
-        Clima Social Investigaciones Metodológicas · Cifrado en Memoria
-      </div>
     </div>
   </div>
 
@@ -357,6 +340,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v11"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v12"></script>
 </body>
 </html>

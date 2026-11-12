@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Configuración de Seguridad y Secretos (Inyectados por Variables de Entorno)
-const WARROOM_PIN = process.env.WARROOM_PIN || "2026";
+const WARROOM_PIN = process.env.WARROOM_PIN || "CSWR2026";
 const ADMIN_API_KEY = process.env.ADMIN_API_KEY || "CS_WARROOM_ADMIN_2026";
 const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(32).toString("hex");
 
@@ -83,8 +83,8 @@ app.post("/api/auth/verify", (req, res) => {
   const { pin } = req.body || {};
   const cleanPin = (pin || "").trim();
 
-  // Claves autorizadas
-  const validPins = [WARROOM_PIN, "CS_QUITO_WARROOM_2026", "2026", "trackingpoll-cs"];
+  // Clave autorizada oficial
+  const validPins = [WARROOM_PIN, "CSWR2026"];
 
   if (validPins.includes(cleanPin)) {
     const token = generateSessionToken();
