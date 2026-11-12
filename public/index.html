@@ -179,10 +179,17 @@
         </button>
       </div>
 
-      <!-- Badge de Muestra -->
-      <div class="text-xs font-semibold text-slate-500 flex items-center gap-1.5 ml-auto">
-        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-        <span id="sampleBadge" class="font-bold text-slate-700">Nov 2026 · n = 2.450 (±2.0%)</span>
+      <!-- Badge de Muestra (Datos Nuevos Diarios + Sumatoria 3 Encuestas) -->
+      <div class="flex flex-col items-end text-right ml-auto pl-2">
+        <div class="flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" id="sampleDot"></span>
+          <span id="sampleBadge" class="text-xs font-black text-slate-800 tracking-tight leading-none">
+            Tracking Diario: n = 0
+          </span>
+        </div>
+        <div id="sampleTotalBadge" class="text-[10px] font-semibold text-slate-400 mt-1 leading-none">
+          Sumatoria 3 encuestas: n = 6.201
+        </div>
       </div>
     </div>
 
@@ -320,6 +327,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v8"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v9"></script>
 </body>
 </html>

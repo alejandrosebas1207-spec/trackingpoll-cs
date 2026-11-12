@@ -12380,5 +12380,31 @@
       "zapata",
       "merino"
     ]
+  ],
+  "muestras_historicas": [
+    1680,
+    2071,
+    2450
+  ],
+  "sumatoria_3_encuestas": 6201,
+  "muestras_diarias_tracking": [
+    0,
+    0,
+    0,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
   ]
 }

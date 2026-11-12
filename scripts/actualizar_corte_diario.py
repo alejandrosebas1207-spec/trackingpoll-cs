@@ -243,6 +243,13 @@ def actualizar_tracking_json(fecha_objetivo, nuevos_datos):
                 data['firmeza_alcalde'][k][target_idx] = float(v)
                 print(f"  [Firmeza] {k.capitalize()}: {v}%")
 
+    # 5. Actualizar Muestra Diaria de Tracking (n del día)
+    if 'muestra_diaria' in nuevos_datos and nuevos_datos['muestra_diaria'] is not None:
+        if 'muestras_diarias_tracking' not in data:
+            data['muestras_diarias_tracking'] = [0] * len(fechas)
+        data['muestras_diarias_tracking'][target_idx] = int(nuevos_datos['muestra_diaria'])
+        print(f"  [Muestra Diaria] Nuevos casos del día: n = {nuevos_datos['muestra_diaria']}")
+
     # 5. Actualizar Gestión Pabel
     if 'pabel_gestion' in nuevos_datos and nuevos_datos['pabel_gestion']:
         for k, v in nuevos_datos['pabel_gestion'].items():
@@ -303,10 +310,11 @@ def main():
     parser.add_argument("--ubidia", type=float, help="Porcentaje Giovanna Ubidia")
     parser.add_argument("--zapata", type=float, help="Porcentaje Juan Zapata")
     parser.add_argument("--cevallos", type=float, help="Porcentaje Carla Cevallos")
+    parser.add_argument("--muestra", "--n", type=int, dest="muestra", help="Número de entrevistas nuevas del día (ej. 170)")
 
     args = parser.parse_args()
 
-    datos = {'alcalde': {}, 'prefecto': {}, 'antivoto': {}, 'firmeza': {}, 'pabel_gestion': {}, 'noboa_gestion': {}}
+    datos = {'alcalde': {}, 'prefecto': {}, 'antivoto': {}, 'firmeza': {}, 'pabel_gestion': {}, 'noboa_gestion': {}, 'muestra_diaria': args.muestra}
 
     if args.excel:
         if not os.path.exists(args.excel):

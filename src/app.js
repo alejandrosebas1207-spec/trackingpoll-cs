@@ -323,6 +323,8 @@ function renderCandidateCards() {
   const f = getFiltrosConcatenados();
   const casosFiltrados = filtrarCasos();
   const sampleBadge = document.getElementById('sampleBadge');
+  const sampleTotalBadge = document.getElementById('sampleTotalBadge');
+  const sampleDot = document.getElementById('sampleDot');
   const btnReset = document.getElementById('btnResetFilters');
 
   if (btnReset) {
@@ -333,12 +335,31 @@ function renderCandidateCards() {
     }
   }
 
+  // Muestra diaria de tracking (nuevos datos diarios)
+  let nDiario = 0;
+  if (rawDecryptedData.muestras_diarias_tracking && rawDecryptedData.muestras_diarias_tracking[idx] !== null && rawDecryptedData.muestras_diarias_tracking[idx] !== undefined) {
+    nDiario = rawDecryptedData.muestras_diarias_tracking[idx];
+  } else {
+    nDiario = 0;
+  }
+
+  // Sumatoria histórica de las 3 encuestas (Sep 1.680 + Oct 2.071 + Nov 2.450 = 6.201)
+  const sumatoria3 = (rawDecryptedData.sumatoria_3_encuestas || 6201);
+
   if (sampleBadge) {
     if (f.hayFiltros) {
       const nCasos = casosFiltrados ? casosFiltrados.length : 0;
-      sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span><span>${f.etiqueta}</span> <span class="bg-indigo-50 border border-indigo-200 text-indigo-800 text-[10px] px-1.5 py-0.2 rounded font-bold ml-1">(n = ${nCasos})</span>`;
+      sampleBadge.innerText = `Tracking Diario: n = 0`;
+      if (sampleTotalBadge) {
+        sampleTotalBadge.innerHTML = `<span class="text-indigo-600 font-bold">${f.etiqueta}</span> · <strong>n = ${nCasos}</strong>`;
+      }
+      if (sampleDot) sampleDot.className = 'w-2 h-2 rounded-full bg-indigo-500 animate-pulse';
     } else {
-      sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Nov 2026 · n = 2.450 (±2.0%)</span>`;
+      sampleBadge.innerText = `Tracking Diario: n = ${nDiario.toLocaleString('es-EC')}`;
+      if (sampleTotalBadge) {
+        sampleTotalBadge.innerText = `Sumatoria 3 encuestas: n = ${sumatoria3.toLocaleString('es-EC')}`;
+      }
+      if (sampleDot) sampleDot.className = 'w-2 h-2 rounded-full bg-emerald-500 animate-pulse';
     }
   }
 
