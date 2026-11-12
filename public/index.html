@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>War Room · Tracking Poll Quito 2026 · Clima Social</title>
+  <title>Tracking Poll Quito 2026 · Clima Social</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,11 +37,11 @@
       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
     </div>
     <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-950/60 border border-rose-800 text-rose-300 text-xs font-bold uppercase tracking-wider mb-2">
-      Alerta de Seguridad · War Room
+      Alerta de Seguridad · Sistema Electoral
     </div>
     <h3 class="text-xl font-extrabold text-white mb-2">Herramientas de Inspección Deshabilitadas</h3>
     <p class="text-xs text-slate-400 max-w-sm mb-6 leading-relaxed">
-      El acceso al código fuente, consola de desarrollo e inspector de elementos está restringido por protocolo de confidencialidad electoral de Clima Social.
+      El acceso al código fuente, consola de desarrollo e inspector de elementos está restringido por protocolo de confidencialidad de Clima Social.
     </p>
     <button onclick="location.reload()" class="px-5 py-2.5 rounded-xl bg-white text-slate-900 text-xs font-bold hover:bg-slate-100 transition-all shadow-md">
       Reanudar Tablero
@@ -52,15 +52,15 @@
   <div id="authGateModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4 transition-all duration-300">
     <div class="bg-white max-w-md w-full p-8 rounded-3xl shadow-2xl border border-slate-100 text-center relative overflow-hidden">
       <div class="flex justify-center mb-5">
-        <img src="./assets/Clima_Social_Logo_Completo_HD.png" alt="Clima Social" class="h-12 w-auto object-contain">
+        <img src="./assets/01_ClimaSocial_EquipoTecnico_Horizontal_Transparente.png" alt="Clima Social · Equipo Técnico" class="h-11 w-auto object-contain">
       </div>
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-xs font-bold uppercase tracking-wider mb-2">
-        <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
-        Acceso Restringido · War Room
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-wider mb-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        Acceso Restringido · Equipo Técnico
       </div>
       <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Tracking Poll Quito 2026</h2>
       <p class="text-xs text-slate-500 mt-1 mb-6">
-        Información confidencial para la Dirección Política y el Cuarto de Guerra. Ingrese el PIN de seguridad para desencriptar el tablero.
+        Información confidencial para la Dirección Política y el Equipo Técnico. Ingrese el PIN de seguridad para acceder al tablero.
       </p>
 
       <form id="authForm" onsubmit="handleAuth(event)" class="space-y-4">
@@ -92,16 +92,11 @@
 
     <!-- CABECERA INSTITUCIONAL UNIFICADA (TOP BAR ULTRACOMPACTA EN SLATE 900) -->
     <header class="bg-slate-900 px-3.5 py-2 rounded-2xl flex flex-wrap items-center justify-between gap-2.5 shadow-md border border-slate-800 text-white">
-      <!-- Lado Izquierdo: Marca + War Room + Título -->
+      <!-- Lado Izquierdo: Logo Oficial Clima Social Equipo Técnico + Título -->
       <div class="flex items-center gap-3">
-        <div class="bg-white/95 px-2 py-0.5 rounded-lg flex items-center justify-center shadow-xs">
-          <img src="./assets/Clima_Social_Logo_Completo_HD.png" alt="Clima Social" class="h-6 sm:h-7 w-auto object-contain">
-        </div>
+        <img src="./assets/Logo_Equipo_Tecnico_Dark_Oficial.png" alt="Clima Social · Equipo Técnico" class="h-7 sm:h-8 w-auto object-contain">
         <div class="h-6 w-px bg-slate-700 hidden sm:block"></div>
         <div class="flex items-center gap-2">
-          <span class="text-[9px] uppercase tracking-wider font-black px-2 py-0.5 rounded bg-rose-600 text-white shadow-xs">
-            War Room
-          </span>
           <h1 class="text-xs sm:text-sm font-extrabold text-white tracking-tight" id="heroTitle">
             Tracking Diario · Alcaldía de Quito
           </h1>
@@ -223,7 +218,7 @@
       </div>
     </div>
 
-    <!-- SECCIÓN INFERIOR: PIRÁMIDE POBLACIONAL, ANTIVOTO, FIRMEZA Y GESTIÓN -->
+    <!-- SECCIÓN INFERIOR: PIRÁMIDE POBLACIONAL, FIRMEZA, ANTIVOTO Y GESTIÓN -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
 
       <!-- 1. PIRÁMIDE POBLACIONAL (SEXO Y EDAD) -->
@@ -259,21 +254,7 @@
         </div>
       </div>
 
-      <!-- 2. TASA DE RECHAZO (ANTIVOTO) -->
-      <div class="card-clean p-3.5 sm:p-4 rounded-xl">
-        <div class="flex justify-between items-center mb-2.5">
-          <div>
-            <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Rechazo / Antivoto</h3>
-            <p class="text-[10px] text-slate-500">"¿Por cuál nunca votaría?"</p>
-          </div>
-          <span class="text-[9px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded">
-            Techo Electoral
-          </span>
-        </div>
-        <div class="space-y-2.5 mt-2" id="antivotoList"></div>
-      </div>
-
-      <!-- 3. FIRMEZA DE VOTO -->
+      <!-- 2. FIRMEZA DE VOTO -->
       <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between">
         <div>
           <div class="flex justify-between items-center mb-2.5">
@@ -311,6 +292,20 @@
           <span>Decididos: <strong id="txtDecididos">--</strong></span>
           <span>En disputa: <strong id="txtEnDisputa">--</strong></span>
         </div>
+      </div>
+
+      <!-- 3. TASA DE RECHAZO (ANTIVOTO) -->
+      <div class="card-clean p-3.5 sm:p-4 rounded-xl">
+        <div class="flex justify-between items-center mb-2.5">
+          <div>
+            <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Rechazo / Antivoto</h3>
+            <p class="text-[10px] text-slate-500">"¿Por cuál nunca votaría?"</p>
+          </div>
+          <span class="text-[9px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded">
+            Techo Electoral
+          </span>
+        </div>
+        <div class="space-y-2.5 mt-2" id="antivotoList"></div>
       </div>
 
       <!-- 4. EVALUACIÓN DE GESTIÓN (PABEL Y NOBOA) -->
@@ -362,6 +357,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v10"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v11"></script>
 </body>
 </html>
