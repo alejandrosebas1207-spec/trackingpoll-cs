@@ -1,12 +1,12 @@
-
 /**
- * CLIMA SOCIAL · WAR ROOM ANTI-TAMPER SHIELD
- * Acceso Restringido. Inspección y depuración prohibidas.
+ * CLIMA SOCIAL INVESTIGACIONES METODOLÓGICAS
+ * Tablero de Control y Tracking Poll Diario · Quito 2026
+ * War Room Oficial · Versión de Producción Segura
  */
 (function() {
   'use strict';
 
-  // 1. Silenciar todas las salidas de consola
+  // 1. Silenciar salidas de consola y limpieza continua
   try {
     const noop = function() {};
     ['log', 'debug', 'info', 'warn', 'error', 'table', 'trace', 'dir', 'dirxml'].forEach(m => {
@@ -30,7 +30,7 @@
       e.stopPropagation();
       return false;
     }
-    // Ctrl+Shift+I (Inspector) / Ctrl+Shift+J (Consola) / Ctrl+Shift+C (Element picker)
+    // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C
     if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
       e.preventDefault();
       e.stopPropagation();
@@ -56,8 +56,7 @@
     }
   }, true);
 
-  // 4. Trampa de depuración continua (Debugger Trap)
-  // Si alguien fuerza la apertura de DevTools, el navegador entra en bucle de congelamiento
+  // 4. Trampa de depuración continua (Debugger Loop Trap)
   setInterval(function() {
     (function antiDebug(i) {
       if (('' + i / i).length !== 1 || i % 20 === 0) {
@@ -83,17 +82,20 @@
   setInterval(detectDevTools, 1000);
 })();
 
-
+// Variables de Estado del Tablero
 let rawDecryptedData = null;
 let currentScenario = 'alcalde';
-let currentReportIdx = 0;
+let currentReportIdx = 3; // Por defecto inicia en Sábado 14 Nov (4to punto con Sep, Oct y Nov dibujados)
+let maxAvailableIdx = 3;  // Puntos con datos reales consolidados actualmente
 let chartInstance = null;
 
+// Acceso rápido con PIN 2026
 async function quickAccessDemo() {
   document.getElementById('secretKeyInput').value = '2026';
   await handleAuth(new Event('submit'));
 }
 
+// Petición autenticada de datos al servidor BFF
 async function fetchTrackingData(token) {
   const resp = await fetch('/api/tracking/data', {
     headers: { 'Authorization': 'Bearer ' + token }
@@ -103,6 +105,7 @@ async function fetchTrackingData(token) {
   return json.data;
 }
 
+// Verificación de credenciales
 async function handleAuth(event) {
   if (event && event.preventDefault) event.preventDefault();
   const inputKey = document.getElementById('secretKeyInput').value.trim();
@@ -118,7 +121,7 @@ async function handleAuth(event) {
   try {
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerText = 'Verificando credenciales...';
+      submitBtn.innerText = 'Verificando con Servidor...';
     }
     errEl.classList.add('hidden');
 
@@ -154,6 +157,7 @@ async function handleAuth(event) {
   }
 }
 
+// Auto-login con token de sesión en memoria
 window.addEventListener('DOMContentLoaded', async () => {
   const savedToken = sessionStorage.getItem('cs_warroom_token');
   if (savedToken) {
@@ -168,287 +172,339 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
   }
 });
+
+// Inicialización del Dashboard
 function initDashboard() {
-      setupSlider();
-      initChart();
-      renderActiveView();
+  if (!rawDecryptedData) return;
+
+  // Determinar el último índice que tiene datos válidos
+  const pabelSeries = rawDecryptedData.series_alcalde['pabel'] || [];
+  let lastValid = 0;
+  for (let i = 0; i < pabelSeries.length; i++) {
+    if (pabelSeries[i] !== null && pabelSeries[i] !== undefined) {
+      lastValid = i;
     }
+  }
+  maxAvailableIdx = lastValid;
+  currentReportIdx = rawDecryptedData.corte_activo_inicial !== undefined ? rawDecryptedData.corte_activo_inicial : lastValid;
 
-    function setupSlider() {
-      const slider = document.getElementById('reportSlider');
-      slider.addEventListener('input', function() {
-        setReportIndex(parseInt(this.value));
-      });
-    }
+  setupSlider();
+  initChart();
+  renderActiveView();
+}
 
-    function setReportIndex(idx) {
-      currentReportIdx = Math.max(0, Math.min(12, idx));
-      document.getElementById('reportSlider').value = currentReportIdx;
-      const dateName = rawDecryptedData.fechas_reportes[currentReportIdx];
-      document.getElementById('currentReportLabel').innerText = `Reporte ${toRoman(currentReportIdx + 1)} · ${dateName}`;
-      document.getElementById('reportIndicatorText').innerText = `Reporte ${currentReportIdx + 1} de 13 publicado (${dateName})`;
-      renderActiveView();
-    }
+function setupSlider() {
+  const slider = document.getElementById('reportSlider');
+  slider.min = 0;
+  slider.max = maxAvailableIdx;
+  slider.value = currentReportIdx;
+  slider.addEventListener('input', function() {
+    setReportIndex(parseInt(this.value));
+  });
+}
 
-    function stepReport(delta) {
-      setReportIndex(currentReportIdx + delta);
-    }
+function setReportIndex(idx) {
+  currentReportIdx = Math.max(0, Math.min(maxAvailableIdx, idx));
+  document.getElementById('reportSlider').value = currentReportIdx;
 
-    function toRoman(num) {
-      const map = { 1:'I', 2:'II', 3:'III', 4:'IV', 5:'V', 6:'VI', 7:'VII', 8:'VIII', 9:'IX', 10:'X', 11:'XI', 12:'XII', 13:'XIII' };
-      return map[num] || num;
-    }
+  const dateName = rawDecryptedData.fechas_reportes[currentReportIdx];
+  let badgeTitle = '';
+  let badgeDesc = '';
 
-    function setScenario(scen) {
-      currentScenario = scen;
-      const btnA = document.getElementById('btnTabAlcalde');
-      const btnP = document.getElementById('btnTabPrefecto');
-      const title = document.getElementById('heroTitle');
+  if (currentReportIdx === 0) {
+    badgeTitle = 'Línea Base I · Septiembre 2026';
+    badgeDesc = 'Medición previa presencial cantonal (n = 1.680)';
+  } else if (currentReportIdx === 1) {
+    badgeTitle = 'Línea Base II · Octubre 2026';
+    badgeDesc = 'Medición previa presencial cantonal (n = 2.071)';
+  } else if (currentReportIdx === 2) {
+    badgeTitle = 'Línea Base III · Noviembre 2026 (Pre-campaña)';
+    badgeDesc = 'Medición cantonal de arranque (n = 2.450)';
+  } else if (currentReportIdx === 3) {
+    badgeTitle = `Día 1 de Tracking · Sábado 14 Noviembre`;
+    badgeDesc = `Primer levantamiento de campo diario (n = 170)`;
+  } else {
+    badgeTitle = `Día ${currentReportIdx - 2} de Tracking · ${dateName}`;
+    badgeDesc = `Acumulado móvil 3 días (n = 510)`;
+  }
 
-      if (scen === 'alcalde') {
-        btnA.className = 'px-4 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
-        btnP.className = 'px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
-        title.innerText = 'Tracking Diario · Alcaldía de Quito';
+  document.getElementById('currentReportLabel').innerText = badgeTitle;
+  document.getElementById('reportIndicatorText').innerText = badgeDesc;
+
+  renderActiveView();
+}
+
+function stepReport(delta) {
+  setReportIndex(currentReportIdx + delta);
+}
+
+function setScenario(scen) {
+  currentScenario = scen;
+  const btnA = document.getElementById('btnTabAlcalde');
+  const btnP = document.getElementById('btnTabPrefecto');
+  const title = document.getElementById('heroTitle');
+  const chartTitle = document.getElementById('chartSectionTitle');
+
+  if (scen === 'alcalde') {
+    btnA.className = 'px-4 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
+    btnP.className = 'px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
+    title.innerText = 'Tracking Diario · Alcaldía de Quito';
+    chartTitle.innerText = 'Evolución Histórica y Tracking Diario · Alcaldía de Quito';
+  } else {
+    btnP.className = 'px-4 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
+    btnA.className = 'px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
+    title.innerText = 'Tracking Diario · Prefectura de Pichincha';
+    chartTitle.innerText = 'Evolución Histórica y Tracking Diario · Prefectura de Pichincha';
+  }
+
+  updateChartDatasets();
+  renderActiveView();
+}
+
+function renderActiveView() {
+  if (!rawDecryptedData) return;
+  renderCandidateCards();
+  renderAntivoto();
+  renderFirmeza();
+  renderGestion();
+  updateChartProgress();
+}
+
+function getCandidateKey(c) {
+  const parts = c.nombre.toLowerCase().split(' ');
+  return parts[parts.length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function renderCandidateCards() {
+  const container = document.getElementById('candidateCardsContainer');
+  const isAlcalde = currentScenario === 'alcalde';
+  const cands = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 5) : rawDecryptedData.candidatos_prefecto.slice(0, 5);
+  const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+  const idx = currentReportIdx;
+
+  let html = '';
+  cands.forEach((c, rank) => {
+    const id = getCandidateKey(c);
+    const series = seriesDict[id] || [];
+    const valActual = series[idx] !== null && series[idx] !== undefined ? series[idx] : 0;
+    const valPrev = idx > 0 && series[idx - 1] !== null && series[idx - 1] !== undefined ? series[idx - 1] : valActual;
+    const delta = valActual - valPrev;
+
+    let deltaHtml = '<span class="text-slate-400 font-medium text-xs">Línea base</span>';
+    if (idx > 0) {
+      if (delta > 0.05) {
+        deltaHtml = `<span class="inline-flex items-center text-emerald-600 font-bold text-xs"><svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>+${delta.toFixed(1)}%</span>`;
+      } else if (delta < -0.05) {
+        deltaHtml = `<span class="inline-flex items-center text-rose-600 font-bold text-xs"><svg class="w-3 h-3 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>${delta.toFixed(1)}%</span>`;
       } else {
-        btnP.className = 'px-4 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs shadow-sm transition-all';
-        btnA.className = 'px-4 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 font-bold text-xs transition-all';
-        title.innerText = 'Tracking Diario · Prefectura de Pichincha';
+        deltaHtml = `<span class="text-slate-400 font-medium text-xs">= 0.0%</span>`;
       }
-
-      updateChartDatasets();
-      renderActiveView();
     }
 
-    function renderActiveView() {
-      if (!rawDecryptedData) return;
-
-      const idx = currentReportIdx;
-      const isAlcalde = currentScenario === 'alcalde';
-      const candList = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 5) : rawDecryptedData.candidatos_prefecto.slice(0, 5);
-      const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
-
-      const container = document.getElementById('candidateCardsContainer');
-      container.innerHTML = '';
-
-      candList.forEach(c => {
-        const id = c.nombre.toLowerCase().split(' ')[c.nombre.toLowerCase().split(' ').length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        const series = seriesDict[id] || seriesDict['pabel'] || [0];
-        const currentVal = series[idx];
-        const prevVal = idx > 0 ? series[idx - 1] : currentVal;
-        const diffDay = (currentVal - prevVal).toFixed(1);
-        const diffDayClass = diffDay > 0 ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : diffDay < 0 ? 'text-rose-700 bg-rose-50 border-rose-200' : 'text-slate-600 bg-slate-50 border-slate-200';
-        const diffDaySign = diffDay > 0 ? `+${diffDay}` : `${diffDay}`;
-
-        const initialVal = series[0];
-        const diffTotal = (currentVal - initialVal).toFixed(1);
-        const diffTotalClass = diffTotal > 0 ? 'text-emerald-600' : diffTotal < 0 ? 'text-rose-600' : 'text-slate-400';
-        const diffTotalSign = diffTotal > 0 ? `+${diffTotal}` : `${diffTotal}`;
-
-        const card = document.createElement('div');
-        card.className = 'card-candidate p-4 rounded-2xl flex flex-col justify-between';
-        card.innerHTML = `
-          <div>
-            <div class="flex items-center gap-3">
-              ${c.foto ? `<img src="${c.foto}" alt="${c.nombre}" class="w-14 h-14 rounded-full object-cover border-2 shadow-sm shrink-0" style="border-color: ${c.color}">` : `<div class="w-14 h-14 rounded-full flex items-center justify-center font-bold text-white text-lg shrink-0 shadow-sm" style="background-color: ${c.color}">${c.nombre[0]}</div>`}
-              <div class="min-w-0">
-                <h4 class="text-sm font-extrabold text-slate-900 leading-tight">${c.nombre}</h4>
-                <p class="text-xs font-semibold text-slate-600 leading-snug mt-0.5 break-words">${c.partido}</p>
-              </div>
-            </div>
+    html += `
+      <div class="card-candidate p-4 rounded-2xl flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-2">
+            <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded text-white" style="background-color: ${c.color}">
+              #${rank + 1} · ${c.lista}
+            </span>
+            ${deltaHtml}
           </div>
+          <div class="text-sm font-extrabold text-slate-900 leading-snug">${c.nombre}</div>
+          <div class="text-[11px] text-slate-500 truncate mb-3">${c.partido}</div>
+        </div>
+        <div class="pt-2 border-t border-slate-100 flex items-baseline justify-between">
+          <span class="text-[11px] text-slate-400 font-medium">Intención</span>
+          <span class="text-2xl font-black text-slate-900 tracking-tight">${valActual.toFixed(1)}%</span>
+        </div>
+      </div>
+    `;
+  });
 
-          <div class="mt-4 pt-3 border-t border-slate-100">
-            <div class="flex items-baseline justify-between">
-              <span class="text-3xl font-black text-slate-900 tracking-tight">${currentVal.toFixed(1)}<span class="text-base font-semibold text-slate-400">%</span></span>
-              <span class="text-xs font-extrabold px-2 py-0.5 rounded-md border ${diffDayClass}">
-                ${diffDaySign}% vs rep. anterior
-              </span>
-            </div>
-            <div class="text-[11px] font-semibold text-slate-500 mt-1 flex justify-between items-center">
-              <span>Evolución total:</span>
-              <span class="font-bold ${diffTotalClass}">${diffTotalSign}% desde inicio</span>
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
+  container.innerHTML = html;
+}
 
-      renderAntivoto(idx);
-      renderFirmeza(idx);
-      renderGestion(idx);
-      updateChartLine();
-    }
+function renderAntivoto() {
+  const el = document.getElementById('antivotoList');
+  const idx = currentReportIdx;
+  const anti = rawDecryptedData.antivoto_alcalde;
+  const cands = rawDecryptedData.candidatos_alcalde.slice(0, 6);
 
-    function renderAntivoto(idx) {
-      const container = document.getElementById('antivotoList');
-      container.innerHTML = '';
-      const av = rawDecryptedData.antivoto_alcalde;
-      const list = [
-        { name: 'Jorge Yunda', val: av.yunda[idx] },
-        { name: 'Pabel Muñoz', val: av.pabel[idx] },
-        { name: 'Harold Burbano', val: av.burbano[idx] },
-        { name: 'Wilson Merino', val: av.merino[idx] },
-        { name: 'Bernardo Jijón', val: av.jijon[idx] }
-      ].sort((a, b) => b.val - a.val);
+  // Ordenar de mayor a menor rechazo en este corte
+  const items = cands.map(c => {
+    const id = getCandidateKey(c);
+    const val = anti[id] && anti[id][idx] !== null && anti[id][idx] !== undefined ? anti[id][idx] : 0;
+    return { c, val };
+  }).sort((a, b) => b.val - a.val);
 
-      list.forEach(item => {
-        const row = document.createElement('div');
-        row.className = 'space-y-1';
-        row.innerHTML = `
-          <div class="flex justify-between items-center text-xs font-bold">
-            <span class="text-slate-800">${item.name}</span>
-            <span class="text-rose-600 font-extrabold">${item.val.toFixed(1)}%</span>
-          </div>
-          <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
-            <div class="bg-rose-500 h-full rounded-full transition-all" style="width: ${item.val}%"></div>
-          </div>
-        `;
-        container.appendChild(row);
-      });
-    }
+  let html = '';
+  items.forEach(item => {
+    html += `
+      <div>
+        <div class="flex justify-between items-center text-xs mb-1">
+          <span class="font-bold text-slate-800">${item.c.nombre}</span>
+          <span class="font-extrabold text-rose-600">${item.val.toFixed(1)}%</span>
+        </div>
+        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden shadow-inner">
+          <div class="bg-rose-500 h-2 rounded-full transition-all duration-300" style="width: ${Math.min(100, item.val * 2.5)}%"></div>
+        </div>
+      </div>
+    `;
+  });
+  el.innerHTML = html;
+}
 
-    function renderFirmeza(idx) {
-      const f = rawDecryptedData.firmeza_alcalde;
-      const s = f.seguro[idx];
-      const b = f.blando[idx];
-      const ind = f.indeciso[idx];
+function renderFirmeza() {
+  const idx = currentReportIdx;
+  const f = rawDecryptedData.firmeza_alcalde;
+  const seg = f.seguro[idx] !== null && f.seguro[idx] !== undefined ? f.seguro[idx] : 56.4;
+  const bla = f.blando[idx] !== null && f.blando[idx] !== undefined ? f.blando[idx] : 31.3;
+  const ind = f.indeciso[idx] !== null && f.indeciso[idx] !== undefined ? f.indeciso[idx] : 12.3;
 
-      document.getElementById('kpiSeguro').innerText = `${s.toFixed(1)}%`;
-      document.getElementById('kpiBlando').innerText = `${b.toFixed(1)}%`;
-      document.getElementById('kpiIndeciso').innerText = `${ind.toFixed(1)}%`;
+  document.getElementById('kpiSeguro').innerText = `${seg.toFixed(1)}%`;
+  document.getElementById('kpiBlando').innerText = `${bla.toFixed(1)}%`;
+  document.getElementById('kpiIndeciso').innerText = `${ind.toFixed(1)}%`;
 
-      document.getElementById('barSeguro').style.width = `${s}%`;
-      document.getElementById('barBlando').style.width = `${b}%`;
-      document.getElementById('barIndeciso').style.width = `${ind}%`;
+  document.getElementById('barSeguro').style.width = `${seg}%`;
+  document.getElementById('barBlando').style.width = `${bla}%`;
+  document.getElementById('barIndeciso').style.width = `${ind}%`;
 
-      document.getElementById('txtDecididos').innerText = `${s.toFixed(1)}%`;
-      document.getElementById('txtEnDisputa').innerText = `${(b + ind).toFixed(1)}%`;
-    }
+  document.getElementById('txtDecididos').innerText = `${seg.toFixed(1)}%`;
+  document.getElementById('txtEnDisputa').innerText = `${(bla + ind).toFixed(1)}%`;
+}
 
-    function renderGestion(idx) {
-      const p = rawDecryptedData.gestion_pabel;
-      const n = rawDecryptedData.gestion_noboa;
+function renderGestion() {
+  const idx = currentReportIdx;
+  const p = rawDecryptedData.gestion_pabel;
+  const n = rawDecryptedData.gestion_noboa;
 
-      document.getElementById('pabelSaldo').innerText = `Saldo ${p.saldo[idx] > 0 ? '+' : ''}${p.saldo[idx].toFixed(1)}%`;
-      document.getElementById('pabelPos').innerText = `${p.positiva[idx].toFixed(1)}%`;
-      document.getElementById('pabelNeg').innerText = `${p.negativa[idx].toFixed(1)}%`;
+  const pSaldo = p.saldo[idx] !== null && p.saldo[idx] !== undefined ? p.saldo[idx] : 14.8;
+  const pPos = p.positiva[idx] !== null && p.positiva[idx] !== undefined ? p.positiva[idx] : 55.7;
+  const pNeg = p.negativa[idx] !== null && p.negativa[idx] !== undefined ? p.negativa[idx] : 40.9;
 
-      document.getElementById('noboaSaldo').innerText = `Saldo ${n.saldo[idx] > 0 ? '+' : ''}${n.saldo[idx].toFixed(1)}%`;
-      document.getElementById('noboaPos').innerText = `${n.positiva[idx].toFixed(1)}%`;
-      document.getElementById('noboaNeg').innerText = `${n.negativa[idx].toFixed(1)}%`;
-    }
+  const nSaldo = n.saldo[idx] !== null && n.saldo[idx] !== undefined ? n.saldo[idx] : -35.7;
+  const nPos = n.positiva[idx] !== null && n.positiva[idx] !== undefined ? n.positiva[idx] : 31.2;
+  const nNeg = n.negativa[idx] !== null && n.negativa[idx] !== undefined ? n.negativa[idx] : 66.9;
 
-    function initChart() {
-      const ctx = document.getElementById('mainChartCanvas').getContext('2d');
-      chartInstance = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: rawDecryptedData.fechas_reportes,
-          datasets: []
+  document.getElementById('pabelSaldo').innerText = `Saldo ${pSaldo > 0 ? '+' : ''}${pSaldo.toFixed(1)}%`;
+  document.getElementById('pabelPos').innerText = `${pPos.toFixed(1)}%`;
+  document.getElementById('pabelNeg').innerText = `${pNeg.toFixed(1)}%`;
+
+  document.getElementById('noboaSaldo').innerText = `Saldo ${nSaldo > 0 ? '+' : ''}${nSaldo.toFixed(1)}%`;
+  document.getElementById('noboaPos').innerText = `${nPos.toFixed(1)}%`;
+  document.getElementById('noboaNeg').innerText = `${nNeg.toFixed(1)}%`;
+}
+
+function initChart() {
+  const ctx = document.getElementById('mainChartCanvas').getContext('2d');
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: rawDecryptedData.fechas_reportes,
+      datasets: []
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      spanGaps: false,
+      animation: { duration: 350 },
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            boxWidth: 12,
+            font: { family: 'Poppins', size: 11, weight: 'bold' },
+            color: '#1e293b'
+          }
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: { mode: 'index', intersect: false },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: '#0f172a',
-              titleColor: '#ffffff',
-              titleFont: { size: 13, weight: 'bold', family: 'Poppins' },
-              bodyColor: '#e2e8f0',
-              bodyFont: { size: 12, family: 'Poppins' },
-              padding: 12,
-              cornerRadius: 10,
-              boxPadding: 6,
-              callbacks: {
-                label: (ctx) => {
-                  if (ctx.raw === null || ctx.raw === undefined) return null;
-                  return ` ${ctx.dataset.label}: ${ctx.raw.toFixed(1)}%`;
-                }
-              }
-            }
-          },
-          scales: {
-            x: {
-              grid: { color: '#f1f5f9' },
-              ticks: { color: '#64748b', font: { size: 11, weight: '600', family: 'Poppins' } }
-            },
-            y: {
-              min: 0,
-              max: 42,
-              grid: { color: '#f1f5f9' },
-              ticks: {
-                color: '#64748b',
-                callback: (val) => val + '%',
-                font: { size: 11, weight: '600', family: 'Poppins' },
-                stepSize: 5
-              }
+        tooltip: {
+          backgroundColor: '#0f172a',
+          titleFont: { family: 'Poppins', size: 12, weight: 'bold' },
+          bodyFont: { family: 'Poppins', size: 11 },
+          padding: 10,
+          cornerRadius: 10,
+          callbacks: {
+            label: function(context) {
+              const val = context.parsed.y;
+              return ` ${context.dataset.label}: ${val !== null ? val.toFixed(1) + '%' : 'Pendiente'}`;
             }
           }
         }
-      });
-
-      updateChartDatasets();
+      },
+      scales: {
+        y: {
+          min: 0,
+          max: 45,
+          grid: { color: '#f1f5f9' },
+          ticks: {
+            font: { family: 'Poppins', size: 11 },
+            callback: v => v + '%'
+          }
+        },
+        x: {
+          grid: { color: '#f8fafc' },
+          ticks: {
+            font: { family: 'Poppins', size: 10, weight: '600' },
+            maxRotation: 45,
+            minRotation: 0
+          }
+        }
+      }
     }
+  });
+  updateChartDatasets();
+}
 
-    function updateChartDatasets() {
-      if (!chartInstance || !rawDecryptedData) return;
+function updateChartDatasets() {
+  if (!chartInstance || !rawDecryptedData) return;
+  const isAlcalde = currentScenario === 'alcalde';
+  const candList = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 5) : rawDecryptedData.candidatos_prefecto.slice(0, 5);
+  const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
 
-      const isAlcalde = currentScenario === 'alcalde';
-      const candList = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 5) : rawDecryptedData.candidatos_prefecto.slice(0, 5);
-      const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+  chartInstance.data.datasets = candList.map(c => {
+    const id = getCandidateKey(c);
+    const fullSeries = seriesDict[id] || [];
 
-      const legendBox = document.getElementById('legendContainer');
-      legendBox.innerHTML = '';
-      candList.forEach(c => {
-        legendBox.innerHTML += `
-          <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200">
-            <span class="w-3 h-3 rounded-full" style="background-color: ${c.color}"></span>
-            <span class="text-slate-800">${c.nombre}</span>
-          </div>
-        `;
-      });
+    return {
+      label: c.nombre,
+      borderColor: c.color,
+      backgroundColor: c.color + '15',
+      borderWidth: 3,
+      tension: 0.25,
+      fill: false,
+      spanGaps: false,
+      pointBackgroundColor: c.color,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 2,
+      pointRadius: rawDecryptedData.fechas_reportes.map((_, i) => {
+        if (i > currentReportIdx || fullSeries[i] === null) return 0;
+        return i === currentReportIdx ? 7 : 4;
+      }),
+      data: rawDecryptedData.fechas_reportes.map((_, i) => (i <= currentReportIdx ? fullSeries[i] : null))
+    };
+  });
 
-      chartInstance.data.datasets = candList.map(c => {
-        const id = c.nombre.toLowerCase().split(' ')[c.nombre.toLowerCase().split(' ').length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        const series = seriesDict[id] || seriesDict['pabel'] || [0];
+  chartInstance.update();
+}
 
-        return {
-          label: c.nombre,
-          data: rawDecryptedData.fechas_reportes.map((_, i) => (i <= currentReportIdx ? series[i] : null)),
-          borderColor: c.color,
-          backgroundColor: c.color,
-          borderWidth: 3.5,
-          pointRadius: rawDecryptedData.fechas_reportes.map((_, i) => (i > currentReportIdx ? 0 : (i === currentReportIdx ? 8 : 4))),
-          pointHoverRadius: 8,
-          pointBackgroundColor: '#ffffff',
-          pointBorderWidth: 2.5,
-          pointBorderColor: c.color,
-          tension: 0.25,
-          spanGaps: false,
-          fill: false
-        };
-      });
+function updateChartProgress() {
+  if (!chartInstance || !rawDecryptedData) return;
+  const isAlcalde = currentScenario === 'alcalde';
+  const candList = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 5) : rawDecryptedData.candidatos_prefecto.slice(0, 5);
+  const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
 
-      chartInstance.update();
-    }
+  chartInstance.data.datasets.forEach((ds, idxCand) => {
+    const c = candList[idxCand];
+    const id = getCandidateKey(c);
+    const fullSeries = seriesDict[id] || [];
 
-    function updateChartLine() {
-      if (!chartInstance || !rawDecryptedData) return;
-      const isAlcalde = currentScenario === 'alcalde';
-      const candList = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 5) : rawDecryptedData.candidatos_prefecto.slice(0, 5);
-      const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+    ds.data = rawDecryptedData.fechas_reportes.map((_, i) => (i <= currentReportIdx ? fullSeries[i] : null));
+    ds.pointRadius = rawDecryptedData.fechas_reportes.map((_, i) => {
+      if (i > currentReportIdx || fullSeries[i] === null) return 0;
+      return i === currentReportIdx ? 7 : 4;
+    });
+  });
 
-      chartInstance.data.datasets.forEach((ds, idxCand) => {
-        const c = candList[idxCand];
-        const id = c.nombre.toLowerCase().split(' ')[c.nombre.toLowerCase().split(' ').length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        const series = seriesDict[id] || [0];
-
-        ds.data = rawDecryptedData.fechas_reportes.map((_, i) => (i <= currentReportIdx ? series[i] : null));
-        ds.pointRadius = rawDecryptedData.fechas_reportes.map((_, i) => (i > currentReportIdx ? 0 : (i === currentReportIdx ? 8 : 4)));
-      });
-
-      chartInstance.update();
-    }
-  
+  chartInstance.update();
+}
