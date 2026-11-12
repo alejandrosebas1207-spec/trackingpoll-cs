@@ -126,7 +126,7 @@
 
         <!-- 1. Circunscripción -->
         <select id="filterCirc" onchange="onCircunscripcionChange()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
-          <option value="total">Circunscripción (Todas)</option>
+          <option value="total">Circunscripción</option>
           <option value="Urbana Norte">Urbana Norte</option>
           <option value="Urbana Centro">Urbana Centro</option>
           <option value="Urbana Sur">Urbana Sur</option>
@@ -135,28 +135,28 @@
 
         <!-- 2. Parroquia (en cascada) -->
         <select id="filterParroquia" onchange="onParroquiaChange()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer max-w-[170px] truncate">
-          <option value="total">Parroquia (Todas)</option>
+          <option value="total">Parroquia</option>
         </select>
 
         <!-- 3. Género -->
         <select id="filterGenero" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
-          <option value="total">Género (Todos)</option>
+          <option value="total">Género</option>
           <option value="Hombre">Hombres</option>
           <option value="Mujer">Mujeres</option>
         </select>
 
-        <!-- 3. Grupo de Edad -->
+        <!-- 4. Grupo de Edad -->
         <select id="filterEdad" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
-          <option value="total">Edad (Todas)</option>
+          <option value="total">Edad</option>
           <option value="16 a 29 años">16 a 29 años</option>
           <option value="30 a 44 años">30 a 44 años</option>
           <option value="45 a 60 años">45 a 60 años</option>
           <option value="61 o más años">61+ años</option>
         </select>
 
-        <!-- 4. Nivel de Ingresos -->
+        <!-- 5. Nivel de Ingresos -->
         <select id="filterIngresos" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
-          <option value="total">Ingresos (Todos)</option>
+          <option value="total">Ingresos</option>
           <option value="Bajo">Ingresos Bajos</option>
           <option value="Medio bajo">Ingresos Medio-Bajos</option>
           <option value="Medio">Ingresos Medios</option>
@@ -351,6 +351,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v15"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v16"></script>
 </body>
 </html>

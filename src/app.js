@@ -245,7 +245,7 @@ function populateParroquiaSelect(circFilter, selectedParroquia = 'total') {
   if (!select || !rawDecryptedData) return;
 
   const parroquiasPorCirc = rawDecryptedData.parroquias_por_circunscripcion || {};
-  let html = '<option value="total">Parroquia (Todas)</option>';
+  let html = '<option value="total">Parroquia</option>';
 
   if (circFilter && circFilter !== 'total' && parroquiasPorCirc[circFilter]) {
     parroquiasPorCirc[circFilter].forEach(p => {
@@ -490,7 +490,7 @@ function renderPiramide() {
   const container = document.getElementById('piramideRows');
   if (!container || !rawDecryptedData || !rawDecryptedData.microdatos_casos) return;
 
-  const casos = filtrarCasos();
+  const casos = filtrarCasos() || rawDecryptedData.microdatos_casos;
   const total = casos ? casos.length : 0;
   const tagH = document.getElementById('pyramidTagH');
   const tagM = document.getElementById('pyramidTagM');
