@@ -1,6 +1,628 @@
-window.ENCRYPTED_TRACKING_DATA = {
-  "status": "ENCRYPTED_WAR_ROOM_PAYLOAD",
-  "timestamp": "2026-11-11T22:07:50.223811",
-  "auth_tag": "d3ba181daab5aa75",
-  "payload": "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"
+window.TRACKING_DATA = {
+  "proyecto": "Tracking Poll Diario Quito 2026",
+  "empresa": "Clima Social Investigaciones Metodológicas",
+  "fechas_reportes": [
+    "16 Nov",
+    "17 Nov",
+    "18 Nov",
+    "19 Nov",
+    "20 Nov",
+    "21 Nov",
+    "22 Nov",
+    "23 Nov",
+    "24 Nov",
+    "25 Nov",
+    "26 Nov",
+    "27 Nov",
+    "28 Nov"
+  ],
+  "muestra_por_reporte": 510,
+  "candidatos_alcalde": [
+    {
+      "cod": "2",
+      "nombre": "Pabel Muñoz",
+      "partido": "Alianza Ciudadana (RC · PSE · Todos)",
+      "color": "#0284c7",
+      "foto": "./assets/PABEL_MUNOZ.png"
+    },
+    {
+      "cod": "7",
+      "nombre": "Harold Burbano",
+      "partido": "Acción Democrática Nacional (ADN 7)",
+      "color": "#4f46e5",
+      "foto": "./assets/HAROLD_BURBANO.png"
+    },
+    {
+      "cod": "8",
+      "nombre": "Jorge Yunda",
+      "partido": "Avanza (Lista 8)",
+      "color": "#2563eb",
+      "foto": "./assets/JORGE_YUNDA.png"
+    },
+    {
+      "cod": "79",
+      "nombre": "Wilson Merino",
+      "partido": "Imparables (Lista 79)",
+      "color": "#059669",
+      "foto": "./assets/WILSON_MERINO.png"
+    },
+    {
+      "cod": "3",
+      "nombre": "Bernardo Jijón",
+      "partido": "Sociedad Patriótica (Lista 3)",
+      "color": "#e11d48",
+      "foto": "./assets/BERNARDO_JIJON.png"
+    },
+    {
+      "cod": "21",
+      "nombre": "Carla Larrea",
+      "partido": "CREO (Lista 21)",
+      "color": "#d97706",
+      "foto": "./assets/CARLA_LARREA.png"
+    },
+    {
+      "cod": "1",
+      "nombre": "Galo Almeida",
+      "partido": "Centro Democrático (Lista 1)",
+      "color": "#f59e0b",
+      "foto": "./assets/GALO_ALMEIDA.png"
+    },
+    {
+      "cod": "6",
+      "nombre": "Linda Romero",
+      "partido": "Social Cristiano (Lista 6)",
+      "color": "#e11d48",
+      "foto": "./assets/LINDA_ROMERO.png"
+    },
+    {
+      "cod": "4",
+      "nombre": "César Díaz",
+      "partido": "PID (Lista 4)",
+      "color": "#64748b",
+      "foto": "./assets/CESAR_DIAZ.png"
+    },
+    {
+      "cod": "20",
+      "nombre": "Paúl Desamblanc",
+      "partido": "Futuro (Lista 20)",
+      "color": "#64748b",
+      "foto": "./assets/PAUL_DESAMBLANC.png"
+    }
+  ],
+  "candidatos_prefecto": [
+    {
+      "cod": "2",
+      "nombre": "Alexandro Tonello",
+      "partido": "Alianza Ciudadana (RC · PSE · Todos)",
+      "color": "#0284c7"
+    },
+    {
+      "cod": "7",
+      "nombre": "Giovanna Ubidia",
+      "partido": "Acción Democrática Nacional (ADN 7)",
+      "color": "#4f46e5"
+    },
+    {
+      "cod": "8",
+      "nombre": "Carla Cevallos",
+      "partido": "Avanza (Lista 8)",
+      "color": "#2563eb"
+    },
+    {
+      "cod": "79",
+      "nombre": "Juan Zapata",
+      "partido": "Imparables (Lista 79)",
+      "color": "#059669"
+    },
+    {
+      "cod": "18",
+      "nombre": "Guillermo Churuchumbi",
+      "partido": "Pachakutik (Lista 18)",
+      "color": "#b45309"
+    },
+    {
+      "cod": "21",
+      "nombre": "Mishelle Calvache",
+      "partido": "CREO (Lista 21)",
+      "color": "#d97706"
+    },
+    {
+      "cod": "6",
+      "nombre": "Claudia Ormaza",
+      "partido": "Social Cristiano (Lista 6)",
+      "color": "#dc2626"
+    }
+  ],
+  "series_alcalde": {
+    "pabel": [
+      34.8,
+      35.1,
+      35.4,
+      35.6,
+      35.9,
+      36.1,
+      36.4,
+      36.6,
+      36.8,
+      37.0,
+      37.1,
+      37.2,
+      37.3
+    ],
+    "burbano": [
+      10.4,
+      11.2,
+      12.0,
+      12.8,
+      13.5,
+      14.1,
+      14.6,
+      14.9,
+      15.1,
+      15.3,
+      15.4,
+      15.5,
+      15.6
+    ],
+    "yunda": [
+      11.3,
+      10.8,
+      10.2,
+      9.6,
+      9.1,
+      8.7,
+      8.3,
+      8.0,
+      7.8,
+      7.6,
+      7.4,
+      7.2,
+      7.1
+    ],
+    "merino": [
+      6.1,
+      6.6,
+      7.1,
+      7.5,
+      7.9,
+      8.2,
+      8.5,
+      8.7,
+      8.9,
+      9.0,
+      9.1,
+      9.1,
+      9.2
+    ],
+    "jijon": [
+      3.8,
+      4.0,
+      4.1,
+      4.2,
+      4.3,
+      4.4,
+      4.5,
+      4.6,
+      4.6,
+      4.7,
+      4.7,
+      4.8,
+      4.8
+    ],
+    "otros": [
+      7.2,
+      7.0,
+      6.8,
+      6.6,
+      6.4,
+      6.2,
+      6.0,
+      5.8,
+      5.7,
+      5.6,
+      5.5,
+      5.4,
+      5.3
+    ],
+    "nulo_blanco": [
+      8.5,
+      8.4,
+      8.3,
+      8.2,
+      8.1,
+      8.0,
+      7.8,
+      7.6,
+      7.5,
+      7.4,
+      7.3,
+      7.2,
+      7.1
+    ],
+    "indecisos": [
+      17.9,
+      16.9,
+      16.1,
+      15.5,
+      14.8,
+      14.3,
+      13.9,
+      13.6,
+      13.2,
+      12.8,
+      12.6,
+      12.4,
+      12.2
+    ]
+  },
+  "series_prefecto": {
+    "tonello": [
+      36.2,
+      36.5,
+      36.8,
+      37.1,
+      37.4,
+      37.6,
+      37.8,
+      38.0,
+      38.2,
+      38.4,
+      38.5,
+      38.6,
+      38.7
+    ],
+    "ubidia": [
+      12.1,
+      12.8,
+      13.5,
+      14.2,
+      14.8,
+      15.2,
+      15.6,
+      15.9,
+      16.2,
+      16.4,
+      16.6,
+      16.7,
+      16.8
+    ],
+    "cevallos": [
+      9.5,
+      9.2,
+      8.8,
+      8.5,
+      8.2,
+      7.9,
+      7.7,
+      7.5,
+      7.3,
+      7.1,
+      7.0,
+      6.8,
+      6.7
+    ],
+    "zapata": [
+      8.0,
+      8.3,
+      8.6,
+      8.9,
+      9.2,
+      9.4,
+      9.6,
+      9.8,
+      9.9,
+      10.0,
+      10.1,
+      10.2,
+      10.3
+    ],
+    "churuchumbi": [
+      7.4,
+      7.3,
+      7.2,
+      7.1,
+      7.0,
+      6.9,
+      6.8,
+      6.7,
+      6.6,
+      6.5,
+      6.4,
+      6.3,
+      6.2
+    ],
+    "otros": [
+      6.5,
+      6.3,
+      6.1,
+      5.9,
+      5.7,
+      5.5,
+      5.3,
+      5.1,
+      5.0,
+      4.9,
+      4.8,
+      4.7,
+      4.6
+    ],
+    "nulo_blanco": [
+      9.0,
+      8.8,
+      8.6,
+      8.4,
+      8.2,
+      8.0,
+      7.9,
+      7.8,
+      7.7,
+      7.6,
+      7.5,
+      7.4,
+      7.3
+    ],
+    "indecisos": [
+      11.3,
+      10.8,
+      10.4,
+      9.9,
+      9.5,
+      9.1,
+      8.8,
+      8.5,
+      8.3,
+      8.1,
+      7.9,
+      7.8,
+      7.6
+    ]
+  },
+  "antivoto_alcalde": {
+    "pabel": [
+      32.8,
+      32.5,
+      32.2,
+      32.0,
+      31.8,
+      31.6,
+      31.5,
+      31.3,
+      31.2,
+      31.0,
+      30.8,
+      30.6,
+      30.4
+    ],
+    "yunda": [
+      35.8,
+      36.4,
+      37.0,
+      37.5,
+      37.9,
+      38.3,
+      38.8,
+      39.2,
+      39.7,
+      40.2,
+      40.8,
+      41.2,
+      41.6
+    ],
+    "burbano": [
+      19.4,
+      20.2,
+      21.0,
+      21.8,
+      22.2,
+      22.5,
+      22.8,
+      23.2,
+      23.5,
+      23.8,
+      24.1,
+      24.3,
+      24.6
+    ],
+    "merino": [
+      13.2,
+      13.5,
+      13.8,
+      14.0,
+      14.1,
+      14.2,
+      14.2,
+      14.4,
+      14.6,
+      14.8,
+      15.0,
+      15.1,
+      15.3
+    ],
+    "jijon": [
+      9.2,
+      9.3,
+      9.4,
+      9.5,
+      9.5,
+      9.6,
+      9.6,
+      9.7,
+      9.8,
+      9.9,
+      10.0,
+      10.0,
+      10.1
+    ]
+  },
+  "firmeza_alcalde": {
+    "seguro": [
+      51.5,
+      52.8,
+      54.0,
+      55.2,
+      56.5,
+      57.8,
+      59.5,
+      60.8,
+      62.1,
+      63.5,
+      64.8,
+      66.0,
+      67.2
+    ],
+    "blando": [
+      28.5,
+      27.6,
+      26.8,
+      25.9,
+      25.0,
+      24.0,
+      22.8,
+      22.0,
+      21.2,
+      20.3,
+      19.5,
+      18.8,
+      18.3
+    ],
+    "indeciso": [
+      20.0,
+      19.6,
+      19.2,
+      18.9,
+      18.5,
+      18.2,
+      17.7,
+      17.2,
+      16.7,
+      16.2,
+      15.7,
+      15.2,
+      14.5
+    ]
+  },
+  "transferencias": {
+    "pabel": {
+      "merino": 38.2,
+      "yunda": 24.5,
+      "burbano": 11.2,
+      "nulo_blanco": 18.5,
+      "otros": 7.6
+    },
+    "burbano": {
+      "merino": 34.0,
+      "jijon": 28.5,
+      "yunda": 18.2,
+      "pabel": 6.8,
+      "otros": 12.5
+    },
+    "yunda": {
+      "burbano": 36.4,
+      "merino": 26.1,
+      "pabel": 20.5,
+      "jijon": 8.0,
+      "otros": 9.0
+    },
+    "merino": {
+      "pabel": 35.8,
+      "burbano": 31.2,
+      "yunda": 16.5,
+      "jijon": 7.5,
+      "otros": 9.0
+    }
+  },
+  "gestion_pabel": {
+    "positiva": [
+      54.2,
+      54.5,
+      55.0,
+      55.2,
+      55.8,
+      56.1,
+      56.4,
+      56.8,
+      57.0,
+      57.2,
+      57.5,
+      57.7,
+      58.0
+    ],
+    "negativa": [
+      41.5,
+      41.2,
+      40.8,
+      40.5,
+      40.0,
+      39.7,
+      39.4,
+      39.0,
+      38.8,
+      38.5,
+      38.2,
+      38.0,
+      37.8
+    ],
+    "saldo": [
+      12.7,
+      13.3,
+      14.2,
+      14.7,
+      15.8,
+      16.4,
+      17.0,
+      17.8,
+      18.2,
+      18.7,
+      19.3,
+      19.7,
+      20.2
+    ]
+  },
+  "gestion_noboa": {
+    "positiva": [
+      44.8,
+      44.5,
+      44.1,
+      43.8,
+      43.2,
+      42.8,
+      42.5,
+      42.0,
+      41.6,
+      41.2,
+      40.8,
+      40.5,
+      40.2
+    ],
+    "negativa": [
+      51.2,
+      51.5,
+      52.0,
+      52.4,
+      53.0,
+      53.5,
+      53.9,
+      54.4,
+      54.8,
+      55.2,
+      55.6,
+      56.0,
+      56.3
+    ],
+    "saldo": [
+      -6.4,
+      -7.0,
+      -7.9,
+      -8.6,
+      -9.8,
+      -10.7,
+      -11.4,
+      -12.4,
+      -13.2,
+      -14.0,
+      -14.8,
+      -15.5,
+      -16.1
+    ]
+  }
 };
