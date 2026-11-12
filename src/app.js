@@ -323,11 +323,20 @@ function renderCandidateCards() {
   const f = getFiltrosConcatenados();
   const casosFiltrados = filtrarCasos();
   const sampleBadge = document.getElementById('sampleBadge');
+  const btnReset = document.getElementById('btnResetFilters');
+
+  if (btnReset) {
+    if (f.hayFiltros) {
+      btnReset.className = 'px-3.5 py-1.5 rounded-xl border border-rose-300 bg-rose-50 hover:bg-rose-100 text-rose-700 font-extrabold text-xs flex items-center gap-1.5 shadow-sm transition-all cursor-pointer';
+    } else {
+      btnReset.className = 'px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-400 font-medium text-xs flex items-center gap-1.5 transition-all cursor-pointer';
+    }
+  }
 
   if (sampleBadge) {
     if (f.hayFiltros) {
       const nCasos = casosFiltrados ? casosFiltrados.length : 0;
-      sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>Filtros concatenados: <strong>${f.etiqueta}</strong> <span class="bg-indigo-50 border border-indigo-200 text-indigo-800 text-[11px] px-2 py-0.5 rounded font-bold ml-1.5">(n = ${nCasos})</span><button onclick="resetFilters()" class="ml-2 text-[10px] text-slate-400 hover:text-slate-700 underline font-semibold">✕ Restablecer</button>`;
+      sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>Filtros concatenados: <strong>${f.etiqueta}</strong> <span class="bg-indigo-50 border border-indigo-200 text-indigo-800 text-[11px] px-2 py-0.5 rounded font-bold ml-1.5">(n = ${nCasos})</span>`;
     } else {
       sampleBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span>Corte Oficial Noviembre 2026 · Total Cantón (n = 2.450)`;
     }
