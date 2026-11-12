@@ -10,6 +10,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+    input, textarea {
+      user-select: auto;
+      -webkit-user-select: auto;
+    }
     body { font-family: 'Poppins', sans-serif; background-color: #f8fafc; color: #0f172a; }
     .card-clean { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.04); }
     .card-candidate { background: #ffffff; border: 1.5px solid #e2e8f0; transition: all 0.2s ease-in-out; }
@@ -18,7 +29,24 @@
     .blur-gate { filter: blur(14px); pointer-events: none; user-select: none; }
   </style>
 </head>
-<body class="p-3 md:p-6 min-h-screen">
+<body class="p-3 md:p-6 min-h-screen" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+
+  <!-- ESCUDO DE SEGURIDAD ANTI-INSPECCIÓN -->
+  <div id="devToolsShield" class="fixed inset-0 z-[999] bg-slate-950/95 backdrop-blur-xl flex flex-col items-center justify-center text-center p-6 hidden">
+    <div class="w-16 h-16 rounded-2xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-500 mb-4 shadow-lg shadow-rose-950/40">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+    </div>
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-950/60 border border-rose-800 text-rose-300 text-xs font-bold uppercase tracking-wider mb-2">
+      Alerta de Seguridad · War Room
+    </div>
+    <h3 class="text-xl font-extrabold text-white mb-2">Herramientas de Inspección Deshabilitadas</h3>
+    <p class="text-xs text-slate-400 max-w-sm mb-6 leading-relaxed">
+      El acceso al código fuente, consola de desarrollo e inspector de elementos está restringido por protocolo de confidencialidad electoral de Clima Social.
+    </p>
+    <button onclick="location.reload()" class="px-5 py-2.5 rounded-xl bg-white text-slate-900 text-xs font-bold hover:bg-slate-100 transition-all shadow-md">
+      Reanudar Tablero
+    </button>
+  </div>
 
   <!-- MODAL DE BLOQUEO Y ACCESO PRIVADO (GATEKEEPER) -->
   <div id="authGateModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4 transition-all duration-300">
