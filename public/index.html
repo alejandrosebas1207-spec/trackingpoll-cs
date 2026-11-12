@@ -28,22 +28,11 @@
     input[type=range] { accent-color: #10b981; }
     .blur-gate { filter: blur(14px); pointer-events: none; user-select: none; }
 
-    /* Escala nativa ejecutiva (equivalente a 140%-150% de zoom) en laptops y monitores */
-    @media (min-width: 768px) {
-      #dashboardApp {
-        zoom: 1.25;
-      }
-    }
-    @media (min-width: 1100px) {
-      #dashboardApp {
-        zoom: 1.35;
-      }
-    }
-    @media (min-width: 1440px) {
-      #dashboardApp {
-        zoom: 1.45;
-      }
-    }
+    /* Escala nativa ejecutiva mediante rem en HTML (sin romper coordenadas de Canvas en Chart.js) */
+    html { font-size: 15px; }
+    @media (min-width: 768px) { html { font-size: 17px; } }
+    @media (min-width: 1100px) { html { font-size: 19px; } }
+    @media (min-width: 1440px) { html { font-size: 21px; } }
   </style>
 </head>
 <body class="p-2 sm:p-4 min-h-screen bg-slate-100" oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
@@ -357,6 +346,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v13"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v14"></script>
 </body>
 </html>

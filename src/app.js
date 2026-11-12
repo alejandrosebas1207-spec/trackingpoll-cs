@@ -593,8 +593,9 @@ function initChart() {
         legend: {
           position: 'top',
           labels: {
-            boxWidth: 12,
-            font: { family: 'Poppins', size: 11, weight: 'bold' },
+            boxWidth: 14,
+            padding: 16,
+            font: { family: 'Poppins', size: 12, weight: 'bold' },
             color: '#1e293b'
           }
         },
