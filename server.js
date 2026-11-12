@@ -9,10 +9,8 @@ const PORT = process.env.PORT || 3000;
 
 // Configuración de Seguridad y Secretos (Inyectados por Variables de Entorno)
 const WARROOM_PIN = process.env.WARROOM_PIN || "2026";
+const ADMIN_API_KEY = process.env.ADMIN_API_KEY || "CS_WARROOM_ADMIN_2026";
 const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(32).toString("hex");
-const KOBO_API_TOKEN = process.env.KOBO_API_TOKEN || "";
-const KOBO_ASSET_UID = process.env.KOBO_ASSET_UID || "";
-const KOBO_BASE_URL = process.env.KOBO_BASE_URL || "https://kf.kobotoolbox.org";
 
 // Base de datos privada en memoria
 const DATA_FILE = path.join(__dirname, "private", "tracking_data.json");
@@ -135,52 +133,97 @@ app.get("/api/tracking/data", (req, res) => {
   });
 });
 
-// 3. PROXY PRIVADO PARA KOBO TOOLBOX (CERO EXPOSICIÓN DE KEYS O TOKENS)
-// Este endpoint permite al backend consultar a Kobo de forma 100% aislada
-app.post("/api/kobo/sync", async (req, res) => {
-  const authHeader = req.headers.authorization || "";
-  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
-
-  if (!verifySessionToken(token)) {
-    return res.status(401).json({ ok: false, error: "No autorizado." });
+// 3. ENDPOINT ADMINISTRATIVO PARA INGESTA DIARIA DE TABLAS DEPURADAS (CORTE 18:00H)
+app.post("/api/admin/actualizar-corte", (req, res) => {
+  const adminKey = req.headers["x-admin-key"] || (req.body && req.body.adminKey);
+  if (adminKey !== ADMIN_API_KEY) {
+    return res.status(403).json({ ok: false, error: "Clave administrativa no autorizada." });
   }
 
-  if (!KOBO_API_TOKEN || !KOBO_ASSET_UID) {
-    return res.status(503).json({
-      ok: false,
-      status: "KOBO_NOT_CONFIGURED",
-      message: "APIs de Kobo resguardadas en servidor pero aún sin credenciales en variables de entorno."
-    });
+  const { fecha, datos } = req.body || {};
+  if (!fecha || !datos) {
+    return res.status(400).json({ ok: false, error: "Debe proveer 'fecha' y el objeto 'datos'." });
   }
 
-  try {
-    // Consulta interna servidor a servidor contra KoboToolbox API v2
-    const koboUrl = `${KOBO_BASE_URL}/api/v2/assets/${KOBO_ASSET_UID}/data/?format=json`;
-    const response = await fetch(koboUrl, {
-      method: "GET",
-      headers: {
-        "Authorization": `Token ${KOBO_API_TOKEN}`,
-        "Accept": "application/json"
+  if (!trackingDataCache) loadTrackingData();
+
+  const fechas = trackingDataCache.fechas_reportes || [];
+  const targetIdx = fechas.findIndex(f => f.toLowerCase().includes(fecha.toLowerCase()));
+
+  if (targetIdx === -1) {
+    return res.status(400).json({ ok: false, error: `Fecha '${fecha}' no encontrada en el calendario oficial.` });
+  }
+
+  // Actualizar series según los datos entregados a las 18:00h
+  if (datos.series_alcalde) {
+    Object.keys(datos.series_alcalde).forEach(k => {
+      if (trackingDataCache.series_alcalde[k]) {
+        trackingDataCache.series_alcalde[k][targetIdx] = datos.series_alcalde[k];
       }
     });
-
-    if (!response.ok) {
-      throw new Error(`Kobo API error: ${response.status}`);
+    if (datos.series_alcalde.pabel) {
+      trackingDataCache.series_alcalde.munoz[targetIdx] = datos.series_alcalde.pabel;
     }
+  }
 
-    const koboRaw = await response.json();
-    console.log(`[Kobo Sync] Recibidos ${koboRaw.count || (koboRaw.results && koboRaw.results.length) || 0} registros.`);
+  if (datos.series_prefecto) {
+    Object.keys(datos.series_prefecto).forEach(k => {
+      if (trackingDataCache.series_prefecto[k]) {
+        trackingDataCache.series_prefecto[k][targetIdx] = datos.series_prefecto[k];
+      }
+    });
+  }
 
-    // NOTA: Jamás devolvemos los datos crudos con GPS o datos del encuestado al cliente.
-    // Aquí el backend recalcula las cuotas agregadas de los 13 reportes.
+  if (datos.antivoto_alcalde) {
+    Object.keys(datos.antivoto_alcalde).forEach(k => {
+      if (trackingDataCache.antivoto_alcalde[k]) {
+        trackingDataCache.antivoto_alcalde[k][targetIdx] = datos.antivoto_alcalde[k];
+      }
+    });
+    if (datos.antivoto_alcalde.pabel) {
+      trackingDataCache.antivoto_alcalde.munoz[targetIdx] = datos.antivoto_alcalde.pabel;
+    }
+  }
+
+  if (datos.firmeza_alcalde) {
+    Object.keys(datos.firmeza_alcalde).forEach(k => {
+      if (trackingDataCache.firmeza_alcalde[k]) {
+        trackingDataCache.firmeza_alcalde[k][targetIdx] = datos.firmeza_alcalde[k];
+      }
+    });
+  }
+
+  if (datos.gestion_pabel) {
+    Object.keys(datos.gestion_pabel).forEach(k => {
+      if (trackingDataCache.gestion_pabel[k]) {
+        trackingDataCache.gestion_pabel[k][targetIdx] = datos.gestion_pabel[k];
+      }
+    });
+  }
+
+  if (datos.gestion_noboa) {
+    Object.keys(datos.gestion_noboa).forEach(k => {
+      if (trackingDataCache.gestion_noboa[k]) {
+        trackingDataCache.gestion_noboa[k][targetIdx] = datos.gestion_noboa[k];
+      }
+    });
+  }
+
+  // Actualizar corte activo al día actualizado
+  trackingDataCache.corte_activo_inicial = targetIdx;
+
+  // Persistir en disco
+  try {
+    fs.writeFileSync(DATA_FILE, JSON.stringify(trackingDataCache, null, 2), "utf-8");
+    console.log(`[Admin] Corte diario ${fechas[targetIdx]} guardado y actualizado en memoria.`);
     return res.status(200).json({
       ok: true,
-      sync_status: "SUCCESS",
-      records_synced: koboRaw.count || 0
+      mensaje: `Corte del ${fechas[targetIdx]} actualizado exitosamente.`,
+      targetIndex: targetIdx
     });
   } catch (err) {
-    console.error("[Kobo Sync Error]", err.message);
-    return res.status(500).json({ ok: false, error: "Error de sincronización interna." });
+    console.error("[Admin Save Error]", err.message);
+    return res.status(500).json({ ok: false, error: "Error al persistir en disco." });
   }
 });
 
