@@ -98,7 +98,28 @@ async function sendToGoogleSheet(entry) {
   }
 }
 
-function registerAccessEvent(req, autorizado) {
+async function lookupIpLocation(ip) {
+  if (!ip || ip === "Desconocida" || ip.startsWith("127.") || ip.startsWith("10.") || ip.startsWith("192.168.") || ip === "::1") {
+    return "";
+  }
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 2500);
+    const resp = await fetch(`https://ipwho.is/${encodeURIComponent(ip)}`, { signal: controller.signal });
+    clearTimeout(timer);
+    if (!resp.ok) return "";
+    const d = await resp.json();
+    if (!d || !d.success) return "";
+    const lugar = [d.city, d.country].filter(Boolean).join(", ");
+    const isp = d.connection && d.connection.isp ? d.connection.isp : "";
+    if (lugar && isp) return `${lugar} (${isp})`;
+    return lugar || isp || "";
+  } catch {
+    return "";
+  }
+}
+
+async function registerAccessEvent(req, autorizado) {
   const fecha = new Date().toLocaleString("es-EC", {
     timeZone: "America/Guayaquil",
     year: "numeric",
@@ -109,20 +130,26 @@ function registerAccessEvent(req, autorizado) {
     second: "2-digit",
     hour12: false
   });
-  const ip = getClientIp(req);
+  const ipRaw = getClientIp(req);
   const rawUa = (req.headers["user-agent"] || "").slice(0, 180);
   const device = parseDevice(rawUa);
   const estado = autorizado ? "AUTORIZADO" : "INTENTO FALLIDO";
 
-  const entry = { fecha, estado, ip, device, userAgent: rawUa };
+  const entry = { fecha, estado, ip: ipRaw, ubicacion: "", device, userAgent: rawUa };
   accessLogs.unshift(entry);
   if (accessLogs.length > 1000) accessLogs.pop();
+
+  const ubicacion = await lookupIpLocation(ipRaw);
+  if (ubicacion) {
+    entry.ubicacion = ubicacion;
+    entry.ip = `${ipRaw} · ${ubicacion}`;
+  }
   saveAccessLogs();
 
-  console.log(`[Acceso] ${estado} | ${fecha} | ${device} | IP: ${ip}`);
+  console.log(`[Acceso] ${estado} | ${fecha} | ${device} | IP: ${entry.ip}`);
 
   const icono = autorizado ? "🟢 INGRESO TRACKING QUITO" : "🔴 INTENTO FALLIDO TRACKING";
-  const msg = `${icono}\nFecha: ${fecha}\nEquipo: ${device}\nIP: ${ip}`;
+  const msg = `${icono}\nFecha: ${fecha}\nEquipo: ${device}\nIP: ${entry.ip}`;
   sendWhatsAppAlert(msg);
   sendToGoogleSheet(entry);
 }
