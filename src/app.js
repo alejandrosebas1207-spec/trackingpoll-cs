@@ -71,6 +71,7 @@ let currentScenario = 'alcalde';
 let currentReportIdx = 2; // Inicia en Nov 2026 (índice 2)
 let maxAvailableIdx = 2;  // Mediciones consolidadas actuales (0=Sep, 1=Oct, 2=Nov)
 let chartInstance = null;
+let firmezaChartInstance = null;
 
 // Petición autenticada de datos al servidor BFF
 async function fetchTrackingData(token) {
@@ -323,7 +324,6 @@ function renderActiveView() {
   if (!rawDecryptedData) return;
   renderCandidateCards();
   renderPiramide();
-  renderAntivoto();
   renderFirmeza();
   renderCoyunturaYCredibilidad();
   renderApoyoPisoTecho();
@@ -537,63 +537,99 @@ function renderPiramide() {
   container.innerHTML = html;
 }
 
-function renderAntivoto() {
-  const el = document.getElementById('antivotoList');
-  const idx = currentReportIdx;
-  const anti = rawDecryptedData.antivoto_alcalde;
-  const cands = rawDecryptedData.candidatos_alcalde.slice(0, 4);
+const firmezaLabelsPlugin = {
+  id: 'firmezaLabels',
+  afterDatasetsDraw(chart) {
+    const { ctx } = chart;
+    ctx.save();
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = '700 10px Poppins, sans-serif';
 
-  const casosFiltrados = filtrarCasos();
-
-  // Ordenar de mayor a menor rechazo
-  const items = cands.map(c => {
-    const id = getCandidateKey(c);
-    let val = anti[id] && anti[id][idx] !== null && anti[id][idx] !== undefined ? anti[id][idx] : 0;
-    if (casosFiltrados && casosFiltrados.length > 0) {
-      const matchCount = casosFiltrados.filter(item => item[7] === id).length;
-      val = (matchCount / casosFiltrados.length) * 100.0;
-    }
-    return { c, val };
-  }).sort((a, b) => b.val - a.val);
-
-  let html = '';
-  items.forEach(item => {
-    html += `
-      <div>
-        <div class="flex justify-between items-center text-xs mb-1">
-          <span class="font-bold text-slate-800">${item.c.nombre}</span>
-          <span class="font-extrabold text-rose-600">${valActualFormat(item.val)}%</span>
-        </div>
-        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden shadow-inner">
-          <div class="bg-rose-500 h-2 rounded-full transition-all duration-300" style="width: ${Math.min(100, item.val * 2.5)}%"></div>
-        </div>
-      </div>
-    `;
-  });
-  el.innerHTML = html;
-}
-
-function valActualFormat(v) {
-  return typeof v === 'number' ? v.toFixed(1) : '0.0';
-}
+    chart.data.datasets.forEach((ds, dsIdx) => {
+      const meta = chart.getDatasetMeta(dsIdx);
+      if (meta.hidden) return;
+      meta.data.forEach((bar, i) => {
+        const val = ds.data[i];
+        if (!val || val <= 0) return;
+        const height = Math.abs(bar.base - bar.y);
+        if (height < 13) return;
+        const midY = (bar.y + bar.base) / 2;
+        ctx.fillStyle = ds.labelTextColor || '#ffffff';
+        ctx.fillText(val.toFixed(1), bar.x, midY);
+      });
+    });
+    ctx.restore();
+  }
+};
 
 function renderFirmeza() {
+  const canvas = document.getElementById('firmezaChartCanvas');
+  if (!canvas || !rawDecryptedData || !rawDecryptedData.firmeza_candidatos) return;
+
   const idx = currentReportIdx;
-  const f = rawDecryptedData.firmeza_alcalde;
-  const seg = f.seguro[idx] !== null && f.seguro[idx] !== undefined ? f.seguro[idx] : 56.4;
-  const bla = f.blando[idx] !== null && f.blando[idx] !== undefined ? f.blando[idx] : 31.3;
-  const ind = f.indeciso[idx] !== null && f.indeciso[idx] !== undefined ? f.indeciso[idx] : 12.3;
+  const fc = rawDecryptedData.firmeza_candidatos;
+  const codes = ['PM', 'HB', 'JY', 'WM'];
 
-  document.getElementById('kpiSeguro').innerText = `${seg.toFixed(1)}%`;
-  document.getElementById('kpiBlando').innerText = `${bla.toFixed(1)}%`;
-  document.getElementById('kpiIndeciso').innerText = `${ind.toFixed(1)}%`;
+  const getSeries = (field) => codes.map(code => {
+    const obj = fc[code];
+    if (!obj || !obj[field]) return 0;
+    const v = obj[field][idx] !== null && obj[field][idx] !== undefined ? obj[field][idx] : obj[field][2];
+    return v !== null && v !== undefined ? Number(v.toFixed(1)) : 0;
+  });
 
-  document.getElementById('barSeguro').style.width = `${seg}%`;
-  document.getElementById('barBlando').style.width = `${bla}%`;
-  document.getElementById('barIndeciso').style.width = `${ind}%`;
+  const datasets = [
+    { label: 'Duro (vota y está seguro)', data: getSeries('duro'), backgroundColor: '#155e75', labelTextColor: '#ffffff', barPercentage: 0.56 },
+    { label: 'Blando (vota y podría cambiar)', data: getSeries('blando'), backgroundColor: '#0ea5e9', labelTextColor: '#ffffff', barPercentage: 0.56 },
+    { label: 'Posible (% segunda opción)', data: getSeries('posible'), backgroundColor: '#7dd3fc', labelTextColor: '#0f172a', barPercentage: 0.56 },
+    { label: 'Incierto (100 -1-2-3-5)', data: getSeries('incierto'), backgroundColor: '#d1d5db', labelTextColor: '#1e293b', barPercentage: 0.56 },
+    { label: 'Techo (% nunca votaría)', data: getSeries('techo'), backgroundColor: '#b91c1c', labelTextColor: '#ffffff', barPercentage: 0.56 }
+  ];
 
-  document.getElementById('txtDecididos').innerText = `${seg.toFixed(1)}%`;
-  document.getElementById('txtEnDisputa').innerText = `${(bla + ind).toFixed(1)}%`;
+  if (!firmezaChartInstance) {
+    firmezaChartInstance = new Chart(canvas.getContext('2d'), {
+      type: 'bar',
+      data: { labels: codes, datasets },
+      plugins: [firmezaLabelsPlugin],
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: { duration: 250 },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#0f172a',
+            titleFont: { family: 'Poppins', size: 11, weight: 'bold' },
+            bodyFont: { family: 'Poppins', size: 10 },
+            callbacks: {
+              title: (items) => {
+                const c = items[0]?.label;
+                return fc[c] ? `${c} · ${fc[c].nombre}` : c;
+              },
+              label: (ctx) => ` ${ctx.dataset.label}: ${Number(ctx.parsed.y).toFixed(1)}%`
+            }
+          }
+        },
+        scales: {
+          x: {
+            stacked: true,
+            grid: { display: false },
+            ticks: { font: { family: 'Poppins', size: 11, weight: '800' }, color: '#0f172a' }
+          },
+          y: {
+            stacked: true,
+            min: 0,
+            max: 100,
+            grid: { color: '#f1f5f9' },
+            ticks: { stepSize: 20, font: { family: 'Poppins', size: 9 }, callback: v => v + '%' }
+          }
+        }
+      }
+    });
+  } else {
+    firmezaChartInstance.data.datasets = datasets;
+    firmezaChartInstance.update();
+  }
 }
 
 function renderCoyunturaYCredibilidad() {

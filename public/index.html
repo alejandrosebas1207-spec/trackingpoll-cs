@@ -257,58 +257,29 @@
         </div>
       </div>
 
-      <!-- 2. FIRMEZA DE VOTO -->
-      <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between">
+      <!-- 2-3. FIRMEZA DE VOTO (DESCOMPOSICIÓN 100% POR CANDIDATO) -->
+      <div class="card-clean p-3.5 sm:p-4 rounded-xl lg:col-span-2 flex flex-col justify-between">
         <div>
-          <div class="flex justify-between items-center mb-2.5">
+          <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
             <div>
-              <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Firmeza de la Decisión</h3>
-              <p class="text-[10px] text-slate-500">Voto Duro vs. Voto Blando</p>
+              <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Firmeza de Voto</h3>
+              <p class="text-[10px] text-slate-500">Estructura del 100% del electorado por candidato</p>
             </div>
-            <span class="text-[9px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-1.5 py-0.2 rounded">
-              Volatilidad
-            </span>
-          </div>
-
-          <div class="grid grid-cols-3 gap-1.5 text-center mt-2">
-            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
-              <div class="text-[9px] font-bold text-slate-500 uppercase">Seguro</div>
-              <div class="text-base font-black text-emerald-600 mt-0.5" id="kpiSeguro">--</div>
-            </div>
-            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
-              <div class="text-[9px] font-bold text-slate-500 uppercase">Blando</div>
-              <div class="text-base font-black text-indigo-600 mt-0.5" id="kpiBlando">--</div>
-            </div>
-            <div class="bg-slate-50 p-2 rounded-lg border border-slate-200">
-              <div class="text-[9px] font-bold text-slate-500 uppercase">Indeciso</div>
-              <div class="text-base font-black text-amber-600 mt-0.5" id="kpiIndeciso">--</div>
+            <div class="flex flex-wrap items-center gap-2 text-[9px] font-semibold text-slate-600">
+              <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#155e75]"></span>Duro</span>
+              <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#0ea5e9]"></span>Blando</span>
+              <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#7dd3fc]"></span>Posible</span>
+              <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#d1d5db]"></span>Incierto</span>
+              <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#b91c1c]"></span>Techo (Nunca votaría)</span>
             </div>
           </div>
-
-          <div class="w-full bg-slate-100 rounded-full h-2.5 mt-3 flex overflow-hidden shadow-inner">
-            <div id="barSeguro" class="bg-emerald-600 h-full" style="width: 50%;"></div>
-            <div id="barBlando" class="bg-indigo-600 h-full" style="width: 30%;"></div>
-            <div id="barIndeciso" class="bg-amber-400 h-full" style="width: 20%;"></div>
+          <div class="relative h-44 sm:h-48 w-full">
+            <canvas id="firmezaChartCanvas"></canvas>
           </div>
         </div>
-        <div class="text-[10px] text-slate-500 pt-2 border-t border-slate-100 flex justify-between mt-2.5">
-          <span>Decididos: <strong id="txtDecididos">--</strong></span>
-          <span>En disputa: <strong id="txtEnDisputa">--</strong></span>
+        <div class="text-[10px] text-slate-400 pt-2 border-t border-slate-100 flex justify-between mt-2">
+          <span>Duro + Blando = Intención actual · Techo = % nunca votaría</span>
         </div>
-      </div>
-
-      <!-- 3. TASA DE RECHAZO (ANTIVOTO) -->
-      <div class="card-clean p-3.5 sm:p-4 rounded-xl">
-        <div class="flex justify-between items-center mb-2.5">
-          <div>
-            <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Rechazo / Antivoto</h3>
-            <p class="text-[10px] text-slate-500">"¿Por cuál nunca votaría?"</p>
-          </div>
-          <span class="text-[9px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-1.5 py-0.2 rounded">
-            Techo Electoral
-          </span>
-        </div>
-        <div class="space-y-2.5 mt-2" id="antivotoList"></div>
       </div>
 
       <!-- 4. COYUNTURA Y CREDIBILIDAD (TRACKING POLL OFICIAL) -->
@@ -383,6 +354,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v20"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v21"></script>
 </body>
 </html>
