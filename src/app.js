@@ -326,7 +326,6 @@ function renderActiveView() {
   renderPiramide();
   renderFirmeza();
   renderCoyunturaYCredibilidad();
-  renderApoyoPisoTecho();
   updateChartProgress();
 }
 
@@ -672,91 +671,6 @@ function renderCoyunturaYCredibilidad() {
     if (elPos) elPos.innerText = '--';
     if (elNeg) elNeg.innerText = '--';
   }
-}
-
-function renderApoyoPisoTecho() {
-  const container = document.getElementById('apoyoGrid');
-  if (!container || !rawDecryptedData || !rawDecryptedData.apoyo_candidatos) return;
-
-  const idx = currentReportIdx;
-  const apoyo = rawDecryptedData.apoyo_candidatos;
-  const orden = ['pabel', 'burbano', 'yunda', 'tonello'];
-
-  let html = '';
-  orden.forEach(key => {
-    const item = apoyo[key];
-    if (!item) return;
-
-    const defSi = item.def_si && item.def_si[idx] !== null && item.def_si[idx] !== undefined ? item.def_si[idx] : null;
-    const podria = item.podria && item.podria[idx] !== null && item.podria[idx] !== undefined ? item.podria[idx] : null;
-    const prefNo = item.pref_no && item.pref_no[idx] !== null && item.pref_no[idx] !== undefined ? item.pref_no[idx] : null;
-    const defNo = item.def_no && item.def_no[idx] !== null && item.def_no[idx] !== undefined ? item.def_no[idx] : null;
-
-    if (defSi === null) {
-      html += `
-        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 flex flex-col justify-between">
-          <div class="flex justify-between items-start mb-1.5">
-            <div>
-              <div class="text-xs font-extrabold text-slate-900">${item.nombre}</div>
-              <div class="text-[10px] text-slate-500">${item.cargo}</div>
-            </div>
-            <div class="text-right">
-              <div class="text-[11px] font-black text-slate-400 leading-none">Techo --</div>
-              <div class="text-[9px] font-semibold text-slate-400 mt-0.5">Piso --</div>
-            </div>
-          </div>
-          <div class="w-full bg-slate-200 rounded-full h-2.5 my-2"></div>
-          <div class="flex justify-between text-[10px] text-slate-400 font-semibold">
-            <span>Sí/Podría: <strong>--</strong></span>
-            <span>No votaría: <strong>--</strong></span>
-          </div>
-        </div>
-      `;
-      return;
-    }
-
-    const techo = defSi + podria;
-    const rechazo = prefNo + defNo;
-
-    html += `
-      <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 relative group hover:border-slate-300 transition-all">
-        <div class="flex justify-between items-start mb-1.5">
-          <div>
-            <div class="text-xs font-extrabold text-slate-900">${item.nombre}</div>
-            <div class="text-[10px] text-slate-500">${item.cargo}</div>
-          </div>
-          <div class="text-right">
-            <div class="text-[11px] font-black text-emerald-700 leading-none">Techo ${techo.toFixed(1)}%</div>
-            <div class="text-[9px] font-semibold text-slate-400 mt-0.5">Piso ${defSi.toFixed(1)}%</div>
-          </div>
-        </div>
-
-        <!-- Barra apilada con tooltip instantáneo al pasar el mouse -->
-        <div class="relative my-2">
-          <div class="w-full bg-slate-200 rounded-full h-2.5 flex overflow-hidden cursor-pointer">
-            <div class="bg-emerald-600 h-full" style="width: ${defSi}%"></div>
-            <div class="bg-sky-500 h-full" style="width: ${podria}%"></div>
-            <div class="bg-amber-400 h-full" style="width: ${prefNo}%"></div>
-            <div class="bg-rose-600 h-full" style="width: ${defNo}%"></div>
-          </div>
-          <div class="pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 absolute left-1/2 -translate-x-1/2 bottom-full mb-2 z-30 w-48 bg-slate-900 text-white rounded-lg p-2.5 shadow-xl text-[10px] space-y-1">
-            <div class="font-extrabold text-slate-200 border-b border-slate-700 pb-1 mb-1">${item.nombre}</div>
-            <div class="flex justify-between"><span class="text-emerald-400 font-semibold">Def. votará:</span><strong>${defSi.toFixed(1)}%</strong></div>
-            <div class="flex justify-between"><span class="text-sky-400 font-semibold">Podría votar:</span><strong>${podria.toFixed(1)}%</strong></div>
-            <div class="flex justify-between"><span class="text-amber-300 font-semibold">Pref. no votar:</span><strong>${prefNo.toFixed(1)}%</strong></div>
-            <div class="flex justify-between"><span class="text-rose-400 font-semibold">Def. no votará:</span><strong>${defNo.toFixed(1)}%</strong></div>
-          </div>
-        </div>
-
-        <div class="flex justify-between text-[10px] text-slate-600 font-semibold">
-          <span>Sí/Podría: <strong class="text-emerald-700">${techo.toFixed(1)}%</strong></span>
-          <span>No votaría: <strong class="text-rose-700">${rechazo.toFixed(1)}%</strong></span>
-        </div>
-      </div>
-    `;
-  });
-
-  container.innerHTML = html;
 }
 
 function initChart() {
