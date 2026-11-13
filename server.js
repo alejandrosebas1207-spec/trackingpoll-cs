@@ -14,6 +14,7 @@ const ADMIN_API_KEY = process.env.ADMIN_API_KEY || "CS_WARROOM_ADMIN_2026";
 const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(32).toString("hex");
 const WHATSAPP_PHONE = process.env.WHATSAPP_PHONE || "593994632469";
 const CALLMEBOT_APIKEY = process.env.CALLMEBOT_APIKEY || "";
+const GOOGLE_SHEETS_WEBHOOK_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL || "";
 
 // Registro persistente de accesos recientes (últimos 1000 eventos)
 const ACCESS_LOG_FILE = path.join(__dirname, "private", "access_logs.json");
@@ -80,6 +81,23 @@ function sendWhatsAppAlert(text) {
   });
 }
 
+async function sendToGoogleSheet(entry) {
+  if (!GOOGLE_SHEETS_WEBHOOK_URL) return;
+  try {
+    const resp = await fetch(GOOGLE_SHEETS_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(entry),
+      redirect: "follow"
+    });
+    if (!resp.ok) {
+      console.warn(`[GoogleSheet] Respuesta HTTP ${resp.status}`);
+    }
+  } catch (err) {
+    console.warn("[GoogleSheet] Error enviando registro:", err.message);
+  }
+}
+
 function registerAccessEvent(req, autorizado) {
   const fecha = new Date().toLocaleString("es-EC", {
     timeZone: "America/Guayaquil",
@@ -106,6 +124,7 @@ function registerAccessEvent(req, autorizado) {
   const icono = autorizado ? "🟢 INGRESO TRACKING QUITO" : "🔴 INTENTO FALLIDO TRACKING";
   const msg = `${icono}\nFecha: ${fecha}\nEquipo: ${device}\nIP: ${ip}`;
   sendWhatsAppAlert(msg);
+  sendToGoogleSheet(entry);
 }
 
 // Base de datos privada en memoria
@@ -334,6 +353,7 @@ app.get("/api/admin/accesos", (req, res) => {
   }
   return res.status(200).json({
     ok: true,
+    google_sheets_configurado: Boolean(GOOGLE_SHEETS_WEBHOOK_URL),
     whatsapp_configurado: Boolean(CALLMEBOT_APIKEY),
     whatsapp_destino: WHATSAPP_PHONE,
     total_registrados: accessLogs.length,
