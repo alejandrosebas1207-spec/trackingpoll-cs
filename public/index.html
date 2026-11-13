@@ -81,24 +81,27 @@
 
     <!-- CABECERA INSTITUCIONAL UNIFICADA (TOP BAR ULTRACOMPACTA EN SLATE 900) -->
     <header class="bg-slate-900 px-3.5 py-2 rounded-2xl flex flex-wrap items-center justify-between gap-2.5 shadow-md border border-slate-800 text-white">
-      <!-- Lado Izquierdo: Logo Oficial Clima Social Equipo Técnico + Título -->
+      <!-- Lado Izquierdo: Logo Oficial Clima Social Equipo Técnico + Título General y Subtítulo -->
       <div class="flex items-center gap-3">
         <img src="./assets/Logo_Equipo_Tecnico_Dark_Oficial.png" alt="Clima Social · Equipo Técnico" class="h-7 sm:h-8 w-auto object-contain">
         <div class="h-6 w-px bg-slate-700 hidden sm:block"></div>
-        <div class="flex items-center gap-2">
+        <div class="leading-tight">
           <h1 class="text-xs sm:text-sm font-extrabold text-white tracking-tight" id="heroTitle">
-            Tracking Diario · Alcaldía de Quito
+            Elecciones domingo 29 de noviembre de 2026
           </h1>
+          <div class="text-[10px] sm:text-[11px] font-semibold text-slate-300 tracking-wide" id="heroSubtitle">
+            Tracking Poll Quito
+          </div>
         </div>
       </div>
 
-      <!-- Centro: Switcher Alcaldía / Prefectura -->
+      <!-- Centro: Switcher Voto Alcalde / Voto Prefecto -->
       <div class="flex items-center gap-1 bg-slate-800 p-0.5 rounded-xl border border-slate-700">
         <button id="btnTabAlcalde" onclick="setScenario('alcalde')" class="px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all">
-          Alcaldía
+          Voto Alcalde
         </button>
         <button id="btnTabPrefecto" onclick="setScenario('prefecto')" class="px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all">
-          Prefectura
+          Voto Prefecto
         </button>
       </div>
 
@@ -125,7 +128,7 @@
         </div>
 
         <!-- 1. Circunscripción -->
-        <select id="filterCirc" onchange="onCircunscripcionChange()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+        <select id="filterCirc" onchange="onSingleFilterChange(this.id)" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
           <option value="total">Circunscripción</option>
           <option value="Urbana Norte">Urbana Norte</option>
           <option value="Urbana Centro">Urbana Centro</option>
@@ -133,34 +136,40 @@
           <option value="Rural">Rural</option>
         </select>
 
-        <!-- 2. Parroquia (en cascada) -->
-        <select id="filterParroquia" onchange="onParroquiaChange()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer max-w-[170px] truncate">
-          <option value="total">Parroquia</option>
+        <!-- 2. Sexo -->
+        <select id="filterSexo" onchange="onSingleFilterChange(this.id)" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+          <option value="total">Sexo</option>
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
         </select>
 
-        <!-- 3. Género -->
-        <select id="filterGenero" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
-          <option value="total">Género</option>
-          <option value="Hombre">Hombres</option>
-          <option value="Mujer">Mujeres</option>
-        </select>
-
-        <!-- 4. Grupo de Edad -->
-        <select id="filterEdad" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+        <!-- 3. Edad -->
+        <select id="filterEdad" onchange="onSingleFilterChange(this.id)" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
           <option value="total">Edad</option>
-          <option value="16 a 29 años">16 a 29 años</option>
+          <option value="16 a 19 años">16 a 19 años</option>
+          <option value="20 a 29 años">20 a 29 años</option>
           <option value="30 a 44 años">30 a 44 años</option>
           <option value="45 a 60 años">45 a 60 años</option>
-          <option value="61 o más años">61+ años</option>
+          <option value="61 o más años">61 o más años</option>
+        </select>
+
+        <!-- 4. Educación -->
+        <select id="filterEducacion" onchange="onSingleFilterChange(this.id)" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+          <option value="total">Educación</option>
+          <option value="Ninguno">Ninguno</option>
+          <option value="Básica, primaria">Básica, primaria</option>
+          <option value="Secundaria, bachillerato">Secundaria, bachillerato</option>
+          <option value="Superior, universitaria">Superior, universitaria</option>
+          <option value="Técnica, artesano">Técnica, artesano</option>
         </select>
 
         <!-- 5. Nivel de Ingresos -->
-        <select id="filterIngresos" onchange="renderActiveView()" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+        <select id="filterIngresos" onchange="onSingleFilterChange(this.id)" class="bg-slate-50 border border-slate-200 text-slate-800 font-bold rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
           <option value="total">Ingresos</option>
-          <option value="Bajo">Ingresos Bajos</option>
-          <option value="Medio bajo">Ingresos Medio-Bajos</option>
-          <option value="Medio">Ingresos Medios</option>
-          <option value="Medio alto o alto">Ingresos Medios-Altos / Altos</option>
+          <option value="Bajo">Bajo</option>
+          <option value="Medio bajo">Medio bajo</option>
+          <option value="Medio">Medio</option>
+          <option value="Medio alto o alto">Medio alto o alto</option>
         </select>
 
         <!-- Botón Limpiar -->
@@ -194,7 +203,7 @@
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-2.5 mb-2.5 border-b border-slate-100 gap-2">
         <div>
           <h2 class="text-xs sm:text-sm font-extrabold text-slate-900 tracking-tight" id="chartSectionTitle">
-            Evolución de Intención de Voto (Acumulado Móvil 3 Días)
+            Simulación de voto alcalde de Quito
           </h2>
         </div>
         <div class="flex flex-wrap items-center gap-3 text-xs font-bold" id="legendContainer">
@@ -374,6 +383,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v19"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v20"></script>
 </body>
 </html>

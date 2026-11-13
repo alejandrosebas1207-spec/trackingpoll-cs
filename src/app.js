@@ -152,7 +152,6 @@ function initDashboard() {
 
   setupSlider();
   initChart();
-  populateParroquiaSelect('total', 'total');
   renderActiveView();
 }
 
@@ -211,13 +210,11 @@ function setScenario(scen) {
   if (scen === 'alcalde') {
     btnA.className = 'px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all';
     btnP.className = 'px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all';
-    title.innerText = 'Tracking Diario · Alcaldía de Quito';
-    chartTitle.innerText = 'Evolución Histórica y Tracking Diario · Alcaldía de Quito';
+    if (chartTitle) chartTitle.innerText = 'Simulación de voto alcalde de Quito';
   } else {
     btnP.className = 'px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all';
     btnA.className = 'px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all';
-    title.innerText = 'Tracking Diario · Prefectura de Pichincha';
-    chartTitle.innerText = 'Evolución Histórica y Tracking Diario · Prefectura de Pichincha';
+    if (chartTitle) chartTitle.innerText = 'Simulación de voto prefecto de Pichincha';
   }
 
   updateChartDatasets();
@@ -239,122 +236,86 @@ function getCandidateKey(c) {
   return parts[parts.length - 1].normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
-// Motor de Filtros Sociodemográficos Concatenados en Cascada (Circunscripción <-> Parroquia <-> Género <-> Edad <-> Ingresos)
-function populateParroquiaSelect(circFilter, selectedParroquia = 'total') {
-  const select = document.getElementById('filterParroquia');
-  if (!select || !rawDecryptedData) return;
+// Motor de Filtro Único (1 condición a la vez: Circunscripción | Sexo | Edad | Educación | Ingresos)
+const SINGLE_FILTER_IDS = ['filterCirc', 'filterSexo', 'filterEdad', 'filterEducacion', 'filterIngresos'];
 
-  const parroquiasPorCirc = rawDecryptedData.parroquias_por_circunscripcion || {};
-  let html = '<option value="total">Parroquia</option>';
-
-  if (circFilter && circFilter !== 'total' && parroquiasPorCirc[circFilter]) {
-    parroquiasPorCirc[circFilter].forEach(p => {
-      const sel = p === selectedParroquia ? ' selected' : '';
-      html += `<option value="${p}"${sel}>${p}</option>`;
-    });
-  } else {
-    const ordenCirc = ['Urbana Norte', 'Urbana Centro', 'Urbana Sur', 'Rural'];
-    ordenCirc.forEach(circ => {
-      const parrs = parroquiasPorCirc[circ] || [];
-      if (parrs.length > 0) {
-        html += `<optgroup label="${circ}">`;
-        parrs.forEach(p => {
-          const sel = p === selectedParroquia ? ' selected' : '';
-          html += `<option value="${p}"${sel}>${p}</option>`;
-        });
-        html += `</optgroup>`;
+function onSingleFilterChange(changedId) {
+  const activeEl = document.getElementById(changedId);
+  if (activeEl && activeEl.value !== 'total') {
+    SINGLE_FILTER_IDS.forEach(id => {
+      if (id !== changedId) {
+        const el = document.getElementById(id);
+        if (el) el.value = 'total';
       }
     });
   }
-
-  select.innerHTML = html;
-  select.value = selectedParroquia;
-}
-
-function onCircunscripcionChange() {
-  const circSelect = document.getElementById('filterCirc');
-  const parrSelect = document.getElementById('filterParroquia');
-  const circ = circSelect ? circSelect.value : 'total';
-  let curParr = parrSelect ? parrSelect.value : 'total';
-
-  if (circ !== 'total' && curParr !== 'total') {
-    const map = rawDecryptedData ? (rawDecryptedData.parroquia_a_circunscripcion || {}) : {};
-    if (map[curParr] !== circ) {
-      curParr = 'total';
-    }
-  }
-
-  populateParroquiaSelect(circ, curParr);
-  renderActiveView();
-}
-
-function onParroquiaChange() {
-  const circSelect = document.getElementById('filterCirc');
-  const parrSelect = document.getElementById('filterParroquia');
-  const parr = parrSelect ? parrSelect.value : 'total';
-
-  if (parr !== 'total' && rawDecryptedData) {
-    const map = rawDecryptedData.parroquia_a_circunscripcion || {};
-    const circParr = map[parr];
-    if (circParr && circSelect && circSelect.value !== circParr) {
-      circSelect.value = circParr;
-      populateParroquiaSelect(circParr, parr);
-    }
-  }
-
+  updateChartDatasets();
   renderActiveView();
 }
 
 function getFiltrosConcatenados() {
   const circ = document.getElementById('filterCirc') ? document.getElementById('filterCirc').value : 'total';
-  const parroquia = document.getElementById('filterParroquia') ? document.getElementById('filterParroquia').value : 'total';
-  const genero = document.getElementById('filterGenero') ? document.getElementById('filterGenero').value : 'total';
+  const sexo = document.getElementById('filterSexo') ? document.getElementById('filterSexo').value : 'total';
   const edad = document.getElementById('filterEdad') ? document.getElementById('filterEdad').value : 'total';
+  const educacion = document.getElementById('filterEducacion') ? document.getElementById('filterEducacion').value : 'total';
   const ingresos = document.getElementById('filterIngresos') ? document.getElementById('filterIngresos').value : 'total';
 
-  const activos = [];
-  if (parroquia !== 'total') {
-    activos.push(parroquia);
-  } else if (circ !== 'total') {
-    activos.push(circ);
+  let etiqueta = '';
+  let keyCruzada = null;
+  let fieldIdx = -1;
+  let val = 'total';
+
+  if (circ !== 'total') {
+    etiqueta = circ;
+    keyCruzada = `Circunscripción_${circ}`;
+    fieldIdx = 0;
+    val = circ;
+  } else if (sexo !== 'total') {
+    etiqueta = `Sexo: ${sexo}`;
+    keyCruzada = `Sexo_${sexo}`;
+    fieldIdx = 2;
+    val = sexo;
+  } else if (edad !== 'total') {
+    etiqueta = edad;
+    keyCruzada = `Grupos de edad_${edad}`;
+    fieldIdx = 3;
+    val = edad;
+  } else if (educacion !== 'total') {
+    etiqueta = educacion;
+    keyCruzada = `Nivel de estudios_${educacion}`;
+    fieldIdx = 1;
+    val = educacion;
+  } else if (ingresos !== 'total') {
+    etiqueta = `Ingresos ${ingresos}`;
+    keyCruzada = `Nivel de ingresos_${ingresos}`;
+    fieldIdx = 4;
+    val = ingresos;
   }
-  if (genero !== 'total') activos.push(genero === 'Hombre' ? 'Hombres' : 'Mujeres');
-  if (edad !== 'total') activos.push(edad);
-  if (ingresos !== 'total') activos.push(`Ingresos ${ingresos}`);
 
   return {
-    hayFiltros: activos.length > 0,
-    etiqueta: activos.join(' · '),
-    circ,
-    parroquia,
-    genero,
-    edad,
-    ingresos
+    hayFiltros: keyCruzada !== null,
+    etiqueta,
+    keyCruzada,
+    fieldIdx,
+    val
   };
 }
 
 function filtrarCasos() {
   const f = getFiltrosConcatenados();
-  if (!f.hayFiltros) return null;
+  if (!f.hayFiltros || f.fieldIdx === -1) return null;
 
   const casos = rawDecryptedData.microdatos_casos || [];
-  return casos.filter(c => {
-    // c[0]: circunscripcion, c[1]: parroquia, c[2]: genero, c[3]: edad, c[4]: ingresos, c[5]: alcalde, c[6]: prefecto, c[7]: antivoto
-    if (f.parroquia !== 'total' && c[1] !== f.parroquia) return false;
-    if (f.circ !== 'total' && c[0] !== f.circ) return false;
-    if (f.genero !== 'total' && c[2] !== f.genero) return false;
-    if (f.edad !== 'total' && c[3] !== f.edad) return false;
-    if (f.ingresos !== 'total' && c[4] !== f.ingresos) return false;
-    return true;
-  });
+  // c[0]: circ, c[1]: educacion, c[2]: sexo, c[3]: edad, c[4]: ingresos, c[5]: alcalde, c[6]: prefecto, c[7]: antivoto
+  return casos.filter(c => c[f.fieldIdx] === f.val);
 }
 
 function resetFilters() {
-  if (document.getElementById('filterCirc')) document.getElementById('filterCirc').value = 'total';
-  populateParroquiaSelect('total', 'total');
-  if (document.getElementById('filterGenero')) document.getElementById('filterGenero').value = 'total';
-  if (document.getElementById('filterEdad')) document.getElementById('filterEdad').value = 'total';
-  if (document.getElementById('filterIngresos')) document.getElementById('filterIngresos').value = 'total';
+  SINGLE_FILTER_IDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = 'total';
+  });
+  updateChartDatasets();
   renderActiveView();
 }
 
@@ -440,11 +401,16 @@ function renderCandidateCards() {
     let valActual = series[idx] !== null && series[idx] !== undefined ? series[idx] : 0;
     let valPrev = idx > 0 && series[idx - 1] !== null && series[idx - 1] !== undefined ? series[idx - 1] : valActual;
 
-    // Si hay filtros concatenados activos, calcular distribución real de la muestra concatenada
-    if (casosFiltrados && casosFiltrados.length > 0) {
-      const colIdx = isAlcalde ? 5 : 6;
-      const matchCount = casosFiltrados.filter(item => item[colIdx] === id).length;
-      valActual = (matchCount / casosFiltrados.length) * 100.0;
+    // Si hay filtro único activo, usar tabla cruzada ponderada oficial (con fallback a microdatos)
+    if (f.hayFiltros && f.keyCruzada) {
+      const cruzDict = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
+      if (cruzDict && cruzDict[f.keyCruzada] && cruzDict[f.keyCruzada][id] !== undefined) {
+        valActual = cruzDict[f.keyCruzada][id];
+      } else if (casosFiltrados && casosFiltrados.length > 0) {
+        const colIdx = isAlcalde ? 5 : 6;
+        const matchCount = casosFiltrados.filter(item => item[colIdx] === id).length;
+        valActual = (matchCount / casosFiltrados.length) * 100.0;
+      }
     }
 
     const delta = valActual - valPrev;
@@ -520,16 +486,16 @@ function renderPiramide() {
   if (tagM) tagM.innerText = `♀ ${pctMujeres}%`;
 
   const cohortes = [
-    { id: '16 a 29 años', label: '16-29' },
-    { id: '30 a 44 años', label: '30-44' },
-    { id: '45 a 60 años', label: '45-60' },
-    { id: '61 o más años', label: '61+' }
+    { ids: ['16 a 19 años', '20 a 29 años', '16 a 29 años'], label: '16-29' },
+    { ids: ['30 a 44 años'], label: '30-44' },
+    { ids: ['45 a 60 años'], label: '45-60' },
+    { ids: ['61 o más años'], label: '61+' }
   ];
 
   let maxPct = 0;
   cohortes.forEach(co => {
-    const nH = casos.filter(c => c[2] === 'Hombre' && c[3] === co.id).length;
-    const nM = casos.filter(c => c[2] === 'Mujer' && c[3] === co.id).length;
+    const nH = casos.filter(c => c[2] === 'Hombre' && co.ids.includes(c[3])).length;
+    const nM = casos.filter(c => c[2] === 'Mujer' && co.ids.includes(c[3])).length;
     const hPct = (nH / total) * 100;
     const mPct = (nM / total) * 100;
     if (hPct > maxPct) maxPct = hPct;
@@ -539,8 +505,8 @@ function renderPiramide() {
 
   let html = '';
   cohortes.forEach(co => {
-    const nH = casos.filter(c => c[2] === 'Hombre' && c[3] === co.id).length;
-    const nM = casos.filter(c => c[2] === 'Mujer' && c[3] === co.id).length;
+    const nH = casos.filter(c => c[2] === 'Hombre' && co.ids.includes(c[3])).length;
+    const nM = casos.filter(c => c[2] === 'Mujer' && co.ids.includes(c[3])).length;
     const pctH = ((nH / total) * 100).toFixed(1);
     const pctM = ((nM / total) * 100).toFixed(1);
 
@@ -548,7 +514,7 @@ function renderPiramide() {
     const barW_M = Math.min(100, Math.max(nM > 0 ? 6 : 0, (nM / total / (maxPct / 100)) * 100));
 
     html += `
-      <div class="grid grid-cols-12 items-center text-[10px] font-semibold h-5 gap-1" title="${co.id}: ${nH} hombres (${pctH}%), ${nM} mujeres (${pctM}%)">
+      <div class="grid grid-cols-12 items-center text-[10px] font-semibold h-5 gap-1" title="${co.label} años: ${nH} hombres (${pctH}%), ${nM} mujeres (${pctM}%)">
         <div class="col-span-3 text-right truncate">
           ${nH > 0 ? `<span class="text-sky-700 font-bold">${nH}</span> <span class="text-[9px] text-slate-400">(${pctH}%)</span>` : '<span class="text-slate-300">-</span>'}
         </div>
@@ -800,7 +766,7 @@ function initChart() {
       scales: {
         y: {
           min: 0,
-          max: 45,
+          suggestedMax: 45,
           grid: { color: '#f1f5f9' },
           ticks: {
             font: { family: 'Poppins', size: 11 },
@@ -821,32 +787,81 @@ function initChart() {
   updateChartDatasets();
 }
 
+function getChartLinesConfig() {
+  if (currentScenario === 'alcalde') {
+    return [
+      { id: 'pabel', label: 'Voto PM', color: '#0284c7', dashed: false },
+      { id: 'burbano', label: 'HB', color: '#7c3aed', dashed: false },
+      { id: 'yunda', label: 'JY', color: '#ea580c', dashed: false },
+      { id: 'merino', label: 'WM', color: '#10b981', dashed: false },
+      { id: 'otros', label: 'Resto', color: '#64748b', dashed: true },
+      { id: 'nulo_blanco', label: 'Nulo-Blanco', color: '#94a3b8', dashed: true },
+      { id: 'indecisos', label: 'Indeciso', color: '#f59e0b', dashed: true }
+    ];
+  }
+  return [
+    { id: 'tonello', label: 'Alexandro Tonello', color: '#0284c7', dashed: false },
+    { id: 'ubidia', label: 'Giovanna Ubidia', color: '#7c3aed', dashed: false },
+    { id: 'zapata', label: 'Juan Zapata', color: '#ea580c', dashed: false },
+    { id: 'cevallos', label: 'Carla Cevallos', color: '#10b981', dashed: false },
+    { id: 'otros', label: 'Resto', color: '#64748b', dashed: true },
+    { id: 'nulo_blanco', label: 'Nulo-Blanco', color: '#94a3b8', dashed: true },
+    { id: 'indecisos', label: 'Indeciso', color: '#f59e0b', dashed: true }
+  ];
+}
+
+function getLineSeriesForChart(lineId) {
+  const isAlcalde = currentScenario === 'alcalde';
+  const fechas = rawDecryptedData.fechas_reportes || [];
+  const f = getFiltrosConcatenados();
+
+  if (f.hayFiltros && f.keyCruzada) {
+    const cruzDict = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
+    const segObj = cruzDict ? cruzDict[f.keyCruzada] : null;
+    return fechas.map((_, i) => {
+      if (i === 2 && segObj && segObj[lineId] !== undefined) return segObj[lineId];
+      return null;
+    });
+  }
+
+  const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+  if (!isAlcalde && lineId === 'otros') {
+    const baseOtros = seriesDict['otros'] || [];
+    const churu = seriesDict['churuchumbi'] || [];
+    return fechas.map((_, i) => {
+      if (baseOtros[i] === null || baseOtros[i] === undefined) return null;
+      const extra = churu[i] !== null && churu[i] !== undefined ? churu[i] : 0;
+      return Number((baseOtros[i] + extra).toFixed(1));
+    });
+  }
+  return seriesDict[lineId] || [];
+}
+
 function updateChartDatasets() {
   if (!chartInstance || !rawDecryptedData) return;
-  const isAlcalde = currentScenario === 'alcalde';
-  const candList = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 4) : rawDecryptedData.candidatos_prefecto.slice(0, 4);
-  const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+  const lines = getChartLinesConfig();
+  const fechas = rawDecryptedData.fechas_reportes || [];
 
-  chartInstance.data.datasets = candList.map(c => {
-    const id = getCandidateKey(c);
-    const fullSeries = seriesDict[id] || [];
+  chartInstance.data.datasets = lines.map(line => {
+    const fullSeries = getLineSeriesForChart(line.id);
 
     return {
-      label: c.nombre,
-      borderColor: c.color,
-      backgroundColor: c.color + '15',
-      borderWidth: 3,
+      label: line.label,
+      borderColor: line.color,
+      backgroundColor: line.color + '15',
+      borderWidth: line.dashed ? 2 : 3,
+      borderDash: line.dashed ? [5, 4] : [],
       tension: 0.25,
       fill: false,
       spanGaps: false,
-      pointBackgroundColor: c.color,
+      pointBackgroundColor: line.color,
       pointBorderColor: '#ffffff',
       pointBorderWidth: 2,
-      pointRadius: rawDecryptedData.fechas_reportes.map((_, i) => {
-        if (i > currentReportIdx || fullSeries[i] === null) return 0;
+      pointRadius: fechas.map((_, i) => {
+        if (i > currentReportIdx || fullSeries[i] === null || fullSeries[i] === undefined) return 0;
         return i === currentReportIdx ? 7 : 4;
       }),
-      data: rawDecryptedData.fechas_reportes.map((_, i) => (i <= currentReportIdx ? fullSeries[i] : null))
+      data: fechas.map((_, i) => (i <= currentReportIdx ? fullSeries[i] : null))
     };
   });
 
@@ -855,18 +870,17 @@ function updateChartDatasets() {
 
 function updateChartProgress() {
   if (!chartInstance || !rawDecryptedData) return;
-  const isAlcalde = currentScenario === 'alcalde';
-  const candList = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 4) : rawDecryptedData.candidatos_prefecto.slice(0, 4);
-  const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+  const lines = getChartLinesConfig();
+  const fechas = rawDecryptedData.fechas_reportes || [];
 
-  chartInstance.data.datasets.forEach((ds, idxCand) => {
-    const c = candList[idxCand];
-    const id = getCandidateKey(c);
-    const fullSeries = seriesDict[id] || [];
+  chartInstance.data.datasets.forEach((ds, idxLine) => {
+    const line = lines[idxLine];
+    if (!line) return;
+    const fullSeries = getLineSeriesForChart(line.id);
 
-    ds.data = rawDecryptedData.fechas_reportes.map((_, i) => (i <= currentReportIdx ? fullSeries[i] : null));
-    ds.pointRadius = rawDecryptedData.fechas_reportes.map((_, i) => {
-      if (i > currentReportIdx || fullSeries[i] === null) return 0;
+    ds.data = fechas.map((_, i) => (i <= currentReportIdx ? fullSeries[i] : null));
+    ds.pointRadius = fechas.map((_, i) => {
+      if (i > currentReportIdx || fullSeries[i] === null || fullSeries[i] === undefined) return 0;
       return i === currentReportIdx ? 7 : 4;
     });
   });
@@ -875,8 +889,7 @@ function updateChartProgress() {
 }
 
 // Exportar controladores al scope global
-window.onCircunscripcionChange = onCircunscripcionChange;
-window.onParroquiaChange = onParroquiaChange;
+window.onSingleFilterChange = onSingleFilterChange;
 window.resetFilters = resetFilters;
 window.renderActiveView = renderActiveView;
 window.setScenario = setScenario;
