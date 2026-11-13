@@ -102,21 +102,33 @@ async function lookupIpLocation(ip) {
   if (!ip || ip === "Desconocida" || ip.startsWith("127.") || ip.startsWith("10.") || ip.startsWith("192.168.") || ip === "::1") {
     return "";
   }
-  try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 2500);
-    const resp = await fetch(`https://ipwho.is/${encodeURIComponent(ip)}`, { signal: controller.signal });
-    clearTimeout(timer);
-    if (!resp.ok) return "";
-    const d = await resp.json();
-    if (!d || !d.success) return "";
-    const lugar = [d.city, d.country].filter(Boolean).join(", ");
-    const isp = d.connection && d.connection.isp ? d.connection.isp : "";
-    if (lugar && isp) return `${lugar} (${isp})`;
-    return lugar || isp || "";
-  } catch {
-    return "";
+  const sources = [
+    async () => {
+      const resp = await fetch(`http://ip-api.com/json/${encodeURIComponent(ip)}?fields=status,country,city,isp`, { signal: AbortSignal.timeout(3000) });
+      if (!resp.ok) return "";
+      const d = await resp.json();
+      if (!d || d.status !== "success") return "";
+      const lugar = [d.city, d.country].filter(Boolean).join(", ");
+      return d.isp ? `${lugar} (${d.isp})` : lugar;
+    },
+    async () => {
+      const resp = await fetch(`https://ipwho.is/${encodeURIComponent(ip)}`, { signal: AbortSignal.timeout(3000) });
+      if (!resp.ok) return "";
+      const d = await resp.json();
+      if (!d || !d.success) return "";
+      const lugar = [d.city, d.country].filter(Boolean).join(", ");
+      const isp = d.connection && d.connection.isp ? d.connection.isp : "";
+      return isp ? `${lugar} (${isp})` : lugar;
+    }
+  ];
+
+  for (const fn of sources) {
+    try {
+      const res = await fn();
+      if (res) return res;
+    } catch {}
   }
+  return "";
 }
 
 async function registerAccessEvent(req, autorizado) {
