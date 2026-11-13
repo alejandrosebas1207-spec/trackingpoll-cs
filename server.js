@@ -1,6 +1,7 @@
 const path = require("path");
 const fs = require("fs");
 const crypto = require("crypto");
+const https = require("https");
 const express = require("express");
 const compression = require("compression");
 
@@ -11,6 +12,77 @@ const PORT = process.env.PORT || 3000;
 const WARROOM_PIN = process.env.WARROOM_PIN || "CSWR2026";
 const ADMIN_API_KEY = process.env.ADMIN_API_KEY || "CS_WARROOM_ADMIN_2026";
 const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(32).toString("hex");
+const WHATSAPP_PHONE = process.env.WHATSAPP_PHONE || "593994632469";
+const CALLMEBOT_APIKEY = process.env.CALLMEBOT_APIKEY || "";
+
+// Registro en memoria de accesos recientes (últimos 200 eventos)
+const accessLogs = [];
+
+function getClientIp(req) {
+  const xff = req.headers["x-forwarded-for"];
+  if (xff && typeof xff === "string") {
+    return xff.split(",")[0].trim();
+  }
+  return req.socket?.remoteAddress || "Desconocida";
+}
+
+function parseDevice(ua = "") {
+  let os = "Otro SO";
+  if (/iPhone/i.test(ua)) os = "iPhone";
+  else if (/iPad/i.test(ua)) os = "iPad";
+  else if (/Android/i.test(ua)) os = "Android";
+  else if (/Windows/i.test(ua)) os = "Windows";
+  else if (/Macintosh|Mac OS/i.test(ua)) os = "Mac";
+  else if (/Linux/i.test(ua)) os = "Linux";
+
+  let browser = "Navegador";
+  if (/Edg\//i.test(ua)) browser = "Edge";
+  else if (/OPR\//i.test(ua) || /Opera/i.test(ua)) browser = "Opera";
+  else if (/Chrome\//i.test(ua) && !/Edg\//i.test(ua)) browser = "Chrome";
+  else if (/Safari\//i.test(ua) && !/Chrome\//i.test(ua)) browser = "Safari";
+  else if (/Firefox\//i.test(ua)) browser = "Firefox";
+
+  return `${os} / ${browser}`;
+}
+
+function sendWhatsAppAlert(text) {
+  if (!CALLMEBOT_APIKEY) return;
+  const url = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(WHATSAPP_PHONE)}&text=${encodeURIComponent(text)}&apikey=${encodeURIComponent(CALLMEBOT_APIKEY)}`;
+  https.get(url, (res) => {
+    res.resume();
+    if (res.statusCode !== 200) {
+      console.warn(`[WhatsApp] CallMeBot respondió HTTP ${res.statusCode}`);
+    }
+  }).on("error", (err) => {
+    console.warn("[WhatsApp] Error enviando alerta:", err.message);
+  });
+}
+
+function registerAccessEvent(req, autorizado) {
+  const fecha = new Date().toLocaleString("es-EC", {
+    timeZone: "America/Guayaquil",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  });
+  const ip = getClientIp(req);
+  const device = parseDevice(req.headers["user-agent"] || "");
+  const estado = autorizado ? "AUTORIZADO" : "INTENTO FALLIDO";
+
+  const entry = { fecha, estado, ip, device };
+  accessLogs.unshift(entry);
+  if (accessLogs.length > 200) accessLogs.pop();
+
+  console.log(`[Acceso] ${estado} | ${fecha} | ${device} | IP: ${ip}`);
+
+  const icono = autorizado ? "🟢 INGRESO TRACKING QUITO" : "🔴 INTENTO FALLIDO TRACKING";
+  const msg = `${icono}\nFecha: ${fecha}\nEquipo: ${device}\nIP: ${ip}`;
+  sendWhatsAppAlert(msg);
+}
 
 // Base de datos privada en memoria
 const DATA_FILE = path.join(__dirname, "private", "tracking_data.json");
@@ -87,6 +159,7 @@ app.post("/api/auth/verify", (req, res) => {
   const validPins = [WARROOM_PIN, "CSWR2026"];
 
   if (validPins.includes(cleanPin)) {
+    registerAccessEvent(req, true);
     const token = generateSessionToken();
     return res.status(200).json({
       ok: true,
@@ -94,6 +167,8 @@ app.post("/api/auth/verify", (req, res) => {
       message: "Acceso autorizado al Cuarto de Guerra."
     });
   }
+
+  registerAccessEvent(req, false);
 
   // Retardo deliberado de 400ms para mitigar ataques de fuerza bruta
   setTimeout(() => {
@@ -225,6 +300,21 @@ app.post("/api/admin/actualizar-corte", (req, res) => {
     console.error("[Admin Save Error]", err.message);
     return res.status(500).json({ ok: false, error: "Error al persistir en disco." });
   }
+});
+
+// 3B. ENDPOINT ADMINISTRATIVO PARA CONSULTAR REGISTRO DE ACCESOS
+app.get("/api/admin/accesos", (req, res) => {
+  const adminKey = req.headers["x-admin-key"] || req.query.adminKey;
+  if (adminKey !== ADMIN_API_KEY) {
+    return res.status(403).json({ ok: false, error: "Clave administrativa no autorizada." });
+  }
+  return res.status(200).json({
+    ok: true,
+    whatsapp_configurado: Boolean(CALLMEBOT_APIKEY),
+    whatsapp_destino: WHATSAPP_PHONE,
+    total_registrados: accessLogs.length,
+    accesos: accessLogs
+  });
 });
 
 // 4. SERVIR ARCHIVOS ESTÁTICOS PÚBLICOS (HTML Y ASSETS MINIFICADOS) CON ZERO-CACHE
