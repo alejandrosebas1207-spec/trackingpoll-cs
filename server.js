@@ -15,8 +15,30 @@ const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(32).toSt
 const WHATSAPP_PHONE = process.env.WHATSAPP_PHONE || "593994632469";
 const CALLMEBOT_APIKEY = process.env.CALLMEBOT_APIKEY || "";
 
-// Registro en memoria de accesos recientes (últimos 200 eventos)
-const accessLogs = [];
+// Registro persistente de accesos recientes (últimos 1000 eventos)
+const ACCESS_LOG_FILE = path.join(__dirname, "private", "access_logs.json");
+let accessLogs = [];
+
+function loadAccessLogs() {
+  try {
+    if (fs.existsSync(ACCESS_LOG_FILE)) {
+      const raw = fs.readFileSync(ACCESS_LOG_FILE, "utf-8");
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) accessLogs = parsed;
+    }
+  } catch (err) {
+    console.warn("[Acceso] Error leyendo access_logs.json:", err.message);
+  }
+}
+loadAccessLogs();
+
+function saveAccessLogs() {
+  try {
+    fs.writeFileSync(ACCESS_LOG_FILE, JSON.stringify(accessLogs, null, 2), "utf-8");
+  } catch (err) {
+    console.warn("[Acceso] Error guardando access_logs.json:", err.message);
+  }
+}
 
 function getClientIp(req) {
   const xff = req.headers["x-forwarded-for"];
@@ -70,12 +92,14 @@ function registerAccessEvent(req, autorizado) {
     hour12: false
   });
   const ip = getClientIp(req);
-  const device = parseDevice(req.headers["user-agent"] || "");
+  const rawUa = (req.headers["user-agent"] || "").slice(0, 180);
+  const device = parseDevice(rawUa);
   const estado = autorizado ? "AUTORIZADO" : "INTENTO FALLIDO";
 
-  const entry = { fecha, estado, ip, device };
+  const entry = { fecha, estado, ip, device, userAgent: rawUa };
   accessLogs.unshift(entry);
-  if (accessLogs.length > 200) accessLogs.pop();
+  if (accessLogs.length > 1000) accessLogs.pop();
+  saveAccessLogs();
 
   console.log(`[Acceso] ${estado} | ${fecha} | ${device} | IP: ${ip}`);
 
