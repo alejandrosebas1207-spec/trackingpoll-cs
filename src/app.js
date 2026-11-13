@@ -570,6 +570,7 @@ function renderFirmeza() {
   const idx = currentReportIdx;
   const fc = rawDecryptedData.firmeza_candidatos;
   const codes = ['PM', 'HB', 'JY', 'WM'];
+  const labels = codes.map(code => (fc[code] && fc[code].nombre) ? fc[code].nombre : code);
 
   const getSeries = (field) => codes.map(code => {
     const obj = fc[code];
@@ -589,7 +590,7 @@ function renderFirmeza() {
   if (!firmezaChartInstance) {
     firmezaChartInstance = new Chart(canvas.getContext('2d'), {
       type: 'bar',
-      data: { labels: codes, datasets },
+      data: { labels, datasets },
       plugins: [firmezaLabelsPlugin],
       options: {
         responsive: true,
@@ -602,10 +603,7 @@ function renderFirmeza() {
             titleFont: { family: 'Poppins', size: 11, weight: 'bold' },
             bodyFont: { family: 'Poppins', size: 10 },
             callbacks: {
-              title: (items) => {
-                const c = items[0]?.label;
-                return fc[c] ? `${c} · ${fc[c].nombre}` : c;
-              },
+              title: (items) => items[0]?.label || '',
               label: (ctx) => ` ${ctx.dataset.label}: ${Number(ctx.parsed.y).toFixed(1)}%`
             }
           }
@@ -826,10 +824,10 @@ function initChart() {
 function getChartLinesConfig() {
   if (currentScenario === 'alcalde') {
     return [
-      { id: 'pabel', label: 'Voto PM', color: '#0284c7', dashed: false },
-      { id: 'burbano', label: 'HB', color: '#7c3aed', dashed: false },
-      { id: 'yunda', label: 'JY', color: '#ea580c', dashed: false },
-      { id: 'merino', label: 'WM', color: '#10b981', dashed: false },
+      { id: 'pabel', label: 'Pabel Muñoz', color: '#0284c7', dashed: false },
+      { id: 'burbano', label: 'Harold Burbano', color: '#7c3aed', dashed: false },
+      { id: 'yunda', label: 'Jorge Yunda', color: '#ea580c', dashed: false },
+      { id: 'merino', label: 'Wilson Merino', color: '#10b981', dashed: false },
       { id: 'otros', label: 'Resto', color: '#64748b', dashed: true },
       { id: 'nulo_blanco', label: 'Nulo-Blanco', color: '#94a3b8', dashed: true },
       { id: 'indecisos', label: 'Indeciso', color: '#f59e0b', dashed: true }
