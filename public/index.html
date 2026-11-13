@@ -302,55 +302,78 @@
         <div class="space-y-2.5 mt-2" id="antivotoList"></div>
       </div>
 
-      <!-- 4. EVALUACIÓN DE GESTIÓN (PABEL Y NOBOA) -->
+      <!-- 4. COYUNTURA Y CREDIBILIDAD (TRACKING POLL OFICIAL) -->
       <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between">
         <div>
           <div class="flex justify-between items-center mb-2.5">
             <div>
-              <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Evaluación de Gestión</h3>
-              <p class="text-[10px] text-slate-500">Aprobación y Saldo Neto</p>
+              <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Coyuntura y Credibilidad</h3>
+              <p class="text-[10px] text-slate-500">Denuncias Municipio · Noboa</p>
             </div>
             <span class="text-[9px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-1.5 py-0.2 rounded">
-              Contexto Político
+              Tracking Nov
             </span>
           </div>
 
           <div class="space-y-2 mt-1.5">
-            <!-- Pabel Muñoz -->
+            <!-- Denuncias de Corrupción (Pabel Muñoz) -->
             <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-              <div class="flex justify-between items-center text-xs font-bold mb-0.5">
-                <span class="text-slate-800">Alcalde Pabel Muñoz</span>
-                <span class="text-emerald-700 font-extrabold text-xs" id="pabelSaldo">Saldo +17.0%</span>
+              <div class="flex justify-between items-center text-[11px] font-bold mb-1">
+                <span class="text-slate-800">Denuncias Municipio</span>
+                <span class="text-slate-600 font-extrabold text-[10px]" id="coyConoce">Conoce 70.1%</span>
+              </div>
+              <div class="w-full bg-slate-200 rounded-full h-2 flex overflow-hidden mb-1">
+                <div id="barEvidencia" class="bg-rose-600 h-full" style="width: 52.2%;"></div>
+                <div id="barCampana" class="bg-indigo-600 h-full" style="width: 34.3%;"></div>
               </div>
               <div class="flex justify-between text-[10px] text-slate-500">
-                <span>Positiva: <strong id="pabelPos" class="text-slate-800">56.4%</strong></span>
-                <span>Negativa: <strong id="pabelNeg" class="text-slate-800">39.4%</strong></span>
+                <span>Evidencia: <strong id="txtEvidencia" class="text-rose-700">52.2%</strong></span>
+                <span>Campaña: <strong id="txtCampana" class="text-indigo-700">34.3%</strong></span>
               </div>
             </div>
 
-            <!-- Daniel Noboa -->
+            <!-- Credibilidad Daniel Noboa -->
             <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-              <div class="flex justify-between items-center text-xs font-bold mb-0.5">
-                <span class="text-slate-800">Presidente Daniel Noboa</span>
-                <span class="text-rose-700 font-extrabold text-xs" id="noboaSaldo">Saldo -11.4%</span>
+              <div class="flex justify-between items-center text-[11px] font-bold mb-0.5">
+                <span class="text-slate-800">¿Le cree a Daniel Noboa?</span>
+                <span class="text-[9px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.2 rounded" id="noboaCredBadge">Inicia 14 Nov</span>
               </div>
-              <div class="flex justify-between text-[10px] text-slate-500">
-                <span>Positiva: <strong id="noboaPos" class="text-slate-800">42.5%</strong></span>
-                <span>Negativa: <strong id="noboaNeg" class="text-slate-800">53.9%</strong></span>
+              <div class="flex justify-between text-[10px] text-slate-500 mt-1" id="noboaCredDetalle">
+                <span>Mucho/Algo: <strong id="noboaCreePos" class="text-slate-800">--</strong></span>
+                <span>Poco/Nada: <strong id="noboaCreeNeg" class="text-slate-800">--</strong></span>
               </div>
             </div>
           </div>
         </div>
         <div class="text-[10px] text-slate-400 pt-2 border-t border-slate-100 flex justify-between mt-2.5">
-          <span>Escala: Muy bien / Bien vs. Mal / Muy mal</span>
+          <span>* Postura sobre quienes sí conocen</span>
         </div>
       </div>
 
     </div>
 
+    <!-- BLOQUE APOYO: PISO Y TECHO ELECTORAL (ALCALDÍA Y PREFECTURA) -->
+    <div class="card-clean p-3.5 sm:p-4 rounded-xl">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 mb-3 border-b border-slate-100">
+        <div>
+          <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Bloque Apoyo · Piso y Techo Electoral</h3>
+          <p class="text-[10px] text-slate-500">Disposición de voto declarada por candidatura (orden aleatorio en campo)</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 text-[10px] font-semibold text-slate-600">
+          <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-sm bg-emerald-600"></span>Def. votará (Piso)</span>
+          <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-sm bg-sky-500"></span>Podría votar</span>
+          <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-sm bg-amber-400"></span>Pref. no votar</span>
+          <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-sm bg-rose-600"></span>Def. no votará</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3" id="apoyoGrid">
+        <!-- Se inyecta dinámicamente -->
+      </div>
+    </div>
+
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v17"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v18"></script>
 </body>
 </html>

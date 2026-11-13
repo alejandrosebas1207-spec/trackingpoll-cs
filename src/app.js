@@ -364,7 +364,8 @@ function renderActiveView() {
   renderPiramide();
   renderAntivoto();
   renderFirmeza();
-  renderGestion();
+  renderCoyunturaYCredibilidad();
+  renderApoyoPisoTecho();
   updateChartProgress();
 }
 
@@ -629,26 +630,115 @@ function renderFirmeza() {
   document.getElementById('txtEnDisputa').innerText = `${(bla + ind).toFixed(1)}%`;
 }
 
-function renderGestion() {
+function renderCoyunturaYCredibilidad() {
   const idx = currentReportIdx;
-  const p = rawDecryptedData.gestion_pabel;
-  const n = rawDecryptedData.gestion_noboa;
+  const coy = rawDecryptedData.coyuntura_corrupcion || {};
+  const cred = rawDecryptedData.credibilidad_noboa || {};
 
-  const pSaldo = p.saldo[idx] !== null && p.saldo[idx] !== undefined ? p.saldo[idx] : 14.8;
-  const pPos = p.positiva[idx] !== null && p.positiva[idx] !== undefined ? p.positiva[idx] : 55.7;
-  const pNeg = p.negativa[idx] !== null && p.negativa[idx] !== undefined ? p.negativa[idx] : 40.9;
+  const conoceSi = coy.conoce_si && coy.conoce_si[idx] !== null && coy.conoce_si[idx] !== undefined ? coy.conoce_si[idx] : 70.1;
+  const evidencia = coy.evidencia && coy.evidencia[idx] !== null && coy.evidencia[idx] !== undefined ? coy.evidencia[idx] : 52.2;
+  const campana = coy.campana && coy.campana[idx] !== null && coy.campana[idx] !== undefined ? coy.campana[idx] : 34.3;
 
-  const nSaldo = n.saldo[idx] !== null && n.saldo[idx] !== undefined ? n.saldo[idx] : -35.7;
-  const nPos = n.positiva[idx] !== null && n.positiva[idx] !== undefined ? n.positiva[idx] : 31.2;
-  const nNeg = n.negativa[idx] !== null && n.negativa[idx] !== undefined ? n.negativa[idx] : 66.9;
+  const elConoce = document.getElementById('coyConoce');
+  const elEv = document.getElementById('txtEvidencia');
+  const elCam = document.getElementById('txtCampana');
+  const barEv = document.getElementById('barEvidencia');
+  const barCam = document.getElementById('barCampana');
 
-  document.getElementById('pabelSaldo').innerText = `Saldo ${pSaldo > 0 ? '+' : ''}${pSaldo.toFixed(1)}%`;
-  document.getElementById('pabelPos').innerText = `${pPos.toFixed(1)}%`;
-  document.getElementById('pabelNeg').innerText = `${pNeg.toFixed(1)}%`;
+  if (elConoce) elConoce.innerText = `Conoce ${conoceSi.toFixed(1)}%`;
+  if (elEv) elEv.innerText = `${evidencia.toFixed(1)}%`;
+  if (elCam) elCam.innerText = `${campana.toFixed(1)}%`;
+  if (barEv) barEv.style.width = `${evidencia}%`;
+  if (barCam) barCam.style.width = `${campana}%`;
 
-  document.getElementById('noboaSaldo').innerText = `Saldo ${nSaldo > 0 ? '+' : ''}${nSaldo.toFixed(1)}%`;
-  document.getElementById('noboaPos').innerText = `${nPos.toFixed(1)}%`;
-  document.getElementById('noboaNeg').innerText = `${nNeg.toFixed(1)}%`;
+  const creePos = cred.cree_pos && cred.cree_pos[idx] !== null && cred.cree_pos[idx] !== undefined ? cred.cree_pos[idx] : null;
+  const creeNeg = cred.cree_neg && cred.cree_neg[idx] !== null && cred.cree_neg[idx] !== undefined ? cred.cree_neg[idx] : null;
+  const badge = document.getElementById('noboaCredBadge');
+  const elPos = document.getElementById('noboaCreePos');
+  const elNeg = document.getElementById('noboaCreeNeg');
+
+  if (creePos !== null && creeNeg !== null) {
+    if (badge) {
+      badge.innerText = `Saldo ${(creePos - creeNeg) > 0 ? '+' : ''}${(creePos - creeNeg).toFixed(1)}%`;
+      badge.className = 'text-[9px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-1.5 py-0.2 rounded';
+    }
+    if (elPos) elPos.innerText = `${creePos.toFixed(1)}%`;
+    if (elNeg) elNeg.innerText = `${creeNeg.toFixed(1)}%`;
+  } else {
+    if (badge) {
+      badge.innerText = 'Inicia 14 Nov';
+      badge.className = 'text-[9px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.2 rounded';
+    }
+    if (elPos) elPos.innerText = '--';
+    if (elNeg) elNeg.innerText = '--';
+  }
+}
+
+function renderApoyoPisoTecho() {
+  const container = document.getElementById('apoyoGrid');
+  if (!container || !rawDecryptedData || !rawDecryptedData.apoyo_candidatos) return;
+
+  const idx = currentReportIdx;
+  const apoyo = rawDecryptedData.apoyo_candidatos;
+  const orden = ['pabel', 'burbano', 'yunda', 'tonello'];
+
+  let html = '';
+  orden.forEach(key => {
+    const item = apoyo[key];
+    if (!item) return;
+
+    const defSi = item.def_si && item.def_si[idx] !== null && item.def_si[idx] !== undefined ? item.def_si[idx] : null;
+    const podria = item.podria && item.podria[idx] !== null && item.podria[idx] !== undefined ? item.podria[idx] : null;
+    const prefNo = item.pref_no && item.pref_no[idx] !== null && item.pref_no[idx] !== undefined ? item.pref_no[idx] : null;
+    const defNo = item.def_no && item.def_no[idx] !== null && item.def_no[idx] !== undefined ? item.def_no[idx] : null;
+
+    if (defSi === null) {
+      html += `
+        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 flex flex-col justify-between">
+          <div class="flex justify-between items-center mb-1.5">
+            <div>
+              <div class="text-xs font-extrabold text-slate-900">${item.nombre}</div>
+              <div class="text-[10px] text-slate-500">${item.cargo}</div>
+            </div>
+            <span class="text-[9px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.2 rounded">Inicia 14 Nov</span>
+          </div>
+          <div class="w-full bg-slate-200 rounded-full h-2.5 my-2"></div>
+          <div class="text-[10px] text-slate-400">En espera de nuevos datos diarios</div>
+        </div>
+      `;
+      return;
+    }
+
+    const techo = defSi + podria;
+    const rechazo = prefNo + defNo;
+
+    html += `
+      <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+        <div class="flex justify-between items-start mb-1.5">
+          <div>
+            <div class="text-xs font-extrabold text-slate-900">${item.nombre}</div>
+            <div class="text-[10px] text-slate-500">${item.cargo}</div>
+          </div>
+          <div class="text-right">
+            <div class="text-[11px] font-black text-emerald-700 leading-none">Techo ${techo.toFixed(1)}%</div>
+            <div class="text-[9px] font-semibold text-slate-400 mt-0.5">Piso ${defSi.toFixed(1)}%</div>
+          </div>
+        </div>
+        <div class="w-full bg-slate-200 rounded-full h-2.5 flex overflow-hidden my-2">
+          <div class="bg-emerald-600 h-full" style="width: ${defSi}%" title="Definitivamente votará: ${defSi.toFixed(1)}%"></div>
+          <div class="bg-sky-500 h-full" style="width: ${podria}%" title="Podría votar: ${podria.toFixed(1)}%"></div>
+          <div class="bg-amber-400 h-full" style="width: ${prefNo}%" title="Preferiría no votar: ${prefNo.toFixed(1)}%"></div>
+          <div class="bg-rose-600 h-full" style="width: ${defNo}%" title="Definitivamente no votará: ${defNo.toFixed(1)}%"></div>
+        </div>
+        <div class="flex justify-between text-[10px] text-slate-600 font-semibold">
+          <span>Sí/Podría: <strong class="text-emerald-700">${techo.toFixed(1)}%</strong></span>
+          <span>No votaría: <strong class="text-rose-700">${rechazo.toFixed(1)}%</strong></span>
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
 }
 
 function initChart() {
