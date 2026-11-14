@@ -454,86 +454,21 @@ function renderCandidateCards() {
 
 function renderPiramide() {
   const container = document.getElementById('piramideRows');
-  if (!container || !rawDecryptedData || !rawDecryptedData.microdatos_casos) return;
+  if (!container) return;
 
-  const f = getFiltrosConcatenados();
-  const casos = filtrarCasos();
-  const total = casos ? casos.length : 0;
   const tagH = document.getElementById('pyramidTagH');
   const tagM = document.getElementById('pyramidTagM');
   const txtTotal = document.getElementById('pyramidTotal');
 
-  if (txtTotal) txtTotal.innerText = total.toLocaleString('es-EC');
+  if (txtTotal) txtTotal.innerText = '--';
+  if (tagH) tagH.innerText = '♂ --';
+  if (tagM) tagM.innerText = '♀ --';
 
-  if (total === 0) {
-    container.innerHTML = `
-      <div class="text-center py-4 text-[10px] text-slate-400">
-        ${f.hayFiltros ? 'Sin casos en la selección' : '0 casos'}
-      </div>
-    `;
-    if (tagH) tagH.innerText = '♂ 0%';
-    if (tagM) tagM.innerText = '♀ 0%';
-    return;
-  }
-
-  const nHombres = casos.filter(c => c[2] === 'Hombre').length;
-  const nMujeres = casos.filter(c => c[2] === 'Mujer').length;
-  const pctHombres = ((nHombres / total) * 100).toFixed(1);
-  const pctMujeres = ((nMujeres / total) * 100).toFixed(1);
-
-  if (tagH) tagH.innerText = `♂ ${pctHombres}%`;
-  if (tagM) tagM.innerText = `♀ ${pctMujeres}%`;
-
-  const cohortes = [
-    { ids: ['16 a 19 años', '20 a 29 años', '16 a 29 años'], label: '16-29' },
-    { ids: ['30 a 44 años'], label: '30-44' },
-    { ids: ['45 a 60 años'], label: '45-60' },
-    { ids: ['61 o más años'], label: '61+' }
-  ];
-
-  let maxPct = 0;
-  cohortes.forEach(co => {
-    const nH = casos.filter(c => c[2] === 'Hombre' && co.ids.includes(c[3])).length;
-    const nM = casos.filter(c => c[2] === 'Mujer' && co.ids.includes(c[3])).length;
-    const hPct = (nH / total) * 100;
-    const mPct = (nM / total) * 100;
-    if (hPct > maxPct) maxPct = hPct;
-    if (mPct > maxPct) maxPct = mPct;
-  });
-  if (maxPct <= 0) maxPct = 25;
-
-  let html = '';
-  cohortes.forEach(co => {
-    const nH = casos.filter(c => c[2] === 'Hombre' && co.ids.includes(c[3])).length;
-    const nM = casos.filter(c => c[2] === 'Mujer' && co.ids.includes(c[3])).length;
-    const pctH = ((nH / total) * 100).toFixed(1);
-    const pctM = ((nM / total) * 100).toFixed(1);
-
-    const barW_H = Math.min(100, Math.max(nH > 0 ? 6 : 0, (nH / total / (maxPct / 100)) * 100));
-    const barW_M = Math.min(100, Math.max(nM > 0 ? 6 : 0, (nM / total / (maxPct / 100)) * 100));
-
-    html += `
-      <div class="grid grid-cols-12 items-center text-[10px] font-semibold h-5 gap-1" title="${co.label} años: ${nH} hombres (${pctH}%), ${nM} mujeres (${pctM}%)">
-        <div class="col-span-3 text-right truncate">
-          ${nH > 0 ? `<span class="text-sky-700 font-bold">${nH}</span> <span class="text-[9px] text-slate-400">(${pctH}%)</span>` : '<span class="text-slate-300">-</span>'}
-        </div>
-        <div class="col-span-2 flex justify-end h-2.5 bg-slate-100 rounded-l overflow-hidden">
-          <div class="bg-sky-500 h-full rounded-l transition-all duration-300" style="width: ${barW_H}%;"></div>
-        </div>
-        <div class="col-span-2 text-center text-[10px] font-bold text-slate-600 whitespace-nowrap px-0.5">
-          ${co.label}
-        </div>
-        <div class="col-span-2 flex justify-start h-2.5 bg-slate-100 rounded-r overflow-hidden">
-          <div class="bg-rose-500 h-full rounded-r transition-all duration-300" style="width: ${barW_M}%;"></div>
-        </div>
-        <div class="col-span-3 text-left truncate">
-          ${nM > 0 ? `<span class="text-rose-700 font-bold">${nM}</span> <span class="text-[9px] text-slate-400">(${pctM}%)</span>` : '<span class="text-slate-300">-</span>'}
-        </div>
-      </div>
-    `;
-  });
-
-  container.innerHTML = html;
+  container.innerHTML = `
+    <div class="text-center py-6 text-[10px] font-medium text-slate-400">
+      En espera de tablas de corte
+    </div>
+  `;
 }
 
 const firmezaLabelsPlugin = {
@@ -634,9 +569,9 @@ function renderCoyunturaYCredibilidad() {
   const coy = rawDecryptedData.coyuntura_corrupcion || {};
   const cred = rawDecryptedData.credibilidad_noboa || {};
 
-  const conoceSi = coy.conoce_si && coy.conoce_si[idx] !== null && coy.conoce_si[idx] !== undefined ? coy.conoce_si[idx] : 70.1;
-  const evidencia = coy.evidencia && coy.evidencia[idx] !== null && coy.evidencia[idx] !== undefined ? coy.evidencia[idx] : 52.2;
-  const campana = coy.campana && coy.campana[idx] !== null && coy.campana[idx] !== undefined ? coy.campana[idx] : 34.3;
+  const conoceSi = coy.conoce_si && coy.conoce_si[idx] !== null && coy.conoce_si[idx] !== undefined ? coy.conoce_si[idx] : null;
+  const evidencia = coy.evidencia && coy.evidencia[idx] !== null && coy.evidencia[idx] !== undefined ? coy.evidencia[idx] : null;
+  const campana = coy.campana && coy.campana[idx] !== null && coy.campana[idx] !== undefined ? coy.campana[idx] : null;
 
   const elConoce = document.getElementById('coyConoce');
   const elEv = document.getElementById('txtEvidencia');
@@ -644,11 +579,11 @@ function renderCoyunturaYCredibilidad() {
   const barEv = document.getElementById('barEvidencia');
   const barCam = document.getElementById('barCampana');
 
-  if (elConoce) elConoce.innerText = `Conoce ${conoceSi.toFixed(1)}%`;
-  if (elEv) elEv.innerText = `${evidencia.toFixed(1)}%`;
-  if (elCam) elCam.innerText = `${campana.toFixed(1)}%`;
-  if (barEv) barEv.style.width = `${evidencia}%`;
-  if (barCam) barCam.style.width = `${campana}%`;
+  if (elConoce) elConoce.innerText = conoceSi !== null ? `Conoce ${conoceSi.toFixed(1)}%` : '--';
+  if (elEv) elEv.innerText = evidencia !== null ? `${evidencia.toFixed(1)}%` : '--';
+  if (elCam) elCam.innerText = campana !== null ? `${campana.toFixed(1)}%` : '--';
+  if (barEv) barEv.style.width = evidencia !== null ? `${evidencia}%` : '0%';
+  if (barCam) barCam.style.width = campana !== null ? `${campana}%` : '0%';
 
   const creePos = cred.cree_pos && cred.cree_pos[idx] !== null && cred.cree_pos[idx] !== undefined ? cred.cree_pos[idx] : null;
   const creeNeg = cred.cree_neg && cred.cree_neg[idx] !== null && cred.cree_neg[idx] !== undefined ? cred.cree_neg[idx] : null;

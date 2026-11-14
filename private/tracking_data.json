@@ -13708,7 +13708,7 @@
     "conoce_si": [
       null,
       null,
-      70.1,
+      null,
       null,
       null,
       null,
@@ -13728,7 +13728,7 @@
     "conoce_no": [
       null,
       null,
-      29.9,
+      null,
       null,
       null,
       null,
@@ -13748,7 +13748,7 @@
     "evidencia": [
       null,
       null,
-      52.2,
+      null,
       null,
       null,
       null,
@@ -13768,7 +13768,7 @@
     "campana": [
       null,
       null,
-      34.3,
+      null,
       null,
       null,
       null,
@@ -13788,7 +13788,7 @@
     "nsr": [
       null,
       null,
-      13.6,
+      null,
       null,
       null,
       null,
@@ -14356,7 +14356,7 @@
       "duro": [
         null,
         null,
-        27.3,
+        null,
         null,
         null,
         null,
@@ -14376,7 +14376,7 @@
       "blando": [
         null,
         null,
-        8.3,
+        null,
         null,
         null,
         null,
@@ -14396,7 +14396,7 @@
       "posible": [
         null,
         null,
-        3.0,
+        null,
         null,
         null,
         null,
@@ -14416,7 +14416,7 @@
       "incierto": [
         null,
         null,
-        43.0,
+        null,
         null,
         null,
         null,
@@ -14436,7 +14436,7 @@
       "techo": [
         null,
         null,
-        18.4,
+        null,
         null,
         null,
         null,
@@ -14459,7 +14459,7 @@
       "duro": [
         null,
         null,
-        8.2,
+        null,
         null,
         null,
         null,
@@ -14479,7 +14479,7 @@
       "blando": [
         null,
         null,
-        2.6,
+        null,
         null,
         null,
         null,
@@ -14499,7 +14499,7 @@
       "posible": [
         null,
         null,
-        1.8,
+        null,
         null,
         null,
         null,
@@ -14519,7 +14519,7 @@
       "incierto": [
         null,
         null,
-        64.0,
+        null,
         null,
         null,
         null,
@@ -14539,7 +14539,7 @@
       "techo": [
         null,
         null,
-        23.4,
+        null,
         null,
         null,
         null,
@@ -14562,7 +14562,7 @@
       "duro": [
         null,
         null,
-        5.7,
+        null,
         null,
         null,
         null,
@@ -14582,7 +14582,7 @@
       "blando": [
         null,
         null,
-        3.4,
+        null,
         null,
         null,
         null,
@@ -14602,7 +14602,7 @@
       "posible": [
         null,
         null,
-        5.9,
+        null,
         null,
         null,
         null,
@@ -14622,7 +14622,7 @@
       "incierto": [
         null,
         null,
-        72.6,
+        null,
         null,
         null,
         null,
@@ -14642,7 +14642,7 @@
       "techo": [
         null,
         null,
-        12.4,
+        null,
         null,
         null,
         null,
@@ -14665,7 +14665,7 @@
       "duro": [
         null,
         null,
-        3.7,
+        null,
         null,
         null,
         null,
@@ -14685,7 +14685,7 @@
       "blando": [
         null,
         null,
-        2.2,
+        null,
         null,
         null,
         null,
@@ -14705,7 +14705,7 @@
       "posible": [
         null,
         null,
-        6.3,
+        null,
         null,
         null,
         null,
@@ -14725,7 +14725,7 @@
       "incierto": [
         null,
         null,
-        83.5,
+        null,
         null,
         null,
         null,
@@ -14745,7 +14745,7 @@
       "techo": [
         null,
         null,
-        4.3,
+        null,
         null,
         null,
         null,
