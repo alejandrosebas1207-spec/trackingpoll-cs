@@ -72,6 +72,7 @@ let currentReportIdx = 2; // Inicia en Nov 2026 (índice 2)
 let maxAvailableIdx = 2;  // Mediciones consolidadas actuales (0=Sep, 1=Oct, 2=Nov)
 let chartInstance = null;
 let firmezaChartInstance = null;
+let apoyoChartInstance = null;
 
 // Petición autenticada de datos al servidor BFF
 async function fetchTrackingData(token) {
@@ -327,6 +328,7 @@ function renderActiveView() {
   renderPiramide();
   renderFirmeza();
   renderCoyunturaYCredibilidad();
+  renderApoyoChart();
   updateChartProgress();
 }
 
@@ -680,6 +682,85 @@ function renderFirmeza() {
     firmezaChartInstance.data.datasets = datasets;
     firmezaChartInstance.options.scales.y.max = 100;
     firmezaChartInstance.update();
+  }
+}
+
+function renderApoyoChart() {
+  const canvas = document.getElementById('apoyoChartCanvas');
+  if (!canvas || !rawDecryptedData || !rawDecryptedData.apoyo_candidatos) return;
+
+  const idx = currentReportIdx;
+  const apoyo = rawDecryptedData.apoyo_candidatos;
+  const isAlcalde = currentScenario === 'alcalde';
+
+  const badge = document.getElementById('apoyoScenarioBadge');
+  if (badge) {
+    badge.innerText = isAlcalde ? 'Alcaldía de Quito' : 'Prefectura de Pichincha';
+  }
+
+  const candidatePool = isAlcalde ? ['pabel', 'yunda', 'burbano'] : ['tonello'];
+  const keys = candidatePool
+    .filter(k => apoyo[k] && apoyo[k].def_si && apoyo[k].def_si[idx] !== null && apoyo[k].def_si[idx] !== undefined)
+    .sort((a, b) => (apoyo[b].def_si[idx] || 0) - (apoyo[a].def_si[idx] || 0));
+
+  const labels = keys.map(k => apoyo[k].nombre);
+  const getSeries = (field) => keys.map(k => {
+    const arr = apoyo[k][field];
+    const v = arr ? arr[idx] : null;
+    return v !== null && v !== undefined ? Number(Number(v).toFixed(1)) : 0;
+  });
+
+  const barPct = isAlcalde ? 0.45 : 0.22;
+  const datasets = [
+    { label: 'Definitivamente votará', data: getSeries('def_si'), backgroundColor: '#15803d', labelTextColor: '#ffffff', calloutColor: '#15803d', barPercentage: barPct },
+    { label: 'Podría votar', data: getSeries('podria'), backgroundColor: '#0ea5e9', labelTextColor: '#ffffff', calloutColor: '#0284c7', barPercentage: barPct },
+    { label: 'Nsr', data: getSeries('nsr'), backgroundColor: '#cbd5e1', labelTextColor: '#1e293b', calloutColor: '#64748b', barPercentage: barPct },
+    { label: 'Preferiría no votar', data: getSeries('pref_no'), backgroundColor: '#f59e0b', labelTextColor: '#0f172a', calloutColor: '#d97706', barPercentage: barPct },
+    { label: 'Definitivamente no votará', data: getSeries('def_no'), backgroundColor: '#b91c1c', labelTextColor: '#ffffff', calloutColor: '#b91c1c', barPercentage: barPct }
+  ];
+
+  if (!apoyoChartInstance) {
+    apoyoChartInstance = new Chart(canvas.getContext('2d'), {
+      type: 'bar',
+      data: { labels, datasets },
+      plugins: [firmezaLabelsPlugin],
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        devicePixelRatio: Math.max(window.devicePixelRatio || 1, 2),
+        animation: { duration: 250 },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#0f172a',
+            titleFont: { family: 'Poppins', size: 11, weight: 'bold' },
+            bodyFont: { family: 'Poppins', size: 10 },
+            callbacks: {
+              title: (items) => items[0]?.label || '',
+              label: (ctx) => ` ${ctx.dataset.label}: ${Number(ctx.parsed.y).toFixed(1)}%`
+            }
+          }
+        },
+        scales: {
+          x: {
+            stacked: true,
+            grid: { display: false },
+            ticks: { font: { family: 'Poppins', size: 12, weight: '800' }, color: '#0f172a' }
+          },
+          y: {
+            stacked: true,
+            min: 0,
+            max: 100,
+            grid: { color: '#e2e8f0' },
+            ticks: { stepSize: 20, font: { family: 'Poppins', size: 10, weight: '600' }, color: '#475569', callback: v => v + '%' }
+          }
+        }
+      }
+    });
+  } else {
+    apoyoChartInstance.data.labels = labels;
+    apoyoChartInstance.data.datasets = datasets;
+    apoyoChartInstance.update();
   }
 }
 
