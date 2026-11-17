@@ -680,6 +680,16 @@ function renderCoyunturaYCredibilidad() {
   if (barEv) barEv.style.width = evidencia !== null ? `${evidencia}%` : '0%';
   if (barCam) barCam.style.width = campana !== null ? `${campana}%` : '0%';
 
+  const coyFooter = document.getElementById('coyFooterNote');
+  if (coyFooter) {
+    if (conoceSi !== null && evidencia !== null && campana !== null) {
+      const nsr = Math.max(0, 100 - evidencia - campana);
+      coyFooter.innerText = `* Postura sobre el ${conoceSi.toFixed(1)}% que sí conoce (Nsr: ${nsr.toFixed(1)}%)`;
+    } else {
+      coyFooter.innerText = '* Postura sobre quienes sí conocen';
+    }
+  }
+
   const creePos = credSeg ? credSeg.cree_pos : (credBase.cree_pos && credBase.cree_pos[idx] !== null && credBase.cree_pos[idx] !== undefined ? credBase.cree_pos[idx] : null);
   const creeNeg = credSeg ? credSeg.cree_neg : (credBase.cree_neg && credBase.cree_neg[idx] !== null && credBase.cree_neg[idx] !== undefined ? credBase.cree_neg[idx] : null);
   const badge = document.getElementById('noboaCredBadge');
