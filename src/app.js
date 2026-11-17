@@ -401,8 +401,7 @@ function renderCandidateCards() {
     return;
   }
 
-  let html = '';
-  cands.forEach((c, rank) => {
+  const cardItems = cands.map((c) => {
     const id = getCandidateKey(c);
     const series = seriesDict[id] || [];
 
@@ -425,7 +424,6 @@ function renderCandidateCards() {
       const cruzBase = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
       if (cruzRep && cruzRep[String(idx)] && cruzRep[String(idx)][f.keyCruzada] && cruzRep[String(idx)][f.keyCruzada][id] !== undefined) {
         valActual = cruzRep[String(idx)][f.keyCruzada][id];
-        // Buscar antecedente del mismo segmento en reportes previos o en Nov 2026 (idx=2)
         for (let j = idx - 1; j >= 0; j--) {
           if (cruzRep && cruzRep[String(j)] && cruzRep[String(j)][f.keyCruzada] && cruzRep[String(j)][f.keyCruzada][id] !== undefined) {
             valPrev = cruzRep[String(j)][f.keyCruzada][id];
@@ -464,6 +462,15 @@ function renderCandidateCards() {
     } else if (f.hayFiltros) {
       deltaHtml = `<span class="text-indigo-600 font-bold text-[10px] bg-indigo-50 border border-indigo-200 px-1.5 py-0.2 rounded">Segmento</span>`;
     }
+
+    return { c, valActual, deltaHtml };
+  });
+
+  // Ordenar automáticamente de mayor a menor según el porcentaje del corte/filtro activo
+  cardItems.sort((a, b) => b.valActual - a.valActual);
+
+  let html = '';
+  cardItems.forEach(({ c, valActual, deltaHtml }, rank) => {
 
     html += `
       <div class="card-candidate p-2.5 rounded-xl border border-slate-400 bg-slate-50 flex items-center justify-between hover:border-slate-500 transition-all shadow-xs">
@@ -610,7 +617,9 @@ function renderFirmeza() {
 
   const idx = currentReportIdx;
   const fc = rawDecryptedData.firmeza_candidatos;
-  const codes = ['PM', 'HB', 'JY', 'WM'].filter(c => fc[c] && fc[c].duro && fc[c].duro[idx] !== null && fc[c].duro[idx] !== undefined);
+  const codes = ['PM', 'HB', 'JY', 'WM']
+    .filter(c => fc[c] && fc[c].duro && fc[c].duro[idx] !== null && fc[c].duro[idx] !== undefined)
+    .sort((a, b) => ((fc[b].duro[idx] || 0) + (fc[b].blando[idx] || 0)) - ((fc[a].duro[idx] || 0) + (fc[a].blando[idx] || 0)));
   const labels = codes.map(code => (fc[code] && fc[code].nombre) ? fc[code].nombre : code);
 
   const getSeries = (field) => codes.map(code => {
