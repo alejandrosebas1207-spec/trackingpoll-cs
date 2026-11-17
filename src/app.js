@@ -364,10 +364,19 @@ function renderCandidateCards() {
 
   if (sampleBadge) {
     if (f.hayFiltros) {
-      const nCasos = casosFiltrados ? casosFiltrados.length : 0;
-      sampleBadge.innerText = `Tracking Diario: n = 0`;
-      if (sampleTotalBadge) {
-        sampleTotalBadge.innerHTML = `<span class="text-indigo-600 font-bold">${f.etiqueta}</span> · <strong>n = ${nCasos}</strong>`;
+      const segMap = rawDecryptedData.muestras_segmento_reportes ? rawDecryptedData.muestras_segmento_reportes[String(idx)] : null;
+      const nSeg = segMap && f.keyCruzada && segMap[f.keyCruzada] !== undefined ? segMap[f.keyCruzada] : null;
+      if (nSeg !== null && nDiario > 0) {
+        sampleBadge.innerText = `Tracking Diario: n = ${nSeg} / ${nDiario}`;
+        if (sampleTotalBadge) {
+          sampleTotalBadge.innerHTML = `<span class="text-indigo-600 font-bold">${f.etiqueta}</span> · <strong>n = ${nSeg} de ${nDiario}</strong>`;
+        }
+      } else {
+        const nCasos = casosFiltrados ? casosFiltrados.length : 0;
+        sampleBadge.innerText = `Tracking Diario: n = ${nDiario.toLocaleString('es-EC')}`;
+        if (sampleTotalBadge) {
+          sampleTotalBadge.innerHTML = `<span class="text-indigo-600 font-bold">${f.etiqueta}</span> · <strong>n = ${nCasos}</strong>`;
+        }
       }
       if (sampleDot) sampleDot.className = 'w-2 h-2 rounded-full bg-indigo-500 animate-pulse';
     } else {
@@ -400,11 +409,17 @@ function renderCandidateCards() {
     let valActual = series[idx] !== null && series[idx] !== undefined ? series[idx] : 0;
     let valPrev = idx > 0 && series[idx - 1] !== null && series[idx - 1] !== undefined ? series[idx - 1] : valActual;
 
-    // Si hay filtro único activo, usar tabla cruzada ponderada oficial (con fallback a microdatos)
+    // Si hay filtro único activo, usar tabla cruzada ponderada oficial del corte activo (con fallback a Nov 2026 / microdatos)
     if (f.hayFiltros && f.keyCruzada) {
-      const cruzDict = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
-      if (cruzDict && cruzDict[f.keyCruzada] && cruzDict[f.keyCruzada][id] !== undefined) {
-        valActual = cruzDict[f.keyCruzada][id];
+      const cruzRep = isAlcalde ? rawDecryptedData.cruzadas_alcalde_reportes : rawDecryptedData.cruzadas_prefecto_reportes;
+      const cruzBase = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
+      if (cruzRep && cruzRep[String(idx)] && cruzRep[String(idx)][f.keyCruzada] && cruzRep[String(idx)][f.keyCruzada][id] !== undefined) {
+        valActual = cruzRep[String(idx)][f.keyCruzada][id];
+        if (cruzBase && cruzBase[f.keyCruzada] && cruzBase[f.keyCruzada][id] !== undefined) {
+          valPrev = cruzBase[f.keyCruzada][id];
+        }
+      } else if (cruzBase && cruzBase[f.keyCruzada] && cruzBase[f.keyCruzada][id] !== undefined) {
+        valActual = cruzBase[f.keyCruzada][id];
       } else if (casosFiltrados && casosFiltrados.length > 0) {
         const colIdx = isAlcalde ? 5 : 6;
         const matchCount = casosFiltrados.filter(item => item[colIdx] === id).length;
@@ -481,12 +496,12 @@ function renderPiramide() {
 
   const maxPct = Math.max(...rep.cohortes.map(c => c.pct), 25);
   const sexoHtml = `
-    <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
-      <div class="flex justify-between items-center text-[10px] font-bold mb-1">
+    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-center">
+      <div class="flex justify-around items-center text-xs font-extrabold mb-2">
         <span class="text-sky-700">♂ Hombres ${hPct.toFixed(1)}%</span>
         <span class="text-rose-700">♀ Mujeres ${mPct.toFixed(1)}%</span>
       </div>
-      <div class="w-full bg-slate-200 rounded-full h-2.5 flex overflow-hidden">
+      <div class="w-full bg-slate-200 rounded-full h-3 flex overflow-hidden">
         <div class="bg-sky-500 h-full transition-all duration-300" style="width: ${hPct}%;"></div>
         <div class="bg-rose-500 h-full transition-all duration-300" style="width: ${mPct}%;"></div>
       </div>
@@ -494,16 +509,16 @@ function renderPiramide() {
   `;
 
   const edadesHtml = `
-    <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 space-y-2">
+    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2.5">
       ${rep.cohortes.map(co => {
         const barW = Math.min(100, Math.max(co.pct > 0 ? 6 : 0, (co.pct / maxPct) * 100));
         return `
-          <div class="flex items-center text-[10px] font-semibold gap-2" title="${co.label} años: ${co.pct.toFixed(1)}% (n=${co.n})">
-            <span class="w-10 text-[10px] font-bold text-slate-700 whitespace-nowrap">${co.label}</span>
-            <div class="flex-1 h-2.5 bg-slate-200 rounded-full overflow-hidden">
+          <div class="flex items-center text-xs font-semibold gap-2.5" title="${co.label} años: ${co.pct.toFixed(1)}% (n=${co.n})">
+            <span class="w-11 text-center text-xs font-bold text-slate-700 whitespace-nowrap">${co.label}</span>
+            <div class="flex-1 h-3 bg-slate-200 rounded-full overflow-hidden">
               <div class="bg-indigo-600 h-full rounded-full transition-all duration-300" style="width: ${barW}%;"></div>
             </div>
-            <span class="w-11 text-right font-bold text-slate-800 whitespace-nowrap">${co.pct.toFixed(1)}%</span>
+            <span class="w-12 text-right font-extrabold text-slate-800 whitespace-nowrap">${co.pct.toFixed(1)}%</span>
           </div>
         `;
       }).join('')}
@@ -609,12 +624,27 @@ function renderFirmeza() {
 
 function renderCoyunturaYCredibilidad() {
   const idx = currentReportIdx;
-  const coy = rawDecryptedData.coyuntura_corrupcion || {};
-  const cred = rawDecryptedData.credibilidad_noboa || {};
+  const f = getFiltrosConcatenados();
+  const coyBase = rawDecryptedData.coyuntura_corrupcion || {};
+  const credBase = rawDecryptedData.credibilidad_noboa || {};
+  const coySeg = (f.hayFiltros && f.keyCruzada && rawDecryptedData.coyuntura_segmentos && rawDecryptedData.coyuntura_segmentos[String(idx)])
+    ? rawDecryptedData.coyuntura_segmentos[String(idx)][f.keyCruzada]
+    : null;
+  const credSeg = (f.hayFiltros && f.keyCruzada && rawDecryptedData.credibilidad_segmentos && rawDecryptedData.credibilidad_segmentos[String(idx)])
+    ? rawDecryptedData.credibilidad_segmentos[String(idx)][f.keyCruzada]
+    : null;
 
-  const conoceSi = coy.conoce_si && coy.conoce_si[idx] !== null && coy.conoce_si[idx] !== undefined ? coy.conoce_si[idx] : null;
-  const evidencia = coy.evidencia && coy.evidencia[idx] !== null && coy.evidencia[idx] !== undefined ? coy.evidencia[idx] : null;
-  const campana = coy.campana && coy.campana[idx] !== null && coy.campana[idx] !== undefined ? coy.campana[idx] : null;
+  const segBadge = document.getElementById('coySegmentBadge');
+  if (segBadge) {
+    segBadge.innerText = f.hayFiltros ? f.etiqueta : 'Tracking Nov';
+    segBadge.className = f.hayFiltros
+      ? 'text-[10.5px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded'
+      : 'text-[10.5px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded';
+  }
+
+  const conoceSi = coySeg ? coySeg.conoce_si : (coyBase.conoce_si && coyBase.conoce_si[idx] !== null && coyBase.conoce_si[idx] !== undefined ? coyBase.conoce_si[idx] : null);
+  const evidencia = coySeg ? coySeg.evidencia : (coyBase.evidencia && coyBase.evidencia[idx] !== null && coyBase.evidencia[idx] !== undefined ? coyBase.evidencia[idx] : null);
+  const campana = coySeg ? coySeg.campana : (coyBase.campana && coyBase.campana[idx] !== null && coyBase.campana[idx] !== undefined ? coyBase.campana[idx] : null);
 
   const elConoce = document.getElementById('coyConoce');
   const elEv = document.getElementById('txtEvidencia');
@@ -622,14 +652,14 @@ function renderCoyunturaYCredibilidad() {
   const barEv = document.getElementById('barEvidencia');
   const barCam = document.getElementById('barCampana');
 
-  if (elConoce) elConoce.innerText = conoceSi !== null ? `Conoce ${conoceSi.toFixed(1)}%` : '--';
+  if (elConoce) elConoce.innerText = conoceSi !== null ? `Conoce: ${conoceSi.toFixed(1)}%` : '--';
   if (elEv) elEv.innerText = evidencia !== null ? `${evidencia.toFixed(1)}%` : '--';
   if (elCam) elCam.innerText = campana !== null ? `${campana.toFixed(1)}%` : '--';
   if (barEv) barEv.style.width = evidencia !== null ? `${evidencia}%` : '0%';
   if (barCam) barCam.style.width = campana !== null ? `${campana}%` : '0%';
 
-  const creePos = cred.cree_pos && cred.cree_pos[idx] !== null && cred.cree_pos[idx] !== undefined ? cred.cree_pos[idx] : null;
-  const creeNeg = cred.cree_neg && cred.cree_neg[idx] !== null && cred.cree_neg[idx] !== undefined ? cred.cree_neg[idx] : null;
+  const creePos = credSeg ? credSeg.cree_pos : (credBase.cree_pos && credBase.cree_pos[idx] !== null && credBase.cree_pos[idx] !== undefined ? credBase.cree_pos[idx] : null);
+  const creeNeg = credSeg ? credSeg.cree_neg : (credBase.cree_neg && credBase.cree_neg[idx] !== null && credBase.cree_neg[idx] !== undefined ? credBase.cree_neg[idx] : null);
   const badge = document.getElementById('noboaCredBadge');
   const elPos = document.getElementById('noboaCreePos');
   const elNeg = document.getElementById('noboaCreeNeg');
@@ -748,10 +778,21 @@ function getLineSeriesForChart(lineId) {
   const f = getFiltrosConcatenados();
 
   if (f.hayFiltros && f.keyCruzada) {
-    const cruzDict = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
-    const segObj = cruzDict ? cruzDict[f.keyCruzada] : null;
+    const cruzBase = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
+    const cruzRep = isAlcalde ? rawDecryptedData.cruzadas_alcalde_reportes : rawDecryptedData.cruzadas_prefecto_reportes;
+    const segBase = cruzBase ? cruzBase[f.keyCruzada] : null;
+    const getSegVal = (segObj) => {
+      if (!segObj) return null;
+      if (!isAlcalde && lineId === 'otros' && segObj['otros'] !== undefined) {
+        return Number((segObj['otros'] + (segObj['churuchumbi'] || 0)).toFixed(1));
+      }
+      return segObj[lineId] !== undefined ? segObj[lineId] : null;
+    };
     return fechas.map((_, i) => {
-      if (i === 2 && segObj && segObj[lineId] !== undefined) return segObj[lineId];
+      if (i === 2) return getSegVal(segBase);
+      if (cruzRep && cruzRep[String(i)] && cruzRep[String(i)][f.keyCruzada]) {
+        return getSegVal(cruzRep[String(i)][f.keyCruzada]);
+      }
       return null;
     });
   }

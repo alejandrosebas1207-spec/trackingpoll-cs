@@ -227,24 +227,22 @@
       <!-- 1. ESTRUCTURA DEMOGRÁFICA (SEXO Y EDAD PONDERADOS) -->
       <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between">
         <div class="flex flex-col flex-1">
-          <div class="flex justify-between items-start gap-2 mb-2.5">
-            <div>
-              <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Estructura Demográfica</h3>
-              <p class="text-[10px] text-slate-500">Sexo y Grupos de Edad (Ponderado)</p>
-            </div>
-            <div class="flex items-center gap-1 shrink-0">
-              <span id="pyramidTagH" class="text-[9px] font-bold text-sky-700 bg-sky-50 border border-sky-200 px-1.5 py-0.5 rounded">♂ --</span>
-              <span id="pyramidTagM" class="text-[9px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-1.5 py-0.5 rounded">♀ --</span>
+          <div class="text-center mb-2.5">
+            <h3 class="text-sm sm:text-base font-extrabold text-slate-900">Estructura Demográfica</h3>
+            <p class="text-[11px] text-slate-500">Sexo y Grupos de Edad (Ponderado)</p>
+            <div class="flex items-center justify-center gap-1.5 mt-1.5">
+              <span id="pyramidTagH" class="text-[11px] font-bold text-sky-700 bg-sky-50 border border-sky-200 px-2 py-0.5 rounded">♂ --</span>
+              <span id="pyramidTagM" class="text-[11px] font-bold text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded">♀ --</span>
             </div>
           </div>
 
           <!-- Filas Demográficas -->
-          <div class="flex-1 flex flex-col justify-evenly gap-2" id="piramideRows">
+          <div class="flex-1 flex flex-col justify-evenly gap-2.5" id="piramideRows">
             <!-- Inyectado dinámicamente -->
           </div>
         </div>
 
-        <div class="text-[10px] text-slate-400 pt-2 border-t border-slate-100 flex justify-between mt-2.5">
+        <div class="text-[11px] text-slate-400 pt-2 border-t border-slate-100 flex justify-between items-center mt-2.5">
           <span>Muestra: <strong id="pyramidTotal" class="text-slate-700">--</strong> casos</span>
           <span class="text-emerald-600 font-bold">Muestra Activa</span>
         </div>
@@ -253,24 +251,24 @@
       <!-- 2-3. FIRMEZA DE VOTO (DESCOMPOSICIÓN 100% POR CANDIDATO) -->
       <div class="card-clean p-3.5 sm:p-4 rounded-xl lg:col-span-2 flex flex-col justify-between">
         <div>
-          <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
+          <div class="flex flex-wrap justify-between items-center gap-2 mb-2.5">
             <div>
-              <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Firmeza de Voto</h3>
-              <p class="text-[10px] text-slate-500">Estructura del 100% del electorado por candidato</p>
+              <h3 class="text-sm sm:text-base font-extrabold text-slate-900">Firmeza de Voto</h3>
+              <p class="text-[11px] text-slate-500">Estructura del 100% del electorado por candidato</p>
             </div>
-            <div class="flex flex-wrap items-center gap-2 text-[9px] font-semibold text-slate-600">
-              <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#155e75]"></span>Duro</span>
-              <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#0ea5e9]"></span>Blando</span>
-              <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#7dd3fc]"></span>Posible</span>
-              <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#d1d5db]"></span>Incierto</span>
-              <span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-xs bg-[#b91c1c]"></span>Techo (Nunca votaría)</span>
+            <div class="flex flex-wrap items-center justify-center gap-2.5 text-[10.5px] font-semibold text-slate-600">
+              <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-xs bg-[#155e75]"></span>Duro</span>
+              <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-xs bg-[#0ea5e9]"></span>Blando</span>
+              <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-xs bg-[#7dd3fc]"></span>Posible</span>
+              <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-xs bg-[#d1d5db]"></span>Incierto</span>
+              <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-xs bg-[#b91c1c]"></span>Techo (Nunca votaría)</span>
             </div>
           </div>
-          <div class="relative h-44 sm:h-48 w-full">
+          <div class="relative h-48 sm:h-52 w-full">
             <canvas id="firmezaChartCanvas"></canvas>
           </div>
         </div>
-        <div class="text-[10px] text-slate-400 pt-2 border-t border-slate-100 flex justify-between mt-2">
+        <div class="text-[11px] text-slate-400 pt-2 border-t border-slate-100 text-center mt-2">
           <span>Duro + Blando = Intención actual · Techo = % nunca votaría</span>
         </div>
       </div>
@@ -278,51 +276,49 @@
       <!-- 4. COYUNTURA Y CREDIBILIDAD (TRACKING POLL OFICIAL) -->
       <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between">
         <div class="flex flex-col flex-1">
-          <div class="flex justify-between items-start gap-2 mb-2.5">
-            <div>
-              <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">Coyuntura y Credibilidad</h3>
-              <p class="text-[10px] text-slate-500">Denuncias Municipio · Noboa</p>
+          <div class="text-center mb-2.5">
+            <h3 class="text-sm sm:text-base font-extrabold text-slate-900">Coyuntura y Credibilidad</h3>
+            <p class="text-[11px] text-slate-500">Denuncias Municipio · Noboa</p>
+            <div class="mt-1.5">
+              <span id="coySegmentBadge" class="text-[10.5px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">
+                Tracking Nov
+              </span>
             </div>
-            <span class="text-[9px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded shrink-0">
-              Tracking Nov
-            </span>
           </div>
 
           <div class="flex-1 flex flex-col justify-evenly gap-2.5">
             <!-- Denuncias de Corrupción (Pabel Muñoz) -->
-            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
-              <div class="flex justify-between items-center text-[11px] font-bold mb-1.5">
-                <span class="text-slate-800">Denuncias Municipio</span>
-                <span class="text-slate-600 font-extrabold text-[10px]" id="coyConoce">--</span>
-              </div>
-              <div class="w-full bg-slate-200 rounded-full h-2.5 flex overflow-hidden mb-1.5">
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-center">
+              <div class="text-xs font-extrabold text-slate-800 mb-0.5">Denuncias Municipio</div>
+              <div class="text-[11px] font-bold text-slate-600 mb-2" id="coyConoce">--</div>
+              <div class="w-full bg-slate-200 rounded-full h-3 flex overflow-hidden mb-2">
                 <div id="barEvidencia" class="bg-rose-600 h-full transition-all duration-300" style="width: 0%;"></div>
                 <div id="barCampana" class="bg-indigo-600 h-full transition-all duration-300" style="width: 0%;"></div>
               </div>
-              <div class="flex justify-between text-[10px] text-slate-500">
-                <span>Evidencia: <strong id="txtEvidencia" class="text-rose-700">--</strong></span>
-                <span>Campaña: <strong id="txtCampana" class="text-indigo-700">--</strong></span>
+              <div class="flex justify-around text-[11px] text-slate-600">
+                <span>Evidencia: <strong id="txtEvidencia" class="text-rose-700 text-xs">--</strong></span>
+                <span>Campaña: <strong id="txtCampana" class="text-indigo-700 text-xs">--</strong></span>
               </div>
             </div>
 
             <!-- Credibilidad Daniel Noboa -->
-            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
-              <div class="flex justify-between items-center text-[11px] font-bold mb-1.5">
-                <span class="text-slate-800">¿Le cree a Daniel Noboa?</span>
-                <span class="text-[10px] font-extrabold text-slate-400" id="noboaCredBadge">--</span>
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-center">
+              <div class="text-xs font-extrabold text-slate-800 mb-0.5">¿Le cree a Daniel Noboa?</div>
+              <div class="mb-2">
+                <span class="text-[11px] font-extrabold text-slate-400" id="noboaCredBadge">--</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-2.5 flex overflow-hidden mb-1.5">
+              <div class="w-full bg-slate-200 rounded-full h-3 flex overflow-hidden mb-2">
                 <div id="barNoboaPos" class="bg-emerald-600 h-full transition-all duration-300" style="width: 0%;"></div>
                 <div id="barNoboaNeg" class="bg-rose-600 h-full transition-all duration-300" style="width: 0%;"></div>
               </div>
-              <div class="flex justify-between text-[10px] text-slate-500" id="noboaCredDetalle">
-                <span>Mucho/Algo: <strong id="noboaCreePos" class="text-emerald-700">--</strong></span>
-                <span>Poco/Nada: <strong id="noboaCreeNeg" class="text-rose-700">--</strong></span>
+              <div class="flex justify-around text-[11px] text-slate-600" id="noboaCredDetalle">
+                <span>Mucho/Algo: <strong id="noboaCreePos" class="text-emerald-700 text-xs">--</strong></span>
+                <span>Poco/Nada: <strong id="noboaCreeNeg" class="text-rose-700 text-xs">--</strong></span>
               </div>
             </div>
           </div>
         </div>
-        <div class="text-[10px] text-slate-400 pt-2 border-t border-slate-100 flex justify-between mt-2.5">
+        <div class="text-[11px] text-slate-400 pt-2 border-t border-slate-100 text-center mt-2.5">
           <span>* Postura sobre quienes sí conocen</span>
         </div>
       </div>
@@ -332,6 +328,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v26"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v27"></script>
 </body>
 </html>
