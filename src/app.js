@@ -465,7 +465,7 @@ function renderCandidateCards() {
     }
 
     html += `
-      <div class="card-candidate p-2.5 rounded-xl border border-slate-300 bg-white flex items-center justify-between hover:border-slate-400 transition-all shadow-xs">
+      <div class="card-candidate p-2.5 rounded-xl border border-slate-400 bg-slate-50 flex items-center justify-between hover:border-slate-500 transition-all shadow-xs">
         <div class="flex items-center gap-2.5 min-w-0 pr-1">
           <div class="w-1.5 h-8 rounded-full flex-shrink-0" style="background-color: ${c.color}"></div>
           <div class="min-w-0">
@@ -518,29 +518,29 @@ function renderPiramide() {
 
   const maxPct = Math.max(...rep.cohortes.map(c => c.pct), 25);
   const sexoHtml = `
-    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-center">
+    <div class="bg-slate-200/75 p-3 rounded-lg border border-slate-300 text-center">
       <div class="flex justify-around items-center text-xs font-extrabold mb-2">
-        <span class="text-sky-700">♂ Hombres ${hPct.toFixed(1)}%</span>
-        <span class="text-rose-700">♀ Mujeres ${mPct.toFixed(1)}%</span>
+        <span class="text-sky-800">♂ Hombres ${hPct.toFixed(1)}%</span>
+        <span class="text-rose-800">♀ Mujeres ${mPct.toFixed(1)}%</span>
       </div>
-      <div class="w-full bg-slate-200 rounded-full h-3 flex overflow-hidden">
-        <div class="bg-sky-500 h-full transition-all duration-300" style="width: ${hPct}%;"></div>
-        <div class="bg-rose-500 h-full transition-all duration-300" style="width: ${mPct}%;"></div>
+      <div class="w-full bg-slate-300 rounded-full h-3 flex overflow-hidden">
+        <div class="bg-sky-600 h-full transition-all duration-300" style="width: ${hPct}%;"></div>
+        <div class="bg-rose-600 h-full transition-all duration-300" style="width: ${mPct}%;"></div>
       </div>
     </div>
   `;
 
   const edadesHtml = `
-    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 space-y-2.5">
+    <div class="bg-slate-200/75 p-3 rounded-lg border border-slate-300 space-y-2.5">
       ${rep.cohortes.map(co => {
         const barW = Math.min(100, Math.max(co.pct > 0 ? 6 : 0, (co.pct / maxPct) * 100));
         return `
           <div class="flex items-center text-xs font-semibold gap-2.5" title="${co.label} años: ${co.pct.toFixed(1)}% (n=${co.n})">
-            <span class="w-11 text-center text-xs font-bold text-slate-700 whitespace-nowrap">${co.label}</span>
-            <div class="flex-1 h-3 bg-slate-200 rounded-full overflow-hidden">
-              <div class="bg-indigo-600 h-full rounded-full transition-all duration-300" style="width: ${barW}%;"></div>
+            <span class="w-11 text-center text-xs font-bold text-slate-800 whitespace-nowrap">${co.label}</span>
+            <div class="flex-1 h-3 bg-slate-300 rounded-full overflow-hidden">
+              <div class="bg-slate-700 h-full rounded-full transition-all duration-300" style="width: ${barW}%;"></div>
             </div>
-            <span class="w-12 text-right font-extrabold text-slate-800 whitespace-nowrap">${co.pct.toFixed(1)}%</span>
+            <span class="w-12 text-right font-extrabold text-slate-900 whitespace-nowrap">${co.pct.toFixed(1)}%</span>
           </div>
         `;
       }).join('')}
@@ -679,8 +679,8 @@ function renderCoyunturaYCredibilidad() {
   if (segBadge) {
     segBadge.innerText = f.hayFiltros ? f.etiqueta : 'Tracking Nov';
     segBadge.className = f.hayFiltros
-      ? 'text-[10.5px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded'
-      : 'text-[10.5px] font-bold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded';
+      ? 'text-[10.5px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded'
+      : 'text-[10.5px] font-bold text-slate-100 bg-slate-700 border border-slate-600 px-2 py-0.5 rounded';
   }
 
   const conoceSi = coySeg ? coySeg.conoce_si : (coyBase.conoce_si && coyBase.conoce_si[idx] !== null && coyBase.conoce_si[idx] !== undefined ? coyBase.conoce_si[idx] : null);
