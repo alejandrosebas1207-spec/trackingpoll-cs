@@ -405,18 +405,39 @@ function renderCandidateCards() {
     const id = getCandidateKey(c);
     const series = seriesDict[id] || [];
 
-    // Porcentaje base temporal
+    // Porcentaje base temporal y búsqueda del antecedente válido más cercano (ej. Nov 2026 si días 1-2 son null, o ayer cuando ya exista)
     let valActual = series[idx] !== null && series[idx] !== undefined ? series[idx] : 0;
-    let valPrev = idx > 0 && series[idx - 1] !== null && series[idx - 1] !== undefined ? series[idx - 1] : valActual;
+    let prevIdx = -1;
+    for (let j = idx - 1; j >= 0; j--) {
+      if (series[j] !== null && series[j] !== undefined) {
+        prevIdx = j;
+        break;
+      }
+    }
+    let valPrev = prevIdx >= 0 ? series[prevIdx] : valActual;
+    let prevLabel = prevIdx >= 0 && rawDecryptedData.fechas_reportes ? rawDecryptedData.fechas_reportes[prevIdx] : '';
 
     // Si hay filtro único activo, usar tabla cruzada ponderada oficial del corte activo (con fallback a Nov 2026 / microdatos)
+    let hasPrevSeg = false;
     if (f.hayFiltros && f.keyCruzada) {
       const cruzRep = isAlcalde ? rawDecryptedData.cruzadas_alcalde_reportes : rawDecryptedData.cruzadas_prefecto_reportes;
       const cruzBase = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
       if (cruzRep && cruzRep[String(idx)] && cruzRep[String(idx)][f.keyCruzada] && cruzRep[String(idx)][f.keyCruzada][id] !== undefined) {
         valActual = cruzRep[String(idx)][f.keyCruzada][id];
-        if (cruzBase && cruzBase[f.keyCruzada] && cruzBase[f.keyCruzada][id] !== undefined) {
-          valPrev = cruzBase[f.keyCruzada][id];
+        // Buscar antecedente del mismo segmento en reportes previos o en Nov 2026 (idx=2)
+        for (let j = idx - 1; j >= 0; j--) {
+          if (cruzRep && cruzRep[String(j)] && cruzRep[String(j)][f.keyCruzada] && cruzRep[String(j)][f.keyCruzada][id] !== undefined) {
+            valPrev = cruzRep[String(j)][f.keyCruzada][id];
+            prevLabel = rawDecryptedData.fechas_reportes ? rawDecryptedData.fechas_reportes[j] : '';
+            hasPrevSeg = true;
+            break;
+          }
+          if (j === 2 && cruzBase && cruzBase[f.keyCruzada] && cruzBase[f.keyCruzada][id] !== undefined) {
+            valPrev = cruzBase[f.keyCruzada][id];
+            prevLabel = rawDecryptedData.fechas_reportes ? rawDecryptedData.fechas_reportes[2] : 'Nov 2026';
+            hasPrevSeg = true;
+            break;
+          }
         }
       } else if (cruzBase && cruzBase[f.keyCruzada] && cruzBase[f.keyCruzada][id] !== undefined) {
         valActual = cruzBase[f.keyCruzada][id];
@@ -428,15 +449,16 @@ function renderCandidateCards() {
     }
 
     const delta = valActual - valPrev;
+    const vsTxt = prevLabel ? ` <span class="font-normal text-slate-400">vs ${prevLabel}</span>` : '';
 
     let deltaHtml = '<span class="text-slate-400 font-medium text-[10px]">Línea base</span>';
-    if (!f.hayFiltros && idx > 0) {
+    if ((!f.hayFiltros && prevIdx >= 0) || (f.hayFiltros && hasPrevSeg)) {
       if (delta > 0.05) {
-        deltaHtml = `<span class="inline-flex items-center text-emerald-600 font-bold text-[10px]"><svg class="w-2.5 h-2.5 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>+${delta.toFixed(1)}%</span>`;
+        deltaHtml = `<span class="inline-flex items-center text-emerald-600 font-bold text-[10px]"><svg class="w-2.5 h-2.5 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>+${delta.toFixed(1)}%${vsTxt}</span>`;
       } else if (delta < -0.05) {
-        deltaHtml = `<span class="inline-flex items-center text-rose-600 font-bold text-[10px]"><svg class="w-2.5 h-2.5 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>${delta.toFixed(1)}%</span>`;
+        deltaHtml = `<span class="inline-flex items-center text-rose-600 font-bold text-[10px]"><svg class="w-2.5 h-2.5 mr-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>${delta.toFixed(1)}%${vsTxt}</span>`;
       } else {
-        deltaHtml = `<span class="text-slate-400 font-medium text-[10px]">= 0.0%</span>`;
+        deltaHtml = `<span class="text-slate-400 font-medium text-[10px]">= 0.0%${vsTxt}</span>`;
       }
     } else if (f.hayFiltros) {
       deltaHtml = `<span class="text-indigo-600 font-bold text-[10px] bg-indigo-50 border border-indigo-200 px-1.5 py-0.2 rounded">Segmento</span>`;
