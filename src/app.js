@@ -557,19 +557,19 @@ const firmezaLabelsPlugin = {
     ctx.save();
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.font = '800 13px Poppins, sans-serif';
 
     chart.data.datasets.forEach((ds, dsIdx) => {
       const meta = chart.getDatasetMeta(dsIdx);
       if (meta.hidden) return;
       meta.data.forEach((bar, i) => {
-        const val = ds.data[i];
-        if (!val || val <= 0) return;
+        const realVal = ds.realData ? ds.realData[i] : ds.data[i];
+        if (!realVal || realVal <= 0) return;
         const height = Math.abs(bar.base - bar.y);
-        if (height < 11) return;
+        if (height < 9) return;
         const midY = (bar.y + bar.base) / 2;
+        ctx.font = height < 14 ? '800 10.5px Poppins, sans-serif' : '800 13px Poppins, sans-serif';
         ctx.fillStyle = ds.labelTextColor || '#ffffff';
-        ctx.fillText(val.toFixed(1), bar.x, midY);
+        ctx.fillText(realVal.toFixed(1), bar.x, midY);
       });
     });
     ctx.restore();
@@ -592,12 +592,27 @@ function renderFirmeza() {
     return v !== null && v !== undefined ? Number(v.toFixed(1)) : 0;
   });
 
+  const duroReal = getSeries('duro');
+  const blandoReal = getSeries('blando');
+  const posibleReal = getSeries('posible');
+  const inciertoReal = getSeries('incierto');
+  const techoReal = getSeries('techo');
+
+  // Escala visual compacta para Incierto (0.38x) manteniendo los porcentajes reales en etiquetas y tooltips
+  const INCIERTO_SCALE = 0.38;
+  const inciertoVisual = inciertoReal.map(v => Number((v * INCIERTO_SCALE).toFixed(1)));
+  const maxVisual = Math.max(
+    ...codes.map((_, i) => duroReal[i] + blandoReal[i] + posibleReal[i] + inciertoVisual[i] + techoReal[i]),
+    50
+  );
+  const yMax = Math.ceil(maxVisual / 5) * 5 + 2;
+
   const datasets = [
-    { label: 'Duro (vota y está seguro)', data: getSeries('duro'), backgroundColor: '#155e75', labelTextColor: '#ffffff', barPercentage: 0.62 },
-    { label: 'Blando (vota y podría cambiar)', data: getSeries('blando'), backgroundColor: '#0ea5e9', labelTextColor: '#ffffff', barPercentage: 0.62 },
-    { label: 'Posible (% segunda opción)', data: getSeries('posible'), backgroundColor: '#7dd3fc', labelTextColor: '#0f172a', barPercentage: 0.62 },
-    { label: 'Incierto (100 -1-2-3-5)', data: getSeries('incierto'), backgroundColor: '#d1d5db', labelTextColor: '#1e293b', barPercentage: 0.62 },
-    { label: 'Techo (% nunca votaría)', data: getSeries('techo'), backgroundColor: '#b91c1c', labelTextColor: '#ffffff', barPercentage: 0.62 }
+    { label: '1. Duro (vota y está seguro)', data: duroReal, realData: duroReal, backgroundColor: '#155e75', labelTextColor: '#ffffff', barPercentage: 0.62 },
+    { label: '2. Blando (vota y podría cambiar)', data: blandoReal, realData: blandoReal, backgroundColor: '#0ea5e9', labelTextColor: '#ffffff', barPercentage: 0.62 },
+    { label: '3. Posible (% segunda opción)', data: posibleReal, realData: posibleReal, backgroundColor: '#7dd3fc', labelTextColor: '#0f172a', barPercentage: 0.62 },
+    { label: '4. Incierto (100 - 1 - 2 - 3 - 5)', data: inciertoVisual, realData: inciertoReal, backgroundColor: '#d1d5db', labelTextColor: '#1e293b', barPercentage: 0.62 },
+    { label: '5. Techo (% nunca votaría)', data: techoReal, realData: techoReal, backgroundColor: '#b91c1c', labelTextColor: '#ffffff', barPercentage: 0.62 }
   ];
 
   if (!firmezaChartInstance) {
@@ -617,7 +632,10 @@ function renderFirmeza() {
             bodyFont: { family: 'Poppins', size: 10 },
             callbacks: {
               title: (items) => items[0]?.label || '',
-              label: (ctx) => ` ${ctx.dataset.label}: ${Number(ctx.parsed.y).toFixed(1)}%`
+              label: (ctx) => {
+                const real = ctx.dataset.realData ? ctx.dataset.realData[ctx.dataIndex] : ctx.parsed.y;
+                return ` ${ctx.dataset.label}: ${Number(real).toFixed(1)}%`;
+              }
             }
           }
         },
@@ -625,14 +643,14 @@ function renderFirmeza() {
           x: {
             stacked: true,
             grid: { display: false },
-            ticks: { font: { family: 'Poppins', size: 11, weight: '800' }, color: '#0f172a' }
+            ticks: { font: { family: 'Poppins', size: 12, weight: '800' }, color: '#0f172a' }
           },
           y: {
             stacked: true,
             min: 0,
-            max: 100,
+            max: yMax,
             grid: { color: '#f1f5f9' },
-            ticks: { stepSize: 20, font: { family: 'Poppins', size: 9 }, callback: v => v + '%' }
+            ticks: { display: false }
           }
         }
       }
@@ -640,6 +658,7 @@ function renderFirmeza() {
   } else {
     firmezaChartInstance.data.labels = labels;
     firmezaChartInstance.data.datasets = datasets;
+    firmezaChartInstance.options.scales.y.max = yMax;
     firmezaChartInstance.update();
   }
 }
