@@ -557,7 +557,7 @@ const firmezaLabelsPlugin = {
     ctx.save();
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.font = '700 11px Poppins, sans-serif';
+    ctx.font = '800 13px Poppins, sans-serif';
 
     chart.data.datasets.forEach((ds, dsIdx) => {
       const meta = chart.getDatasetMeta(dsIdx);
