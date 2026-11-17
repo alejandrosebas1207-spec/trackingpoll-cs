@@ -474,24 +474,43 @@ function renderPiramide() {
   }
 
   if (txtTotal) txtTotal.innerText = Number(rep.total).toLocaleString('es-EC');
-  if (tagH) tagH.innerText = `♂ ${Number(rep.hombres_pct).toFixed(1)}%`;
-  if (tagM) tagM.innerText = `♀ ${Number(rep.mujeres_pct).toFixed(1)}%`;
+  const hPct = Number(rep.hombres_pct);
+  const mPct = Number(rep.mujeres_pct);
+  if (tagH) tagH.innerText = `♂ ${hPct.toFixed(1)}%`;
+  if (tagM) tagM.innerText = `♀ ${mPct.toFixed(1)}%`;
 
   const maxPct = Math.max(...rep.cohortes.map(c => c.pct), 25);
-  container.innerHTML = rep.cohortes.map(co => {
-    const barW = Math.min(100, Math.max(co.pct > 0 ? 6 : 0, (co.pct / maxPct) * 100));
-    return `
-      <div class="flex items-center text-[10px] font-semibold h-5 gap-2" title="${co.label} años: ${co.n} casos (${co.pct.toFixed(1)}%)">
-        <span class="w-10 text-[10px] font-bold text-slate-700 whitespace-nowrap">${co.label}</span>
-        <div class="flex-1 h-2.5 bg-slate-100 rounded overflow-hidden">
-          <div class="bg-indigo-500 h-full rounded transition-all duration-300" style="width: ${barW}%;"></div>
-        </div>
-        <span class="w-20 text-right whitespace-nowrap">
-          <span class="text-slate-800 font-bold">${co.n}</span> <span class="text-[9px] text-slate-400">(${co.pct.toFixed(1)}%)</span>
-        </span>
+  const sexoHtml = `
+    <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200">
+      <div class="flex justify-between items-center text-[10px] font-bold mb-1">
+        <span class="text-sky-700">♂ Hombres ${hPct.toFixed(1)}%</span>
+        <span class="text-rose-700">♀ Mujeres ${mPct.toFixed(1)}%</span>
       </div>
-    `;
-  }).join('');
+      <div class="w-full bg-slate-200 rounded-full h-2.5 flex overflow-hidden">
+        <div class="bg-sky-500 h-full transition-all duration-300" style="width: ${hPct}%;"></div>
+        <div class="bg-rose-500 h-full transition-all duration-300" style="width: ${mPct}%;"></div>
+      </div>
+    </div>
+  `;
+
+  const edadesHtml = `
+    <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 space-y-2">
+      ${rep.cohortes.map(co => {
+        const barW = Math.min(100, Math.max(co.pct > 0 ? 6 : 0, (co.pct / maxPct) * 100));
+        return `
+          <div class="flex items-center text-[10px] font-semibold gap-2" title="${co.label} años: ${co.pct.toFixed(1)}% (n=${co.n})">
+            <span class="w-10 text-[10px] font-bold text-slate-700 whitespace-nowrap">${co.label}</span>
+            <div class="flex-1 h-2.5 bg-slate-200 rounded-full overflow-hidden">
+              <div class="bg-indigo-600 h-full rounded-full transition-all duration-300" style="width: ${barW}%;"></div>
+            </div>
+            <span class="w-11 text-right font-bold text-slate-800 whitespace-nowrap">${co.pct.toFixed(1)}%</span>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+
+  container.innerHTML = sexoHtml + edadesHtml;
 }
 
 const firmezaLabelsPlugin = {
@@ -614,6 +633,8 @@ function renderCoyunturaYCredibilidad() {
   const badge = document.getElementById('noboaCredBadge');
   const elPos = document.getElementById('noboaCreePos');
   const elNeg = document.getElementById('noboaCreeNeg');
+  const barPos = document.getElementById('barNoboaPos');
+  const barNeg = document.getElementById('barNoboaNeg');
 
   if (creePos !== null && creeNeg !== null) {
     if (badge) {
@@ -622,6 +643,8 @@ function renderCoyunturaYCredibilidad() {
     }
     if (elPos) elPos.innerText = `${creePos.toFixed(1)}%`;
     if (elNeg) elNeg.innerText = `${creeNeg.toFixed(1)}%`;
+    if (barPos) barPos.style.width = `${creePos}%`;
+    if (barNeg) barNeg.style.width = `${creeNeg}%`;
   } else {
     if (badge) {
       badge.innerText = '--';
@@ -629,6 +652,8 @@ function renderCoyunturaYCredibilidad() {
     }
     if (elPos) elPos.innerText = '--';
     if (elNeg) elNeg.innerText = '--';
+    if (barPos) barPos.style.width = '0%';
+    if (barNeg) barNeg.style.width = '0%';
   }
 }
 
