@@ -459,16 +459,39 @@ function renderPiramide() {
   const tagH = document.getElementById('pyramidTagH');
   const tagM = document.getElementById('pyramidTagM');
   const txtTotal = document.getElementById('pyramidTotal');
+  const rep = rawDecryptedData && rawDecryptedData.piramide_reportes ? rawDecryptedData.piramide_reportes[String(currentReportIdx)] : null;
 
-  if (txtTotal) txtTotal.innerText = '--';
-  if (tagH) tagH.innerText = '♂ --';
-  if (tagM) tagM.innerText = '♀ --';
+  if (!rep || !rep.cohortes) {
+    if (txtTotal) txtTotal.innerText = '--';
+    if (tagH) tagH.innerText = '♂ --';
+    if (tagM) tagM.innerText = '♀ --';
+    container.innerHTML = `
+      <div class="text-center py-6 text-[10px] font-medium text-slate-400">
+        En espera de tablas de corte
+      </div>
+    `;
+    return;
+  }
 
-  container.innerHTML = `
-    <div class="text-center py-6 text-[10px] font-medium text-slate-400">
-      En espera de tablas de corte
-    </div>
-  `;
+  if (txtTotal) txtTotal.innerText = Number(rep.total).toLocaleString('es-EC');
+  if (tagH) tagH.innerText = `♂ ${Number(rep.hombres_pct).toFixed(1)}%`;
+  if (tagM) tagM.innerText = `♀ ${Number(rep.mujeres_pct).toFixed(1)}%`;
+
+  const maxPct = Math.max(...rep.cohortes.map(c => c.pct), 25);
+  container.innerHTML = rep.cohortes.map(co => {
+    const barW = Math.min(100, Math.max(co.pct > 0 ? 6 : 0, (co.pct / maxPct) * 100));
+    return `
+      <div class="flex items-center text-[10px] font-semibold h-5 gap-2" title="${co.label} años: ${co.n} casos (${co.pct.toFixed(1)}%)">
+        <span class="w-10 text-[10px] font-bold text-slate-700 whitespace-nowrap">${co.label}</span>
+        <div class="flex-1 h-2.5 bg-slate-100 rounded overflow-hidden">
+          <div class="bg-indigo-500 h-full rounded transition-all duration-300" style="width: ${barW}%;"></div>
+        </div>
+        <span class="w-20 text-right whitespace-nowrap">
+          <span class="text-slate-800 font-bold">${co.n}</span> <span class="text-[9px] text-slate-400">(${co.pct.toFixed(1)}%)</span>
+        </span>
+      </div>
+    `;
+  }).join('');
 }
 
 const firmezaLabelsPlugin = {
@@ -503,13 +526,13 @@ function renderFirmeza() {
 
   const idx = currentReportIdx;
   const fc = rawDecryptedData.firmeza_candidatos;
-  const codes = ['PM', 'HB', 'JY', 'WM'];
+  const codes = ['PM', 'HB', 'JY', 'WM'].filter(c => fc[c] && fc[c].duro && fc[c].duro[idx] !== null && fc[c].duro[idx] !== undefined);
   const labels = codes.map(code => (fc[code] && fc[code].nombre) ? fc[code].nombre : code);
 
   const getSeries = (field) => codes.map(code => {
     const obj = fc[code];
     if (!obj || !obj[field]) return 0;
-    const v = obj[field][idx] !== null && obj[field][idx] !== undefined ? obj[field][idx] : obj[field][2];
+    const v = obj[field][idx];
     return v !== null && v !== undefined ? Number(v.toFixed(1)) : 0;
   });
 
@@ -559,6 +582,7 @@ function renderFirmeza() {
       }
     });
   } else {
+    firmezaChartInstance.data.labels = labels;
     firmezaChartInstance.data.datasets = datasets;
     firmezaChartInstance.update();
   }
@@ -619,7 +643,7 @@ function initChart() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
-      spanGaps: false,
+      spanGaps: true,
       animation: { duration: 350 },
       interaction: { mode: 'index', intersect: false },
       plugins: {
@@ -736,7 +760,7 @@ function updateChartDatasets() {
       borderDash: line.dashed ? [5, 4] : [],
       tension: 0.25,
       fill: false,
-      spanGaps: false,
+      spanGaps: true,
       pointBackgroundColor: line.color,
       pointBorderColor: '#ffffff',
       pointBorderWidth: 2,
