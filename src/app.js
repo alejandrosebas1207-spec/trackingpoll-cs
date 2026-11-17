@@ -192,7 +192,8 @@ function setReportIndex(idx) {
   }
 
   document.getElementById('currentReportLabel').innerText = badgeTitle;
-  document.getElementById('reportIndicatorText').innerText = badgeDesc;
+  const repInd = document.getElementById('reportIndicatorText');
+  if (repInd) repInd.innerText = badgeDesc;
 
   renderActiveView();
 }
@@ -623,6 +624,7 @@ function renderFirmeza() {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        devicePixelRatio: Math.max(window.devicePixelRatio || 1, 2),
         animation: { duration: 250 },
         plugins: {
           legend: { display: false },
@@ -749,6 +751,7 @@ function initChart() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      devicePixelRatio: Math.max(window.devicePixelRatio || 1, 2),
       spanGaps: true,
       animation: { duration: 350 },
       interaction: { mode: 'index', intersect: false },
@@ -756,10 +759,13 @@ function initChart() {
         legend: {
           position: 'top',
           labels: {
-            boxWidth: 14,
+            usePointStyle: true,
+            pointStyle: 'rectRounded',
+            boxWidth: 11,
+            boxHeight: 11,
             padding: 16,
             font: { family: 'Poppins', size: 12, weight: 'bold' },
-            color: '#1e293b'
+            color: '#0f172a'
           }
         },
         tooltip: {
@@ -872,7 +878,7 @@ function updateChartDatasets() {
     return {
       label: line.label,
       borderColor: line.color,
-      backgroundColor: line.color + '15',
+      backgroundColor: line.color,
       borderWidth: line.dashed ? 2 : 3,
       borderDash: line.dashed ? [5, 4] : [],
       tension: 0.25,
