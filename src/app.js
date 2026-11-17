@@ -557,7 +557,7 @@ const firmezaLabelsPlugin = {
     ctx.save();
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.font = '700 10px Poppins, sans-serif';
+    ctx.font = '700 11px Poppins, sans-serif';
 
     chart.data.datasets.forEach((ds, dsIdx) => {
       const meta = chart.getDatasetMeta(dsIdx);
@@ -566,7 +566,7 @@ const firmezaLabelsPlugin = {
         const val = ds.data[i];
         if (!val || val <= 0) return;
         const height = Math.abs(bar.base - bar.y);
-        if (height < 13) return;
+        if (height < 11) return;
         const midY = (bar.y + bar.base) / 2;
         ctx.fillStyle = ds.labelTextColor || '#ffffff';
         ctx.fillText(val.toFixed(1), bar.x, midY);
@@ -593,11 +593,11 @@ function renderFirmeza() {
   });
 
   const datasets = [
-    { label: 'Duro (vota y está seguro)', data: getSeries('duro'), backgroundColor: '#155e75', labelTextColor: '#ffffff', barPercentage: 0.56 },
-    { label: 'Blando (vota y podría cambiar)', data: getSeries('blando'), backgroundColor: '#0ea5e9', labelTextColor: '#ffffff', barPercentage: 0.56 },
-    { label: 'Posible (% segunda opción)', data: getSeries('posible'), backgroundColor: '#7dd3fc', labelTextColor: '#0f172a', barPercentage: 0.56 },
-    { label: 'Incierto (100 -1-2-3-5)', data: getSeries('incierto'), backgroundColor: '#d1d5db', labelTextColor: '#1e293b', barPercentage: 0.56 },
-    { label: 'Techo (% nunca votaría)', data: getSeries('techo'), backgroundColor: '#b91c1c', labelTextColor: '#ffffff', barPercentage: 0.56 }
+    { label: 'Duro (vota y está seguro)', data: getSeries('duro'), backgroundColor: '#155e75', labelTextColor: '#ffffff', barPercentage: 0.62 },
+    { label: 'Blando (vota y podría cambiar)', data: getSeries('blando'), backgroundColor: '#0ea5e9', labelTextColor: '#ffffff', barPercentage: 0.62 },
+    { label: 'Posible (% segunda opción)', data: getSeries('posible'), backgroundColor: '#7dd3fc', labelTextColor: '#0f172a', barPercentage: 0.62 },
+    { label: 'Incierto (100 -1-2-3-5)', data: getSeries('incierto'), backgroundColor: '#d1d5db', labelTextColor: '#1e293b', barPercentage: 0.62 },
+    { label: 'Techo (% nunca votaría)', data: getSeries('techo'), backgroundColor: '#b91c1c', labelTextColor: '#ffffff', barPercentage: 0.62 }
   ];
 
   if (!firmezaChartInstance) {
