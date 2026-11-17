@@ -693,7 +693,7 @@ function renderCoyunturaYCredibilidad() {
   const barEv = document.getElementById('barEvidencia');
   const barCam = document.getElementById('barCampana');
 
-  if (elConoce) elConoce.innerText = conoceSi !== null ? `Conoce: ${conoceSi.toFixed(1)}%` : '--';
+  if (elConoce) elConoce.innerText = conoceSi !== null ? `Sí conoce las denuncias: ${conoceSi.toFixed(1)}%` : '--';
   if (elEv) elEv.innerText = evidencia !== null ? `${evidencia.toFixed(1)}%` : '--';
   if (elCam) elCam.innerText = campana !== null ? `${campana.toFixed(1)}%` : '--';
   if (barEv) barEv.style.width = evidencia !== null ? `${evidencia}%` : '0%';
@@ -703,9 +703,9 @@ function renderCoyunturaYCredibilidad() {
   if (coyFooter) {
     if (conoceSi !== null && evidencia !== null && campana !== null) {
       const nsr = Math.max(0, 100 - evidencia - campana);
-      coyFooter.innerText = `* Postura sobre el ${conoceSi.toFixed(1)}% que sí conoce (Nsr: ${nsr.toFixed(1)}%)`;
+      coyFooter.innerText = `Opinión sobre ese ${conoceSi.toFixed(1)}% que sí conoce · Nsr: ${nsr.toFixed(1)}%`;
     } else {
-      coyFooter.innerText = '* Postura sobre quienes sí conocen';
+      coyFooter.innerText = '';
     }
   }
 
