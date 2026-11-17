@@ -556,21 +556,48 @@ const firmezaLabelsPlugin = {
   afterDatasetsDraw(chart) {
     const { ctx } = chart;
     ctx.save();
-    ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
     chart.data.datasets.forEach((ds, dsIdx) => {
       const meta = chart.getDatasetMeta(dsIdx);
       if (meta.hidden) return;
       meta.data.forEach((bar, i) => {
-        const realVal = ds.realData ? ds.realData[i] : ds.data[i];
-        if (!realVal || realVal <= 0) return;
+        const val = ds.data[i];
+        if (!val || val <= 0) return;
         const height = Math.abs(bar.base - bar.y);
-        if (height < 9) return;
         const midY = (bar.y + bar.base) / 2;
-        ctx.font = height < 14 ? '800 10.5px Poppins, sans-serif' : '800 13px Poppins, sans-serif';
-        ctx.fillStyle = ds.labelTextColor || '#ffffff';
-        ctx.fillText(realVal.toFixed(1), bar.x, midY);
+
+        if (height >= 15) {
+          ctx.textAlign = 'center';
+          ctx.font = '800 13px Poppins, sans-serif';
+          ctx.fillStyle = ds.labelTextColor || '#ffffff';
+          ctx.fillText(val.toFixed(1), bar.x, midY);
+        } else {
+          // Callout con palito y punto para segmentos delgados (sin traslape: Blando a la izq., Posible a la der.)
+          const goLeft = dsIdx % 2 === 1;
+          const halfW = (bar.width || 44) / 2;
+          const startX = goLeft ? bar.x - halfW : bar.x + halfW;
+          const endX = goLeft ? startX - 13 : startX + 13;
+          const textX = goLeft ? endX - 3 : endX + 3;
+          const lineColor = ds.calloutColor || ds.backgroundColor || '#0f172a';
+
+          ctx.strokeStyle = lineColor;
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          ctx.moveTo(startX, midY);
+          ctx.lineTo(endX, midY);
+          ctx.stroke();
+
+          ctx.fillStyle = lineColor;
+          ctx.beginPath();
+          ctx.arc(startX, midY, 2.2, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.textAlign = goLeft ? 'right' : 'left';
+          ctx.font = '800 11px Poppins, sans-serif';
+          ctx.fillStyle = '#0f172a';
+          ctx.fillText(val.toFixed(1) + '%', textX, midY);
+        }
       });
     });
     ctx.restore();
@@ -593,27 +620,12 @@ function renderFirmeza() {
     return v !== null && v !== undefined ? Number(v.toFixed(1)) : 0;
   });
 
-  const duroReal = getSeries('duro');
-  const blandoReal = getSeries('blando');
-  const posibleReal = getSeries('posible');
-  const inciertoReal = getSeries('incierto');
-  const techoReal = getSeries('techo');
-
-  // Escala visual compacta para Incierto (0.38x) manteniendo los porcentajes reales en etiquetas y tooltips
-  const INCIERTO_SCALE = 0.38;
-  const inciertoVisual = inciertoReal.map(v => Number((v * INCIERTO_SCALE).toFixed(1)));
-  const maxVisual = Math.max(
-    ...codes.map((_, i) => duroReal[i] + blandoReal[i] + posibleReal[i] + inciertoVisual[i] + techoReal[i]),
-    50
-  );
-  const yMax = Math.ceil(maxVisual / 5) * 5 + 2;
-
   const datasets = [
-    { label: '1. Duro (vota y está seguro)', data: duroReal, realData: duroReal, backgroundColor: '#155e75', labelTextColor: '#ffffff', barPercentage: 0.62 },
-    { label: '2. Blando (vota y podría cambiar)', data: blandoReal, realData: blandoReal, backgroundColor: '#0ea5e9', labelTextColor: '#ffffff', barPercentage: 0.62 },
-    { label: '3. Posible (% segunda opción)', data: posibleReal, realData: posibleReal, backgroundColor: '#7dd3fc', labelTextColor: '#0f172a', barPercentage: 0.62 },
-    { label: '4. Incierto (100 - 1 - 2 - 3 - 5)', data: inciertoVisual, realData: inciertoReal, backgroundColor: '#d1d5db', labelTextColor: '#1e293b', barPercentage: 0.62 },
-    { label: '5. Techo (% nunca votaría)', data: techoReal, realData: techoReal, backgroundColor: '#b91c1c', labelTextColor: '#ffffff', barPercentage: 0.62 }
+    { label: '1. Duro (vota y está seguro)', data: getSeries('duro'), backgroundColor: '#155e75', labelTextColor: '#ffffff', calloutColor: '#155e75', barPercentage: 0.48 },
+    { label: '2. Blando (vota y podría cambiar)', data: getSeries('blando'), backgroundColor: '#0ea5e9', labelTextColor: '#ffffff', calloutColor: '#0284c7', barPercentage: 0.48 },
+    { label: '3. Posible (% segunda opción)', data: getSeries('posible'), backgroundColor: '#7dd3fc', labelTextColor: '#0f172a', calloutColor: '#0369a1', barPercentage: 0.48 },
+    { label: '4. Incierto (100 - 1 - 2 - 3 - 5)', data: getSeries('incierto'), backgroundColor: '#d1d5db', labelTextColor: '#1e293b', calloutColor: '#64748b', barPercentage: 0.48 },
+    { label: '5. Techo (% nunca votaría)', data: getSeries('techo'), backgroundColor: '#b91c1c', labelTextColor: '#ffffff', calloutColor: '#b91c1c', barPercentage: 0.48 }
   ];
 
   if (!firmezaChartInstance) {
@@ -634,10 +646,7 @@ function renderFirmeza() {
             bodyFont: { family: 'Poppins', size: 10 },
             callbacks: {
               title: (items) => items[0]?.label || '',
-              label: (ctx) => {
-                const real = ctx.dataset.realData ? ctx.dataset.realData[ctx.dataIndex] : ctx.parsed.y;
-                return ` ${ctx.dataset.label}: ${Number(real).toFixed(1)}%`;
-              }
+              label: (ctx) => ` ${ctx.dataset.label}: ${Number(ctx.parsed.y).toFixed(1)}%`
             }
           }
         },
@@ -650,9 +659,9 @@ function renderFirmeza() {
           y: {
             stacked: true,
             min: 0,
-            max: yMax,
-            grid: { color: '#f1f5f9' },
-            ticks: { display: false }
+            max: 100,
+            grid: { color: '#e2e8f0' },
+            ticks: { stepSize: 20, font: { family: 'Poppins', size: 10, weight: '600' }, color: '#475569', callback: v => v + '%' }
           }
         }
       }
@@ -660,7 +669,7 @@ function renderFirmeza() {
   } else {
     firmezaChartInstance.data.labels = labels;
     firmezaChartInstance.data.datasets = datasets;
-    firmezaChartInstance.options.scales.y.max = yMax;
+    firmezaChartInstance.options.scales.y.max = 100;
     firmezaChartInstance.update();
   }
 }
