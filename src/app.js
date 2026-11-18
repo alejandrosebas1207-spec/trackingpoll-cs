@@ -733,23 +733,51 @@ function renderApoyoChart() {
   if (!canvas || !rawDecryptedData || !rawDecryptedData.apoyo_candidatos) return;
 
   const idx = currentReportIdx;
+  const f = getFiltrosConcatenados();
   const apoyo = rawDecryptedData.apoyo_candidatos;
   const isAlcalde = currentScenario === 'alcalde';
+
+  const apoyoSeg = (f.hayFiltros && f.keyCruzada && rawDecryptedData.apoyo_segmentos && rawDecryptedData.apoyo_segmentos[String(idx)])
+    ? rawDecryptedData.apoyo_segmentos[String(idx)][f.keyCruzada]
+    : null;
+
+  const fechaCorte = (rawDecryptedData.fechas_reportes && rawDecryptedData.fechas_reportes[idx]) || '';
+  const dateBadge = document.getElementById('apoyoDateBadge');
+  if (dateBadge) {
+    if (apoyoSeg) {
+      dateBadge.innerText = `● ${fechaCorte} · ${f.etiqueta}`;
+      dateBadge.className = 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded whitespace-nowrap';
+    } else if (f.hayFiltros) {
+      dateBadge.innerText = `● ${fechaCorte} · Todo Quito`;
+      dateBadge.className = 'text-[10px] font-bold text-amber-300 bg-slate-700/90 border border-amber-500/50 px-2 py-0.5 rounded whitespace-nowrap';
+    } else {
+      dateBadge.innerText = fechaCorte ? `● ${fechaCorte}` : '--';
+      dateBadge.className = 'text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap';
+    }
+  }
 
   const badge = document.getElementById('apoyoScenarioBadge');
   if (badge) {
     badge.innerText = isAlcalde ? 'Alcaldía de Quito' : 'Prefectura de Pichincha';
   }
 
+  const getVal = (k, field) => {
+    if (apoyoSeg && apoyoSeg[k] && apoyoSeg[k][field] !== undefined) return apoyoSeg[k][field];
+    const arr = apoyo[k] && apoyo[k][field];
+    return arr ? arr[idx] : null;
+  };
+
   const candidatePool = isAlcalde ? ['pabel', 'yunda', 'burbano'] : ['tonello'];
   const keys = candidatePool
-    .filter(k => apoyo[k] && apoyo[k].def_si && apoyo[k].def_si[idx] !== null && apoyo[k].def_si[idx] !== undefined)
-    .sort((a, b) => (apoyo[b].def_si[idx] || 0) - (apoyo[a].def_si[idx] || 0));
+    .filter(k => {
+      const v = getVal(k, 'def_si');
+      return v !== null && v !== undefined;
+    })
+    .sort((a, b) => (getVal(b, 'def_si') || 0) - (getVal(a, 'def_si') || 0));
 
   const labels = keys.map(k => apoyo[k].nombre);
   const getSeries = (field) => keys.map(k => {
-    const arr = apoyo[k][field];
-    const v = arr ? arr[idx] : null;
+    const v = getVal(k, field);
     return v !== null && v !== undefined ? Number(Number(v).toFixed(1)) : 0;
   });
 

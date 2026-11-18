@@ -16477,5 +16477,1211 @@
         "merino": 0.0
       }
     }
+  },
+  "apoyo_segmentos": {
+    "5": {
+      "Circunscripción_Urbana Norte": {
+        "pabel": {
+          "def_si": 23.0,
+          "podria": 23.5,
+          "nsr": 0,
+          "pref_no": 25.0,
+          "def_no": 28.5
+        },
+        "yunda": {
+          "def_si": 7.1,
+          "podria": 13.8,
+          "nsr": 0.6,
+          "pref_no": 26.1,
+          "def_no": 52.5
+        },
+        "burbano": {
+          "def_si": 7.1,
+          "podria": 28.4,
+          "nsr": 0.6,
+          "pref_no": 26.0,
+          "def_no": 37.9
+        },
+        "tonello": {
+          "def_si": 13.9,
+          "podria": 30.1,
+          "nsr": 1.9,
+          "pref_no": 30.5,
+          "def_no": 23.5
+        }
+      },
+      "Circunscripción_Urbana Centro": {
+        "pabel": {
+          "def_si": 28.9,
+          "podria": 21.2,
+          "nsr": 1.7,
+          "pref_no": 10.6,
+          "def_no": 37.6
+        },
+        "yunda": {
+          "def_si": 14.7,
+          "podria": 19.5,
+          "nsr": 2.5,
+          "pref_no": 14.6,
+          "def_no": 48.7
+        },
+        "burbano": {
+          "def_si": 9.8,
+          "podria": 17.9,
+          "nsr": 10.7,
+          "pref_no": 20.3,
+          "def_no": 41.3
+        },
+        "tonello": {
+          "def_si": 15.4,
+          "podria": 40.6,
+          "nsr": 10.7,
+          "pref_no": 13.8,
+          "def_no": 19.5
+        }
+      },
+      "Circunscripción_Urbana Sur": {
+        "pabel": {
+          "def_si": 25.6,
+          "podria": 20.2,
+          "nsr": 9.6,
+          "pref_no": 7.5,
+          "def_no": 37.1
+        },
+        "yunda": {
+          "def_si": 11.7,
+          "podria": 17.0,
+          "nsr": 9.5,
+          "pref_no": 3.3,
+          "def_no": 58.6
+        },
+        "burbano": {
+          "def_si": 6.4,
+          "podria": 11.8,
+          "nsr": 12.8,
+          "pref_no": 11.7,
+          "def_no": 57.4
+        },
+        "tonello": {
+          "def_si": 19.1,
+          "podria": 19.2,
+          "nsr": 13.8,
+          "pref_no": 5.3,
+          "def_no": 42.5
+        }
+      },
+      "Circunscripción_Rural": {
+        "pabel": {
+          "def_si": 33.0,
+          "podria": 17.5,
+          "nsr": 3.9,
+          "pref_no": 7.8,
+          "def_no": 37.9
+        },
+        "yunda": {
+          "def_si": 11.6,
+          "podria": 20.7,
+          "nsr": 3.9,
+          "pref_no": 9.0,
+          "def_no": 54.9
+        },
+        "burbano": {
+          "def_si": 8.3,
+          "podria": 15.4,
+          "nsr": 7.8,
+          "pref_no": 11.6,
+          "def_no": 57.0
+        },
+        "tonello": {
+          "def_si": 19.3,
+          "podria": 25.2,
+          "nsr": 9.1,
+          "pref_no": 9.0,
+          "def_no": 37.5
+        }
+      },
+      "Sexo_Hombre": {
+        "pabel": {
+          "def_si": 29.7,
+          "podria": 19.7,
+          "nsr": 2.4,
+          "pref_no": 10.9,
+          "def_no": 37.3
+        },
+        "yunda": {
+          "def_si": 12.4,
+          "podria": 17.5,
+          "nsr": 3.5,
+          "pref_no": 14.7,
+          "def_no": 51.8
+        },
+        "burbano": {
+          "def_si": 9.6,
+          "podria": 17.3,
+          "nsr": 6.4,
+          "pref_no": 19.5,
+          "def_no": 47.2
+        },
+        "tonello": {
+          "def_si": 17.5,
+          "podria": 28.1,
+          "nsr": 7.5,
+          "pref_no": 16.4,
+          "def_no": 30.4
+        }
+      },
+      "Sexo_Mujer": {
+        "pabel": {
+          "def_si": 26.4,
+          "podria": 21.2,
+          "nsr": 4.3,
+          "pref_no": 14.7,
+          "def_no": 33.4
+        },
+        "yunda": {
+          "def_si": 10.1,
+          "podria": 18.2,
+          "nsr": 3.9,
+          "pref_no": 12.9,
+          "def_no": 54.8
+        },
+        "burbano": {
+          "def_si": 6.6,
+          "podria": 20.1,
+          "nsr": 8.7,
+          "pref_no": 15.7,
+          "def_no": 48.9
+        },
+        "tonello": {
+          "def_si": 16.3,
+          "podria": 30.4,
+          "nsr": 9.4,
+          "pref_no": 14.0,
+          "def_no": 30.0
+        }
+      },
+      "Grupos de edad_16 a 19 años": {
+        "pabel": {
+          "def_si": 15.7,
+          "podria": 42.3,
+          "nsr": 6.6,
+          "pref_no": 16.7,
+          "def_no": 18.8
+        },
+        "yunda": {
+          "def_si": 6.6,
+          "podria": 30.8,
+          "nsr": 11.6,
+          "pref_no": 20.5,
+          "def_no": 30.5
+        },
+        "burbano": {
+          "def_si": 3.8,
+          "podria": 35.1,
+          "nsr": 14.4,
+          "pref_no": 21.0,
+          "def_no": 25.8
+        },
+        "tonello": {
+          "def_si": 7.8,
+          "podria": 48.9,
+          "nsr": 15.6,
+          "pref_no": 13.9,
+          "def_no": 13.9
+        }
+      },
+      "Grupos de edad_20 a 29 años": {
+        "pabel": {
+          "def_si": 28.1,
+          "podria": 30.5,
+          "nsr": 3.8,
+          "pref_no": 12.7,
+          "def_no": 24.8
+        },
+        "yunda": {
+          "def_si": 15.1,
+          "podria": 22.4,
+          "nsr": 2.9,
+          "pref_no": 14.1,
+          "def_no": 45.5
+        },
+        "burbano": {
+          "def_si": 4.6,
+          "podria": 19.8,
+          "nsr": 4.8,
+          "pref_no": 16.4,
+          "def_no": 54.3
+        },
+        "tonello": {
+          "def_si": 12.3,
+          "podria": 44.4,
+          "nsr": 4.8,
+          "pref_no": 12.3,
+          "def_no": 26.2
+        }
+      },
+      "Grupos de edad_30 a 44 años": {
+        "pabel": {
+          "def_si": 28.5,
+          "podria": 14.1,
+          "nsr": 2.0,
+          "pref_no": 11.9,
+          "def_no": 43.5
+        },
+        "yunda": {
+          "def_si": 10.9,
+          "podria": 10.0,
+          "nsr": 2.0,
+          "pref_no": 15.5,
+          "def_no": 61.6
+        },
+        "burbano": {
+          "def_si": 9.3,
+          "podria": 10.5,
+          "nsr": 7.4,
+          "pref_no": 18.3,
+          "def_no": 54.6
+        },
+        "tonello": {
+          "def_si": 16.8,
+          "podria": 21.1,
+          "nsr": 8.5,
+          "pref_no": 15.7,
+          "def_no": 37.9
+        }
+      },
+      "Grupos de edad_45 a 60 años": {
+        "pabel": {
+          "def_si": 31.0,
+          "podria": 12.8,
+          "nsr": 1.0,
+          "pref_no": 14.8,
+          "def_no": 40.5
+        },
+        "yunda": {
+          "def_si": 11.6,
+          "podria": 18.9,
+          "nsr": 1.0,
+          "pref_no": 8.5,
+          "def_no": 60.0
+        },
+        "burbano": {
+          "def_si": 11.8,
+          "podria": 15.5,
+          "nsr": 7.2,
+          "pref_no": 16.2,
+          "def_no": 49.4
+        },
+        "tonello": {
+          "def_si": 27.3,
+          "podria": 15.6,
+          "nsr": 7.2,
+          "pref_no": 20.3,
+          "def_no": 29.6
+        }
+      },
+      "Grupos de edad_61 o más años": {
+        "pabel": {
+          "def_si": 35.4,
+          "podria": 7.4,
+          "nsr": 5.6,
+          "pref_no": 8.8,
+          "def_no": 42.8
+        },
+        "yunda": {
+          "def_si": 10.7,
+          "podria": 13.3,
+          "nsr": 4.2,
+          "pref_no": 9.8,
+          "def_no": 62.0
+        },
+        "burbano": {
+          "def_si": 9.4,
+          "podria": 22.0,
+          "nsr": 5.5,
+          "pref_no": 16.0,
+          "def_no": 47.2
+        },
+        "tonello": {
+          "def_si": 18.9,
+          "podria": 23.3,
+          "nsr": 8.1,
+          "pref_no": 12.1,
+          "def_no": 37.6
+        }
+      },
+      "Nivel de estudios_Ninguno": {
+        "pabel": {
+          "def_si": 49.8,
+          "podria": 0,
+          "nsr": 0,
+          "pref_no": 0,
+          "def_no": 50.2
+        },
+        "yunda": {
+          "def_si": 50.2,
+          "podria": 49.8,
+          "nsr": 0,
+          "pref_no": 0,
+          "def_no": 0
+        },
+        "burbano": {
+          "def_si": 0,
+          "podria": 0,
+          "nsr": 0,
+          "pref_no": 49.8,
+          "def_no": 50.2
+        },
+        "tonello": {
+          "def_si": 0,
+          "podria": 0,
+          "nsr": 49.8,
+          "pref_no": 0,
+          "def_no": 50.2
+        }
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "pabel": {
+          "def_si": 23.1,
+          "podria": 9.6,
+          "nsr": 7.1,
+          "pref_no": 13.6,
+          "def_no": 46.5
+        },
+        "yunda": {
+          "def_si": 20.6,
+          "podria": 21.2,
+          "nsr": 4.7,
+          "pref_no": 9.6,
+          "def_no": 44.0
+        },
+        "burbano": {
+          "def_si": 9.2,
+          "podria": 15.9,
+          "nsr": 14.4,
+          "pref_no": 7.3,
+          "def_no": 53.3
+        },
+        "tonello": {
+          "def_si": 21.0,
+          "podria": 18.4,
+          "nsr": 16.7,
+          "pref_no": 6.7,
+          "def_no": 37.2
+        }
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "pabel": {
+          "def_si": 26.5,
+          "podria": 23.2,
+          "nsr": 3.3,
+          "pref_no": 12.7,
+          "def_no": 34.4
+        },
+        "yunda": {
+          "def_si": 8.5,
+          "podria": 19.4,
+          "nsr": 5.2,
+          "pref_no": 14.8,
+          "def_no": 52.1
+        },
+        "burbano": {
+          "def_si": 6.5,
+          "podria": 22.0,
+          "nsr": 7.0,
+          "pref_no": 19.9,
+          "def_no": 44.6
+        },
+        "tonello": {
+          "def_si": 15.6,
+          "podria": 32.8,
+          "nsr": 8.1,
+          "pref_no": 15.8,
+          "def_no": 27.6
+        }
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "pabel": {
+          "def_si": 27.2,
+          "podria": 20.1,
+          "nsr": 2.3,
+          "pref_no": 13.2,
+          "def_no": 37.2
+        },
+        "yunda": {
+          "def_si": 13.0,
+          "podria": 14.6,
+          "nsr": 1.1,
+          "pref_no": 13.6,
+          "def_no": 57.6
+        },
+        "burbano": {
+          "def_si": 11.0,
+          "podria": 17.3,
+          "nsr": 6.2,
+          "pref_no": 16.3,
+          "def_no": 49.1
+        },
+        "tonello": {
+          "def_si": 17.8,
+          "podria": 27.0,
+          "nsr": 6.7,
+          "pref_no": 15.8,
+          "def_no": 32.7
+        }
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "pabel": {
+          "def_si": 45.9,
+          "podria": 18.1,
+          "nsr": 5.4,
+          "pref_no": 13.0,
+          "def_no": 17.6
+        },
+        "yunda": {
+          "def_si": 8.2,
+          "podria": 18.2,
+          "nsr": 5.4,
+          "pref_no": 12.9,
+          "def_no": 55.4
+        },
+        "burbano": {
+          "def_si": 2.2,
+          "podria": 7.7,
+          "nsr": 10.9,
+          "pref_no": 18.3,
+          "def_no": 60.9
+        },
+        "tonello": {
+          "def_si": 17.0,
+          "podria": 31.4,
+          "nsr": 8.1,
+          "pref_no": 17.8,
+          "def_no": 25.7
+        }
+      },
+      "Nivel de ingresos_Bajo": {
+        "pabel": {
+          "def_si": 24.2,
+          "podria": 20.6,
+          "nsr": 5.6,
+          "pref_no": 6.8,
+          "def_no": 42.8
+        },
+        "yunda": {
+          "def_si": 19.8,
+          "podria": 21.3,
+          "nsr": 5.2,
+          "pref_no": 5.1,
+          "def_no": 48.6
+        },
+        "burbano": {
+          "def_si": 5.0,
+          "podria": 8.4,
+          "nsr": 7.1,
+          "pref_no": 12.6,
+          "def_no": 66.8
+        },
+        "tonello": {
+          "def_si": 17.0,
+          "podria": 19.3,
+          "nsr": 9.0,
+          "pref_no": 11.9,
+          "def_no": 42.7
+        }
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "pabel": {
+          "def_si": 27.8,
+          "podria": 19.5,
+          "nsr": 5.7,
+          "pref_no": 8.3,
+          "def_no": 38.7
+        },
+        "yunda": {
+          "def_si": 9.9,
+          "podria": 19.1,
+          "nsr": 6.4,
+          "pref_no": 5.8,
+          "def_no": 58.8
+        },
+        "burbano": {
+          "def_si": 5.1,
+          "podria": 12.1,
+          "nsr": 13.6,
+          "pref_no": 13.3,
+          "def_no": 55.9
+        },
+        "tonello": {
+          "def_si": 20.9,
+          "podria": 25.9,
+          "nsr": 13.6,
+          "pref_no": 8.4,
+          "def_no": 31.3
+        }
+      },
+      "Nivel de ingresos_Medio": {
+        "pabel": {
+          "def_si": 28.1,
+          "podria": 21.2,
+          "nsr": 1.8,
+          "pref_no": 16.2,
+          "def_no": 32.7
+        },
+        "yunda": {
+          "def_si": 10.7,
+          "podria": 16.6,
+          "nsr": 2.1,
+          "pref_no": 20.1,
+          "def_no": 50.4
+        },
+        "burbano": {
+          "def_si": 10.2,
+          "podria": 23.2,
+          "nsr": 4.6,
+          "pref_no": 20.9,
+          "def_no": 41.1
+        },
+        "tonello": {
+          "def_si": 13.9,
+          "podria": 33.0,
+          "nsr": 5.6,
+          "pref_no": 19.5,
+          "def_no": 28.1
+        }
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "pabel": {
+          "def_si": 43.7,
+          "podria": 16.6,
+          "nsr": 0,
+          "pref_no": 24.2,
+          "def_no": 15.5
+        },
+        "yunda": {
+          "def_si": 0,
+          "podria": 17.1,
+          "nsr": 0,
+          "pref_no": 8.4,
+          "def_no": 74.5
+        },
+        "burbano": {
+          "def_si": 8.7,
+          "podria": 50.2,
+          "nsr": 0,
+          "pref_no": 17.3,
+          "def_no": 23.8
+        },
+        "tonello": {
+          "def_si": 34.7,
+          "podria": 34.0,
+          "nsr": 8.7,
+          "pref_no": 15.5,
+          "def_no": 7.1
+        }
+      }
+    },
+    "6": {
+      "Circunscripción_Urbana Norte": {
+        "pabel": {
+          "def_si": 28.0,
+          "podria": 25.2,
+          "nsr": 0.0,
+          "pref_no": 20.2,
+          "def_no": 26.5
+        },
+        "yunda": {
+          "def_si": 7.7,
+          "podria": 15.6,
+          "nsr": 0.6,
+          "pref_no": 23.4,
+          "def_no": 52.7
+        },
+        "burbano": {
+          "def_si": 5.1,
+          "podria": 25.4,
+          "nsr": 1.9,
+          "pref_no": 21.4,
+          "def_no": 46.1
+        },
+        "tonello": {
+          "def_si": 19.5,
+          "podria": 32.5,
+          "nsr": 0.6,
+          "pref_no": 22.2,
+          "def_no": 25.2
+        }
+      },
+      "Circunscripción_Urbana Centro": {
+        "pabel": {
+          "def_si": 26.3,
+          "podria": 25.1,
+          "nsr": 2.4,
+          "pref_no": 9.4,
+          "def_no": 36.9
+        },
+        "yunda": {
+          "def_si": 11.7,
+          "podria": 23.5,
+          "nsr": 2.4,
+          "pref_no": 14.0,
+          "def_no": 48.5
+        },
+        "burbano": {
+          "def_si": 7.8,
+          "podria": 19.6,
+          "nsr": 4.7,
+          "pref_no": 17.9,
+          "def_no": 50.0
+        },
+        "tonello": {
+          "def_si": 16.4,
+          "podria": 40.6,
+          "nsr": 4.0,
+          "pref_no": 13.3,
+          "def_no": 25.8
+        }
+      },
+      "Circunscripción_Urbana Sur": {
+        "pabel": {
+          "def_si": 30.9,
+          "podria": 20.3,
+          "nsr": 6.4,
+          "pref_no": 7.4,
+          "def_no": 35.0
+        },
+        "yunda": {
+          "def_si": 12.7,
+          "podria": 21.4,
+          "nsr": 6.4,
+          "pref_no": 7.4,
+          "def_no": 52.1
+        },
+        "burbano": {
+          "def_si": 4.3,
+          "podria": 19.2,
+          "nsr": 9.6,
+          "pref_no": 10.7,
+          "def_no": 56.2
+        },
+        "tonello": {
+          "def_si": 18.0,
+          "podria": 29.9,
+          "nsr": 9.6,
+          "pref_no": 6.4,
+          "def_no": 36.0
+        }
+      },
+      "Circunscripción_Rural": {
+        "pabel": {
+          "def_si": 32.1,
+          "podria": 25.0,
+          "nsr": 4.5,
+          "pref_no": 7.7,
+          "def_no": 30.7
+        },
+        "yunda": {
+          "def_si": 10.9,
+          "podria": 18.6,
+          "nsr": 4.5,
+          "pref_no": 13.4,
+          "def_no": 52.6
+        },
+        "burbano": {
+          "def_si": 8.3,
+          "podria": 19.2,
+          "nsr": 5.8,
+          "pref_no": 16.6,
+          "def_no": 50.1
+        },
+        "tonello": {
+          "def_si": 21.1,
+          "podria": 30.8,
+          "nsr": 9.0,
+          "pref_no": 11.5,
+          "def_no": 27.6
+        }
+      },
+      "Sexo_Hombre": {
+        "pabel": {
+          "def_si": 30.5,
+          "podria": 23.4,
+          "nsr": 2.4,
+          "pref_no": 11.1,
+          "def_no": 32.6
+        },
+        "yunda": {
+          "def_si": 12.3,
+          "podria": 16.5,
+          "nsr": 3.5,
+          "pref_no": 18.1,
+          "def_no": 49.6
+        },
+        "burbano": {
+          "def_si": 8.8,
+          "podria": 19.3,
+          "nsr": 4.7,
+          "pref_no": 18.2,
+          "def_no": 49.1
+        },
+        "tonello": {
+          "def_si": 19.5,
+          "podria": 32.1,
+          "nsr": 5.1,
+          "pref_no": 13.4,
+          "def_no": 29.8
+        }
+      },
+      "Sexo_Mujer": {
+        "pabel": {
+          "def_si": 28.3,
+          "podria": 24.9,
+          "nsr": 3.9,
+          "pref_no": 11.5,
+          "def_no": 31.5
+        },
+        "yunda": {
+          "def_si": 9.0,
+          "podria": 22.5,
+          "nsr": 3.1,
+          "pref_no": 12.2,
+          "def_no": 53.2
+        },
+        "burbano": {
+          "def_si": 4.6,
+          "podria": 22.4,
+          "nsr": 5.7,
+          "pref_no": 16.1,
+          "def_no": 51.2
+        },
+        "tonello": {
+          "def_si": 18.4,
+          "podria": 34.9,
+          "nsr": 6.1,
+          "pref_no": 14.1,
+          "def_no": 26.5
+        }
+      },
+      "Grupos de edad_16 a 19 años": {
+        "pabel": {
+          "def_si": 16.5,
+          "podria": 49.0,
+          "nsr": 3.9,
+          "pref_no": 17.9,
+          "def_no": 12.6
+        },
+        "yunda": {
+          "def_si": 4.0,
+          "podria": 31.5,
+          "nsr": 8.9,
+          "pref_no": 22.7,
+          "def_no": 32.9
+        },
+        "burbano": {
+          "def_si": 1.4,
+          "podria": 40.7,
+          "nsr": 8.9,
+          "pref_no": 22.2,
+          "def_no": 26.8
+        },
+        "tonello": {
+          "def_si": 12.6,
+          "podria": 52.7,
+          "nsr": 10.2,
+          "pref_no": 14.4,
+          "def_no": 10.2
+        }
+      },
+      "Grupos de edad_20 a 29 años": {
+        "pabel": {
+          "def_si": 25.8,
+          "podria": 35.5,
+          "nsr": 4.7,
+          "pref_no": 10.5,
+          "def_no": 23.4
+        },
+        "yunda": {
+          "def_si": 11.9,
+          "podria": 29.7,
+          "nsr": 3.8,
+          "pref_no": 12.5,
+          "def_no": 42.0
+        },
+        "burbano": {
+          "def_si": 4.4,
+          "podria": 21.2,
+          "nsr": 4.8,
+          "pref_no": 18.1,
+          "def_no": 51.6
+        },
+        "tonello": {
+          "def_si": 12.7,
+          "podria": 42.8,
+          "nsr": 6.7,
+          "pref_no": 13.2,
+          "def_no": 24.7
+        }
+      },
+      "Grupos de edad_30 a 44 años": {
+        "pabel": {
+          "def_si": 30.6,
+          "podria": 17.7,
+          "nsr": 2.0,
+          "pref_no": 9.7,
+          "def_no": 40.0
+        },
+        "yunda": {
+          "def_si": 12.3,
+          "podria": 12.1,
+          "nsr": 1.3,
+          "pref_no": 16.0,
+          "def_no": 58.2
+        },
+        "burbano": {
+          "def_si": 8.3,
+          "podria": 14.7,
+          "nsr": 4.5,
+          "pref_no": 17.3,
+          "def_no": 55.2
+        },
+        "tonello": {
+          "def_si": 18.6,
+          "podria": 30.7,
+          "nsr": 4.5,
+          "pref_no": 15.0,
+          "def_no": 31.2
+        }
+      },
+      "Grupos de edad_45 a 60 años": {
+        "pabel": {
+          "def_si": 35.8,
+          "podria": 13.7,
+          "nsr": 2.0,
+          "pref_no": 12.1,
+          "def_no": 36.5
+        },
+        "yunda": {
+          "def_si": 10.0,
+          "podria": 16.8,
+          "nsr": 2.0,
+          "pref_no": 12.5,
+          "def_no": 58.8
+        },
+        "burbano": {
+          "def_si": 9.0,
+          "podria": 16.1,
+          "nsr": 5.8,
+          "pref_no": 13.6,
+          "def_no": 55.6
+        },
+        "tonello": {
+          "def_si": 29.3,
+          "podria": 16.3,
+          "nsr": 4.0,
+          "pref_no": 18.3,
+          "def_no": 32.0
+        }
+      },
+      "Grupos de edad_61 o más años": {
+        "pabel": {
+          "def_si": 36.6,
+          "podria": 9.9,
+          "nsr": 4.2,
+          "pref_no": 7.9,
+          "def_no": 41.4
+        },
+        "yunda": {
+          "def_si": 12.9,
+          "podria": 12.4,
+          "nsr": 2.8,
+          "pref_no": 11.8,
+          "def_no": 60.1
+        },
+        "burbano": {
+          "def_si": 8.2,
+          "podria": 19.7,
+          "nsr": 2.8,
+          "pref_no": 14.6,
+          "def_no": 54.7
+        },
+        "tonello": {
+          "def_si": 21.2,
+          "podria": 29.8,
+          "nsr": 4.1,
+          "pref_no": 5.0,
+          "def_no": 39.9
+        }
+      },
+      "Nivel de estudios_Ninguno": {
+        "pabel": {
+          "def_si": 0.0,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 100.0
+        },
+        "yunda": {
+          "def_si": 100.0,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 0.0
+        },
+        "burbano": {
+          "def_si": 0.0,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 100.0
+        },
+        "tonello": {
+          "def_si": 0.0,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 100.0
+        }
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "pabel": {
+          "def_si": 25.5,
+          "podria": 14.3,
+          "nsr": 5.8,
+          "pref_no": 11.2,
+          "def_no": 43.2
+        },
+        "yunda": {
+          "def_si": 19.8,
+          "podria": 26.1,
+          "nsr": 2.8,
+          "pref_no": 11.1,
+          "def_no": 40.1
+        },
+        "burbano": {
+          "def_si": 8.5,
+          "podria": 20.0,
+          "nsr": 8.8,
+          "pref_no": 5.6,
+          "def_no": 57.1
+        },
+        "tonello": {
+          "def_si": 14.3,
+          "podria": 31.1,
+          "nsr": 8.7,
+          "pref_no": 0.0,
+          "def_no": 45.9
+        }
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "pabel": {
+          "def_si": 28.9,
+          "podria": 29.7,
+          "nsr": 2.4,
+          "pref_no": 10.8,
+          "def_no": 28.2
+        },
+        "yunda": {
+          "def_si": 9.9,
+          "podria": 22.9,
+          "nsr": 3.9,
+          "pref_no": 15.0,
+          "def_no": 48.3
+        },
+        "burbano": {
+          "def_si": 5.1,
+          "podria": 24.7,
+          "nsr": 4.7,
+          "pref_no": 19.8,
+          "def_no": 45.8
+        },
+        "tonello": {
+          "def_si": 17.3,
+          "podria": 39.0,
+          "nsr": 5.8,
+          "pref_no": 13.8,
+          "def_no": 24.0
+        }
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "pabel": {
+          "def_si": 28.9,
+          "podria": 20.5,
+          "nsr": 2.6,
+          "pref_no": 12.2,
+          "def_no": 35.7
+        },
+        "yunda": {
+          "def_si": 9.9,
+          "podria": 15.2,
+          "nsr": 1.6,
+          "pref_no": 16.0,
+          "def_no": 57.3
+        },
+        "burbano": {
+          "def_si": 8.8,
+          "podria": 18.3,
+          "nsr": 4.6,
+          "pref_no": 15.2,
+          "def_no": 53.1
+        },
+        "tonello": {
+          "def_si": 20.1,
+          "podria": 29.1,
+          "nsr": 4.2,
+          "pref_no": 16.3,
+          "def_no": 30.3
+        }
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "pabel": {
+          "def_si": 41.8,
+          "podria": 12.5,
+          "nsr": 10.1,
+          "pref_no": 10.0,
+          "def_no": 25.6
+        },
+        "yunda": {
+          "def_si": 6.8,
+          "podria": 12.6,
+          "nsr": 10.1,
+          "pref_no": 13.6,
+          "def_no": 56.9
+        },
+        "burbano": {
+          "def_si": 2.9,
+          "podria": 6.6,
+          "nsr": 10.1,
+          "pref_no": 20.0,
+          "def_no": 60.4
+        },
+        "tonello": {
+          "def_si": 31.8,
+          "podria": 19.2,
+          "nsr": 10.1,
+          "pref_no": 13.3,
+          "def_no": 25.6
+        }
+      },
+      "Nivel de ingresos_Bajo": {
+        "pabel": {
+          "def_si": 30.8,
+          "podria": 17.2,
+          "nsr": 4.3,
+          "pref_no": 5.3,
+          "def_no": 42.3
+        },
+        "yunda": {
+          "def_si": 18.0,
+          "podria": 18.1,
+          "nsr": 3.9,
+          "pref_no": 7.6,
+          "def_no": 52.4
+        },
+        "burbano": {
+          "def_si": 3.7,
+          "podria": 14.0,
+          "nsr": 3.9,
+          "pref_no": 5.8,
+          "def_no": 72.7
+        },
+        "tonello": {
+          "def_si": 26.6,
+          "podria": 16.0,
+          "nsr": 6.0,
+          "pref_no": 9.4,
+          "def_no": 42.1
+        }
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "pabel": {
+          "def_si": 33.6,
+          "podria": 20.6,
+          "nsr": 4.8,
+          "pref_no": 7.7,
+          "def_no": 33.2
+        },
+        "yunda": {
+          "def_si": 9.7,
+          "podria": 19.8,
+          "nsr": 4.8,
+          "pref_no": 8.2,
+          "def_no": 57.4
+        },
+        "burbano": {
+          "def_si": 3.6,
+          "podria": 14.3,
+          "nsr": 8.5,
+          "pref_no": 14.5,
+          "def_no": 59.1
+        },
+        "tonello": {
+          "def_si": 24.8,
+          "podria": 26.1,
+          "nsr": 8.5,
+          "pref_no": 8.3,
+          "def_no": 32.2
+        }
+      },
+      "Nivel de ingresos_Medio": {
+        "pabel": {
+          "def_si": 26.1,
+          "podria": 27.2,
+          "nsr": 2.1,
+          "pref_no": 14.6,
+          "def_no": 30.0
+        },
+        "yunda": {
+          "def_si": 10.3,
+          "podria": 19.9,
+          "nsr": 2.4,
+          "pref_no": 20.3,
+          "def_no": 47.0
+        },
+        "burbano": {
+          "def_si": 8.1,
+          "podria": 25.5,
+          "nsr": 3.5,
+          "pref_no": 20.5,
+          "def_no": 42.4
+        },
+        "tonello": {
+          "def_si": 13.9,
+          "podria": 41.0,
+          "nsr": 3.8,
+          "pref_no": 17.0,
+          "def_no": 24.2
+        }
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "pabel": {
+          "def_si": 39.8,
+          "podria": 30.8,
+          "nsr": 0.0,
+          "pref_no": 7.9,
+          "def_no": 21.4
+        },
+        "yunda": {
+          "def_si": 0.0,
+          "podria": 14.9,
+          "nsr": 0.0,
+          "pref_no": 14.7,
+          "def_no": 70.4
+        },
+        "burbano": {
+          "def_si": 22.8,
+          "podria": 31.2,
+          "nsr": 6.8,
+          "pref_no": 16.1,
+          "def_no": 23.0
+        },
+        "tonello": {
+          "def_si": 24.8,
+          "podria": 30.8,
+          "nsr": 8.2,
+          "pref_no": 29.3,
+          "def_no": 6.8
+        }
+      }
+    }
   }
 }
