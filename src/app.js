@@ -346,8 +346,13 @@ function resetFilters() {
 function renderActiveView() {
   if (!rawDecryptedData) return;
   const fechaActiva = (rawDecryptedData.fechas_reportes && rawDecryptedData.fechas_reportes[currentReportIdx]) || '';
+  const filtroActivo = getFiltrosConcatenados().hayFiltros;
   document.querySelectorAll('.cut-date-badge').forEach(el => {
-    el.innerText = fechaActiva ? `● ${fechaActiva}` : '--';
+    // Estas tarjetas no se segmentan por filtro: si hay un filtro activo se rotulan como "Todo Quito"
+    el.innerText = fechaActiva ? (filtroActivo ? `● ${fechaActiva} · Todo Quito` : `● ${fechaActiva}`) : '--';
+    el.className = filtroActivo
+      ? 'cut-date-badge text-[10px] font-bold text-amber-300 bg-slate-700/90 border border-amber-500/50 px-2 py-0.5 rounded whitespace-nowrap'
+      : 'cut-date-badge text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap';
   });
   renderCandidateCards();
   renderPiramide();
@@ -496,6 +501,18 @@ function renderCandidateCards() {
   // Ordenar automáticamente de mayor a menor según el porcentaje del corte/filtro activo
   cardItems.sort((a, b) => b.valActual - a.valActual);
 
+  // Tamaño muestral del segmento filtrado (se muestra en cada tarjeta; en ámbar si es muy pequeño)
+  let nSegCard = null;
+  if (f.hayFiltros) {
+    const segMapCard = rawDecryptedData.muestras_segmento_reportes ? rawDecryptedData.muestras_segmento_reportes[String(idx)] : null;
+    nSegCard = segMapCard && f.keyCruzada && segMapCard[f.keyCruzada] !== undefined
+      ? segMapCard[f.keyCruzada]
+      : (casosFiltrados ? casosFiltrados.length : null);
+  }
+  const nChipHtml = (nSegCard !== null)
+    ? `<div class="mt-0.5"><span class="inline-block text-[10px] font-extrabold px-1.5 py-0.5 rounded border ${nSegCard < 30 ? 'text-amber-800 bg-amber-100 border-amber-400' : 'text-slate-600 bg-slate-200 border-slate-300'}">n = ${nSegCard}</span></div>`
+    : '';
+
   let html = '';
   cardItems.forEach(({ c, valActual, deltaHtml }, rank) => {
 
@@ -511,6 +528,7 @@ function renderCandidateCards() {
               <span class="text-xs sm:text-sm font-extrabold text-slate-900 truncate leading-tight">${c.nombre}</span>
             </div>
             <div class="text-[11px] text-slate-500 truncate mt-0.5">${c.partido || c.lista}</div>
+            ${nChipHtml}
           </div>
         </div>
         <div class="text-right flex-shrink-0 pl-1">
