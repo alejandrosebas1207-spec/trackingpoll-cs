@@ -343,14 +343,38 @@ function resetFilters() {
   renderActiveView();
 }
 
+function getActiveSampleInfo() {
+  const idx = currentReportIdx;
+  const f = getFiltrosConcatenados();
+  let nTotal = 0;
+  if (rawDecryptedData.muestras_diarias_tracking && rawDecryptedData.muestras_diarias_tracking[idx] > 0) {
+    nTotal = rawDecryptedData.muestras_diarias_tracking[idx];
+  } else if (rawDecryptedData.muestras_historicas && rawDecryptedData.muestras_historicas[idx]) {
+    nTotal = rawDecryptedData.muestras_historicas[idx];
+  }
+
+  let nSeg = null;
+  if (f.hayFiltros) {
+    const segMap = rawDecryptedData.muestras_segmento_reportes ? rawDecryptedData.muestras_segmento_reportes[String(idx)] : null;
+    if (segMap && f.keyCruzada && segMap[f.keyCruzada] !== undefined) {
+      nSeg = segMap[f.keyCruzada];
+    } else {
+      const cf = filtrarCasos();
+      if (cf) nSeg = cf.length;
+    }
+  }
+  return { idx, f, nTotal, nSeg, isSmall: nSeg !== null && nSeg < 30 };
+}
+
 function renderActiveView() {
   if (!rawDecryptedData) return;
   const fechaActiva = (rawDecryptedData.fechas_reportes && rawDecryptedData.fechas_reportes[currentReportIdx]) || '';
-  const filtroActivo = getFiltrosConcatenados().hayFiltros;
+  const { f, nTotal } = getActiveSampleInfo();
+  const nTotTxt = nTotal > 0 ? ` (n = ${nTotal.toLocaleString('es-EC')})` : '';
   document.querySelectorAll('.cut-date-badge').forEach(el => {
-    // Estas tarjetas no se segmentan por filtro: si hay un filtro activo se rotulan como "Todo Quito"
-    el.innerText = fechaActiva ? (filtroActivo ? `● ${fechaActiva} · Todo Quito` : `● ${fechaActiva}`) : '--';
-    el.className = filtroActivo
+    // Estas tarjetas no se segmentan por filtro: si hay un filtro activo se rotulan como "Todo Quito" con su n total
+    el.innerText = fechaActiva ? (f.hayFiltros ? `● ${fechaActiva} · Todo Quito${nTotTxt}` : `● ${fechaActiva}${nTotTxt}`) : '--';
+    el.className = f.hayFiltros
       ? 'cut-date-badge text-[10px] font-bold text-amber-300 bg-slate-700/90 border border-amber-500/50 px-2 py-0.5 rounded whitespace-nowrap'
       : 'cut-date-badge text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap';
   });
@@ -741,17 +765,22 @@ function renderApoyoChart() {
     ? rawDecryptedData.apoyo_segmentos[String(idx)][f.keyCruzada]
     : null;
 
+  const { nTotal, nSeg, isSmall } = getActiveSampleInfo();
+  const nSegTxt = nSeg !== null ? ` (n = ${nSeg})` : '';
+  const nTotTxt = nTotal > 0 ? ` (n = ${nTotal.toLocaleString('es-EC')})` : '';
   const fechaCorte = (rawDecryptedData.fechas_reportes && rawDecryptedData.fechas_reportes[idx]) || '';
   const dateBadge = document.getElementById('apoyoDateBadge');
   if (dateBadge) {
     if (apoyoSeg) {
-      dateBadge.innerText = `● ${fechaCorte} · ${f.etiqueta}`;
-      dateBadge.className = 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded whitespace-nowrap';
+      dateBadge.innerText = `● ${fechaCorte} · ${f.etiqueta}${nSegTxt}`;
+      dateBadge.className = isSmall
+        ? 'text-[10px] font-bold text-amber-300 bg-slate-700 border border-amber-500/60 px-2 py-0.5 rounded whitespace-nowrap'
+        : 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded whitespace-nowrap';
     } else if (f.hayFiltros) {
-      dateBadge.innerText = `● ${fechaCorte} · Todo Quito`;
+      dateBadge.innerText = `● ${fechaCorte} · Todo Quito${nTotTxt}`;
       dateBadge.className = 'text-[10px] font-bold text-amber-300 bg-slate-700/90 border border-amber-500/50 px-2 py-0.5 rounded whitespace-nowrap';
     } else {
-      dateBadge.innerText = fechaCorte ? `● ${fechaCorte}` : '--';
+      dateBadge.innerText = fechaCorte ? `● ${fechaCorte}${nTotTxt}` : '--';
       dateBadge.className = 'text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap';
     }
   }
@@ -848,11 +877,16 @@ function renderCoyunturaYCredibilidad() {
     : null;
 
   const fechaCorte = (rawDecryptedData.fechas_reportes && rawDecryptedData.fechas_reportes[idx]) || 'Tracking';
+  const { nTotal, nSeg, isSmall } = getActiveSampleInfo();
+  const nSegTxt = nSeg !== null ? ` (n = ${nSeg})` : '';
+  const nTotTxt = nTotal > 0 ? ` (n = ${nTotal.toLocaleString('es-EC')})` : '';
   const segBadge = document.getElementById('coySegmentBadge');
   if (segBadge) {
-    segBadge.innerText = f.hayFiltros ? `● ${fechaCorte} · ${f.etiqueta}` : `● ${fechaCorte}`;
+    segBadge.innerText = f.hayFiltros ? `● ${fechaCorte} · ${f.etiqueta}${nSegTxt}` : `● ${fechaCorte}${nTotTxt}`;
     segBadge.className = f.hayFiltros
-      ? 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded'
+      ? (isSmall
+          ? 'text-[10px] font-bold text-amber-300 bg-slate-700 border border-amber-500/60 px-2 py-0.5 rounded'
+          : 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded')
       : 'text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded';
   }
 
@@ -1067,21 +1101,25 @@ function getAntivotoSeriesForChart(lineId) {
 function updateAntivotoChartDatasets() {
   if (!antivotoChartInstance || !rawDecryptedData) return;
   const fechas = rawDecryptedData.fechas_reportes || [];
-  const f = getFiltrosConcatenados();
+  const { f, nTotal, nSeg, isSmall } = getActiveSampleInfo();
+  const badgeText = f.hayFiltros
+    ? `● Filtro: ${f.etiqueta}${nSeg !== null ? ` (n = ${nSeg}${nTotal > 0 ? ` / ${nTotal.toLocaleString('es-EC')}` : ''})` : ''}`
+    : `● Todo Quito${nTotal > 0 ? ` (n = ${nTotal.toLocaleString('es-EC')})` : ''}`;
+  const badgeCls = f.hayFiltros
+    ? (isSmall
+        ? 'text-[10px] font-bold text-amber-300 bg-slate-700 border border-amber-500/60 px-2 py-0.5 rounded whitespace-nowrap'
+        : 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded whitespace-nowrap')
+    : 'text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap';
 
   const antiBadge = document.getElementById('antivotoChartBadge');
   if (antiBadge) {
-    antiBadge.innerText = f.hayFiltros ? `● Filtro: ${f.etiqueta}` : '● Todo Quito';
-    antiBadge.className = f.hayFiltros
-      ? 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded whitespace-nowrap'
-      : 'text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap';
+    antiBadge.innerText = badgeText;
+    antiBadge.className = badgeCls;
   }
   const mainBadge = document.getElementById('mainChartFilterBadge');
   if (mainBadge) {
-    mainBadge.innerText = f.hayFiltros ? `● Filtro: ${f.etiqueta}` : '● Todo Quito';
-    mainBadge.className = f.hayFiltros
-      ? 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded whitespace-nowrap'
-      : 'text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap';
+    mainBadge.innerText = badgeText;
+    mainBadge.className = badgeCls;
   }
 
   const lines = [
