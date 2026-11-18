@@ -227,8 +227,11 @@
       <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between overflow-hidden">
         <div class="flex flex-col flex-1">
           <div class="bg-slate-800 text-white -mx-3.5 -mt-3.5 sm:-mx-4 sm:-mt-4 px-3.5 py-2.5 mb-3 border-b border-slate-700 text-center">
-            <h3 class="text-sm sm:text-base font-extrabold text-white">Estructura Demográfica</h3>
-            <div class="flex items-center justify-center gap-1.5 mt-1.5">
+            <div class="flex items-center justify-between gap-1.5 mb-1.5">
+              <h3 class="text-sm sm:text-base font-extrabold text-white text-left">Estructura Demográfica</h3>
+              <span class="cut-date-badge text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap">● --</span>
+            </div>
+            <div class="flex items-center justify-center gap-1.5">
               <span id="pyramidTagH" class="text-[11px] font-bold text-sky-200 bg-slate-700 border border-slate-600 px-2 py-0.5 rounded">♂ --</span>
               <span id="pyramidTagM" class="text-[11px] font-bold text-rose-200 bg-slate-700 border border-slate-600 px-2 py-0.5 rounded">♀ --</span>
             </div>
@@ -250,8 +253,9 @@
       <div class="card-clean p-3.5 sm:p-4 rounded-xl lg:col-span-2 flex flex-col justify-between overflow-hidden">
         <div class="flex flex-col flex-1">
           <div class="flex flex-wrap justify-between items-center gap-2 bg-slate-800 text-white -mx-3.5 -mt-3.5 sm:-mx-4 sm:-mt-4 px-4 py-2.5 mb-3 border-b border-slate-700">
-            <div>
+            <div class="flex items-center gap-2">
               <h3 class="text-sm sm:text-base font-extrabold text-white">Firmeza de Voto</h3>
+              <span class="cut-date-badge text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap">● --</span>
             </div>
             <div class="flex flex-wrap items-center justify-center gap-2.5 text-[11px] font-semibold text-slate-200">
               <span class="inline-flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-xs bg-[#155e75] ring-1 ring-white/30"></span>1. Duro</span>
@@ -326,7 +330,10 @@
         <div class="flex items-center gap-2">
           <h3 class="text-sm sm:text-base font-extrabold text-white">Seguridad y Disposición de Voto</h3>
         </div>
-        <span id="apoyoScenarioBadge" class="text-[10.5px] font-bold text-slate-100 bg-slate-700 border border-slate-600 px-2 py-0.5 rounded">Alcaldía de Quito</span>
+        <div class="flex items-center gap-2">
+          <span class="cut-date-badge text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap">● --</span>
+          <span id="apoyoScenarioBadge" class="text-[10.5px] font-bold text-slate-100 bg-slate-700 border border-slate-600 px-2 py-0.5 rounded">Alcaldía de Quito</span>
+        </div>
       </div>
       <div class="relative h-64 sm:h-72 w-full">
         <canvas id="apoyoChartCanvas"></canvas>
@@ -343,6 +350,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v39"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v40"></script>
 </body>
 </html>

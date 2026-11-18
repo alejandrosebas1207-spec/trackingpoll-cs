@@ -324,6 +324,10 @@ function resetFilters() {
 
 function renderActiveView() {
   if (!rawDecryptedData) return;
+  const fechaActiva = (rawDecryptedData.fechas_reportes && rawDecryptedData.fechas_reportes[currentReportIdx]) || '';
+  document.querySelectorAll('.cut-date-badge').forEach(el => {
+    el.innerText = fechaActiva ? `● ${fechaActiva}` : '--';
+  });
   renderCandidateCards();
   renderPiramide();
   renderFirmeza();
@@ -576,9 +580,9 @@ const firmezaLabelsPlugin = {
         const height = Math.abs(bar.base - bar.y);
         const midY = (bar.y + bar.base) / 2;
 
-        if (height >= 15) {
+        if (height >= 16) {
           ctx.textAlign = 'center';
-          ctx.font = '800 13px Poppins, sans-serif';
+          ctx.font = '800 15px Poppins, sans-serif';
           ctx.fillStyle = ds.labelTextColor || '#ffffff';
           ctx.fillText(val.toFixed(1), bar.x, midY);
         } else {
@@ -603,7 +607,7 @@ const firmezaLabelsPlugin = {
           ctx.fill();
 
           ctx.textAlign = goLeft ? 'right' : 'left';
-          ctx.font = '800 11px Poppins, sans-serif';
+          ctx.font = '800 12px Poppins, sans-serif';
           ctx.fillStyle = '#0f172a';
           ctx.fillText(val.toFixed(1) + '%', textX, midY);
         }
@@ -776,12 +780,13 @@ function renderCoyunturaYCredibilidad() {
     ? rawDecryptedData.credibilidad_segmentos[String(idx)][f.keyCruzada]
     : null;
 
+  const fechaCorte = (rawDecryptedData.fechas_reportes && rawDecryptedData.fechas_reportes[idx]) || 'Tracking';
   const segBadge = document.getElementById('coySegmentBadge');
   if (segBadge) {
-    segBadge.innerText = f.hayFiltros ? f.etiqueta : 'Tracking Nov';
+    segBadge.innerText = f.hayFiltros ? `● ${fechaCorte} · ${f.etiqueta}` : `● ${fechaCorte}`;
     segBadge.className = f.hayFiltros
-      ? 'text-[10.5px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded'
-      : 'text-[10.5px] font-bold text-slate-100 bg-slate-700 border border-slate-600 px-2 py-0.5 rounded';
+      ? 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded'
+      : 'text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded';
   }
 
   const conoceSi = coySeg ? coySeg.conoce_si : (coyBase.conoce_si && coyBase.conoce_si[idx] !== null && coyBase.conoce_si[idx] !== undefined ? coyBase.conoce_si[idx] : null);
