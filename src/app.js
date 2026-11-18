@@ -155,7 +155,18 @@ function initDashboard() {
 
   setupSlider();
   initChart();
-  renderActiveView();
+  // Pasa por setReportIndex para que la etiqueta "Corte Activo" refleje el corte real al cargar
+  setReportIndex(currentReportIdx, 0);
+}
+
+// Cortes que sí tienen datos (se saltan los días sin medición, p. ej. Sáb 14 y Dom 15 Nov)
+function getValidReportIdxs() {
+  const s = (rawDecryptedData.series_alcalde && rawDecryptedData.series_alcalde['pabel']) || [];
+  const out = [];
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] !== null && s[i] !== undefined) out.push(i);
+  }
+  return out;
 }
 
 function setupSlider() {
@@ -168,8 +179,17 @@ function setupSlider() {
   });
 }
 
-function setReportIndex(idx) {
-  currentReportIdx = Math.max(0, Math.min(maxAvailableIdx, idx));
+function setReportIndex(idx, dir) {
+  let target = Math.max(0, Math.min(maxAvailableIdx, idx));
+  const valid = getValidReportIdxs();
+  if (valid.length && !valid.includes(target)) {
+    const sentido = typeof dir === 'number' ? dir : (target - currentReportIdx);
+    const siguiente = valid.find(v => v > target);
+    const anterior = [...valid].reverse().find(v => v < target);
+    const masCercano = valid.reduce((a, b) => (Math.abs(b - target) < Math.abs(a - target) ? b : a));
+    target = sentido >= 0 ? (siguiente !== undefined ? siguiente : masCercano) : (anterior !== undefined ? anterior : masCercano);
+  }
+  currentReportIdx = target;
   document.getElementById('reportSlider').value = currentReportIdx;
 
   const dateName = rawDecryptedData.fechas_reportes[currentReportIdx];
@@ -201,7 +221,7 @@ function setReportIndex(idx) {
 }
 
 function stepReport(delta) {
-  setReportIndex(currentReportIdx + delta);
+  setReportIndex(currentReportIdx + delta, delta);
 }
 
 function setScenario(scen) {
