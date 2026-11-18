@@ -537,13 +537,29 @@ function renderCandidateCards() {
     ? `<div class="mt-0.5"><span class="inline-block text-[10px] font-extrabold px-1.5 py-0.5 rounded border ${nSegCard < 30 ? 'text-amber-800 bg-amber-100 border-amber-400' : 'text-slate-600 bg-slate-200 border-slate-300'}">n = ${nSegCard}</span></div>`
     : '';
 
+  const PHOTO_MAP = {
+    pabel: 'PABEL_MUNOZ.png',
+    burbano: 'HAROLD_BURBANO.png',
+    yunda: 'JORGE_YUNDA.png',
+    merino: 'WILSON_MERINO.png',
+    tonello: 'ALEXANDRO_TONELLO.png',
+    ubidia: 'GIOVANNA_UBIDIA.png',
+    cevallos: 'CARLA_CEVALLOS.png',
+    zapata: 'JUAN_ZAPATA.png'
+  };
+
   let html = '';
   cardItems.forEach(({ c, valActual, deltaHtml }, rank) => {
+    const id = getCandidateKey(c);
+    const photoFile = PHOTO_MAP[id] || '';
+    const avatarHtml = photoFile
+      ? `<div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden flex-shrink-0 bg-slate-200 border-2 shadow-xs" style="border-color: ${c.color}"><img src="./assets/${photoFile}" alt="${c.nombre}" class="w-full h-full object-cover object-top"></div>`
+      : `<div class="w-1.5 h-8 rounded-full flex-shrink-0" style="background-color: ${c.color}"></div>`;
 
     html += `
       <div class="card-candidate p-2.5 rounded-xl border border-slate-400 bg-slate-50 flex items-center justify-between hover:border-slate-500 transition-all shadow-xs">
         <div class="flex items-center gap-2.5 min-w-0 pr-1">
-          <div class="w-1.5 h-8 rounded-full flex-shrink-0" style="background-color: ${c.color}"></div>
+          ${avatarHtml}
           <div class="min-w-0">
             <div class="flex items-center gap-1.5">
               <span class="text-[10px] font-black uppercase px-1.5 py-0.2 rounded text-white flex-shrink-0" style="background-color: ${c.color}">
