@@ -73,6 +73,7 @@ let maxAvailableIdx = 2;  // Mediciones consolidadas actuales (0=Sep, 1=Oct, 2=N
 let chartInstance = null;
 let firmezaChartInstance = null;
 let apoyoChartInstance = null;
+let antivotoChartInstance = null;
 
 // Petición autenticada de datos al servidor BFF
 async function fetchTrackingData(token) {
@@ -907,7 +908,147 @@ function initChart() {
       }
     }
   });
+  initAntivotoChart();
   updateChartDatasets();
+}
+
+function initAntivotoChart() {
+  const canvas = document.getElementById('antivotoChartCanvas');
+  if (!canvas) return;
+  antivotoChartInstance = new Chart(canvas.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels: rawDecryptedData.fechas_reportes,
+      datasets: []
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      devicePixelRatio: Math.max(window.devicePixelRatio || 1, 2),
+      spanGaps: true,
+      animation: { duration: 350 },
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            usePointStyle: true,
+            pointStyle: 'rectRounded',
+            boxWidth: 11,
+            boxHeight: 11,
+            padding: 16,
+            font: { family: 'Poppins', size: 12, weight: 'bold' },
+            color: '#0f172a'
+          }
+        },
+        tooltip: {
+          backgroundColor: '#0f172a',
+          titleFont: { family: 'Poppins', size: 12, weight: 'bold' },
+          bodyFont: { family: 'Poppins', size: 11 },
+          padding: 10,
+          cornerRadius: 10,
+          callbacks: {
+            label: function(context) {
+              const val = context.parsed.y;
+              return ` ${context.dataset.label}: ${val !== null ? val.toFixed(1) + '%' : 'Pendiente'}`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          min: 0,
+          suggestedMax: 35,
+          grid: { color: '#f1f5f9' },
+          ticks: {
+            font: { family: 'Poppins', size: 11 },
+            callback: v => v + '%'
+          }
+        },
+        x: {
+          grid: { color: '#f8fafc' },
+          ticks: {
+            font: { family: 'Poppins', size: 10, weight: '600' },
+            maxRotation: 45,
+            minRotation: 0
+          }
+        }
+      }
+    }
+  });
+}
+
+function getAntivotoSeriesForChart(lineId) {
+  const fechas = rawDecryptedData.fechas_reportes || [];
+  const f = getFiltrosConcatenados();
+  if (f.hayFiltros && f.keyCruzada) {
+    const cruzBase = rawDecryptedData.cruzadas_antivoto;
+    const cruzRep = rawDecryptedData.cruzadas_antivoto_reportes;
+    return fechas.map((_, i) => {
+      if (i === 2 && cruzBase && cruzBase[f.keyCruzada] && cruzBase[f.keyCruzada][lineId] !== undefined) {
+        return cruzBase[f.keyCruzada][lineId];
+      }
+      if (cruzRep && cruzRep[String(i)] && cruzRep[String(i)][f.keyCruzada] && cruzRep[String(i)][f.keyCruzada][lineId] !== undefined) {
+        return cruzRep[String(i)][f.keyCruzada][lineId];
+      }
+      return null;
+    });
+  }
+  const antiDict = rawDecryptedData.antivoto_alcalde || {};
+  return antiDict[lineId] || [];
+}
+
+function updateAntivotoChartDatasets() {
+  if (!antivotoChartInstance || !rawDecryptedData) return;
+  const fechas = rawDecryptedData.fechas_reportes || [];
+  const f = getFiltrosConcatenados();
+
+  const antiBadge = document.getElementById('antivotoChartBadge');
+  if (antiBadge) {
+    antiBadge.innerText = f.hayFiltros ? `● Filtro: ${f.etiqueta}` : '● Todo Quito';
+    antiBadge.className = f.hayFiltros
+      ? 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded whitespace-nowrap'
+      : 'text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap';
+  }
+  const mainBadge = document.getElementById('mainChartFilterBadge');
+  if (mainBadge) {
+    if (f.hayFiltros) {
+      mainBadge.innerText = `● Filtro: ${f.etiqueta}`;
+      mainBadge.classList.remove('hidden');
+    } else {
+      mainBadge.classList.add('hidden');
+    }
+  }
+
+  const lines = [
+    { id: 'pabel', label: 'Pabel Muñoz', color: '#0284c7' },
+    { id: 'burbano', label: 'Harold Burbano', color: '#7c3aed' },
+    { id: 'yunda', label: 'Jorge Yunda', color: '#ea580c' },
+    { id: 'merino', label: 'Wilson Merino', color: '#10b981' }
+  ];
+
+  antivotoChartInstance.data.datasets = lines.map(line => {
+    const fullSeries = getAntivotoSeriesForChart(line.id);
+    return {
+      label: line.label,
+      borderColor: line.color,
+      backgroundColor: line.color,
+      borderWidth: 3,
+      tension: 0.25,
+      fill: false,
+      spanGaps: true,
+      pointBackgroundColor: line.color,
+      pointBorderColor: '#ffffff',
+      pointBorderWidth: 2,
+      pointRadius: fechas.map((_, i) => {
+        if (i > currentReportIdx || fullSeries[i] === null || fullSeries[i] === undefined) return 0;
+        return i === currentReportIdx ? 7 : 4;
+      }),
+      data: fechas.map((_, i) => (i <= currentReportIdx ? fullSeries[i] : null))
+    };
+  });
+
+  antivotoChartInstance.update();
 }
 
 function getChartLinesConfig() {
@@ -1000,6 +1141,7 @@ function updateChartDatasets() {
   });
 
   chartInstance.update();
+  updateAntivotoChartDatasets();
 }
 
 function updateChartProgress() {
@@ -1020,6 +1162,7 @@ function updateChartProgress() {
   });
 
   chartInstance.update();
+  updateAntivotoChartDatasets();
 }
 
 // Exportar controladores al scope global

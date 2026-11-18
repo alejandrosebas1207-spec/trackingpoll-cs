@@ -201,10 +201,11 @@
     <!-- GRÁFICA DE EVOLUCIÓN TEMPORAL VIVA (SE ALIMENTA DÍA A DÍA) -->
     <div class="card-clean p-3.5 sm:p-4 rounded-xl overflow-hidden">
       <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center bg-slate-800 text-white -mx-3.5 -mt-3.5 sm:-mx-4 sm:-mt-4 px-4 py-2.5 mb-3 border-b border-slate-700 gap-2">
-        <div>
+        <div class="flex items-center gap-2">
           <h2 class="text-xs sm:text-sm font-extrabold text-white tracking-tight" id="chartSectionTitle">
             Simulación de voto alcalde de Quito
           </h2>
+          <span id="mainChartFilterBadge" class="text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap hidden">● --</span>
         </div>
         <div class="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-200" id="legendContainer">
           <!-- Leyenda dinámica -->
@@ -217,6 +218,26 @@
 
       <div class="flex justify-center items-center pt-2 mt-2 border-t border-slate-300/70 text-[11px] text-slate-500">
         <div>Fuente: Tablas Depuradas Oficiales (Corte Diario 18:00h) · Clima Social</div>
+      </div>
+    </div>
+
+    <!-- GRÁFICA DE EVOLUCIÓN DE RECHAZO: NUNCA VOTARÍA (ALCALDÍA) -->
+    <div class="card-clean p-3.5 sm:p-4 rounded-xl overflow-hidden" id="antivotoChartCard">
+      <div class="flex flex-wrap justify-between items-center bg-slate-800 text-white -mx-3.5 -mt-3.5 sm:-mx-4 sm:-mt-4 px-4 py-2.5 mb-3 border-b border-slate-700 gap-2">
+        <div class="flex items-center gap-2">
+          <h2 class="text-xs sm:text-sm font-extrabold text-white tracking-tight">
+            Evolución de Rechazo · "¿Por cuál candidato nunca votaría?" (Alcaldía)
+          </h2>
+        </div>
+        <span id="antivotoChartBadge" class="text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap">● Todo Quito</span>
+      </div>
+
+      <div class="relative h-56 sm:h-64 w-full">
+        <canvas id="antivotoChartCanvas"></canvas>
+      </div>
+
+      <div class="flex justify-center items-center pt-2 mt-2 border-t border-slate-300/70 text-[11px] text-slate-500">
+        <div>Antivoto ponderado por corte · Responde a filtros sociodemográficos</div>
       </div>
     </div>
 
@@ -350,6 +371,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v40"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v41"></script>
 </body>
 </html>

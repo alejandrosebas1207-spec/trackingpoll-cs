@@ -16049,5 +16049,433 @@
         "cree_neg": 71.2
       }
     }
+  },
+  "cruzadas_antivoto": {
+    "Circunscripción_Urbana Norte": {
+      "pabel": 15.0,
+      "munoz": 15.0,
+      "burbano": 16.6,
+      "yunda": 16.1,
+      "merino": 4.4
+    },
+    "Circunscripción_Urbana Centro": {
+      "pabel": 22.0,
+      "munoz": 22.0,
+      "burbano": 26.4,
+      "yunda": 13.4,
+      "merino": 3.5
+    },
+    "Circunscripción_Urbana Sur": {
+      "pabel": 19.0,
+      "munoz": 19.0,
+      "burbano": 22.3,
+      "yunda": 11.7,
+      "merino": 6.6
+    },
+    "Circunscripción_Rural": {
+      "pabel": 17.8,
+      "munoz": 17.8,
+      "burbano": 26.9,
+      "yunda": 7.9,
+      "merino": 2.8
+    },
+    "Sexo_Hombre": {
+      "pabel": 17.0,
+      "munoz": 17.0,
+      "burbano": 26.3,
+      "yunda": 11.6,
+      "merino": 5.5
+    },
+    "Sexo_Mujer": {
+      "pabel": 19.7,
+      "munoz": 19.7,
+      "burbano": 20.2,
+      "yunda": 12.8,
+      "merino": 2.9
+    },
+    "Grupos de edad_16 a 19 años": {
+      "pabel": 9.0,
+      "munoz": 9.0,
+      "burbano": 16.2,
+      "yunda": 8.5,
+      "merino": 2.6
+    },
+    "Grupos de edad_20 a 29 años": {
+      "pabel": 16.8,
+      "munoz": 16.8,
+      "burbano": 22.9,
+      "yunda": 13.4,
+      "merino": 5.0
+    },
+    "Grupos de edad_30 a 44 años": {
+      "pabel": 18.2,
+      "munoz": 18.2,
+      "burbano": 25.7,
+      "yunda": 14.0,
+      "merino": 5.0
+    },
+    "Grupos de edad_45 a 60 años": {
+      "pabel": 31.5,
+      "munoz": 31.5,
+      "burbano": 22.7,
+      "yunda": 10.3,
+      "merino": 3.7
+    },
+    "Grupos de edad_61 o más años": {
+      "pabel": 12.7,
+      "munoz": 12.7,
+      "burbano": 26.2,
+      "yunda": 13.9,
+      "merino": 3.5
+    },
+    "Nivel de estudios_Ninguno": {
+      "pabel": 0,
+      "munoz": 0,
+      "burbano": 19.0,
+      "yunda": 27.5,
+      "merino": 0
+    },
+    "Nivel de estudios_Básica, primaria": {
+      "pabel": 9.7,
+      "munoz": 9.7,
+      "burbano": 23.5,
+      "yunda": 10.4,
+      "merino": 4.4
+    },
+    "Nivel de estudios_Secundaria, bachillerato": {
+      "pabel": 15.3,
+      "munoz": 15.3,
+      "burbano": 26.4,
+      "yunda": 11.7,
+      "merino": 4.0
+    },
+    "Nivel de estudios_Superior, universitaria": {
+      "pabel": 25.1,
+      "munoz": 25.1,
+      "burbano": 17.9,
+      "yunda": 13.7,
+      "merino": 4.9
+    },
+    "Nivel de estudios_Técnica, artesano": {
+      "pabel": 20.4,
+      "munoz": 20.4,
+      "burbano": 24.6,
+      "yunda": 10.7,
+      "merino": 1.3
+    },
+    "Nivel de ingresos_Bajo": {
+      "pabel": 4.4,
+      "munoz": 4.4,
+      "burbano": 22.0,
+      "yunda": 17.8,
+      "merino": 2.4
+    },
+    "Nivel de ingresos_Medio bajo": {
+      "pabel": 12.8,
+      "munoz": 12.8,
+      "burbano": 26.8,
+      "yunda": 12.2,
+      "merino": 4.5
+    },
+    "Nivel de ingresos_Medio": {
+      "pabel": 22.4,
+      "munoz": 22.4,
+      "burbano": 21.6,
+      "yunda": 12.0,
+      "merino": 4.4
+    },
+    "Nivel de ingresos_Medio alto o alto": {
+      "pabel": 31.3,
+      "munoz": 31.3,
+      "burbano": 16.4,
+      "yunda": 9.8,
+      "merino": 2.0
+    }
+  },
+  "cruzadas_antivoto_reportes": {
+    "5": {
+      "Circunscripción_Urbana Norte": {
+        "pabel": 21.5,
+        "munoz": 21.5,
+        "burbano": 25.4,
+        "yunda": 20.4,
+        "merino": 4.6
+      },
+      "Circunscripción_Urbana Centro": {
+        "pabel": 15.5,
+        "munoz": 15.5,
+        "burbano": 25.9,
+        "yunda": 17.9,
+        "merino": 0
+      },
+      "Circunscripción_Urbana Sur": {
+        "pabel": 13.7,
+        "munoz": 13.7,
+        "burbano": 23.4,
+        "yunda": 18.2,
+        "merino": 2.2
+      },
+      "Circunscripción_Rural": {
+        "pabel": 15.5,
+        "munoz": 15.5,
+        "burbano": 29.8,
+        "yunda": 11.0,
+        "merino": 3.2
+      },
+      "Sexo_Hombre": {
+        "pabel": 17.3,
+        "munoz": 17.3,
+        "burbano": 25.2,
+        "yunda": 15.2,
+        "merino": 2.2
+      },
+      "Sexo_Mujer": {
+        "pabel": 16.2,
+        "munoz": 16.2,
+        "burbano": 27.6,
+        "yunda": 17.7,
+        "merino": 2.9
+      },
+      "Grupos de edad_16 a 19 años": {
+        "pabel": 8.5,
+        "munoz": 8.5,
+        "burbano": 23.1,
+        "yunda": 8.7,
+        "merino": 1.3
+      },
+      "Grupos de edad_20 a 29 años": {
+        "pabel": 11.1,
+        "munoz": 11.1,
+        "burbano": 32.9,
+        "yunda": 15.1,
+        "merino": 4.4
+      },
+      "Grupos de edad_30 a 44 años": {
+        "pabel": 20.3,
+        "munoz": 20.3,
+        "burbano": 24.7,
+        "yunda": 21.4,
+        "merino": 3.1
+      },
+      "Grupos de edad_45 a 60 años": {
+        "pabel": 18.6,
+        "munoz": 18.6,
+        "burbano": 31.1,
+        "yunda": 14.6,
+        "merino": 1.7
+      },
+      "Grupos de edad_61 o más años": {
+        "pabel": 23.3,
+        "munoz": 23.3,
+        "burbano": 18.2,
+        "yunda": 19.2,
+        "merino": 1.3
+      },
+      "Nivel de estudios_Ninguno": {
+        "pabel": 50.2,
+        "munoz": 50.2,
+        "burbano": 0,
+        "yunda": 0,
+        "merino": 0
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "pabel": 18.6,
+        "munoz": 18.6,
+        "burbano": 23.3,
+        "yunda": 11.5,
+        "merino": 0
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "pabel": 11.2,
+        "munoz": 11.2,
+        "burbano": 27.8,
+        "yunda": 19.1,
+        "merino": 3.4
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "pabel": 25.4,
+        "munoz": 25.4,
+        "burbano": 24.3,
+        "yunda": 14.6,
+        "merino": 2.0
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "pabel": 7.6,
+        "munoz": 7.6,
+        "burbano": 33.0,
+        "yunda": 15.2,
+        "merino": 2.5
+      },
+      "Nivel de ingresos_Bajo": {
+        "pabel": 7.4,
+        "munoz": 7.4,
+        "burbano": 40.5,
+        "yunda": 9.1,
+        "merino": 3.4
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "pabel": 10.1,
+        "munoz": 10.1,
+        "burbano": 23.5,
+        "yunda": 13.3,
+        "merino": 1.2
+      },
+      "Nivel de ingresos_Medio": {
+        "pabel": 22.0,
+        "munoz": 22.0,
+        "burbano": 25.4,
+        "yunda": 19.1,
+        "merino": 3.2
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "pabel": 22.9,
+        "munoz": 22.9,
+        "burbano": 25.6,
+        "yunda": 34.7,
+        "merino": 0
+      }
+    },
+    "6": {
+      "Circunscripción_Urbana Norte": {
+        "pabel": 17.6,
+        "munoz": 17.6,
+        "burbano": 27.9,
+        "yunda": 17.7,
+        "merino": 5.1
+      },
+      "Circunscripción_Urbana Centro": {
+        "pabel": 18.8,
+        "munoz": 18.8,
+        "burbano": 32.0,
+        "yunda": 15.6,
+        "merino": 0.0
+      },
+      "Circunscripción_Urbana Sur": {
+        "pabel": 18.1,
+        "munoz": 18.1,
+        "burbano": 23.4,
+        "yunda": 13.8,
+        "merino": 1.1
+      },
+      "Circunscripción_Rural": {
+        "pabel": 14.7,
+        "munoz": 14.7,
+        "burbano": 34.1,
+        "yunda": 11.6,
+        "merino": 1.9
+      },
+      "Sexo_Hombre": {
+        "pabel": 16.9,
+        "munoz": 16.9,
+        "burbano": 27.5,
+        "yunda": 14.2,
+        "merino": 2.5
+      },
+      "Sexo_Mujer": {
+        "pabel": 17.4,
+        "munoz": 17.4,
+        "burbano": 32.3,
+        "yunda": 14.9,
+        "merino": 1.8
+      },
+      "Grupos de edad_16 a 19 años": {
+        "pabel": 7.4,
+        "munoz": 7.4,
+        "burbano": 22.7,
+        "yunda": 15.0,
+        "merino": 1.1
+      },
+      "Grupos de edad_20 a 29 años": {
+        "pabel": 11.7,
+        "munoz": 11.7,
+        "burbano": 32.4,
+        "yunda": 11.7,
+        "merino": 3.6
+      },
+      "Grupos de edad_30 a 44 años": {
+        "pabel": 20.8,
+        "munoz": 20.8,
+        "burbano": 32.0,
+        "yunda": 19.2,
+        "merino": 1.2
+      },
+      "Grupos de edad_45 a 60 años": {
+        "pabel": 21.5,
+        "munoz": 21.5,
+        "burbano": 33.4,
+        "yunda": 11.7,
+        "merino": 2.6
+      },
+      "Grupos de edad_61 o más años": {
+        "pabel": 21.2,
+        "munoz": 21.2,
+        "burbano": 25.1,
+        "yunda": 12.1,
+        "merino": 2.4
+      },
+      "Nivel de estudios_Ninguno": {
+        "pabel": 100.0,
+        "munoz": 100.0,
+        "burbano": 0.0,
+        "yunda": 0.0,
+        "merino": 0.0
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "pabel": 17.2,
+        "munoz": 17.2,
+        "burbano": 28.2,
+        "yunda": 5.7,
+        "merino": 0.0
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "pabel": 11.9,
+        "munoz": 11.9,
+        "burbano": 33.2,
+        "yunda": 16.0,
+        "merino": 2.9
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "pabel": 24.9,
+        "munoz": 24.9,
+        "burbano": 26.8,
+        "yunda": 14.6,
+        "merino": 1.8
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "pabel": 9.7,
+        "munoz": 9.7,
+        "burbano": 25.2,
+        "yunda": 12.8,
+        "merino": 0.0
+      },
+      "Nivel de ingresos_Bajo": {
+        "pabel": 6.4,
+        "munoz": 6.4,
+        "burbano": 32.8,
+        "yunda": 7.8,
+        "merino": 1.9
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "pabel": 13.7,
+        "munoz": 13.7,
+        "burbano": 30.5,
+        "yunda": 11.6,
+        "merino": 0.5
+      },
+      "Nivel de ingresos_Medio": {
+        "pabel": 20.8,
+        "munoz": 20.8,
+        "burbano": 28.8,
+        "yunda": 17.1,
+        "merino": 3.2
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "pabel": 21.4,
+        "munoz": 21.4,
+        "burbano": 39.8,
+        "yunda": 24.1,
+        "merino": 0.0
+      }
+    }
   }
 }
