@@ -1012,12 +1012,10 @@ function updateAntivotoChartDatasets() {
   }
   const mainBadge = document.getElementById('mainChartFilterBadge');
   if (mainBadge) {
-    if (f.hayFiltros) {
-      mainBadge.innerText = `● Filtro: ${f.etiqueta}`;
-      mainBadge.classList.remove('hidden');
-    } else {
-      mainBadge.classList.add('hidden');
-    }
+    mainBadge.innerText = f.hayFiltros ? `● Filtro: ${f.etiqueta}` : '● Todo Quito';
+    mainBadge.className = f.hayFiltros
+      ? 'text-[10px] font-bold text-sky-200 bg-slate-700 border border-sky-500/50 px-2 py-0.5 rounded whitespace-nowrap'
+      : 'text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap';
   }
 
   const lines = [
