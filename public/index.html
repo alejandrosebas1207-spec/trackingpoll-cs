@@ -235,10 +235,10 @@
     </div>
 
     <!-- SECCIÓN INFERIOR: PIRÁMIDE POBLACIONAL, FIRMEZA, ANTIVOTO Y GESTIÓN -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
+    <div id="lowerCardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2.5">
 
       <!-- 1. ESTRUCTURA DEMOGRÁFICA (SEXO Y EDAD PONDERADOS) -->
-      <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between overflow-hidden">
+      <div id="demografiaCard" class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between overflow-hidden">
         <div class="flex flex-col flex-1">
           <div class="bg-slate-800 text-white -mx-3.5 -mt-3.5 sm:-mx-4 sm:-mt-4 px-3.5 py-2.5 mb-3 border-b border-slate-700 text-center">
             <div class="flex items-center justify-between gap-1.5 mb-1.5">
@@ -264,7 +264,7 @@
       </div>
 
       <!-- 2-3. FIRMEZA DE VOTO -->
-      <div class="card-clean p-3.5 sm:p-4 rounded-xl lg:col-span-2 flex flex-col justify-between overflow-hidden">
+      <div id="firmezaChartCard" class="card-clean p-3.5 sm:p-4 rounded-xl lg:col-span-2 flex flex-col justify-between overflow-hidden">
         <div class="flex flex-col flex-1">
           <div class="flex flex-wrap justify-between items-center gap-2 bg-slate-800 text-white -mx-3.5 -mt-3.5 sm:-mx-4 sm:-mt-4 px-4 py-2.5 mb-3 border-b border-slate-700">
             <div class="flex items-center gap-2">
@@ -290,7 +290,7 @@
       </div>
 
       <!-- 4. COYUNTURA Y CREDIBILIDAD (TRACKING POLL OFICIAL) -->
-      <div class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between overflow-hidden">
+      <div id="coyunturaCard" class="card-clean p-3.5 sm:p-4 rounded-xl flex flex-col justify-between overflow-hidden">
         <div class="flex flex-col flex-1">
           <div class="bg-slate-800 text-white -mx-3.5 -mt-3.5 sm:-mx-4 sm:-mt-4 px-3.5 py-2.5 mb-3 border-b border-slate-700 text-center">
             <h3 class="text-sm sm:text-base font-extrabold text-white">Coyuntura y Credibilidad</h3>
@@ -364,6 +364,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v48"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v49"></script>
 </body>
 </html>
