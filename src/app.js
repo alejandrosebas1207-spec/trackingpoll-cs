@@ -241,16 +241,12 @@ function setScenario(scen) {
     if (chartTitle) chartTitle.innerText = 'Simulación de voto prefecto de Pichincha';
   }
 
-  // En Voto Prefecto ocultar los gráficos exclusivos de Alcaldía (Nunca votaría y Firmeza)
+  // En Voto Prefecto ocultar los bloques de Alcaldía/coyuntura dejando solo Intención de Voto Prefecto y Disposición de Alexandro Tonello
   const isAlcalde = scen === 'alcalde';
   const antiCard = document.getElementById('antivotoChartCard');
-  const firmCard = document.getElementById('firmezaChartCard');
-  const demoCard = document.getElementById('demografiaCard');
-  const coyCard = document.getElementById('coyunturaCard');
+  const lowerGrid = document.getElementById('lowerCardsGrid');
   if (antiCard) antiCard.classList.toggle('hidden', !isAlcalde);
-  if (firmCard) firmCard.classList.toggle('hidden', !isAlcalde);
-  if (demoCard) demoCard.classList.toggle('lg:col-span-2', !isAlcalde);
-  if (coyCard) coyCard.classList.toggle('lg:col-span-2', !isAlcalde);
+  if (lowerGrid) lowerGrid.classList.toggle('hidden', !isAlcalde);
 
   updateChartDatasets();
   renderActiveView();
