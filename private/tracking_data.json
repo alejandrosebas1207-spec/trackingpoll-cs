@@ -66,21 +66,21 @@
       "nombre": "Giovanna Ubidia",
       "partido": "Acción Democrática Nacional",
       "lista": "ADN 7",
-      "color": "#7b2cbf"
+      "color": "#7c3aed"
     },
     {
       "id": "zapata",
       "nombre": "Juan Zapata",
       "partido": "Imparables",
       "lista": "Lista 79",
-      "color": "#16a34a"
+      "color": "#ea580c"
     },
     {
       "id": "cevallos",
       "nombre": "Carla Cevallos",
       "partido": "Avanza",
       "lista": "Lista 8",
-      "color": "#0ea5e9"
+      "color": "#0284c7"
     }
   ],
   "series_alcalde": {

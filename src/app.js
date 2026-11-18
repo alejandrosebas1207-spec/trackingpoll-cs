@@ -1189,10 +1189,10 @@ function getChartLinesConfig() {
     ];
   }
   return [
-    { id: 'tonello', label: 'Alexandro Tonello', color: '#0284c7', dashed: false },
+    { id: 'tonello', label: 'Alexandro Tonello', color: '#dc2626', dashed: false },
     { id: 'ubidia', label: 'Giovanna Ubidia', color: '#7c3aed', dashed: false },
     { id: 'zapata', label: 'Juan Zapata', color: '#ea580c', dashed: false },
-    { id: 'cevallos', label: 'Carla Cevallos', color: '#10b981', dashed: false },
+    { id: 'cevallos', label: 'Carla Cevallos', color: '#0284c7', dashed: false },
     { id: 'otros', label: 'Resto', color: '#64748b', dashed: true },
     { id: 'nulo_blanco', label: 'Nulo-Blanco', color: '#94a3b8', dashed: true },
     { id: 'indecisos', label: 'Indeciso', color: '#f59e0b', dashed: true }
