@@ -1146,10 +1146,10 @@ function updateAntivotoChartDatasets() {
   }
 
   const lines = [
-    { id: 'pabel', label: 'Pabel Muñoz', color: '#0284c7' },
+    { id: 'pabel', label: 'Pabel Muñoz', color: '#dc2626' },
     { id: 'burbano', label: 'Harold Burbano', color: '#7c3aed' },
-    { id: 'yunda', label: 'Jorge Yunda', color: '#ea580c' },
-    { id: 'merino', label: 'Wilson Merino', color: '#10b981' }
+    { id: 'yunda', label: 'Jorge Yunda', color: '#0284c7' },
+    { id: 'merino', label: 'Wilson Merino', color: '#ea580c' }
   ];
 
   antivotoChartInstance.data.datasets = lines.map(line => {
@@ -1179,10 +1179,10 @@ function updateAntivotoChartDatasets() {
 function getChartLinesConfig() {
   if (currentScenario === 'alcalde') {
     return [
-      { id: 'pabel', label: 'Pabel Muñoz', color: '#0284c7', dashed: false },
+      { id: 'pabel', label: 'Pabel Muñoz', color: '#dc2626', dashed: false },
       { id: 'burbano', label: 'Harold Burbano', color: '#7c3aed', dashed: false },
-      { id: 'yunda', label: 'Jorge Yunda', color: '#ea580c', dashed: false },
-      { id: 'merino', label: 'Wilson Merino', color: '#10b981', dashed: false },
+      { id: 'yunda', label: 'Jorge Yunda', color: '#0284c7', dashed: false },
+      { id: 'merino', label: 'Wilson Merino', color: '#ea580c', dashed: false },
       { id: 'otros', label: 'Resto', color: '#64748b', dashed: true },
       { id: 'nulo_blanco', label: 'Nulo-Blanco', color: '#94a3b8', dashed: true },
       { id: 'indecisos', label: 'Indeciso', color: '#f59e0b', dashed: true }
