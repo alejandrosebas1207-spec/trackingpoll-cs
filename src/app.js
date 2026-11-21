@@ -51,8 +51,10 @@
     })(0);
   }, 1000);
 
-  // 5. Detección de ventana DevTools
+  // 5. Detección de ventana DevTools (desactivada en móviles/tablets porque el teclado virtual y la barra de direcciones reducen innerHeight)
   function detectDevTools() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || navigator.maxTouchPoints > 0 || window.innerWidth < 768;
+    if (isMobile) return;
     const threshold = 160;
     const widthDiff = window.outerWidth - window.innerWidth > threshold;
     const heightDiff = window.outerHeight - window.innerHeight > threshold;
