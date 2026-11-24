@@ -95,14 +95,24 @@
         </div>
       </div>
 
-      <!-- Centro: Switcher Voto Alcalde / Voto Prefecto -->
-      <div class="flex items-center gap-1 bg-slate-800 p-0.5 rounded-xl border border-slate-700">
-        <button id="btnTabAlcalde" onclick="setScenario('alcalde')" class="px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all">
-          Voto Alcalde
-        </button>
-        <button id="btnTabPrefecto" onclick="setScenario('prefecto')" class="px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all">
-          Voto Prefecto
-        </button>
+      <!-- Centro: Switcher Voto Alcalde / Voto Prefecto + Sub-pestaña Voto Válido -->
+      <div class="flex flex-col items-center gap-1">
+        <div class="flex items-center gap-1 bg-slate-800 p-0.5 rounded-xl border border-slate-700">
+          <button id="btnTabAlcalde" onclick="setScenario('alcalde')" class="px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all cursor-pointer">
+            Voto Alcalde
+          </button>
+          <button id="btnTabPrefecto" onclick="setScenario('prefecto')" class="px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all cursor-pointer">
+            Voto Prefecto
+          </button>
+        </div>
+        <div id="alcaldeVoteModeBar" class="flex items-center gap-1 bg-slate-800/90 p-0.5 rounded-lg border border-slate-700">
+          <button id="btnModeTotal" onclick="setVoteMode('total')" class="px-2.5 py-0.5 rounded-md bg-emerald-500 text-slate-950 font-extrabold text-[10.5px] shadow-xs transition-all cursor-pointer">
+            Voto Total
+          </button>
+          <button id="btnModeValido" onclick="setVoteMode('valido')" class="px-2.5 py-0.5 rounded-md text-slate-300 hover:text-white font-bold text-[10.5px] transition-all cursor-pointer">
+            Voto Válido
+          </button>
+        </div>
       </div>
 
       <!-- Lado Derecho: Controlador Temporal Compacto -->
@@ -364,6 +374,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v53"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v54"></script>
 </body>
 </html>

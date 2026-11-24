@@ -70,6 +70,7 @@
 // Variables de Estado del Tablero
 let rawDecryptedData = null;
 let currentScenario = 'alcalde';
+let currentVoteMode = 'total'; // 'total' | 'valido' (aplica en Alcalde)
 let currentReportIdx = 2; // Inicia en Nov 2026 (índice 2)
 let maxAvailableIdx = 2;  // Mediciones consolidadas actuales (0=Sep, 1=Oct, 2=Nov)
 let chartInstance = null;
@@ -226,30 +227,59 @@ function stepReport(delta) {
   setReportIndex(currentReportIdx + delta, delta);
 }
 
+function updateChartTitleLabel() {
+  const chartTitle = document.getElementById('chartSectionTitle');
+  if (!chartTitle) return;
+  if (currentScenario === 'alcalde') {
+    chartTitle.innerText = currentVoteMode === 'valido'
+      ? 'Simulación de voto alcalde de Quito · Voto Válido (100%)'
+      : 'Simulación de voto alcalde de Quito';
+  } else {
+    chartTitle.innerText = 'Simulación de voto prefecto de Pichincha';
+  }
+}
+
+function setVoteMode(mode) {
+  currentVoteMode = mode === 'valido' ? 'valido' : 'total';
+  const btnT = document.getElementById('btnModeTotal');
+  const btnV = document.getElementById('btnModeValido');
+  if (btnT && btnV) {
+    if (currentVoteMode === 'valido') {
+      btnV.className = 'px-2.5 py-0.5 rounded-md bg-emerald-500 text-slate-950 font-extrabold text-[10.5px] shadow-xs transition-all cursor-pointer';
+      btnT.className = 'px-2.5 py-0.5 rounded-md text-slate-300 hover:text-white font-bold text-[10.5px] transition-all cursor-pointer';
+    } else {
+      btnT.className = 'px-2.5 py-0.5 rounded-md bg-emerald-500 text-slate-950 font-extrabold text-[10.5px] shadow-xs transition-all cursor-pointer';
+      btnV.className = 'px-2.5 py-0.5 rounded-md text-slate-300 hover:text-white font-bold text-[10.5px] transition-all cursor-pointer';
+    }
+  }
+  updateChartTitleLabel();
+  updateChartDatasets();
+  renderActiveView();
+}
+
 function setScenario(scen) {
   currentScenario = scen;
   const btnA = document.getElementById('btnTabAlcalde');
   const btnP = document.getElementById('btnTabPrefecto');
-  const title = document.getElementById('heroTitle');
-  const chartTitle = document.getElementById('chartSectionTitle');
+  const modeBar = document.getElementById('alcaldeVoteModeBar');
 
   if (scen === 'alcalde') {
-    btnA.className = 'px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all';
-    btnP.className = 'px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all';
-    if (chartTitle) chartTitle.innerText = 'Simulación de voto alcalde de Quito';
+    btnA.className = 'px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all cursor-pointer';
+    btnP.className = 'px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all cursor-pointer';
   } else {
-    btnP.className = 'px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all';
-    btnA.className = 'px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all';
-    if (chartTitle) chartTitle.innerText = 'Simulación de voto prefecto de Pichincha';
+    btnP.className = 'px-3 py-1 rounded-lg bg-white text-slate-900 font-black text-xs shadow-sm transition-all cursor-pointer';
+    btnA.className = 'px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all cursor-pointer';
   }
 
-  // En Voto Prefecto ocultar los bloques de Alcaldía/coyuntura dejando solo Intención de Voto Prefecto y Disposición de Alexandro Tonello
+  // En Voto Prefecto ocultar los bloques de Alcaldía/coyuntura y la sub-pestaña de Voto Válido
   const isAlcalde = scen === 'alcalde';
+  if (modeBar) modeBar.classList.toggle('hidden', !isAlcalde);
   const antiCard = document.getElementById('antivotoChartCard');
   const lowerGrid = document.getElementById('lowerCardsGrid');
   if (antiCard) antiCard.classList.toggle('hidden', !isAlcalde);
   if (lowerGrid) lowerGrid.classList.toggle('hidden', !isAlcalde);
 
+  updateChartTitleLabel();
   updateChartDatasets();
   renderActiveView();
 }
@@ -484,6 +514,7 @@ function renderCandidateCards() {
 
     // Si hay filtro único activo, usar tabla cruzada ponderada oficial del corte activo (con fallback a Nov 2026 / microdatos)
     let hasPrevSeg = false;
+    let prevSegIdx = -1;
     if (f.hayFiltros && f.keyCruzada) {
       const cruzRep = isAlcalde ? rawDecryptedData.cruzadas_alcalde_reportes : rawDecryptedData.cruzadas_prefecto_reportes;
       const cruzBase = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
@@ -494,12 +525,14 @@ function renderCandidateCards() {
             valPrev = cruzRep[String(j)][f.keyCruzada][id];
             prevLabel = rawDecryptedData.fechas_reportes ? rawDecryptedData.fechas_reportes[j] : '';
             hasPrevSeg = true;
+            prevSegIdx = j;
             break;
           }
           if (j === 2 && cruzBase && cruzBase[f.keyCruzada] && cruzBase[f.keyCruzada][id] !== undefined) {
             valPrev = cruzBase[f.keyCruzada][id];
             prevLabel = rawDecryptedData.fechas_reportes ? rawDecryptedData.fechas_reportes[2] : 'Nov 2026';
             hasPrevSeg = true;
+            prevSegIdx = 2;
             break;
           }
         }
@@ -510,6 +543,15 @@ function renderCandidateCards() {
         const matchCount = casosFiltrados.filter(item => item[colIdx] === id).length;
         valActual = (matchCount / casosFiltrados.length) * 100.0;
       }
+    }
+
+    // Modo Voto Válido (Alcaldía): re-escalar quitando Indecisos + Nulo/Blanco sobre el 100% válido
+    if (isAlcalde && currentVoteMode === 'valido') {
+      const vbActual = getValidBaseAt(idx, f);
+      if (vbActual > 0) valActual = Number(((valActual / vbActual) * 100).toFixed(1));
+      const pIdx = f.hayFiltros ? prevSegIdx : prevIdx;
+      const vbPrev = pIdx >= 0 ? getValidBaseAt(pIdx, f) : vbActual;
+      if (vbPrev > 0) valPrev = Number(((valPrev / vbPrev) * 100).toFixed(1));
     }
 
     const delta = valActual - valPrev;
@@ -1178,17 +1220,44 @@ function updateAntivotoChartDatasets() {
   antivotoChartInstance.update();
 }
 
+function getValidBaseAt(rIdx, f) {
+  if (!rawDecryptedData || rIdx < 0) return 0;
+  let nul = 0;
+  let ind = 0;
+  if (f && f.hayFiltros && f.keyCruzada) {
+    const segObj = rIdx === 2
+      ? (rawDecryptedData.cruzadas_alcalde ? rawDecryptedData.cruzadas_alcalde[f.keyCruzada] : null)
+      : (rawDecryptedData.cruzadas_alcalde_reportes && rawDecryptedData.cruzadas_alcalde_reportes[String(rIdx)] ? rawDecryptedData.cruzadas_alcalde_reportes[String(rIdx)][f.keyCruzada] : null);
+    if (!segObj) return 0;
+    nul = segObj['nulo_blanco'] || 0;
+    ind = segObj['indecisos'] || 0;
+  } else {
+    const sNul = rawDecryptedData.series_alcalde['nulo_blanco'] || [];
+    const sInd = rawDecryptedData.series_alcalde['indecisos'] || [];
+    if (sNul[rIdx] === null || sNul[rIdx] === undefined) return 0;
+    nul = sNul[rIdx] || 0;
+    ind = sInd[rIdx] || 0;
+  }
+  const base = 100 - nul - ind;
+  return base > 0 ? base : 0;
+}
+
 function getChartLinesConfig() {
   if (currentScenario === 'alcalde') {
-    return [
+    const baseLines = [
       { id: 'pabel', label: 'Pabel Muñoz', color: '#dc2626', dashed: false },
       { id: 'burbano', label: 'Harold Burbano', color: '#7c3aed', dashed: false },
       { id: 'yunda', label: 'Jorge Yunda', color: '#0284c7', dashed: false },
       { id: 'merino', label: 'Wilson Merino', color: '#ea580c', dashed: false },
+      { id: 'jijon', label: 'Bernardo Jijón', color: '#15803d', dashed: false },
       { id: 'otros', label: 'Resto', color: '#64748b', dashed: true },
       { id: 'nulo_blanco', label: 'Nulo-Blanco', color: '#94a3b8', dashed: true },
       { id: 'indecisos', label: 'Indeciso', color: '#f59e0b', dashed: true }
     ];
+    if (currentVoteMode === 'valido') {
+      return baseLines.filter(l => l.id !== 'nulo_blanco' && l.id !== 'indecisos');
+    }
+    return baseLines;
   }
   return [
     { id: 'tonello', label: 'Alexandro Tonello', color: '#dc2626', dashed: false },
@@ -1205,6 +1274,7 @@ function getLineSeriesForChart(lineId) {
   const isAlcalde = currentScenario === 'alcalde';
   const fechas = rawDecryptedData.fechas_reportes || [];
   const f = getFiltrosConcatenados();
+  let rawSeries = null;
 
   if (f.hayFiltros && f.keyCruzada) {
     const cruzBase = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
@@ -1217,26 +1287,37 @@ function getLineSeriesForChart(lineId) {
       }
       return segObj[lineId] !== undefined ? segObj[lineId] : null;
     };
-    return fechas.map((_, i) => {
+    rawSeries = fechas.map((_, i) => {
       if (i === 2) return getSegVal(segBase);
       if (cruzRep && cruzRep[String(i)] && cruzRep[String(i)][f.keyCruzada]) {
         return getSegVal(cruzRep[String(i)][f.keyCruzada]);
       }
       return null;
     });
+  } else {
+    const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+    if (!isAlcalde && lineId === 'otros') {
+      const baseOtros = seriesDict['otros'] || [];
+      const churu = seriesDict['churuchumbi'] || [];
+      rawSeries = fechas.map((_, i) => {
+        if (baseOtros[i] === null || baseOtros[i] === undefined) return null;
+        const extra = churu[i] !== null && churu[i] !== undefined ? churu[i] : 0;
+        return Number((baseOtros[i] + extra).toFixed(1));
+      });
+    } else {
+      rawSeries = seriesDict[lineId] || [];
+    }
   }
 
-  const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
-  if (!isAlcalde && lineId === 'otros') {
-    const baseOtros = seriesDict['otros'] || [];
-    const churu = seriesDict['churuchumbi'] || [];
+  if (isAlcalde && currentVoteMode === 'valido') {
     return fechas.map((_, i) => {
-      if (baseOtros[i] === null || baseOtros[i] === undefined) return null;
-      const extra = churu[i] !== null && churu[i] !== undefined ? churu[i] : 0;
-      return Number((baseOtros[i] + extra).toFixed(1));
+      const v = rawSeries[i];
+      if (v === null || v === undefined) return null;
+      const vb = getValidBaseAt(i, f);
+      return vb > 0 ? Number(((v / vb) * 100).toFixed(1)) : null;
     });
   }
-  return seriesDict[lineId] || [];
+  return rawSeries;
 }
 
 function updateChartDatasets() {
@@ -1297,6 +1378,7 @@ window.onSingleFilterChange = onSingleFilterChange;
 window.resetFilters = resetFilters;
 window.renderActiveView = renderActiveView;
 window.setScenario = setScenario;
+window.setVoteMode = setVoteMode;
 window.stepReport = stepReport;
 window.handleAuth = handleAuth;
 
