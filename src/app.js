@@ -1232,8 +1232,9 @@ function updateAntivotoChartDatasets() {
 function getValidBaseAt(rIdx, f) {
   if (!rawDecryptedData || rIdx < 0) return 0;
   const isAlcalde = currentScenario === 'alcalde';
-  let nul = 0;
-  let ind = 0;
+  const validKeys = isAlcalde
+    ? ['pabel', 'burbano', 'yunda', 'merino', 'jijon', 'otros']
+    : ['tonello', 'ubidia', 'zapata', 'cevallos', 'churuchumbi', 'otros'];
   if (f && f.hayFiltros && f.keyCruzada) {
     const cruzBase = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
     const cruzRep = isAlcalde ? rawDecryptedData.cruzadas_alcalde_reportes : rawDecryptedData.cruzadas_prefecto_reportes;
@@ -1241,18 +1242,14 @@ function getValidBaseAt(rIdx, f) {
       ? (cruzBase ? cruzBase[f.keyCruzada] : null)
       : (cruzRep && cruzRep[String(rIdx)] ? cruzRep[String(rIdx)][f.keyCruzada] : null);
     if (!segObj) return 0;
-    nul = segObj['nulo_blanco'] || 0;
-    ind = segObj['indecisos'] || 0;
-  } else {
-    const sDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
-    const sNul = sDict['nulo_blanco'] || [];
-    const sInd = sDict['indecisos'] || [];
-    if (sNul[rIdx] === null || sNul[rIdx] === undefined) return 0;
-    nul = sNul[rIdx] || 0;
-    ind = sInd[rIdx] || 0;
+    const sum = validKeys.reduce((acc, k) => acc + (segObj[k] || 0), 0);
+    return sum > 0 ? sum : 0;
   }
-  const base = 100 - nul - ind;
-  return base > 0 ? base : 0;
+  const sDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+  const mainKey = isAlcalde ? 'pabel' : 'tonello';
+  if (!sDict[mainKey] || sDict[mainKey][rIdx] === null || sDict[mainKey][rIdx] === undefined) return 0;
+  const sum = validKeys.reduce((acc, k) => acc + ((sDict[k] && sDict[k][rIdx]) || 0), 0);
+  return sum > 0 ? sum : 0;
 }
 
 function getChartLinesConfig() {

@@ -192,9 +192,9 @@
       null
     ],
     "otros": [
-      7.3,
-      9.9,
-      9.7,
+      5.1,
+      8.1,
+      5.8,
       null,
       null,
       6.7,
@@ -252,9 +252,9 @@
       null
     ],
     "jijon": [
-      null,
-      null,
-      null,
+      2.2,
+      1.8,
+      3.9,
       null,
       null,
       4.2,
@@ -375,7 +375,7 @@
     ],
     "otros": [
       9.0,
-      8.9,
+      8.1,
       9.8,
       null,
       null,
@@ -536,9 +536,9 @@
       null
     ],
     "jijon": [
-      null,
-      null,
-      null,
+      2.0,
+      1.9,
+      1.0,
       null,
       null,
       0.6,
@@ -777,7 +777,8 @@
       "merino": 6.3,
       "nulo_blanco": 13.8,
       "indecisos": 22.7,
-      "otros": 9.7
+      "otros": 4.6,
+      "jijon": 5.1
     },
     "Circunscripción_Urbana Centro": {
       "pabel": 36.9,
@@ -786,7 +787,8 @@
       "merino": 7.0,
       "nulo_blanco": 14.6,
       "indecisos": 14.4,
-      "otros": 6.6
+      "otros": 3.4,
+      "jijon": 3.2
     },
     "Circunscripción_Urbana Sur": {
       "pabel": 32.5,
@@ -795,7 +797,8 @@
       "merino": 8.0,
       "nulo_blanco": 7.0,
       "indecisos": 18.6,
-      "otros": 12.7
+      "otros": 11.1,
+      "jijon": 1.6
     },
     "Circunscripción_Rural": {
       "pabel": 37.5,
@@ -804,7 +807,8 @@
       "merino": 2.9,
       "nulo_blanco": 7.1,
       "indecisos": 16.8,
-      "otros": 10.3
+      "otros": 5.2,
+      "jijon": 5.1
     },
     "Sexo_Hombre": {
       "pabel": 38.5,
@@ -813,7 +817,8 @@
       "merino": 5.5,
       "nulo_blanco": 11.4,
       "indecisos": 16.6,
-      "otros": 7.9
+      "otros": 5.5,
+      "jijon": 2.4
     },
     "Sexo_Mujer": {
       "pabel": 32.9,
@@ -822,7 +827,8 @@
       "merino": 6.2,
       "nulo_blanco": 10.3,
       "indecisos": 19.4,
-      "otros": 11.3
+      "otros": 6.0,
+      "jijon": 5.3
     },
     "Grupos de edad_16 a 19 años": {
       "pabel": 28.5,
@@ -831,7 +837,8 @@
       "merino": 5.1,
       "nulo_blanco": 7.8,
       "indecisos": 37.1,
-      "otros": 7.0
+      "otros": 3.0,
+      "jijon": 4.0
     },
     "Grupos de edad_20 a 29 años": {
       "pabel": 35.5,
@@ -840,7 +847,8 @@
       "merino": 5.4,
       "nulo_blanco": 10.0,
       "indecisos": 20.8,
-      "otros": 10.5
+      "otros": 6.5,
+      "jijon": 4.0
     },
     "Grupos de edad_30 a 44 años": {
       "pabel": 36.4,
@@ -849,7 +857,8 @@
       "merino": 7.4,
       "nulo_blanco": 10.4,
       "indecisos": 14.9,
-      "otros": 12.7
+      "otros": 7.6,
+      "jijon": 5.1
     },
     "Grupos de edad_45 a 60 años": {
       "pabel": 33.6,
@@ -858,7 +867,8 @@
       "merino": 4.6,
       "nulo_blanco": 13.4,
       "indecisos": 7.7,
-      "otros": 10.5
+      "otros": 6.9,
+      "jijon": 3.6
     },
     "Grupos de edad_61 o más años": {
       "pabel": 44.4,
@@ -867,7 +877,8 @@
       "merino": 5.6,
       "nulo_blanco": 12.7,
       "indecisos": 15.2,
-      "otros": 4.1
+      "otros": 2.6,
+      "jijon": 1.5
     },
     "Nivel de estudios_Ninguno": {
       "pabel": 45.3,
@@ -876,7 +887,8 @@
       "merino": 0.0,
       "nulo_blanco": 27.5,
       "indecisos": 27.3,
-      "otros": 0.0
+      "otros": 0.0,
+      "jijon": 0.0
     },
     "Nivel de estudios_Básica, primaria": {
       "pabel": 40.2,
@@ -885,7 +897,8 @@
       "merino": 2.5,
       "nulo_blanco": 11.3,
       "indecisos": 19.6,
-      "otros": 2.6
+      "otros": 1.7,
+      "jijon": 0.9
     },
     "Nivel de estudios_Secundaria, bachillerato": {
       "pabel": 37.0,
@@ -894,7 +907,8 @@
       "merino": 6.1,
       "nulo_blanco": 10.9,
       "indecisos": 19.0,
-      "otros": 8.6
+      "otros": 5.6,
+      "jijon": 3.0
     },
     "Nivel de estudios_Superior, universitaria": {
       "pabel": 31.6,
@@ -903,7 +917,8 @@
       "merino": 5.7,
       "nulo_blanco": 11.5,
       "indecisos": 18.1,
-      "otros": 12.0
+      "otros": 6.1,
+      "jijon": 5.9
     },
     "Nivel de estudios_Técnica, artesano": {
       "pabel": 38.4,
@@ -912,7 +927,8 @@
       "merino": 10.0,
       "nulo_blanco": 5.8,
       "indecisos": 8.2,
-      "otros": 16.4
+      "otros": 11.4,
+      "jijon": 5.0
     },
     "Nivel de ingresos_Bajo": {
       "pabel": 29.4,
@@ -921,7 +937,8 @@
       "merino": 2.4,
       "nulo_blanco": 20.4,
       "indecisos": 30.2,
-      "otros": 2.1
+      "otros": 1.1,
+      "jijon": 1.0
     },
     "Nivel de ingresos_Medio bajo": {
       "pabel": 47.2,
@@ -930,7 +947,8 @@
       "merino": 4.9,
       "nulo_blanco": 10.5,
       "indecisos": 15.0,
-      "otros": 4.6
+      "otros": 4.1,
+      "jijon": 0.5
     },
     "Nivel de ingresos_Medio": {
       "pabel": 29.3,
@@ -939,7 +957,8 @@
       "merino": 7.4,
       "nulo_blanco": 10.8,
       "indecisos": 19.2,
-      "otros": 13.3
+      "otros": 6.6,
+      "jijon": 6.7
     },
     "Nivel de ingresos_Medio alto o alto": {
       "pabel": 24.8,
@@ -948,7 +967,8 @@
       "merino": 3.3,
       "nulo_blanco": 5.6,
       "indecisos": 16.2,
-      "otros": 15.9
+      "otros": 11.3,
+      "jijon": 4.6
     }
   },
   "cruzadas_prefecto": {
@@ -960,7 +980,7 @@
       "zapata": 6.0,
       "nulo_blanco": 12.5,
       "indecisos": 38.4,
-      "otros": 13.3
+      "otros": 10.8
     },
     "Circunscripción_Urbana Centro": {
       "tonello": 29.9,
@@ -970,7 +990,7 @@
       "zapata": 8.3,
       "nulo_blanco": 7.0,
       "indecisos": 28.1,
-      "otros": 10.8
+      "otros": 6.0
     },
     "Circunscripción_Urbana Sur": {
       "tonello": 24.0,
@@ -980,7 +1000,7 @@
       "zapata": 9.6,
       "nulo_blanco": 7.7,
       "indecisos": 23.2,
-      "otros": 18.0
+      "otros": 12.6
     },
     "Circunscripción_Rural": {
       "tonello": 34.4,
@@ -990,7 +1010,7 @@
       "zapata": 7.6,
       "nulo_blanco": 6.1,
       "indecisos": 16.9,
-      "otros": 14.2
+      "otros": 10.3
     },
     "Sexo_Hombre": {
       "tonello": 31.0,
@@ -1000,7 +1020,7 @@
       "zapata": 6.4,
       "nulo_blanco": 9.4,
       "indecisos": 24.6,
-      "otros": 12.9
+      "otros": 8.9
     },
     "Sexo_Mujer": {
       "tonello": 23.2,
@@ -1010,7 +1030,7 @@
       "zapata": 8.9,
       "nulo_blanco": 7.4,
       "indecisos": 28.9,
-      "otros": 14.6
+      "otros": 10.5
     },
     "Grupos de edad_16 a 19 años": {
       "tonello": 19.6,
@@ -1020,7 +1040,7 @@
       "zapata": 4.4,
       "nulo_blanco": 9.5,
       "indecisos": 45.6,
-      "otros": 6.6
+      "otros": 5.7
     },
     "Grupos de edad_20 a 29 años": {
       "tonello": 26.7,
@@ -1030,7 +1050,7 @@
       "zapata": 8.6,
       "nulo_blanco": 5.1,
       "indecisos": 30.3,
-      "otros": 13.9
+      "otros": 10.1
     },
     "Grupos de edad_30 a 44 años": {
       "tonello": 27.8,
@@ -1040,7 +1060,7 @@
       "zapata": 9.7,
       "nulo_blanco": 9.1,
       "indecisos": 21.9,
-      "otros": 14.7
+      "otros": 11.1
     },
     "Grupos de edad_45 a 60 años": {
       "tonello": 26.8,
@@ -1050,7 +1070,7 @@
       "zapata": 6.2,
       "nulo_blanco": 6.9,
       "indecisos": 20.1,
-      "otros": 17.5
+      "otros": 12.3
     },
     "Grupos de edad_61 o más años": {
       "tonello": 33.6,
@@ -1060,7 +1080,7 @@
       "zapata": 8.1,
       "nulo_blanco": 12.2,
       "indecisos": 21.7,
-      "otros": 14.1
+      "otros": 7.0
     },
     "Nivel de estudios_Ninguno": {
       "tonello": 45.3,
@@ -1080,7 +1100,7 @@
       "zapata": 6.1,
       "nulo_blanco": 10.6,
       "indecisos": 30.5,
-      "otros": 12.8
+      "otros": 5.0
     },
     "Nivel de estudios_Secundaria, bachillerato": {
       "tonello": 28.9,
@@ -1090,7 +1110,7 @@
       "zapata": 7.5,
       "nulo_blanco": 8.3,
       "indecisos": 27.9,
-      "otros": 12.7
+      "otros": 8.9
     },
     "Nivel de estudios_Superior, universitaria": {
       "tonello": 22.2,
@@ -1100,7 +1120,7 @@
       "zapata": 8.0,
       "nulo_blanco": 7.8,
       "indecisos": 28.5,
-      "otros": 13.8
+      "otros": 10.4
     },
     "Nivel de estudios_Técnica, artesano": {
       "tonello": 32.7,
@@ -1110,7 +1130,7 @@
       "zapata": 10.7,
       "nulo_blanco": 8.0,
       "indecisos": 4.7,
-      "otros": 24.3
+      "otros": 20.2
     },
     "Nivel de ingresos_Bajo": {
       "tonello": 20.9,
@@ -1120,7 +1140,7 @@
       "zapata": 4.1,
       "nulo_blanco": 14.6,
       "indecisos": 41.4,
-      "otros": 9.1
+      "otros": 4.8
     },
     "Nivel de ingresos_Medio bajo": {
       "tonello": 35.5,
@@ -1130,7 +1150,7 @@
       "zapata": 7.7,
       "nulo_blanco": 8.8,
       "indecisos": 25.9,
-      "otros": 9.5
+      "otros": 5.9
     },
     "Nivel de ingresos_Medio": {
       "tonello": 21.5,
@@ -1140,7 +1160,7 @@
       "zapata": 8.7,
       "nulo_blanco": 8.1,
       "indecisos": 26.6,
-      "otros": 17.9
+      "otros": 13.1
     },
     "Nivel de ingresos_Medio alto o alto": {
       "tonello": 26.2,
@@ -1150,7 +1170,7 @@
       "zapata": 4.6,
       "nulo_blanco": 2.3,
       "indecisos": 20.8,
-      "otros": 11.0
+      "otros": 9.9
     }
   },
   "microdatos_casos": [
@@ -20085,140 +20105,160 @@
       "munoz": 15.0,
       "burbano": 16.6,
       "yunda": 16.1,
-      "merino": 4.4
+      "merino": 4.4,
+      "jijon": 0.3
     },
     "Circunscripción_Urbana Centro": {
       "pabel": 22.0,
       "munoz": 22.0,
       "burbano": 26.4,
       "yunda": 13.4,
-      "merino": 3.5
+      "merino": 3.5,
+      "jijon": 1.3
     },
     "Circunscripción_Urbana Sur": {
       "pabel": 19.0,
       "munoz": 19.0,
       "burbano": 22.3,
       "yunda": 11.7,
-      "merino": 6.6
+      "merino": 6.6,
+      "jijon": 2.6
     },
     "Circunscripción_Rural": {
       "pabel": 17.8,
       "munoz": 17.8,
       "burbano": 26.9,
       "yunda": 7.9,
-      "merino": 2.8
+      "merino": 2.8,
+      "jijon": 0.3
     },
     "Sexo_Hombre": {
       "pabel": 17.0,
       "munoz": 17.0,
       "burbano": 26.3,
       "yunda": 11.6,
-      "merino": 5.5
+      "merino": 5.5,
+      "jijon": 0.9
     },
     "Sexo_Mujer": {
       "pabel": 19.7,
       "munoz": 19.7,
       "burbano": 20.2,
       "yunda": 12.8,
-      "merino": 2.9
+      "merino": 2.9,
+      "jijon": 1.1
     },
     "Grupos de edad_16 a 19 años": {
       "pabel": 9.0,
       "munoz": 9.0,
       "burbano": 16.2,
       "yunda": 8.5,
-      "merino": 2.6
+      "merino": 2.6,
+      "jijon": 0.9
     },
     "Grupos de edad_20 a 29 años": {
       "pabel": 16.8,
       "munoz": 16.8,
       "burbano": 22.9,
       "yunda": 13.4,
-      "merino": 5.0
+      "merino": 5.0,
+      "jijon": 1.6
     },
     "Grupos de edad_30 a 44 años": {
       "pabel": 18.2,
       "munoz": 18.2,
       "burbano": 25.7,
       "yunda": 14.0,
-      "merino": 5.0
+      "merino": 5.0,
+      "jijon": 1.0
     },
     "Grupos de edad_45 a 60 años": {
       "pabel": 31.5,
       "munoz": 31.5,
       "burbano": 22.7,
       "yunda": 10.3,
-      "merino": 3.7
+      "merino": 3.7,
+      "jijon": 0.7
     },
     "Grupos de edad_61 o más años": {
       "pabel": 12.7,
       "munoz": 12.7,
       "burbano": 26.2,
       "yunda": 13.9,
-      "merino": 3.5
+      "merino": 3.5,
+      "jijon": 0.7
     },
     "Nivel de estudios_Ninguno": {
       "pabel": 0,
       "munoz": 0,
       "burbano": 19.0,
       "yunda": 27.5,
-      "merino": 0
+      "merino": 0,
+      "jijon": 0.0
     },
     "Nivel de estudios_Básica, primaria": {
       "pabel": 9.7,
       "munoz": 9.7,
       "burbano": 23.5,
       "yunda": 10.4,
-      "merino": 4.4
+      "merino": 4.4,
+      "jijon": 1.1
     },
     "Nivel de estudios_Secundaria, bachillerato": {
       "pabel": 15.3,
       "munoz": 15.3,
       "burbano": 26.4,
       "yunda": 11.7,
-      "merino": 4.0
+      "merino": 4.0,
+      "jijon": 0.7
     },
     "Nivel de estudios_Superior, universitaria": {
       "pabel": 25.1,
       "munoz": 25.1,
       "burbano": 17.9,
       "yunda": 13.7,
-      "merino": 4.9
+      "merino": 4.9,
+      "jijon": 1.5
     },
     "Nivel de estudios_Técnica, artesano": {
       "pabel": 20.4,
       "munoz": 20.4,
       "burbano": 24.6,
       "yunda": 10.7,
-      "merino": 1.3
+      "merino": 1.3,
+      "jijon": 1.0
     },
     "Nivel de ingresos_Bajo": {
       "pabel": 4.4,
       "munoz": 4.4,
       "burbano": 22.0,
       "yunda": 17.8,
-      "merino": 2.4
+      "merino": 2.4,
+      "jijon": 1.0
     },
     "Nivel de ingresos_Medio bajo": {
       "pabel": 12.8,
       "munoz": 12.8,
       "burbano": 26.8,
       "yunda": 12.2,
-      "merino": 4.5
+      "merino": 4.5,
+      "jijon": 1.4
     },
     "Nivel de ingresos_Medio": {
       "pabel": 22.4,
       "munoz": 22.4,
       "burbano": 21.6,
       "yunda": 12.0,
-      "merino": 4.4
+      "merino": 4.4,
+      "jijon": 0.7
     },
     "Nivel de ingresos_Medio alto o alto": {
       "pabel": 31.3,
       "munoz": 31.3,
       "burbano": 16.4,
       "yunda": 9.8,
-      "merino": 2.0
+      "merino": 2.0,
+      "jijon": 1.1
     }
   },
   "cruzadas_antivoto_reportes": {
