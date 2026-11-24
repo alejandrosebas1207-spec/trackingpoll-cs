@@ -1201,7 +1201,8 @@ function updateAntivotoChartDatasets() {
     { id: 'pabel', label: 'Pabel Muñoz', color: '#dc2626' },
     { id: 'burbano', label: 'Harold Burbano', color: '#7c3aed' },
     { id: 'yunda', label: 'Jorge Yunda', color: '#0284c7' },
-    { id: 'merino', label: 'Wilson Merino', color: '#ea580c' }
+    { id: 'merino', label: 'Wilson Merino', color: '#ea580c' },
+    { id: 'jijon', label: 'Bernardo Jijón', color: '#15803d' }
   ];
 
   antivotoChartInstance.data.datasets = lines.map(line => {
