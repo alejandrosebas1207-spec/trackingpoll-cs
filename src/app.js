@@ -428,7 +428,12 @@ function renderActiveView() {
 function renderCandidateCards() {
   const container = document.getElementById('candidateCardsContainer');
   const isAlcalde = currentScenario === 'alcalde';
-  const cands = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 4) : rawDecryptedData.candidatos_prefecto.slice(0, 4);
+  if (container) {
+    container.className = isAlcalde
+      ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5'
+      : 'grid grid-cols-2 lg:grid-cols-4 gap-2.5';
+  }
+  const cands = isAlcalde ? rawDecryptedData.candidatos_alcalde.slice(0, 5) : rawDecryptedData.candidatos_prefecto.slice(0, 4);
   const seriesDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
   const idx = currentReportIdx;
 
@@ -593,6 +598,7 @@ function renderCandidateCards() {
     burbano: 'HAROLD_BURBANO.png',
     yunda: 'JORGE_YUNDA.png',
     merino: 'WILSON_MERINO.png',
+    jijon: 'BERNARDO_JIJON.png',
     tonello: 'ALEXANDRO_TONELLO.png',
     ubidia: 'GIOVANNA_UBIDIA.png',
     cevallos: 'CARLA_CEVALLOS.png',

@@ -51,6 +51,13 @@
       "partido": "Imparables",
       "lista": "Lista 79",
       "color": "#ea580c"
+    },
+    {
+      "id": "jijon",
+      "nombre": "Bernardo Jijón",
+      "partido": "Sociedad Patriótica (Lista 3)",
+      "lista": "3",
+      "color": "#15803d"
     }
   ],
   "candidatos_prefecto": [
