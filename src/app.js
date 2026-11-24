@@ -235,7 +235,9 @@ function updateChartTitleLabel() {
       ? 'Simulación de voto alcalde de Quito · Voto Válido (100%)'
       : 'Simulación de voto alcalde de Quito';
   } else {
-    chartTitle.innerText = 'Simulación de voto prefecto de Pichincha';
+    chartTitle.innerText = currentVoteMode === 'valido'
+      ? 'Simulación de voto prefecto de Pichincha · Voto Válido (100%)'
+      : 'Simulación de voto prefecto de Pichincha';
   }
 }
 
@@ -271,9 +273,9 @@ function setScenario(scen) {
     btnA.className = 'px-3 py-1 rounded-lg text-slate-300 hover:text-white font-bold text-xs transition-all cursor-pointer';
   }
 
-  // En Voto Prefecto ocultar los bloques de Alcaldía/coyuntura y la sub-pestaña de Voto Válido
+  // En Voto Prefecto ocultar los bloques de Alcaldía/coyuntura dejando solo Intención de Voto Prefecto y Disposición de Alexandro Tonello
   const isAlcalde = scen === 'alcalde';
-  if (modeBar) modeBar.classList.toggle('hidden', !isAlcalde);
+  if (modeBar) modeBar.classList.remove('hidden');
   const antiCard = document.getElementById('antivotoChartCard');
   const lowerGrid = document.getElementById('lowerCardsGrid');
   if (antiCard) antiCard.classList.toggle('hidden', !isAlcalde);
@@ -550,8 +552,8 @@ function renderCandidateCards() {
       }
     }
 
-    // Modo Voto Válido (Alcaldía): re-escalar quitando Indecisos + Nulo/Blanco sobre el 100% válido
-    if (isAlcalde && currentVoteMode === 'valido') {
+    // Modo Voto Válido: re-escalar quitando Indecisos + Nulo/Blanco sobre el 100% válido
+    if (currentVoteMode === 'valido') {
       const vbActual = getValidBaseAt(idx, f);
       if (vbActual > 0) valActual = Number(((valActual / vbActual) * 100).toFixed(1));
       const pIdx = f.hayFiltros ? prevSegIdx : prevIdx;
@@ -1228,18 +1230,22 @@ function updateAntivotoChartDatasets() {
 
 function getValidBaseAt(rIdx, f) {
   if (!rawDecryptedData || rIdx < 0) return 0;
+  const isAlcalde = currentScenario === 'alcalde';
   let nul = 0;
   let ind = 0;
   if (f && f.hayFiltros && f.keyCruzada) {
+    const cruzBase = isAlcalde ? rawDecryptedData.cruzadas_alcalde : rawDecryptedData.cruzadas_prefecto;
+    const cruzRep = isAlcalde ? rawDecryptedData.cruzadas_alcalde_reportes : rawDecryptedData.cruzadas_prefecto_reportes;
     const segObj = rIdx === 2
-      ? (rawDecryptedData.cruzadas_alcalde ? rawDecryptedData.cruzadas_alcalde[f.keyCruzada] : null)
-      : (rawDecryptedData.cruzadas_alcalde_reportes && rawDecryptedData.cruzadas_alcalde_reportes[String(rIdx)] ? rawDecryptedData.cruzadas_alcalde_reportes[String(rIdx)][f.keyCruzada] : null);
+      ? (cruzBase ? cruzBase[f.keyCruzada] : null)
+      : (cruzRep && cruzRep[String(rIdx)] ? cruzRep[String(rIdx)][f.keyCruzada] : null);
     if (!segObj) return 0;
     nul = segObj['nulo_blanco'] || 0;
     ind = segObj['indecisos'] || 0;
   } else {
-    const sNul = rawDecryptedData.series_alcalde['nulo_blanco'] || [];
-    const sInd = rawDecryptedData.series_alcalde['indecisos'] || [];
+    const sDict = isAlcalde ? rawDecryptedData.series_alcalde : rawDecryptedData.series_prefecto;
+    const sNul = sDict['nulo_blanco'] || [];
+    const sInd = sDict['indecisos'] || [];
     if (sNul[rIdx] === null || sNul[rIdx] === undefined) return 0;
     nul = sNul[rIdx] || 0;
     ind = sInd[rIdx] || 0;
@@ -1265,7 +1271,7 @@ function getChartLinesConfig() {
     }
     return baseLines;
   }
-  return [
+  const prefLines = [
     { id: 'tonello', label: 'Alexandro Tonello', color: '#dc2626', dashed: false },
     { id: 'ubidia', label: 'Giovanna Ubidia', color: '#7c3aed', dashed: false },
     { id: 'zapata', label: 'Juan Zapata', color: '#ea580c', dashed: false },
@@ -1274,6 +1280,10 @@ function getChartLinesConfig() {
     { id: 'nulo_blanco', label: 'Nulo-Blanco', color: '#94a3b8', dashed: true },
     { id: 'indecisos', label: 'Indeciso', color: '#f59e0b', dashed: true }
   ];
+  if (currentVoteMode === 'valido') {
+    return prefLines.filter(l => l.id !== 'nulo_blanco' && l.id !== 'indecisos');
+  }
+  return prefLines;
 }
 
 function getLineSeriesForChart(lineId) {
@@ -1315,7 +1325,7 @@ function getLineSeriesForChart(lineId) {
     }
   }
 
-  if (isAlcalde && currentVoteMode === 'valido') {
+  if (currentVoteMode === 'valido') {
     return fechas.map((_, i) => {
       const v = rawSeries[i];
       if (v === null || v === undefined) return null;
