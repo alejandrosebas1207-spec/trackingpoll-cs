@@ -969,25 +969,57 @@ function renderCoyunturaYCredibilidad() {
   const evidencia = coySeg ? coySeg.evidencia : (coyBase.evidencia && coyBase.evidencia[idx] !== null && coyBase.evidencia[idx] !== undefined ? coyBase.evidencia[idx] : null);
   const campana = coySeg ? coySeg.campana : (coyBase.campana && coyBase.campana[idx] !== null && coyBase.campana[idx] !== undefined ? coyBase.campana[idx] : null);
 
+  const debBase = rawDecryptedData.coyuntura_debate || {};
+  const debSeg = (f.hayFiltros && f.keyCruzada && rawDecryptedData.debate_segmentos && rawDecryptedData.debate_segmentos[String(idx)])
+    ? rawDecryptedData.debate_segmentos[String(idx)][f.keyCruzada]
+    : null;
+  const vioSi = debSeg ? debSeg.vio_si : (debBase.vio_si && debBase.vio_si[idx] !== null && debBase.vio_si[idx] !== undefined ? debBase.vio_si[idx] : null);
+  const mejorPabel = debSeg ? debSeg.mejor_pabel : (debBase.mejor_pabel && debBase.mejor_pabel[idx] !== null && debBase.mejor_pabel[idx] !== undefined ? debBase.mejor_pabel[idx] : null);
+  const mejorJijon = debSeg ? debSeg.mejor_jijon : (debBase.mejor_jijon && debBase.mejor_jijon[idx] !== null && debBase.mejor_jijon[idx] !== undefined ? debBase.mejor_jijon[idx] : null);
+  const mejorNinguno = debSeg ? debSeg.mejor_ninguno : (debBase.mejor_ninguno && debBase.mejor_ninguno[idx] !== null && debBase.mejor_ninguno[idx] !== undefined ? debBase.mejor_ninguno[idx] : null);
+
+  const elTitle = document.getElementById('coyBoxTitle');
   const elConoce = document.getElementById('coyConoce');
-  const elEv = document.getElementById('txtEvidencia');
-  const elCam = document.getElementById('txtCampana');
   const barEv = document.getElementById('barEvidencia');
+  const barJij = document.getElementById('barJijonDebate');
   const barCam = document.getElementById('barCampana');
-
-  if (elConoce) elConoce.innerText = conoceSi !== null ? `Sí conoce las denuncias: ${conoceSi.toFixed(1)}%` : '--';
-  if (elEv) elEv.innerText = evidencia !== null ? `${evidencia.toFixed(1)}%` : '--';
-  if (elCam) elCam.innerText = campana !== null ? `${campana.toFixed(1)}%` : '--';
-  if (barEv) barEv.style.width = evidencia !== null ? `${evidencia}%` : '0%';
-  if (barCam) barCam.style.width = campana !== null ? `${campana}%` : '0%';
-
+  const elLabels = document.getElementById('coyLabelsRow');
   const coyFooter = document.getElementById('coyFooterNote');
-  if (coyFooter) {
-    if (conoceSi !== null && evidencia !== null && campana !== null) {
-      const nsr = Math.max(0, 100 - evidencia - campana);
-      coyFooter.innerText = `Opinión sobre ese ${conoceSi.toFixed(1)}% que sí conoce · Nsr: ${nsr.toFixed(1)}%`;
-    } else {
-      coyFooter.innerText = '';
+
+  if (vioSi !== null && conoceSi === null) {
+    if (elTitle) elTitle.innerText = 'Debate Alcaldía de Quito';
+    if (elConoce) elConoce.innerText = `Sí vio o escuchó el debate: ${vioSi.toFixed(1)}%`;
+    const mp = mejorPabel || 0;
+    const mj = mejorJijon || 0;
+    const mn = mejorNinguno || 0;
+    if (barEv) { barEv.className = 'bg-[#dc2626] h-full transition-all duration-300'; barEv.style.width = `${mp}%`; }
+    if (barJij) { barJij.classList.remove('hidden'); barJij.style.width = `${mj}%`; }
+    if (barCam) { barCam.className = 'bg-slate-600 h-full transition-all duration-300'; barCam.style.width = `${mn}%`; }
+    if (elLabels) {
+      elLabels.innerHTML = `<span>Pabel: <strong class="text-[#dc2626] text-xs">${mp.toFixed(1)}%</strong></span><span>Jijón: <strong class="text-[#15803d] text-xs">${mj.toFixed(1)}%</strong></span><span>Ninguno: <strong class="text-slate-800 text-xs">${mn.toFixed(1)}%</strong></span>`;
+    }
+    if (coyFooter) {
+      const restoDeb = Math.max(0, 100 - mp - mj - mn);
+      coyFooter.innerText = `Mejor en el debate (sobre ese ${vioSi.toFixed(1)}%) · Otros/Nsr: ${restoDeb.toFixed(1)}%`;
+    }
+  } else {
+    if (elTitle) elTitle.innerText = 'Denuncias en el Municipio';
+    if (elConoce) elConoce.innerText = conoceSi !== null ? `Sí conoce las denuncias: ${conoceSi.toFixed(1)}%` : '--';
+    if (barEv) { barEv.className = 'bg-rose-600 h-full transition-all duration-300'; barEv.style.width = evidencia !== null ? `${evidencia}%` : '0%'; }
+    if (barJij) { barJij.classList.add('hidden'); barJij.style.width = '0%'; }
+    if (barCam) { barCam.className = 'bg-slate-700 h-full transition-all duration-300'; barCam.style.width = campana !== null ? `${campana}%` : '0%'; }
+    if (elLabels) {
+      const evTxt = evidencia !== null ? `${evidencia.toFixed(1)}%` : '--';
+      const camTxt = campana !== null ? `${campana.toFixed(1)}%` : '--';
+      elLabels.innerHTML = `<span>Es corrupción: <strong id="txtEvidencia" class="text-rose-700 text-xs">${evTxt}</strong></span><span>Campaña negativa: <strong id="txtCampana" class="text-slate-900 text-xs">${camTxt}</strong></span>`;
+    }
+    if (coyFooter) {
+      if (conoceSi !== null && evidencia !== null && campana !== null) {
+        const nsr = Math.max(0, 100 - evidencia - campana);
+        coyFooter.innerText = `Opinión sobre ese ${conoceSi.toFixed(1)}% que sí conoce · Nsr: ${nsr.toFixed(1)}%`;
+      } else {
+        coyFooter.innerText = '';
+      }
     }
   }
 

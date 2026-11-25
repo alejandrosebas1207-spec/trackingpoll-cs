@@ -1,7 +1,7 @@
 {
   "proyecto": "Tracking Poll Diario Quito 2026",
   "empresa": "Clima Social Investigaciones Metodológicas",
-  "corte_activo_inicial": 12,
+  "corte_activo_inicial": 13,
   "fechas_reportes": [
     "Sep 2026",
     "Oct 2026",
@@ -105,7 +105,7 @@
       36.5,
       34.5,
       33.9,
-      null,
+      33.0,
       null,
       null,
       null,
@@ -125,7 +125,7 @@
       36.5,
       34.5,
       33.9,
-      null,
+      33.0,
       null,
       null,
       null,
@@ -145,7 +145,7 @@
       11.9,
       12.0,
       11.2,
-      null,
+      10.9,
       null,
       null,
       null,
@@ -165,7 +165,7 @@
       14.7,
       13.9,
       11.6,
-      null,
+      12.6,
       null,
       null,
       null,
@@ -185,7 +185,7 @@
       6.1,
       5.7,
       5.5,
-      null,
+      3.8,
       null,
       null,
       null,
@@ -205,7 +205,7 @@
       7.7,
       8.2,
       8.8,
-      null,
+      9.9,
       null,
       null,
       null,
@@ -225,7 +225,7 @@
       8.8,
       9.9,
       11.1,
-      null,
+      10.0,
       null,
       null,
       null,
@@ -245,7 +245,7 @@
       9.9,
       10.9,
       10.9,
-      null,
+      11.5,
       null,
       null,
       null,
@@ -265,7 +265,7 @@
       4.3,
       5.0,
       7.1,
-      null,
+      8.4,
       null,
       null,
       null,
@@ -287,7 +287,7 @@
       32.5,
       31.1,
       30.8,
-      null,
+      29.2,
       null,
       null,
       null,
@@ -307,7 +307,7 @@
       12.4,
       14.1,
       12.7,
-      null,
+      12.4,
       null,
       null,
       null,
@@ -327,7 +327,7 @@
       8.1,
       7.1,
       6.6,
-      null,
+      5.7,
       null,
       null,
       null,
@@ -347,7 +347,7 @@
       10.6,
       9.2,
       8.4,
-      null,
+      8.4,
       null,
       null,
       null,
@@ -367,7 +367,7 @@
       5.0,
       4.1,
       4.6,
-      null,
+      5.4,
       null,
       null,
       null,
@@ -387,7 +387,7 @@
       11.2,
       12.1,
       14.3,
-      null,
+      14.9,
       null,
       null,
       null,
@@ -407,7 +407,7 @@
       11.2,
       11.4,
       11.4,
-      null,
+      10.5,
       null,
       null,
       null,
@@ -427,7 +427,7 @@
       9.0,
       10.8,
       11.2,
-      null,
+      13.4,
       null,
       null,
       null,
@@ -449,7 +449,7 @@
       33.4,
       30.4,
       29.0,
-      null,
+      28.1,
       null,
       null,
       null,
@@ -469,7 +469,7 @@
       24.3,
       25.2,
       23.2,
-      null,
+      21.3,
       null,
       null,
       null,
@@ -489,7 +489,7 @@
       24.3,
       25.2,
       23.2,
-      null,
+      21.3,
       null,
       null,
       null,
@@ -509,7 +509,7 @@
       15.2,
       15.0,
       17.3,
-      null,
+      18.2,
       null,
       null,
       null,
@@ -529,7 +529,7 @@
       4.0,
       4.8,
       4.2,
-      null,
+      5.3,
       null,
       null,
       null,
@@ -549,7 +549,7 @@
       0.5,
       0.9,
       0.9,
-      null,
+      1.1,
       null,
       null,
       null,
@@ -13765,7 +13765,7 @@
     516,
     520,
     519,
-    null,
+    519,
     null,
     null,
     null,
@@ -13968,7 +13968,7 @@
       24.6,
       23.4,
       20.9,
-      null,
+      21.0,
       null,
       null,
       null,
@@ -13988,7 +13988,7 @@
       75.2,
       76.4,
       78.7,
-      null,
+      78.8,
       null,
       null,
       null,
@@ -14014,7 +14014,7 @@
         30.9,
         28.8,
         29.2,
-        null,
+        27.0,
         null,
         null,
         null,
@@ -14034,7 +14034,7 @@
         20.2,
         20.1,
         20.5,
-        null,
+        24.9,
         null,
         null,
         null,
@@ -14054,7 +14054,7 @@
         2.2,
         1.8,
         1.8,
-        null,
+        1.4,
         null,
         null,
         null,
@@ -14074,7 +14074,7 @@
         11.3,
         12.5,
         15.9,
-        null,
+        16.7,
         null,
         null,
         null,
@@ -14094,7 +14094,7 @@
         35.4,
         36.7,
         32.6,
-        null,
+        30.0,
         null,
         null,
         null,
@@ -14119,7 +14119,7 @@
         12.8,
         11.5,
         9.2,
-        null,
+        10.0,
         null,
         null,
         null,
@@ -14139,7 +14139,7 @@
         16.4,
         16.9,
         16.6,
-        null,
+        16.6,
         null,
         null,
         null,
@@ -14159,7 +14159,7 @@
         2.7,
         2.5,
         2.4,
-        null,
+        2.2,
         null,
         null,
         null,
@@ -14179,7 +14179,7 @@
         13.8,
         15.6,
         16.6,
-        null,
+        17.7,
         null,
         null,
         null,
@@ -14199,7 +14199,7 @@
         54.2,
         53.6,
         55.2,
-        null,
+        53.6,
         null,
         null,
         null,
@@ -14224,7 +14224,7 @@
         9.3,
         10.1,
         9.6,
-        null,
+        8.2,
         null,
         null,
         null,
@@ -14244,7 +14244,7 @@
         20.6,
         19.3,
         18.6,
-        null,
+        19.0,
         null,
         null,
         null,
@@ -14264,7 +14264,7 @@
         3.5,
         2.8,
         2.4,
-        null,
+        1.8,
         null,
         null,
         null,
@@ -14284,7 +14284,7 @@
         13.8,
         15.4,
         16.8,
-        null,
+        16.4,
         null,
         null,
         null,
@@ -14304,7 +14304,7 @@
         52.7,
         52.4,
         52.7,
-        null,
+        54.6,
         null,
         null,
         null,
@@ -14329,7 +14329,7 @@
         22.1,
         21.6,
         22.7,
-        null,
+        19.8,
         null,
         null,
         null,
@@ -14349,7 +14349,7 @@
         27.0,
         24.5,
         22.8,
-        null,
+        26.0,
         null,
         null,
         null,
@@ -14369,7 +14369,7 @@
         3.6,
         4.3,
         4.1,
-        null,
+        3.5,
         null,
         null,
         null,
@@ -14389,7 +14389,7 @@
         16.1,
         17.0,
         18.9,
-        null,
+        18.4,
         null,
         null,
         null,
@@ -14409,7 +14409,7 @@
         31.1,
         32.5,
         31.5,
-        null,
+        32.2,
         null,
         null,
         null,
@@ -14434,7 +14434,7 @@
         33.2,
         31.6,
         31.4,
-        null,
+        30.1,
         null,
         null,
         null,
@@ -14454,7 +14454,7 @@
         3.3,
         2.9,
         2.5,
-        null,
+        2.9,
         null,
         null,
         null,
@@ -14474,7 +14474,7 @@
         6.3,
         6.2,
         6.5,
-        null,
+        8.0,
         null,
         null,
         null,
@@ -14494,7 +14494,7 @@
         32.9,
         34.1,
         36.4,
-        null,
+        37.7,
         null,
         null,
         null,
@@ -14514,7 +14514,7 @@
         24.3,
         25.2,
         23.2,
-        null,
+        21.3,
         null,
         null,
         null,
@@ -14537,7 +14537,7 @@
         10.7,
         10.7,
         10.3,
-        null,
+        10.2,
         null,
         null,
         null,
@@ -14557,7 +14557,7 @@
         1.2,
         1.3,
         0.9,
-        null,
+        0.7,
         null,
         null,
         null,
@@ -14577,7 +14577,7 @@
         3.4,
         3.4,
         3.1,
-        null,
+        3.0,
         null,
         null,
         null,
@@ -14597,7 +14597,7 @@
         51.3,
         54.2,
         56.7,
-        null,
+        58.0,
         null,
         null,
         null,
@@ -14617,7 +14617,7 @@
         33.4,
         30.4,
         29.0,
-        null,
+        28.1,
         null,
         null,
         null,
@@ -14640,7 +14640,7 @@
         12.1,
         11.7,
         9.8,
-        null,
+        10.8,
         null,
         null,
         null,
@@ -14660,7 +14660,7 @@
         2.6,
         2.2,
         1.8,
-        null,
+        1.8,
         null,
         null,
         null,
@@ -14680,7 +14680,7 @@
         7.3,
         7.4,
         8.3,
-        null,
+        6.9,
         null,
         null,
         null,
@@ -14700,7 +14700,7 @@
         62.8,
         63.7,
         62.8,
-        null,
+        62.3,
         null,
         null,
         null,
@@ -14720,7 +14720,7 @@
         15.2,
         15.0,
         17.3,
-        null,
+        18.2,
         null,
         null,
         null,
@@ -15047,6 +15047,33 @@
           "pct": 14.9
         }
       ]
+    },
+    "13": {
+      "total": 519,
+      "hombres_pct": 48.1,
+      "mujeres_pct": 51.9,
+      "cohortes": [
+        {
+          "label": "16-29",
+          "n": 182,
+          "pct": 35.1
+        },
+        {
+          "label": "30-44",
+          "n": 151,
+          "pct": 29.1
+        },
+        {
+          "label": "45-60",
+          "n": 107,
+          "pct": 20.5
+        },
+        {
+          "label": "61+",
+          "n": 79,
+          "pct": 15.2
+        }
+      ]
     }
   },
   "muestras_segmento_reportes": {
@@ -15224,6 +15251,28 @@
       "Nivel de ingresos_Medio bajo": 182,
       "Nivel de ingresos_Medio": 282,
       "Nivel de ingresos_Medio alto o alto": 11,
+      "Nivel de estudios_Ninguno": 0
+    },
+    "13": {
+      "Circunscripción_Urbana Norte": 120,
+      "Circunscripción_Urbana Centro": 156,
+      "Circunscripción_Urbana Sur": 91,
+      "Circunscripción_Rural": 152,
+      "Sexo_Hombre": 256,
+      "Sexo_Mujer": 263,
+      "Grupos de edad_16 a 19 años": 78,
+      "Grupos de edad_20 a 29 años": 104,
+      "Grupos de edad_30 a 44 años": 151,
+      "Grupos de edad_45 a 60 años": 107,
+      "Grupos de edad_61 o más años": 79,
+      "Nivel de estudios_Básica, primaria": 28,
+      "Nivel de estudios_Secundaria, bachillerato": 284,
+      "Nivel de estudios_Superior, universitaria": 179,
+      "Nivel de estudios_Técnica, artesano": 28,
+      "Nivel de ingresos_Bajo": 48,
+      "Nivel de ingresos_Medio bajo": 199,
+      "Nivel de ingresos_Medio": 265,
+      "Nivel de ingresos_Medio alto o alto": 7,
       "Nivel de estudios_Ninguno": 0
     }
   },
@@ -17003,6 +17052,228 @@
         "otros": 27.5,
         "jijon": 0.0
       }
+    },
+    "13": {
+      "Circunscripción_Urbana Norte": {
+        "pabel": 24.9,
+        "munoz": 24.9,
+        "burbano": 15.8,
+        "yunda": 9.1,
+        "merino": 4.2,
+        "jijon": 14.9,
+        "nulo_blanco": 9.2,
+        "indecisos": 3.4,
+        "otros": 18.4
+      },
+      "Circunscripción_Urbana Centro": {
+        "pabel": 35.3,
+        "munoz": 35.3,
+        "burbano": 10.2,
+        "yunda": 10.9,
+        "merino": 5.1,
+        "jijon": 9.0,
+        "nulo_blanco": 8.3,
+        "indecisos": 12.8,
+        "otros": 8.3
+      },
+      "Circunscripción_Urbana Sur": {
+        "pabel": 33.9,
+        "munoz": 33.9,
+        "burbano": 7.7,
+        "yunda": 16.7,
+        "merino": 3.3,
+        "jijon": 4.4,
+        "nulo_blanco": 10.7,
+        "indecisos": 19.0,
+        "otros": 4.4
+      },
+      "Circunscripción_Rural": {
+        "pabel": 37.7,
+        "munoz": 37.7,
+        "burbano": 9.1,
+        "yunda": 14.5,
+        "merino": 2.6,
+        "jijon": 4.6,
+        "nulo_blanco": 11.7,
+        "indecisos": 12.5,
+        "otros": 7.3
+      },
+      "Sexo_Hombre": {
+        "pabel": 34.7,
+        "munoz": 34.7,
+        "burbano": 10.5,
+        "yunda": 10.7,
+        "merino": 4.2,
+        "jijon": 9.4,
+        "nulo_blanco": 13.4,
+        "indecisos": 8.7,
+        "otros": 8.4
+      },
+      "Sexo_Mujer": {
+        "pabel": 31.5,
+        "munoz": 31.5,
+        "burbano": 11.3,
+        "yunda": 14.3,
+        "merino": 3.4,
+        "jijon": 7.4,
+        "nulo_blanco": 6.8,
+        "indecisos": 14.0,
+        "otros": 11.3
+      },
+      "Grupos de edad_16 a 19 años": {
+        "pabel": 30.5,
+        "munoz": 30.5,
+        "burbano": 7.9,
+        "yunda": 7.7,
+        "merino": 2.6,
+        "jijon": 7.7,
+        "nulo_blanco": 9.0,
+        "indecisos": 22.5,
+        "otros": 12.1
+      },
+      "Grupos de edad_20 a 29 años": {
+        "pabel": 34.0,
+        "munoz": 34.0,
+        "burbano": 8.5,
+        "yunda": 11.4,
+        "merino": 4.5,
+        "jijon": 11.8,
+        "nulo_blanco": 6.2,
+        "indecisos": 8.3,
+        "otros": 15.2
+      },
+      "Grupos de edad_30 a 44 años": {
+        "pabel": 30.1,
+        "munoz": 30.1,
+        "burbano": 10.3,
+        "yunda": 13.6,
+        "merino": 4.6,
+        "jijon": 9.1,
+        "nulo_blanco": 10.5,
+        "indecisos": 11.3,
+        "otros": 10.5
+      },
+      "Grupos de edad_45 a 60 años": {
+        "pabel": 36.0,
+        "munoz": 36.0,
+        "burbano": 10.9,
+        "yunda": 11.9,
+        "merino": 3.9,
+        "jijon": 7.6,
+        "nulo_blanco": 11.0,
+        "indecisos": 10.9,
+        "otros": 7.7
+      },
+      "Grupos de edad_61 o más años": {
+        "pabel": 36.0,
+        "munoz": 36.0,
+        "burbano": 18.0,
+        "yunda": 17.9,
+        "merino": 2.4,
+        "jijon": 4.1,
+        "nulo_blanco": 13.7,
+        "indecisos": 5.5,
+        "otros": 2.4
+      },
+      "Nivel de estudios_Ninguno": {
+        "pabel": 0.0,
+        "munoz": 0.0,
+        "burbano": 0.0,
+        "yunda": 0.0,
+        "merino": 0.0,
+        "jijon": 0.0,
+        "nulo_blanco": 0.0,
+        "indecisos": 0.0,
+        "otros": 0.0
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "pabel": 28.2,
+        "munoz": 28.2,
+        "burbano": 7.2,
+        "yunda": 25.7,
+        "merino": 3.6,
+        "jijon": 0.0,
+        "nulo_blanco": 20.5,
+        "indecisos": 14.8,
+        "otros": 0.0
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "pabel": 32.3,
+        "munoz": 32.3,
+        "burbano": 9.7,
+        "yunda": 12.7,
+        "merino": 3.2,
+        "jijon": 8.6,
+        "nulo_blanco": 10.2,
+        "indecisos": 16.8,
+        "otros": 6.5
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "pabel": 31.8,
+        "munoz": 31.8,
+        "burbano": 13.4,
+        "yunda": 11.1,
+        "merino": 4.8,
+        "jijon": 9.0,
+        "nulo_blanco": 8.9,
+        "indecisos": 3.2,
+        "otros": 17.7
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "pabel": 54.3,
+        "munoz": 54.3,
+        "burbano": 10.2,
+        "yunda": 7.5,
+        "merino": 3.1,
+        "jijon": 11.0,
+        "nulo_blanco": 3.8,
+        "indecisos": 6.9,
+        "otros": 3.1
+      },
+      "Nivel de ingresos_Bajo": {
+        "pabel": 22.5,
+        "munoz": 22.5,
+        "burbano": 4.2,
+        "yunda": 18.9,
+        "merino": 6.4,
+        "jijon": 2.3,
+        "nulo_blanco": 24.5,
+        "indecisos": 8.5,
+        "otros": 12.7
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "pabel": 34.0,
+        "munoz": 34.0,
+        "burbano": 5.9,
+        "yunda": 14.2,
+        "merino": 3.4,
+        "jijon": 11.2,
+        "nulo_blanco": 8.0,
+        "indecisos": 17.8,
+        "otros": 5.5
+      },
+      "Nivel de ingresos_Medio": {
+        "pabel": 34.9,
+        "munoz": 34.9,
+        "burbano": 15.2,
+        "yunda": 10.2,
+        "merino": 3.7,
+        "jijon": 7.7,
+        "nulo_blanco": 9.0,
+        "indecisos": 7.3,
+        "otros": 12.0
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "pabel": 14.8,
+        "munoz": 14.8,
+        "burbano": 28.0,
+        "yunda": 13.2,
+        "merino": 0.0,
+        "jijon": 0.0,
+        "nulo_blanco": 0.0,
+        "indecisos": 15.7,
+        "otros": 28.4
+      }
     }
   },
   "cruzadas_prefecto_reportes": {
@@ -18621,6 +18892,208 @@
         "indecisos": 0.0,
         "otros": 37.2
       }
+    },
+    "13": {
+      "Circunscripción_Urbana Norte": {
+        "tonello": 27.5,
+        "ubidia": 18.4,
+        "cevallos": 7.4,
+        "zapata": 5.9,
+        "churuchumbi": 0.0,
+        "nulo_blanco": 7.6,
+        "indecisos": 6.6,
+        "otros": 26.6
+      },
+      "Circunscripción_Urbana Centro": {
+        "tonello": 24.4,
+        "ubidia": 9.6,
+        "cevallos": 5.7,
+        "zapata": 6.4,
+        "churuchumbi": 12.8,
+        "nulo_blanco": 9.6,
+        "indecisos": 17.9,
+        "otros": 13.5
+      },
+      "Circunscripción_Urbana Sur": {
+        "tonello": 33.9,
+        "ubidia": 9.9,
+        "cevallos": 12.2,
+        "zapata": 4.5,
+        "churuchumbi": 2.3,
+        "nulo_blanco": 13.9,
+        "indecisos": 16.8,
+        "otros": 6.5
+      },
+      "Circunscripción_Rural": {
+        "tonello": 31.7,
+        "ubidia": 11.2,
+        "cevallos": 9.2,
+        "zapata": 5.9,
+        "churuchumbi": 5.9,
+        "nulo_blanco": 11.7,
+        "indecisos": 13.3,
+        "otros": 11.3
+      },
+      "Sexo_Hombre": {
+        "tonello": 29.7,
+        "ubidia": 10.9,
+        "cevallos": 7.3,
+        "zapata": 5.8,
+        "churuchumbi": 6.1,
+        "nulo_blanco": 15.2,
+        "indecisos": 10.3,
+        "otros": 14.7
+      },
+      "Sexo_Mujer": {
+        "tonello": 28.6,
+        "ubidia": 13.8,
+        "cevallos": 9.4,
+        "zapata": 5.7,
+        "churuchumbi": 4.8,
+        "nulo_blanco": 6.2,
+        "indecisos": 16.3,
+        "otros": 15.1
+      },
+      "Grupos de edad_16 a 19 años": {
+        "tonello": 24.3,
+        "ubidia": 10.4,
+        "cevallos": 6.3,
+        "zapata": 4.0,
+        "churuchumbi": 2.2,
+        "nulo_blanco": 9.0,
+        "indecisos": 32.8,
+        "otros": 11.0
+      },
+      "Grupos de edad_20 a 29 años": {
+        "tonello": 28.2,
+        "ubidia": 11.8,
+        "cevallos": 4.2,
+        "zapata": 2.9,
+        "churuchumbi": 6.7,
+        "nulo_blanco": 11.3,
+        "indecisos": 9.5,
+        "otros": 25.5
+      },
+      "Grupos de edad_30 a 44 años": {
+        "tonello": 26.2,
+        "ubidia": 13.6,
+        "cevallos": 11.3,
+        "zapata": 7.2,
+        "churuchumbi": 4.9,
+        "nulo_blanco": 10.6,
+        "indecisos": 10.2,
+        "otros": 16.0
+      },
+      "Grupos de edad_45 a 60 años": {
+        "tonello": 33.6,
+        "ubidia": 10.1,
+        "cevallos": 7.6,
+        "zapata": 8.0,
+        "churuchumbi": 5.2,
+        "nulo_blanco": 10.2,
+        "indecisos": 12.9,
+        "otros": 12.4
+      },
+      "Grupos de edad_61 o más años": {
+        "tonello": 35.0,
+        "ubidia": 16.1,
+        "cevallos": 11.7,
+        "zapata": 5.3,
+        "churuchumbi": 8.4,
+        "nulo_blanco": 11.3,
+        "indecisos": 6.0,
+        "otros": 6.1
+      },
+      "Nivel de estudios_Ninguno": {
+        "tonello": 0.0,
+        "ubidia": 0.0,
+        "cevallos": 0.0,
+        "zapata": 0.0,
+        "churuchumbi": 0.0,
+        "nulo_blanco": 0.0,
+        "indecisos": 0.0,
+        "otros": 0.0
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "tonello": 28.4,
+        "ubidia": 7.2,
+        "cevallos": 21.9,
+        "zapata": 7.5,
+        "churuchumbi": 3.6,
+        "nulo_blanco": 20.5,
+        "indecisos": 10.9,
+        "otros": 0.0
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "tonello": 27.0,
+        "ubidia": 12.5,
+        "cevallos": 6.1,
+        "zapata": 5.9,
+        "churuchumbi": 6.5,
+        "nulo_blanco": 10.5,
+        "indecisos": 19.5,
+        "otros": 11.9
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "tonello": 30.4,
+        "ubidia": 13.7,
+        "cevallos": 9.1,
+        "zapata": 5.7,
+        "churuchumbi": 3.5,
+        "nulo_blanco": 9.5,
+        "indecisos": 5.1,
+        "otros": 23.1
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "tonello": 43.6,
+        "ubidia": 7.8,
+        "cevallos": 14.2,
+        "zapata": 3.1,
+        "churuchumbi": 9.4,
+        "nulo_blanco": 7.0,
+        "indecisos": 7.9,
+        "otros": 7.1
+      },
+      "Nivel de ingresos_Bajo": {
+        "tonello": 20.5,
+        "ubidia": 8.6,
+        "cevallos": 12.6,
+        "zapata": 6.4,
+        "churuchumbi": 6.0,
+        "nulo_blanco": 16.4,
+        "indecisos": 19.2,
+        "otros": 10.4
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "tonello": 25.4,
+        "ubidia": 8.1,
+        "cevallos": 6.9,
+        "zapata": 4.8,
+        "churuchumbi": 10.3,
+        "nulo_blanco": 11.3,
+        "indecisos": 19.3,
+        "otros": 13.8
+      },
+      "Nivel de ingresos_Medio": {
+        "tonello": 33.9,
+        "ubidia": 15.8,
+        "cevallos": 8.5,
+        "zapata": 6.0,
+        "churuchumbi": 2.0,
+        "nulo_blanco": 9.2,
+        "indecisos": 8.4,
+        "otros": 16.2
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "tonello": 14.8,
+        "ubidia": 28.0,
+        "cevallos": 13.2,
+        "zapata": 15.7,
+        "churuchumbi": 0.0,
+        "nulo_blanco": 0.0,
+        "indecisos": 0.0,
+        "otros": 28.4
+      }
     }
   },
   "coyuntura_segmentos": {
@@ -20097,6 +20570,88 @@
         "cree_pos": 53.6,
         "cree_neg": 46.4
       }
+    },
+    "13": {
+      "Circunscripción_Urbana Norte": {
+        "cree_pos": 29.9,
+        "cree_neg": 70.1
+      },
+      "Circunscripción_Urbana Centro": {
+        "cree_pos": 20.5,
+        "cree_neg": 79.5
+      },
+      "Circunscripción_Urbana Sur": {
+        "cree_pos": 13.3,
+        "cree_neg": 86.7
+      },
+      "Circunscripción_Rural": {
+        "cree_pos": 18.6,
+        "cree_neg": 80.7
+      },
+      "Sexo_Hombre": {
+        "cree_pos": 17.1,
+        "cree_neg": 82.9
+      },
+      "Sexo_Mujer": {
+        "cree_pos": 24.7,
+        "cree_neg": 75.0
+      },
+      "Grupos de edad_16 a 19 años": {
+        "cree_pos": 18.0,
+        "cree_neg": 80.6
+      },
+      "Grupos de edad_20 a 29 años": {
+        "cree_pos": 17.1,
+        "cree_neg": 82.9
+      },
+      "Grupos de edad_30 a 44 años": {
+        "cree_pos": 23.1,
+        "cree_neg": 76.9
+      },
+      "Grupos de edad_45 a 60 años": {
+        "cree_pos": 23.8,
+        "cree_neg": 76.2
+      },
+      "Grupos de edad_61 o más años": {
+        "cree_pos": 21.4,
+        "cree_neg": 78.6
+      },
+      "Nivel de estudios_Ninguno": {
+        "cree_pos": 0.0,
+        "cree_neg": 0.0
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "cree_pos": 7.4,
+        "cree_neg": 92.6
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "cree_pos": 22.9,
+        "cree_neg": 76.7
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "cree_pos": 20.1,
+        "cree_neg": 79.9
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "cree_pos": 21.9,
+        "cree_neg": 78.1
+      },
+      "Nivel de ingresos_Bajo": {
+        "cree_pos": 25.7,
+        "cree_neg": 74.3
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "cree_pos": 20.9,
+        "cree_neg": 79.1
+      },
+      "Nivel de ingresos_Medio": {
+        "cree_pos": 19.7,
+        "cree_neg": 79.9
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "cree_pos": 41.2,
+        "cree_neg": 58.8
+      }
     }
   },
   "cruzadas_antivoto": {
@@ -21554,6 +22109,168 @@
         "munoz": 53.2,
         "burbano": 9.8,
         "yunda": 37.0,
+        "merino": 0.0,
+        "jijon": 0.0
+      }
+    },
+    "13": {
+      "Circunscripción_Urbana Norte": {
+        "pabel": 30.9,
+        "munoz": 30.9,
+        "burbano": 21.7,
+        "yunda": 16.6,
+        "merino": 7.2,
+        "jijon": 0.8
+      },
+      "Circunscripción_Urbana Centro": {
+        "pabel": 19.9,
+        "munoz": 19.9,
+        "burbano": 25.0,
+        "yunda": 23.7,
+        "merino": 5.8,
+        "jijon": 1.9
+      },
+      "Circunscripción_Urbana Sur": {
+        "pabel": 20.8,
+        "munoz": 20.8,
+        "burbano": 30.8,
+        "yunda": 16.6,
+        "merino": 3.2,
+        "jijon": 1.1
+      },
+      "Circunscripción_Rural": {
+        "pabel": 14.4,
+        "munoz": 14.4,
+        "burbano": 34.8,
+        "yunda": 15.7,
+        "merino": 4.6,
+        "jijon": 0.7
+      },
+      "Sexo_Hombre": {
+        "pabel": 21.4,
+        "munoz": 21.4,
+        "burbano": 27.5,
+        "yunda": 19.2,
+        "merino": 7.9,
+        "jijon": 0.8
+      },
+      "Sexo_Mujer": {
+        "pabel": 21.2,
+        "munoz": 21.2,
+        "burbano": 28.7,
+        "yunda": 17.2,
+        "merino": 2.9,
+        "jijon": 1.4
+      },
+      "Grupos de edad_16 a 19 años": {
+        "pabel": 14.2,
+        "munoz": 14.2,
+        "burbano": 25.3,
+        "yunda": 9.3,
+        "merino": 1.1,
+        "jijon": 1.1
+      },
+      "Grupos de edad_20 a 29 años": {
+        "pabel": 18.0,
+        "munoz": 18.0,
+        "burbano": 30.1,
+        "yunda": 21.8,
+        "merino": 6.5,
+        "jijon": 2.0
+      },
+      "Grupos de edad_30 a 44 años": {
+        "pabel": 25.2,
+        "munoz": 25.2,
+        "burbano": 27.0,
+        "yunda": 20.4,
+        "merino": 5.2,
+        "jijon": 0.6
+      },
+      "Grupos de edad_45 a 60 años": {
+        "pabel": 23.1,
+        "munoz": 23.1,
+        "burbano": 29.8,
+        "yunda": 16.8,
+        "merino": 5.7,
+        "jijon": 1.8
+      },
+      "Grupos de edad_61 o más años": {
+        "pabel": 22.6,
+        "munoz": 22.6,
+        "burbano": 28.3,
+        "yunda": 19.9,
+        "merino": 7.6,
+        "jijon": 0.0
+      },
+      "Nivel de estudios_Ninguno": {
+        "pabel": 0.0,
+        "munoz": 0.0,
+        "burbano": 0.0,
+        "yunda": 0.0,
+        "merino": 0.0,
+        "jijon": 0.0
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "pabel": 22.1,
+        "munoz": 22.1,
+        "burbano": 36.3,
+        "yunda": 10.0,
+        "merino": 0.0,
+        "jijon": 0.0
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "pabel": 18.8,
+        "munoz": 18.8,
+        "burbano": 29.0,
+        "yunda": 13.1,
+        "merino": 5.4,
+        "jijon": 1.4
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "pabel": 25.7,
+        "munoz": 25.7,
+        "burbano": 23.8,
+        "yunda": 27.9,
+        "merino": 4.7,
+        "jijon": 0.5
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "pabel": 17.2,
+        "munoz": 17.2,
+        "burbano": 40.2,
+        "yunda": 14.5,
+        "merino": 14.1,
+        "jijon": 3.1
+      },
+      "Nivel de ingresos_Bajo": {
+        "pabel": 14.9,
+        "munoz": 14.9,
+        "burbano": 24.7,
+        "yunda": 9.4,
+        "merino": 0.0,
+        "jijon": 0.0
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "pabel": 17.7,
+        "munoz": 17.7,
+        "burbano": 27.1,
+        "yunda": 18.4,
+        "merino": 4.9,
+        "jijon": 1.4
+      },
+      "Nivel de ingresos_Medio": {
+        "pabel": 24.9,
+        "munoz": 24.9,
+        "burbano": 30.3,
+        "yunda": 18.1,
+        "merino": 6.8,
+        "jijon": 1.1
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "pabel": 27.4,
+        "munoz": 27.4,
+        "burbano": 0.0,
+        "yunda": 72.6,
         "merino": 0.0,
         "jijon": 0.0
       }
@@ -26374,6 +27091,814 @@
           "pref_no": 47.0,
           "def_no": 43.8
         }
+      }
+    },
+    "13": {
+      "Circunscripción_Urbana Norte": {
+        "pabel": {
+          "def_si": 14.4,
+          "podria": 23.8,
+          "nsr": 1.7,
+          "pref_no": 33.3,
+          "def_no": 26.8
+        },
+        "yunda": {
+          "def_si": 4.9,
+          "podria": 12.5,
+          "nsr": 2.5,
+          "pref_no": 31.7,
+          "def_no": 48.3
+        },
+        "burbano": {
+          "def_si": 7.5,
+          "podria": 20.9,
+          "nsr": 0.9,
+          "pref_no": 27.7,
+          "def_no": 43.1
+        },
+        "tonello": {
+          "def_si": 9.3,
+          "podria": 24.3,
+          "nsr": 0.8,
+          "pref_no": 34.0,
+          "def_no": 31.6
+        }
+      },
+      "Circunscripción_Urbana Centro": {
+        "pabel": {
+          "def_si": 30.8,
+          "podria": 27.0,
+          "nsr": 0.6,
+          "pref_no": 14.7,
+          "def_no": 26.9
+        },
+        "yunda": {
+          "def_si": 9.6,
+          "podria": 21.8,
+          "nsr": 1.3,
+          "pref_no": 12.2,
+          "def_no": 55.1
+        },
+        "burbano": {
+          "def_si": 9.6,
+          "podria": 25.7,
+          "nsr": 0.6,
+          "pref_no": 19.9,
+          "def_no": 44.3
+        },
+        "tonello": {
+          "def_si": 14.1,
+          "podria": 43.6,
+          "nsr": 1.3,
+          "pref_no": 19.9,
+          "def_no": 21.2
+        }
+      },
+      "Circunscripción_Urbana Sur": {
+        "pabel": {
+          "def_si": 35.0,
+          "podria": 22.3,
+          "nsr": 1.1,
+          "pref_no": 5.5,
+          "def_no": 36.1
+        },
+        "yunda": {
+          "def_si": 16.6,
+          "podria": 13.3,
+          "nsr": 1.1,
+          "pref_no": 6.6,
+          "def_no": 62.4
+        },
+        "burbano": {
+          "def_si": 11.0,
+          "podria": 14.4,
+          "nsr": 1.1,
+          "pref_no": 2.3,
+          "def_no": 71.2
+        },
+        "tonello": {
+          "def_si": 35.1,
+          "podria": 14.4,
+          "nsr": 2.3,
+          "pref_no": 2.2,
+          "def_no": 46.1
+        }
+      },
+      "Circunscripción_Rural": {
+        "pabel": {
+          "def_si": 29.6,
+          "podria": 25.8,
+          "nsr": 2.0,
+          "pref_no": 11.1,
+          "def_no": 31.5
+        },
+        "yunda": {
+          "def_si": 10.6,
+          "podria": 17.8,
+          "nsr": 3.4,
+          "pref_no": 17.1,
+          "def_no": 51.2
+        },
+        "burbano": {
+          "def_si": 5.9,
+          "podria": 14.5,
+          "nsr": 4.0,
+          "pref_no": 12.5,
+          "def_no": 63.1
+        },
+        "tonello": {
+          "def_si": 24.4,
+          "podria": 19.8,
+          "nsr": 8.6,
+          "pref_no": 13.7,
+          "def_no": 33.5
+        }
+      },
+      "Sexo_Hombre": {
+        "pabel": {
+          "def_si": 27.6,
+          "podria": 24.4,
+          "nsr": 0.8,
+          "pref_no": 16.6,
+          "def_no": 30.6
+        },
+        "yunda": {
+          "def_si": 9.0,
+          "podria": 15.3,
+          "nsr": 0.8,
+          "pref_no": 17.9,
+          "def_no": 57.0
+        },
+        "burbano": {
+          "def_si": 7.3,
+          "podria": 17.9,
+          "nsr": 0.8,
+          "pref_no": 14.6,
+          "def_no": 59.4
+        },
+        "tonello": {
+          "def_si": 19.6,
+          "podria": 23.4,
+          "nsr": 2.4,
+          "pref_no": 20.1,
+          "def_no": 34.5
+        }
+      },
+      "Sexo_Mujer": {
+        "pabel": {
+          "def_si": 26.4,
+          "podria": 25.4,
+          "nsr": 1.9,
+          "pref_no": 16.8,
+          "def_no": 29.4
+        },
+        "yunda": {
+          "def_si": 10.9,
+          "podria": 17.7,
+          "nsr": 3.5,
+          "pref_no": 17.4,
+          "def_no": 50.4
+        },
+        "burbano": {
+          "def_si": 9.0,
+          "podria": 20.0,
+          "nsr": 2.7,
+          "pref_no": 18.1,
+          "def_no": 50.2
+        },
+        "tonello": {
+          "def_si": 20.0,
+          "podria": 28.4,
+          "nsr": 4.5,
+          "pref_no": 16.8,
+          "def_no": 30.2
+        }
+      },
+      "Grupos de edad_16 a 19 años": {
+        "pabel": {
+          "def_si": 18.7,
+          "podria": 39.8,
+          "nsr": 2.7,
+          "pref_no": 13.0,
+          "def_no": 25.9
+        },
+        "yunda": {
+          "def_si": 4.1,
+          "podria": 34.0,
+          "nsr": 6.4,
+          "pref_no": 15.2,
+          "def_no": 40.3
+        },
+        "burbano": {
+          "def_si": 2.6,
+          "podria": 30.9,
+          "nsr": 4.0,
+          "pref_no": 18.3,
+          "def_no": 44.2
+        },
+        "tonello": {
+          "def_si": 12.8,
+          "podria": 44.2,
+          "nsr": 9.4,
+          "pref_no": 6.7,
+          "def_no": 26.8
+        }
+      },
+      "Grupos de edad_20 a 29 años": {
+        "pabel": {
+          "def_si": 27.3,
+          "podria": 22.2,
+          "nsr": 2.2,
+          "pref_no": 17.6,
+          "def_no": 30.8
+        },
+        "yunda": {
+          "def_si": 8.3,
+          "podria": 14.2,
+          "nsr": 2.2,
+          "pref_no": 17.9,
+          "def_no": 57.5
+        },
+        "burbano": {
+          "def_si": 8.3,
+          "podria": 17.4,
+          "nsr": 1.0,
+          "pref_no": 17.8,
+          "def_no": 55.4
+        },
+        "tonello": {
+          "def_si": 21.4,
+          "podria": 25.0,
+          "nsr": 2.0,
+          "pref_no": 20.6,
+          "def_no": 31.0
+        }
+      },
+      "Grupos de edad_30 a 44 años": {
+        "pabel": {
+          "def_si": 26.2,
+          "podria": 21.9,
+          "nsr": 0.7,
+          "pref_no": 17.1,
+          "def_no": 34.1
+        },
+        "yunda": {
+          "def_si": 11.0,
+          "podria": 13.4,
+          "nsr": 0.7,
+          "pref_no": 18.5,
+          "def_no": 56.5
+        },
+        "burbano": {
+          "def_si": 8.6,
+          "podria": 18.1,
+          "nsr": 2.1,
+          "pref_no": 16.5,
+          "def_no": 54.7
+        },
+        "tonello": {
+          "def_si": 17.7,
+          "podria": 21.1,
+          "nsr": 2.6,
+          "pref_no": 23.7,
+          "def_no": 34.9
+        }
+      },
+      "Grupos de edad_45 a 60 años": {
+        "pabel": {
+          "def_si": 29.4,
+          "podria": 22.6,
+          "nsr": 1.8,
+          "pref_no": 18.8,
+          "def_no": 27.2
+        },
+        "yunda": {
+          "def_si": 11.4,
+          "podria": 18.3,
+          "nsr": 1.8,
+          "pref_no": 20.3,
+          "def_no": 48.3
+        },
+        "burbano": {
+          "def_si": 8.2,
+          "podria": 17.3,
+          "nsr": 1.8,
+          "pref_no": 15.0,
+          "def_no": 57.7
+        },
+        "tonello": {
+          "def_si": 24.1,
+          "podria": 21.2,
+          "nsr": 3.7,
+          "pref_no": 21.1,
+          "def_no": 29.9
+        }
+      },
+      "Grupos de edad_61 o más años": {
+        "pabel": {
+          "def_si": 33.0,
+          "podria": 22.8,
+          "nsr": 0.0,
+          "pref_no": 15.6,
+          "def_no": 28.7
+        },
+        "yunda": {
+          "def_si": 14.3,
+          "podria": 6.4,
+          "nsr": 1.5,
+          "pref_no": 14.9,
+          "def_no": 63.0
+        },
+        "burbano": {
+          "def_si": 12.7,
+          "podria": 13.1,
+          "nsr": 0.0,
+          "pref_no": 14.6,
+          "def_no": 59.6
+        },
+        "tonello": {
+          "def_si": 23.1,
+          "podria": 25.2,
+          "nsr": 1.3,
+          "pref_no": 13.2,
+          "def_no": 37.3
+        }
+      },
+      "Nivel de estudios_Ninguno": {
+        "pabel": {
+          "def_si": 0.0,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 0.0
+        },
+        "yunda": {
+          "def_si": 0.0,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 0.0
+        },
+        "burbano": {
+          "def_si": 0.0,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 0.0
+        },
+        "tonello": {
+          "def_si": 0.0,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 0.0
+        }
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "pabel": {
+          "def_si": 21.6,
+          "podria": 13.6,
+          "nsr": 3.9,
+          "pref_no": 3.4,
+          "def_no": 57.5
+        },
+        "yunda": {
+          "def_si": 25.7,
+          "podria": 7.1,
+          "nsr": 3.9,
+          "pref_no": 10.0,
+          "def_no": 53.3
+        },
+        "burbano": {
+          "def_si": 7.2,
+          "podria": 10.3,
+          "nsr": 3.9,
+          "pref_no": 10.3,
+          "def_no": 68.4
+        },
+        "tonello": {
+          "def_si": 32.6,
+          "podria": 10.0,
+          "nsr": 3.9,
+          "pref_no": 7.3,
+          "def_no": 46.2
+        }
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "pabel": {
+          "def_si": 25.3,
+          "podria": 29.5,
+          "nsr": 1.8,
+          "pref_no": 18.0,
+          "def_no": 25.4
+        },
+        "yunda": {
+          "def_si": 9.4,
+          "podria": 20.3,
+          "nsr": 3.3,
+          "pref_no": 19.8,
+          "def_no": 47.3
+        },
+        "burbano": {
+          "def_si": 6.5,
+          "podria": 22.8,
+          "nsr": 2.9,
+          "pref_no": 18.2,
+          "def_no": 49.6
+        },
+        "tonello": {
+          "def_si": 15.3,
+          "podria": 33.4,
+          "nsr": 5.0,
+          "pref_no": 19.9,
+          "def_no": 26.5
+        }
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "pabel": {
+          "def_si": 27.6,
+          "podria": 21.1,
+          "nsr": 0.6,
+          "pref_no": 18.4,
+          "def_no": 32.4
+        },
+        "yunda": {
+          "def_si": 8.3,
+          "podria": 12.3,
+          "nsr": 0.6,
+          "pref_no": 16.8,
+          "def_no": 61.9
+        },
+        "burbano": {
+          "def_si": 10.7,
+          "podria": 15.7,
+          "nsr": 0.0,
+          "pref_no": 16.1,
+          "def_no": 57.5
+        },
+        "tonello": {
+          "def_si": 23.5,
+          "podria": 17.4,
+          "nsr": 1.7,
+          "pref_no": 19.2,
+          "def_no": 38.2
+        }
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "pabel": {
+          "def_si": 46.0,
+          "podria": 15.1,
+          "nsr": 0.0,
+          "pref_no": 6.3,
+          "def_no": 32.6
+        },
+        "yunda": {
+          "def_si": 10.6,
+          "podria": 17.0,
+          "nsr": 0.0,
+          "pref_no": 9.4,
+          "def_no": 63.0
+        },
+        "burbano": {
+          "def_si": 10.2,
+          "podria": 10.1,
+          "nsr": 0.0,
+          "pref_no": 7.0,
+          "def_no": 72.7
+        },
+        "tonello": {
+          "def_si": 29.6,
+          "podria": 23.8,
+          "nsr": 0.0,
+          "pref_no": 9.4,
+          "def_no": 37.3
+        }
+      },
+      "Nivel de ingresos_Bajo": {
+        "pabel": {
+          "def_si": 16.3,
+          "podria": 20.7,
+          "nsr": 2.2,
+          "pref_no": 2.1,
+          "def_no": 58.7
+        },
+        "yunda": {
+          "def_si": 16.8,
+          "podria": 12.2,
+          "nsr": 2.2,
+          "pref_no": 2.1,
+          "def_no": 66.7
+        },
+        "burbano": {
+          "def_si": 5.8,
+          "podria": 6.5,
+          "nsr": 4.3,
+          "pref_no": 4.3,
+          "def_no": 79.2
+        },
+        "tonello": {
+          "def_si": 22.5,
+          "podria": 4.1,
+          "nsr": 10.4,
+          "pref_no": 2.1,
+          "def_no": 61.0
+        }
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "pabel": {
+          "def_si": 33.0,
+          "podria": 22.7,
+          "nsr": 2.0,
+          "pref_no": 7.3,
+          "def_no": 34.9
+        },
+        "yunda": {
+          "def_si": 13.6,
+          "podria": 15.3,
+          "nsr": 3.6,
+          "pref_no": 7.7,
+          "def_no": 59.8
+        },
+        "burbano": {
+          "def_si": 7.8,
+          "podria": 18.6,
+          "nsr": 2.5,
+          "pref_no": 9.1,
+          "def_no": 61.9
+        },
+        "tonello": {
+          "def_si": 21.9,
+          "podria": 26.9,
+          "nsr": 5.1,
+          "pref_no": 10.7,
+          "def_no": 35.4
+        }
+      },
+      "Nivel de ingresos_Medio": {
+        "pabel": {
+          "def_si": 25.0,
+          "podria": 27.6,
+          "nsr": 0.8,
+          "pref_no": 25.1,
+          "def_no": 21.5
+        },
+        "yunda": {
+          "def_si": 5.6,
+          "podria": 18.8,
+          "nsr": 1.3,
+          "pref_no": 27.8,
+          "def_no": 46.5
+        },
+        "burbano": {
+          "def_si": 8.3,
+          "podria": 21.4,
+          "nsr": 0.8,
+          "pref_no": 23.6,
+          "def_no": 45.8
+        },
+        "tonello": {
+          "def_si": 18.0,
+          "podria": 30.2,
+          "nsr": 1.2,
+          "pref_no": 26.7,
+          "def_no": 23.9
+        }
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "pabel": {
+          "def_si": 14.8,
+          "podria": 14.8,
+          "nsr": 0.0,
+          "pref_no": 57.3,
+          "def_no": 13.2
+        },
+        "yunda": {
+          "def_si": 28.0,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 15.7,
+          "def_no": 56.4
+        },
+        "burbano": {
+          "def_si": 28.0,
+          "podria": 27.4,
+          "nsr": 0.0,
+          "pref_no": 29.9,
+          "def_no": 14.8
+        },
+        "tonello": {
+          "def_si": 14.8,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 29.9,
+          "def_no": 55.4
+        }
+      }
+    }
+  },
+  "coyuntura_debate": {
+    "vio_si": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      32.4,
+      null,
+      null,
+      null,
+      null
+    ],
+    "mejor_pabel": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      37.4,
+      null,
+      null,
+      null,
+      null
+    ],
+    "mejor_jijon": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      14.7,
+      null,
+      null,
+      null,
+      null
+    ],
+    "mejor_ninguno": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      24.5,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "debate_segmentos": {
+    "13": {
+      "Circunscripción_Urbana Norte": {
+        "vio_si": 40.1,
+        "mejor_pabel": 30.8,
+        "mejor_jijon": 24.9,
+        "mejor_ninguno": 19.3
+      },
+      "Circunscripción_Urbana Centro": {
+        "vio_si": 29.2,
+        "mejor_pabel": 36.7,
+        "mejor_jijon": 13.3,
+        "mejor_ninguno": 23.3
+      },
+      "Circunscripción_Urbana Sur": {
+        "vio_si": 34.2,
+        "mejor_pabel": 28.0,
+        "mejor_jijon": 9.6,
+        "mejor_ninguno": 29.0
+      },
+      "Circunscripción_Rural": {
+        "vio_si": 27.3,
+        "mejor_pabel": 53.9,
+        "mejor_jijon": 7.2,
+        "mejor_ninguno": 28.5
+      },
+      "Sexo_Hombre": {
+        "vio_si": 35.0,
+        "mejor_pabel": 41.7,
+        "mejor_jijon": 13.6,
+        "mejor_ninguno": 19.6
+      },
+      "Sexo_Mujer": {
+        "vio_si": 30.0,
+        "mejor_pabel": 32.8,
+        "mejor_jijon": 16.0,
+        "mejor_ninguno": 29.9
+      },
+      "Grupos de edad_16 a 19 años": {
+        "vio_si": 18.7,
+        "mejor_pabel": 44.1,
+        "mejor_jijon": 21.8,
+        "mejor_ninguno": 10.1
+      },
+      "Grupos de edad_20 a 29 años": {
+        "vio_si": 36.1,
+        "mejor_pabel": 34.9,
+        "mejor_jijon": 17.7,
+        "mejor_ninguno": 24.9
+      },
+      "Grupos de edad_30 a 44 años": {
+        "vio_si": 40.3,
+        "mejor_pabel": 32.9,
+        "mejor_jijon": 16.6,
+        "mejor_ninguno": 20.7
+      },
+      "Grupos de edad_45 a 60 años": {
+        "vio_si": 27.7,
+        "mejor_pabel": 31.1,
+        "mejor_jijon": 16.3,
+        "mejor_ninguno": 37.5
+      },
+      "Grupos de edad_61 o más años": {
+        "vio_si": 32.5,
+        "mejor_pabel": 55.7,
+        "mejor_jijon": 0.0,
+        "mejor_ninguno": 26.2
+      },
+      "Nivel de estudios_Ninguno": {
+        "vio_si": 0.0,
+        "mejor_pabel": 0.0,
+        "mejor_jijon": 0.0,
+        "mejor_ninguno": 0.0
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "vio_si": 49.4,
+        "mejor_pabel": 53.8,
+        "mejor_jijon": 0.0,
+        "mejor_ninguno": 34.9
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "vio_si": 28.1,
+        "mejor_pabel": 33.7,
+        "mejor_jijon": 17.9,
+        "mejor_ninguno": 21.4
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "vio_si": 38.5,
+        "mejor_pabel": 35.4,
+        "mejor_jijon": 13.1,
+        "mejor_ninguno": 28.0
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "vio_si": 19.7,
+        "mejor_pabel": 73.2,
+        "mejor_jijon": 26.8,
+        "mejor_ninguno": 0.0
+      },
+      "Nivel de ingresos_Bajo": {
+        "vio_si": 21.5,
+        "mejor_pabel": 26.8,
+        "mejor_jijon": 15.6,
+        "mejor_ninguno": 28.4
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "vio_si": 33.3,
+        "mejor_pabel": 41.0,
+        "mejor_jijon": 17.1,
+        "mejor_ninguno": 20.4
+      },
+      "Nivel de ingresos_Medio": {
+        "vio_si": 33.4,
+        "mejor_pabel": 35.9,
+        "mejor_jijon": 13.5,
+        "mejor_ninguno": 27.6
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "vio_si": 64.1,
+        "mejor_pabel": 52.8,
+        "mejor_jijon": 0.0,
+        "mejor_ninguno": 0.0
       }
     }
   }
