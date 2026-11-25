@@ -988,8 +988,10 @@ function renderCoyunturaYCredibilidad() {
 
   if (vioSi !== null && conoceSi === null) {
     const vioNo = Math.max(0, 100 - vioSi);
-    if (elTitle) elTitle.innerHTML = `¿Vio el debate de Alcaldía? <span class="text-emerald-700">Sí ${vioSi.toFixed(1)}%</span> · <span class="text-slate-500 font-semibold">No ${vioNo.toFixed(1)}%</span>`;
-    if (elConoce) elConoce.innerText = 'Más allá de su preferencia, ¿cuál candidato fue mejor en el debate?';
+    if (elTitle) elTitle.innerText = '¿Vio el debate de Alcaldía?';
+    if (elConoce) {
+      elConoce.innerHTML = `<div class="inline-flex items-center gap-1.5 mt-0.5"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">Sí ${vioSi.toFixed(1)}%</span><span class="px-2 py-0.5 rounded-full bg-slate-300/80 text-slate-700 font-semibold text-[10px]">No ${vioNo.toFixed(1)}%</span></div><div class="text-[10.5px] font-medium text-slate-600 mt-1.5">¿Quién fue mejor en el debate?</div>`;
+    }
     const mp = mejorPabel || 0;
     const mj = mejorJijon || 0;
     const mn = mejorNinguno || 0;
@@ -998,10 +1000,11 @@ function renderCoyunturaYCredibilidad() {
     if (barJij) { barJij.classList.remove('hidden'); barJij.style.width = `${mj}%`; }
     if (barCam) { barCam.className = 'bg-slate-600 h-full transition-all duration-300'; barCam.style.width = `${mn}%`; }
     if (elLabels) {
-      elLabels.innerHTML = `<span>Pabel: <strong class="text-[#dc2626] text-xs">${mp.toFixed(1)}%</strong></span><span>Ninguno: <strong class="text-slate-800 text-xs">${mn.toFixed(1)}%</strong></span><span>Jijón: <strong class="text-[#15803d] text-xs">${mj.toFixed(1)}%</strong></span><span>Otros/Nsr: <strong class="text-slate-600 text-xs">${restoDeb.toFixed(1)}%</strong></span>`;
+      elLabels.className = 'grid grid-cols-2 gap-x-3 gap-y-1 text-[10.5px] text-slate-700 text-left px-1';
+      elLabels.innerHTML = `<div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#dc2626]"></span>Pabel</span><strong class="text-[#dc2626] font-bold">${mp.toFixed(1)}%</strong></div><div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#15803d]"></span>Jijón</span><strong class="text-[#15803d] font-bold">${mj.toFixed(1)}%</strong></div><div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-600"></span>Ninguno</span><strong class="text-slate-800 font-bold">${mn.toFixed(1)}%</strong></div><div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-300 border border-slate-400"></span>Otros/Nsr</span><strong class="text-slate-600 font-bold">${restoDeb.toFixed(1)}%</strong></div>`;
     }
     if (coyFooter) {
-      coyFooter.innerText = `* Calculado sobre el ${vioSi.toFixed(1)}% que sí vio o escuchó el debate`;
+      coyFooter.innerText = `* Base: ${vioSi.toFixed(1)}% que vio el debate`;
     }
   } else {
     if (elTitle) elTitle.innerText = 'Denuncias en el Municipio';
@@ -1010,6 +1013,7 @@ function renderCoyunturaYCredibilidad() {
     if (barJij) { barJij.classList.add('hidden'); barJij.style.width = '0%'; }
     if (barCam) { barCam.className = 'bg-slate-700 h-full transition-all duration-300'; barCam.style.width = campana !== null ? `${campana}%` : '0%'; }
     if (elLabels) {
+      elLabels.className = 'flex flex-wrap justify-around gap-1 text-[11px] text-slate-700';
       const evTxt = evidencia !== null ? `${evidencia.toFixed(1)}%` : '--';
       const camTxt = campana !== null ? `${campana.toFixed(1)}%` : '--';
       elLabels.innerHTML = `<span>Es corrupción: <strong id="txtEvidencia" class="text-rose-700 text-xs">${evTxt}</strong></span><span>Campaña negativa: <strong id="txtCampana" class="text-slate-900 text-xs">${camTxt}</strong></span>`;
