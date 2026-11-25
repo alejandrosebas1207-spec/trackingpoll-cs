@@ -987,20 +987,21 @@ function renderCoyunturaYCredibilidad() {
   const coyFooter = document.getElementById('coyFooterNote');
 
   if (vioSi !== null && conoceSi === null) {
-    if (elTitle) elTitle.innerText = 'Debate Alcaldía de Quito';
-    if (elConoce) elConoce.innerText = `Sí vio o escuchó el debate: ${vioSi.toFixed(1)}%`;
+    const vioNo = Math.max(0, 100 - vioSi);
+    if (elTitle) elTitle.innerHTML = `¿Vio el debate de Alcaldía? <span class="text-emerald-700">Sí ${vioSi.toFixed(1)}%</span> · <span class="text-slate-500 font-semibold">No ${vioNo.toFixed(1)}%</span>`;
+    if (elConoce) elConoce.innerText = 'Más allá de su preferencia, ¿cuál candidato fue mejor en el debate?';
     const mp = mejorPabel || 0;
     const mj = mejorJijon || 0;
     const mn = mejorNinguno || 0;
+    const restoDeb = Math.max(0, 100 - mp - mj - mn);
     if (barEv) { barEv.className = 'bg-[#dc2626] h-full transition-all duration-300'; barEv.style.width = `${mp}%`; }
     if (barJij) { barJij.classList.remove('hidden'); barJij.style.width = `${mj}%`; }
     if (barCam) { barCam.className = 'bg-slate-600 h-full transition-all duration-300'; barCam.style.width = `${mn}%`; }
     if (elLabels) {
-      elLabels.innerHTML = `<span>Pabel: <strong class="text-[#dc2626] text-xs">${mp.toFixed(1)}%</strong></span><span>Jijón: <strong class="text-[#15803d] text-xs">${mj.toFixed(1)}%</strong></span><span>Ninguno: <strong class="text-slate-800 text-xs">${mn.toFixed(1)}%</strong></span>`;
+      elLabels.innerHTML = `<span>Pabel: <strong class="text-[#dc2626] text-xs">${mp.toFixed(1)}%</strong></span><span>Ninguno: <strong class="text-slate-800 text-xs">${mn.toFixed(1)}%</strong></span><span>Jijón: <strong class="text-[#15803d] text-xs">${mj.toFixed(1)}%</strong></span><span>Otros/Nsr: <strong class="text-slate-600 text-xs">${restoDeb.toFixed(1)}%</strong></span>`;
     }
     if (coyFooter) {
-      const restoDeb = Math.max(0, 100 - mp - mj - mn);
-      coyFooter.innerText = `Mejor en el debate (sobre ese ${vioSi.toFixed(1)}%) · Otros/Nsr: ${restoDeb.toFixed(1)}%`;
+      coyFooter.innerText = `* Calculado sobre el ${vioSi.toFixed(1)}% que sí vio o escuchó el debate`;
     }
   } else {
     if (elTitle) elTitle.innerText = 'Denuncias en el Municipio';
