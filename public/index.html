@@ -328,6 +328,17 @@
               <div class="text-[10px] text-slate-600 mt-1.5" id="coyFooterNote">--</div>
             </div>
 
+            <!-- Cortes de Energía (desde 25 nov 2026) -->
+            <div id="energiaCoyBox" class="bg-slate-200/75 p-2.5 rounded-lg border border-slate-300 text-center hidden">
+              <div class="text-xs font-extrabold text-slate-900 mb-1.5">Cortes de energía: ¿a qué se deben?</div>
+              <div class="w-full bg-slate-300 rounded-full h-2.5 flex overflow-hidden mb-2">
+                <div id="barEnCorrupcion" class="bg-rose-600 h-full transition-all duration-300" style="width: 0%;"></div>
+                <div id="barEnPlanificacion" class="bg-amber-500 h-full transition-all duration-300" style="width: 0%;"></div>
+                <div id="barEnNaturales" class="bg-sky-600 h-full transition-all duration-300" style="width: 0%;"></div>
+              </div>
+              <div id="enLabelsRow" class="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] text-slate-700 text-left px-1"></div>
+            </div>
+
             <!-- Credibilidad Daniel Noboa -->
             <div class="bg-slate-200/75 p-3 rounded-lg border border-slate-300 text-center">
               <div class="text-xs font-extrabold text-slate-900 mb-0.5">¿Le cree a Daniel Noboa?</div>
@@ -375,6 +386,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v63"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v64"></script>
 </body>
 </html>

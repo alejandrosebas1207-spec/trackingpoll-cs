@@ -29426,5 +29426,211 @@
         "op_perjudica": 0.0
       }
     }
+  },
+  "coyuntura_energia": {
+    "corrupcion": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      31.5,
+      null,
+      null,
+      null
+    ],
+    "planificacion": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      30.9,
+      null,
+      null,
+      null
+    ],
+    "naturales": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      26.3,
+      null,
+      null,
+      null
+    ],
+    "nsr": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      11.4,
+      null,
+      null,
+      null
+    ]
+  },
+  "energia_segmentos": {
+    "14": {
+      "Circunscripción_Urbana Norte": {
+        "corrupcion": 22.1,
+        "planificacion": 34.8,
+        "naturales": 26.2,
+        "nsr": 17.0
+      },
+      "Circunscripción_Urbana Centro": {
+        "corrupcion": 20.0,
+        "planificacion": 35.0,
+        "naturales": 42.5,
+        "nsr": 2.5
+      },
+      "Circunscripción_Urbana Sur": {
+        "corrupcion": 59.6,
+        "planificacion": 25.2,
+        "naturales": 7.4,
+        "nsr": 7.8
+      },
+      "Circunscripción_Rural": {
+        "corrupcion": 26.9,
+        "planificacion": 28.8,
+        "naturales": 29.0,
+        "nsr": 15.4
+      },
+      "Sexo_Hombre": {
+        "corrupcion": 33.2,
+        "planificacion": 27.8,
+        "naturales": 29.2,
+        "nsr": 9.7
+      },
+      "Sexo_Mujer": {
+        "corrupcion": 29.8,
+        "planificacion": 33.7,
+        "naturales": 23.6,
+        "nsr": 12.9
+      },
+      "Grupos de edad_16 a 19 años": {
+        "corrupcion": 23.5,
+        "planificacion": 32.7,
+        "naturales": 19.5,
+        "nsr": 24.3
+      },
+      "Grupos de edad_20 a 29 años": {
+        "corrupcion": 25.4,
+        "planificacion": 34.2,
+        "naturales": 28.8,
+        "nsr": 11.7
+      },
+      "Grupos de edad_30 a 44 años": {
+        "corrupcion": 33.2,
+        "planificacion": 32.2,
+        "naturales": 24.0,
+        "nsr": 10.6
+      },
+      "Grupos de edad_45 a 60 años": {
+        "corrupcion": 36.0,
+        "planificacion": 28.9,
+        "naturales": 29.3,
+        "nsr": 5.9
+      },
+      "Grupos de edad_61 o más años": {
+        "corrupcion": 37.2,
+        "planificacion": 24.9,
+        "naturales": 30.3,
+        "nsr": 7.6
+      },
+      "Nivel de estudios_Ninguno": {
+        "corrupcion": 100.0,
+        "planificacion": 0.0,
+        "naturales": 0.0,
+        "nsr": 0.0
+      },
+      "Nivel de estudios_Básica, primaria": {
+        "corrupcion": 62.5,
+        "planificacion": 12.3,
+        "naturales": 0.0,
+        "nsr": 25.2
+      },
+      "Nivel de estudios_Secundaria, bachillerato": {
+        "corrupcion": 27.8,
+        "planificacion": 29.7,
+        "naturales": 26.8,
+        "nsr": 15.8
+      },
+      "Nivel de estudios_Superior, universitaria": {
+        "corrupcion": 34.6,
+        "planificacion": 33.6,
+        "naturales": 26.9,
+        "nsr": 4.9
+      },
+      "Nivel de estudios_Técnica, artesano": {
+        "corrupcion": 11.3,
+        "planificacion": 44.0,
+        "naturales": 44.6,
+        "nsr": 0.0
+      },
+      "Nivel de ingresos_Bajo": {
+        "corrupcion": 64.6,
+        "planificacion": 13.9,
+        "naturales": 14.5,
+        "nsr": 6.9
+      },
+      "Nivel de ingresos_Medio bajo": {
+        "corrupcion": 21.0,
+        "planificacion": 35.6,
+        "naturales": 37.2,
+        "nsr": 6.3
+      },
+      "Nivel de ingresos_Medio": {
+        "corrupcion": 33.0,
+        "planificacion": 31.0,
+        "naturales": 21.5,
+        "nsr": 14.6
+      },
+      "Nivel de ingresos_Medio alto o alto": {
+        "corrupcion": 48.7,
+        "planificacion": 0.0,
+        "naturales": 0.0,
+        "nsr": 51.3
+      }
+    }
   }
 }

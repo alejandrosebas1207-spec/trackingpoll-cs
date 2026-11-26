@@ -1057,6 +1057,35 @@ function renderCoyunturaYCredibilidad() {
     }
   }
 
+  const enBox = document.getElementById('energiaCoyBox');
+  const enBase = rawDecryptedData.coyuntura_energia || {};
+  const enSeg = (f.hayFiltros && f.keyCruzada && rawDecryptedData.energia_segmentos && rawDecryptedData.energia_segmentos[String(idx)])
+    ? rawDecryptedData.energia_segmentos[String(idx)][f.keyCruzada]
+    : null;
+  const enCorr = enSeg ? enSeg.corrupcion : (enBase.corrupcion && enBase.corrupcion[idx] !== null && enBase.corrupcion[idx] !== undefined ? enBase.corrupcion[idx] : null);
+  const enPlan = enSeg ? enSeg.planificacion : (enBase.planificacion && enBase.planificacion[idx] !== null && enBase.planificacion[idx] !== undefined ? enBase.planificacion[idx] : null);
+  const enNat = enSeg ? enSeg.naturales : (enBase.naturales && enBase.naturales[idx] !== null && enBase.naturales[idx] !== undefined ? enBase.naturales[idx] : null);
+  const enNsr = enSeg ? enSeg.nsr : (enBase.nsr && enBase.nsr[idx] !== null && enBase.nsr[idx] !== undefined ? enBase.nsr[idx] : null);
+
+  if (enBox) {
+    if (enCorr !== null && enPlan !== null && enNat !== null) {
+      enBox.classList.remove('hidden');
+      const bC = document.getElementById('barEnCorrupcion');
+      const bP = document.getElementById('barEnPlanificacion');
+      const bN = document.getElementById('barEnNaturales');
+      const enRow = document.getElementById('enLabelsRow');
+      if (bC) bC.style.width = `${enCorr}%`;
+      if (bP) bP.style.width = `${enPlan}%`;
+      if (bN) bN.style.width = `${enNat}%`;
+      const nsrVal = enNsr !== null ? enNsr : Math.max(0, 100 - enCorr - enPlan - enNat);
+      if (enRow) {
+        enRow.innerHTML = `<div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-600"></span>Corrupción</span><strong class="text-rose-700 font-bold">${enCorr.toFixed(1)}%</strong></div><div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500"></span>Falta planif.</span><strong class="text-amber-700 font-bold">${enPlan.toFixed(1)}%</strong></div><div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-sky-600"></span>Naturales</span><strong class="text-sky-700 font-bold">${enNat.toFixed(1)}%</strong></div><div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-300 border border-slate-400"></span>Nsr</span><strong class="text-slate-600 font-bold">${nsrVal.toFixed(1)}%</strong></div>`;
+      }
+    } else {
+      enBox.classList.add('hidden');
+    }
+  }
+
   const creePos = credSeg ? credSeg.cree_pos : (credBase.cree_pos && credBase.cree_pos[idx] !== null && credBase.cree_pos[idx] !== undefined ? credBase.cree_pos[idx] : null);
   const creeNeg = credSeg ? credSeg.cree_neg : (credBase.cree_neg && credBase.cree_neg[idx] !== null && credBase.cree_neg[idx] !== undefined ? credBase.cree_neg[idx] : null);
   const badge = document.getElementById('noboaCredBadge');
