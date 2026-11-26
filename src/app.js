@@ -978,6 +978,15 @@ function renderCoyunturaYCredibilidad() {
   const mejorJijon = debSeg ? debSeg.mejor_jijon : (debBase.mejor_jijon && debBase.mejor_jijon[idx] !== null && debBase.mejor_jijon[idx] !== undefined ? debBase.mejor_jijon[idx] : null);
   const mejorNinguno = debSeg ? debSeg.mejor_ninguno : (debBase.mejor_ninguno && debBase.mejor_ninguno[idx] !== null && debBase.mejor_ninguno[idx] !== undefined ? debBase.mejor_ninguno[idx] : null);
 
+  const salBase = rawDecryptedData.coyuntura_salario || {};
+  const salSeg = (f.hayFiltros && f.keyCruzada && rawDecryptedData.salario_segmentos && rawDecryptedData.salario_segmentos[String(idx)])
+    ? rawDecryptedData.salario_segmentos[String(idx)][f.keyCruzada]
+    : null;
+  const supoSi = salSeg ? salSeg.supo_si : (salBase.supo_si && salBase.supo_si[idx] !== null && salBase.supo_si[idx] !== undefined ? salBase.supo_si[idx] : null);
+  const opVotos = salSeg ? salSeg.op_votos : (salBase.op_votos && salBase.op_votos[idx] !== null && salBase.op_votos[idx] !== undefined ? salBase.op_votos[idx] : null);
+  const opPositiva = salSeg ? salSeg.op_positiva : (salBase.op_positiva && salBase.op_positiva[idx] !== null && salBase.op_positiva[idx] !== undefined ? salBase.op_positiva[idx] : null);
+  const opPerjudica = salSeg ? salSeg.op_perjudica : (salBase.op_perjudica && salBase.op_perjudica[idx] !== null && salBase.op_perjudica[idx] !== undefined ? salBase.op_perjudica[idx] : null);
+
   const elTitle = document.getElementById('coyBoxTitle');
   const elConoce = document.getElementById('coyConoce');
   const barEv = document.getElementById('barEvidencia');
@@ -986,7 +995,27 @@ function renderCoyunturaYCredibilidad() {
   const elLabels = document.getElementById('coyLabelsRow');
   const coyFooter = document.getElementById('coyFooterNote');
 
-  if (vioSi !== null && conoceSi === null) {
+  if (supoSi !== null && conoceSi === null) {
+    const supoNo = Math.max(0, 100 - supoSi);
+    if (elTitle) elTitle.innerText = '¿Supo del salario básico a $500?';
+    if (elConoce) {
+      elConoce.innerHTML = `<div class="inline-flex items-center gap-1.5 mt-0.5"><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px]">Sí ${supoSi.toFixed(1)}%</span><span class="px-2 py-0.5 rounded-full bg-slate-300/80 text-slate-700 font-semibold text-[10px]">No ${supoNo.toFixed(1)}%</span></div><div class="text-[10.5px] font-medium text-slate-600 mt-1.5">Opinión sobre la subida a $500:</div>`;
+    }
+    const ov = opVotos || 0;
+    const op = opPositiva || 0;
+    const oq = opPerjudica || 0;
+    const on = Math.max(0, 100 - ov - op - oq);
+    if (barEv) { barEv.className = 'bg-amber-500 h-full transition-all duration-300'; barEv.style.width = `${ov}%`; }
+    if (barJij) { barJij.className = 'bg-emerald-600 h-full transition-all duration-300'; barJij.classList.remove('hidden'); barJij.style.width = `${op}%`; }
+    if (barCam) { barCam.className = 'bg-rose-600 h-full transition-all duration-300'; barCam.style.width = `${oq}%`; }
+    if (elLabels) {
+      elLabels.className = 'grid grid-cols-2 gap-x-3 gap-y-1 text-[10.5px] text-slate-700 text-left px-1';
+      elLabels.innerHTML = `<div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500"></span>Electoral</span><strong class="text-amber-700 font-bold">${ov.toFixed(1)}%</strong></div><div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-600"></span>Positiva</span><strong class="text-emerald-700 font-bold">${op.toFixed(1)}%</strong></div><div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-rose-600"></span>Perjudica</span><strong class="text-rose-700 font-bold">${oq.toFixed(1)}%</strong></div><div class="flex items-center justify-between"><span class="inline-flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-300 border border-slate-400"></span>Nsr</span><strong class="text-slate-600 font-bold">${on.toFixed(1)}%</strong></div>`;
+    }
+    if (coyFooter) {
+      coyFooter.innerText = '* Aplica a toda la muestra del día 25 nov';
+    }
+  } else if (vioSi !== null && conoceSi === null) {
     const vioNo = Math.max(0, 100 - vioSi);
     if (elTitle) elTitle.innerText = '¿Vio el debate de Alcaldía?';
     if (elConoce) {
