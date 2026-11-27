@@ -871,7 +871,10 @@ function renderApoyoChart() {
     return arr ? arr[idx] : null;
   };
 
-  const candidatePool = isAlcalde ? ['pabel', 'yunda', 'burbano'] : ['tonello'];
+  const candidatePool = (isAlcalde ? ['pabel', 'yunda', 'burbano', 'jijon'] : ['tonello']).filter(ck => {
+    const obj = apoyo[ck];
+    return obj && obj.def_si && obj.def_si[idx] !== null && obj.def_si[idx] !== undefined;
+  });
   const keys = candidatePool
     .filter(k => {
       const v = getVal(k, 'def_si');

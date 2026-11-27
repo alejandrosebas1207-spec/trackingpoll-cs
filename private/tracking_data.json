@@ -14415,6 +14415,111 @@
         null,
         null
       ]
+    },
+    "jijon": {
+      "nombre": "Bernardo Jijón",
+      "cargo": "Alcaldía de Quito",
+      "escenario": "alcalde",
+      "def_si": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        7.7,
+        null,
+        null
+      ],
+      "podria": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        35.7,
+        null,
+        null
+      ],
+      "nsr": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        3.8,
+        null,
+        null
+      ],
+      "pref_no": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        10.3,
+        null,
+        null
+      ],
+      "def_no": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        42.4,
+        null,
+        null
+      ]
     }
   },
   "firmeza_candidatos": {
@@ -29760,6 +29865,13 @@
           "nsr": 0.8,
           "pref_no": 29.0,
           "def_no": 36.1
+        },
+        "jijon": {
+          "def_si": 0.0,
+          "podria": 47.4,
+          "nsr": 2.4,
+          "pref_no": 10.0,
+          "def_no": 40.3
         }
       },
       "Circunscripción_Urbana Centro": {
@@ -29790,6 +29902,13 @@
           "nsr": 0.7,
           "pref_no": 20.9,
           "def_no": 30.6
+        },
+        "jijon": {
+          "def_si": 7.0,
+          "podria": 18.6,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 74.4
         }
       },
       "Circunscripción_Urbana Sur": {
@@ -29820,6 +29939,13 @@
           "nsr": 2.8,
           "pref_no": 9.1,
           "def_no": 34.5
+        },
+        "jijon": {
+          "def_si": 15.2,
+          "podria": 50.6,
+          "nsr": 7.2,
+          "pref_no": 7.2,
+          "def_no": 19.8
         }
       },
       "Circunscripción_Rural": {
@@ -29850,6 +29976,13 @@
           "nsr": 3.2,
           "pref_no": 20.9,
           "def_no": 30.0
+        },
+        "jijon": {
+          "def_si": 9.9,
+          "podria": 29.3,
+          "nsr": 6.0,
+          "pref_no": 21.5,
+          "def_no": 33.3
         }
       },
       "Sexo_Hombre": {
@@ -29880,6 +30013,13 @@
           "nsr": 1.9,
           "pref_no": 20.4,
           "def_no": 32.5
+        },
+        "jijon": {
+          "def_si": 5.6,
+          "podria": 39.1,
+          "nsr": 4.4,
+          "pref_no": 11.3,
+          "def_no": 39.6
         }
       },
       "Sexo_Mujer": {
@@ -29910,6 +30050,13 @@
           "nsr": 1.8,
           "pref_no": 21.1,
           "def_no": 32.7
+        },
+        "jijon": {
+          "def_si": 9.7,
+          "podria": 32.6,
+          "nsr": 3.3,
+          "pref_no": 9.4,
+          "def_no": 45.0
         }
       },
       "Grupos de edad_16 a 19 años": {
@@ -29940,6 +30087,13 @@
           "nsr": 6.1,
           "pref_no": 9.0,
           "def_no": 28.2
+        },
+        "jijon": {
+          "def_si": 0.0,
+          "podria": 30.5,
+          "nsr": 18.1,
+          "pref_no": 19.1,
+          "def_no": 32.3
         }
       },
       "Grupos de edad_20 a 29 años": {
@@ -29970,6 +30124,13 @@
           "nsr": 1.9,
           "pref_no": 27.3,
           "def_no": 30.0
+        },
+        "jijon": {
+          "def_si": 11.5,
+          "podria": 41.1,
+          "nsr": 0.0,
+          "pref_no": 5.6,
+          "def_no": 41.8
         }
       },
       "Grupos de edad_30 a 44 años": {
@@ -30000,6 +30161,13 @@
           "nsr": 0.6,
           "pref_no": 25.5,
           "def_no": 32.6
+        },
+        "jijon": {
+          "def_si": 11.0,
+          "podria": 38.0,
+          "nsr": 0.0,
+          "pref_no": 5.6,
+          "def_no": 45.5
         }
       },
       "Grupos de edad_45 a 60 años": {
@@ -30030,6 +30198,13 @@
           "nsr": 0.9,
           "pref_no": 18.4,
           "def_no": 34.3
+        },
+        "jijon": {
+          "def_si": 5.2,
+          "podria": 35.9,
+          "nsr": 2.7,
+          "pref_no": 15.2,
+          "def_no": 41.0
         }
       },
       "Grupos de edad_61 o más años": {
@@ -30060,6 +30235,13 @@
           "nsr": 1.3,
           "pref_no": 17.7,
           "def_no": 37.9
+        },
+        "jijon": {
+          "def_si": 7.3,
+          "podria": 29.5,
+          "nsr": 3.9,
+          "pref_no": 10.8,
+          "def_no": 48.5
         }
       },
       "Nivel de estudios_Ninguno": {
@@ -30090,6 +30272,13 @@
           "nsr": 0.0,
           "pref_no": 0.0,
           "def_no": 100.0
+        },
+        "jijon": {
+          "def_si": 0.0,
+          "podria": 0.0,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 0.0
         }
       },
       "Nivel de estudios_Básica, primaria": {
@@ -30120,6 +30309,13 @@
           "nsr": 0.0,
           "pref_no": 16.5,
           "def_no": 52.6
+        },
+        "jijon": {
+          "def_si": 0.0,
+          "podria": 38.8,
+          "nsr": 0.0,
+          "pref_no": 20.4,
+          "def_no": 40.8
         }
       },
       "Nivel de estudios_Secundaria, bachillerato": {
@@ -30150,6 +30346,13 @@
           "nsr": 2.5,
           "pref_no": 20.8,
           "def_no": 28.7
+        },
+        "jijon": {
+          "def_si": 5.6,
+          "podria": 33.0,
+          "nsr": 5.8,
+          "pref_no": 10.1,
+          "def_no": 45.5
         }
       },
       "Nivel de estudios_Superior, universitaria": {
@@ -30180,6 +30383,13 @@
           "nsr": 1.0,
           "pref_no": 22.9,
           "def_no": 34.2
+        },
+        "jijon": {
+          "def_si": 9.6,
+          "podria": 41.5,
+          "nsr": 1.2,
+          "pref_no": 10.8,
+          "def_no": 36.9
         }
       },
       "Nivel de estudios_Técnica, artesano": {
@@ -30210,6 +30420,13 @@
           "nsr": 3.4,
           "pref_no": 12.8,
           "def_no": 36.4
+        },
+        "jijon": {
+          "def_si": 17.8,
+          "podria": 16.6,
+          "nsr": 9.6,
+          "pref_no": 0.0,
+          "def_no": 55.9
         }
       },
       "Nivel de ingresos_Bajo": {
@@ -30240,6 +30457,13 @@
           "nsr": 4.5,
           "pref_no": 4.2,
           "def_no": 70.0
+        },
+        "jijon": {
+          "def_si": 6.3,
+          "podria": 0.0,
+          "nsr": 12.9,
+          "pref_no": 0.0,
+          "def_no": 80.8
         }
       },
       "Nivel de ingresos_Medio bajo": {
@@ -30270,6 +30494,13 @@
           "nsr": 2.0,
           "pref_no": 11.9,
           "def_no": 37.8
+        },
+        "jijon": {
+          "def_si": 4.9,
+          "podria": 40.2,
+          "nsr": 3.0,
+          "pref_no": 1.6,
+          "def_no": 50.3
         }
       },
       "Nivel de ingresos_Medio": {
@@ -30300,6 +30531,13 @@
           "nsr": 1.4,
           "pref_no": 29.7,
           "def_no": 22.5
+        },
+        "jijon": {
+          "def_si": 10.0,
+          "podria": 39.1,
+          "nsr": 3.0,
+          "pref_no": 17.9,
+          "def_no": 30.1
         }
       },
       "Nivel de ingresos_Medio alto o alto": {
@@ -30330,6 +30568,13 @@
           "nsr": 0.0,
           "pref_no": 16.4,
           "def_no": 48.7
+        },
+        "jijon": {
+          "def_si": 0.0,
+          "podria": 32.9,
+          "nsr": 0.0,
+          "pref_no": 0.0,
+          "def_no": 67.1
         }
       }
     }
