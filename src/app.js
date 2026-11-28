@@ -1631,10 +1631,10 @@ async function initInteractiveMap() {
       maxBounds: quitoMaxBounds,
       maxBoundsViscosity: 0.9
     }).setView([-0.16, -78.45], 10.5);
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-      attribution: '&copy; Esri &copy; OpenStreetMap',
-      maxNativeZoom: 16,
-      maxZoom: 18
+    L.tileLayer('https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+      subdomains: ['0', '1', '2', '3'],
+      attribution: '&copy; Google Maps',
+      maxZoom: 19
     }).addTo(leafletMap);
     leafletCanvasRenderer = L.canvas({ padding: 0.5 });
     leafletPointsLayer = L.layerGroup().addTo(leafletMap);
