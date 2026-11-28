@@ -1700,10 +1700,11 @@ function renderInteractiveMap(fitBoundsFlag = false) {
       },
       onEachFeature: (feat, layer) => {
         layer.bindTooltip('', { direction: 'auto', sticky: false, opacity: 0.97 });
+        const cp = String(feat.properties.CODPAR || '').trim();
         const pName = feat.properties.PARROQUIA || '';
         const lx = feat.properties.lx;
         const ly = feat.properties.ly;
-        if (leafletLabelsLayer && pName && typeof lx === 'number' && typeof ly === 'number') {
+        if (leafletLabelsLayer && parrAgg[cp] && parrAgg[cp].n > 0 && pName && typeof lx === 'number' && typeof ly === 'number') {
           L.marker([ly, lx], {
             interactive: false,
             keyboard: false,
