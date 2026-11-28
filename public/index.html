@@ -407,9 +407,10 @@
       </div>
 
       <!-- Filtros del Mapa -->
-      <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-        <div id="mapCandPills" class="flex flex-wrap items-center gap-1.5"></div>
-        <div class="flex items-center gap-1.5 flex-wrap">
+      <div class="flex flex-wrap items-center justify-center gap-2.5 mb-2.5">
+        <div id="mapCandPills" class="flex flex-wrap items-center justify-center gap-1.5"></div>
+        <div class="h-5 w-px bg-slate-300 hidden xl:block"></div>
+        <div class="flex items-center justify-center gap-1.5 flex-wrap">
           <span class="text-[10.5px] font-bold text-slate-600 uppercase">Zona:</span>
           <select id="mapCircSelect" onchange="setMapCirc(this.value)" class="bg-white border border-slate-300 text-slate-800 font-bold rounded-lg px-2.5 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
             <option value="ALL">Todo Quito</option>
