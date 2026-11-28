@@ -1698,6 +1698,13 @@ function renderInteractiveMap(fitBoundsFlag = false) {
         layer.bindTooltip(`<div class="text-xs font-bold">${parrName}</div><div class="text-[10px] text-slate-500">Sin encuestas en el filtro</div>`, { sticky: true });
         return;
       }
+      const candsSorted = Object.entries(agg.counts)
+        .filter(([k]) => k !== 'indecisos' && k !== 'nulo_blanco')
+        .sort((a, b) => b[1] - a[1]);
+      const leaderTuple = candsSorted.length > 0 ? candsSorted[0] : ['otros', agg.counts['otros'] || 0];
+      const leaderInfo = getMapCandInfo(leaderTuple[0]);
+      const leaderPct = ((leaderTuple[1] / agg.n) * 100).toFixed(1);
+
       const topRows = Object.entries(agg.counts)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 5)
@@ -1706,8 +1713,17 @@ function renderInteractiveMap(fitBoundsFlag = false) {
           const pct = ((cnt / agg.n) * 100).toFixed(1);
           return `<div style="display:flex;justify-content:space-between;gap:10px;font-size:11px;margin-top:2px;"><span><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${ci.color};margin-right:5px;"></span>${ci.full}</span><strong>${pct}%</strong></div>`;
         }).join('');
-      layer.bindPopup(`<div style="min-width:170px;font-family:Poppins,sans-serif;"><div style="font-weight:800;font-size:12px;color:#0f172a;">${parrName}</div><div style="font-size:10px;color:#64748b;margin-bottom:5px;">${agg.circ} · n = ${agg.n}</div>${topRows}</div>`);
-      layer.bindTooltip(`<strong>${parrName}</strong> (n = ${agg.n})`, { sticky: true });
+      layer.bindPopup(`<div style="min-width:175px;font-family:Poppins,sans-serif;"><div style="font-weight:800;font-size:12px;color:#0f172a;">${parrName}</div><div style="font-size:10px;color:#64748b;margin-bottom:5px;">${agg.circ} · n = ${agg.n}</div>${topRows}</div>`);
+
+      const tipFocus = mapCandFilter !== 'ALL'
+        ? (() => {
+            const ci = getMapCandInfo(mapCandFilter);
+            const pct = (((agg.counts[mapCandFilter] || 0) / agg.n) * 100).toFixed(1);
+            return `<div style="font-size:11px;margin-top:2px;"><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${ci.color};margin-right:4px;"></span><strong>${ci.full}: ${pct}%</strong></div>`;
+          })()
+        : `<div style="font-size:11px;margin-top:2px;"><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${leaderInfo.color};margin-right:4px;"></span>Gana: <strong style="color:${leaderInfo.color};">${leaderInfo.full} (${leaderPct}%)</strong></div>`;
+
+      layer.bindTooltip(`<div style="font-family:Poppins,sans-serif;line-height:1.25;"><div style="font-weight:800;font-size:11.5px;color:#0f172a;">${parrName} <span style="font-weight:600;color:#64748b;font-size:10px;">(n = ${agg.n})</span></div>${tipFocus}</div>`, { sticky: true });
     }
   }).addTo(leafletMap);
 
