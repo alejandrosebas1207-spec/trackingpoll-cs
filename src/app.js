@@ -1613,6 +1613,8 @@ function resetMapFilters() {
 let quitoCantonGeoJson = null;
 let leafletCantonLayer = null;
 let leafletLabelsLayer = null;
+let leafletHoverTooltip = null;
+let parrTooltipByCp = {};
 
 async function initInteractiveMap() {
   const card = document.getElementById('mapaInteractivoCard');
@@ -1653,6 +1655,10 @@ async function initInteractiveMap() {
     leafletCanvasRenderer = L.canvas({ padding: 0.5 });
     leafletPointsLayer = L.layerGroup().addTo(leafletMap);
     leafletLabelsLayer = L.layerGroup().addTo(leafletMap);
+    leafletHoverTooltip = L.tooltip({ direction: 'auto', opacity: 0.97 });
+    leafletMap.on('mouseout', () => {
+      if (leafletHoverTooltip) leafletMap.closeTooltip(leafletHoverTooltip);
+    });
   }
 
   renderMapCandidatePills();
@@ -1699,6 +1705,8 @@ function renderInteractiveMap(fitBoundsFlag = false) {
   }
 
   if (leafletPointsLayer) leafletPointsLayer.clearLayers();
+  if (leafletHoverTooltip && leafletMap) leafletMap.closeTooltip(leafletHoverTooltip);
+  parrTooltipByCp = {};
   let fitBoundsBox = null;
 
   // 1. Capa de Parroquias con límites parroquiales negros nítidos (reutilizada en memoria)
@@ -1713,7 +1721,20 @@ function renderInteractiveMap(fitBoundsFlag = false) {
         return Boolean(parrAgg[cp]);
       },
       onEachFeature: (feat, layer) => {
-        layer.bindTooltip('', { direction: 'auto', sticky: true, opacity: 0.97 });
+        layer.on('mouseover', (e) => {
+          if (leafletHoverTooltip && layer._csHoverHtml) {
+            leafletHoverTooltip.setContent(layer._csHoverHtml).setLatLng(e.latlng);
+            leafletMap.openTooltip(leafletHoverTooltip);
+          }
+        });
+        layer.on('mousemove', (e) => {
+          if (leafletHoverTooltip && leafletHoverTooltip._map) {
+            leafletHoverTooltip.setLatLng(e.latlng);
+          }
+        });
+        layer.on('mouseout', () => {
+          if (leafletHoverTooltip) leafletMap.closeTooltip(leafletHoverTooltip);
+        });
         const cp = String(feat.properties.CODPAR || '').trim();
         const pName = feat.properties.PARROQUIA || '';
         const lx = feat.properties.lx;
@@ -1786,7 +1807,7 @@ function renderInteractiveMap(fitBoundsFlag = false) {
 
     // Actualizar textos de tooltip y popup ligero diferido al clic
     if (!agg || agg.n === 0) {
-      layer.setTooltipContent(`<div class="text-xs font-bold">${parrName}</div><div class="text-[10px] text-slate-500">Sin encuestas en el filtro</div>`);
+      layer._csHoverHtml = `<div class="text-xs font-bold">${parrName}</div><div class="text-[10px] text-slate-500">Sin encuestas en el filtro</div>`;
       layer.off('click').on('click', (e) => {
         L.popup().setLatLng(e.latlng).setContent(`<div class="text-xs font-bold">${parrName}</div>`).openOn(leafletMap);
       });
@@ -1810,7 +1831,9 @@ function renderInteractiveMap(fitBoundsFlag = false) {
       ? `<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:10.5px;margin-top:4px;padding-top:3px;border-top:1px dashed #cbd5e1;font-weight:800;color:#b45309;"><span><span style="display:inline-block;width:7px;height:7px;border-radius:99px;background:#f59e0b;margin-right:5px;"></span>Blanco/Nulo + Indeciso</span><span>${bniPct}%</span></div>`
       : '';
 
-    layer.setTooltipContent(`<div style="min-width:165px;font-family:Poppins,sans-serif;line-height:1.25;"><div style="font-weight:800;font-size:11.5px;color:#0f172a;border-bottom:1px solid #e2e8f0;padding-bottom:3px;margin-bottom:3px;">${parrName} <span style="font-weight:600;color:#64748b;font-size:10px;">(n = ${agg.n})</span></div>${rowsHtml}${bniRow}</div>`);
+    const hoverHtml = `<div style="min-width:165px;font-family:Poppins,sans-serif;line-height:1.25;"><div style="font-weight:800;font-size:11.5px;color:#0f172a;border-bottom:1px solid #e2e8f0;padding-bottom:3px;margin-bottom:3px;">${parrName} <span style="font-weight:600;color:#64748b;font-size:10px;">(n = ${agg.n})</span></div>${rowsHtml}${bniRow}</div>`;
+    layer._csHoverHtml = hoverHtml;
+    parrTooltipByCp[cp] = hoverHtml;
 
     // Generar HTML del popup solo cuando el usuario hace clic en la parroquia (lazy)
     layer.off('click').on('click', (e) => {
@@ -1846,6 +1869,21 @@ function renderInteractiveMap(fitBoundsFlag = false) {
         weight: 0.8,
         fillColor: ci.color,
         fillOpacity: 0.88
+      });
+      marker.on('mouseover', (e) => {
+        const h = parrTooltipByCp[pt.cp];
+        if (leafletHoverTooltip && h) {
+          leafletHoverTooltip.setContent(h).setLatLng(e.latlng);
+          leafletMap.openTooltip(leafletHoverTooltip);
+        }
+      });
+      marker.on('mousemove', (e) => {
+        if (leafletHoverTooltip && leafletHoverTooltip._map) {
+          leafletHoverTooltip.setLatLng(e.latlng);
+        }
+      });
+      marker.on('mouseout', () => {
+        if (leafletHoverTooltip) leafletMap.closeTooltip(leafletHoverTooltip);
       });
       marker.on('click', () => {
         L.popup()
