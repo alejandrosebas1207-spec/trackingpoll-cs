@@ -832,7 +832,7 @@ function renderFirmeza() {
             bodyFont: { family: 'Poppins', size: 10 },
             callbacks: {
               title: (items) => items[0]?.label || '',
-              label: (ctx) => ` ${ctx.dataset.label}: ${Number(ctx.parsed.y).toFixed(1)}%`
+              label: (ctx) => ` ${ctx.dataset.label}: ${ctx.parsed && typeof ctx.parsed.y === 'number' ? Number(ctx.parsed.y).toFixed(1) : '0.0'}%`
             }
           }
         },
@@ -948,7 +948,7 @@ function renderApoyoChart() {
             bodyFont: { family: 'Poppins', size: 10 },
             callbacks: {
               title: (items) => items[0]?.label || '',
-              label: (ctx) => ` ${ctx.dataset.label}: ${Number(ctx.parsed.y).toFixed(1)}%`
+              label: (ctx) => ` ${ctx.dataset.label}: ${ctx.parsed && typeof ctx.parsed.y === 'number' ? Number(ctx.parsed.y).toFixed(1) : '0.0'}%`
             }
           }
         },
@@ -1185,10 +1185,11 @@ function initChart() {
           bodyFont: { family: 'Poppins', size: 11 },
           padding: 10,
           cornerRadius: 10,
+          itemSort: (a, b) => ((b.parsed && typeof b.parsed.y === 'number') ? b.parsed.y : -1) - ((a.parsed && typeof a.parsed.y === 'number') ? a.parsed.y : -1),
           callbacks: {
             label: function(context) {
-              const val = context.parsed.y;
-              return ` ${context.dataset.label}: ${val !== null ? val.toFixed(1) + '%' : 'Pendiente'}`;
+              const val = context.parsed ? context.parsed.y : null;
+              return ` ${context.dataset.label}: ${typeof val === 'number' && Number.isFinite(val) ? val.toFixed(1) + '%' : 'Pendiente'}`;
             }
           }
         }
@@ -1253,10 +1254,11 @@ function initAntivotoChart() {
           bodyFont: { family: 'Poppins', size: 11 },
           padding: 10,
           cornerRadius: 10,
+          itemSort: (a, b) => ((b.parsed && typeof b.parsed.y === 'number') ? b.parsed.y : -1) - ((a.parsed && typeof a.parsed.y === 'number') ? a.parsed.y : -1),
           callbacks: {
             label: function(context) {
-              const val = context.parsed.y;
-              return ` ${context.dataset.label}: ${val !== null ? val.toFixed(1) + '%' : 'Pendiente'}`;
+              const val = context.parsed ? context.parsed.y : null;
+              return ` ${context.dataset.label}: ${typeof val === 'number' && Number.isFinite(val) ? val.toFixed(1) + '%' : 'Pendiente'}`;
             }
           }
         }
@@ -1349,6 +1351,7 @@ function updateAntivotoChartDatasets() {
       pointBackgroundColor: line.color,
       pointBorderColor: '#ffffff',
       pointBorderWidth: 2,
+      pointHitRadius: 14,
       pointRadius: fechas.map((_, i) => {
         if (i > currentReportIdx || fullSeries[i] === null || fullSeries[i] === undefined) return 0;
         return i === currentReportIdx ? 7 : 4;
@@ -1485,6 +1488,7 @@ function updateChartDatasets() {
       pointBackgroundColor: line.color,
       pointBorderColor: '#ffffff',
       pointBorderWidth: 2,
+      pointHitRadius: 14,
       pointRadius: fechas.map((_, i) => {
         if (i > currentReportIdx || fullSeries[i] === null || fullSeries[i] === undefined) return 0;
         return i === currentReportIdx ? 7 : 4;
@@ -1493,7 +1497,7 @@ function updateChartDatasets() {
     };
   });
 
-  chartInstance.update();
+  chartInstance.update('none');
   updateAntivotoChartDatasets();
 }
 
@@ -1514,7 +1518,7 @@ function updateChartProgress() {
     });
   });
 
-  chartInstance.update();
+  chartInstance.update('none');
   updateAntivotoChartDatasets();
 }
 
