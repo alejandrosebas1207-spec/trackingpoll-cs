@@ -1608,8 +1608,8 @@ async function initInteractiveMap() {
   if (!quitoGeoJson || !quitoCantonGeoJson) {
     try {
       const [respParr, respCant] = await Promise.all([
-        quitoGeoJson ? Promise.resolve(null) : fetch('./assets/quito_parroquias.geojson'),
-        quitoCantonGeoJson ? Promise.resolve(null) : fetch('./assets/quito_canton.geojson')
+        quitoGeoJson ? Promise.resolve(null) : fetch('./assets/quito_parroquias.geojson?v=cs2026_v3'),
+        quitoCantonGeoJson ? Promise.resolve(null) : fetch('./assets/quito_canton.geojson?v=cs2026_v3')
       ]);
       if (respParr && respParr.ok) quitoGeoJson = await respParr.json();
       if (respCant && respCant.ok) quitoCantonGeoJson = await respCant.json();
@@ -1707,6 +1707,7 @@ function renderInteractiveMap(fitBoundsFlag = false) {
           L.marker([ly, lx], {
             interactive: false,
             keyboard: false,
+            zIndexOffset: 1000,
             icon: L.divIcon({
               className: 'parr-label-icon',
               html: `<span class="parr-label-text">${pName}</span>`,
