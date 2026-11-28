@@ -6,13 +6,12 @@
 (function() {
   'use strict';
 
-  // 1. Silenciar salidas de consola y limpieza periódica
+  // 1. Silenciar salidas de consola (sin timers periódicos que consuman CPU)
   try {
     const noop = function() {};
     ['log', 'debug', 'info', 'warn', 'error', 'table', 'trace', 'dir', 'dirxml'].forEach(m => {
       window.console[m] = noop;
     });
-    setInterval(() => { window.console.clear(); }, 2000);
   } catch(e) {}
 
   // 2. Bloquear clic derecho
@@ -39,19 +38,7 @@
     }
   }, true);
 
-  // 4. Trampa de depuración continua
-  setInterval(function() {
-    (function antiDebug(i) {
-      if (('' + i / i).length !== 1 || i % 20 === 0) {
-        (function() {}).constructor('debugger')();
-      } else {
-        (function() {}).constructor('debugger')();
-      }
-      antiDebug(++i);
-    })(0);
-  }, 1000);
-
-  // 5. Detección de ventana DevTools (desactivada en móviles/tablets porque el teclado virtual y la barra de direcciones reducen innerHeight)
+  // 4. Detección ligera de ventana DevTools basada en eventos (cero consumo de CPU en reposo)
   function detectDevTools() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || navigator.maxTouchPoints > 0 || window.innerWidth < 768;
     if (isMobile) return;
@@ -63,8 +50,7 @@
       if (shield) shield.classList.remove('hidden');
     }
   }
-  window.addEventListener('resize', detectDevTools);
-  setInterval(detectDevTools, 1000);
+  window.addEventListener('resize', detectDevTools, { passive: true });
 })();
 
 // Variables de Estado del Tablero
@@ -187,12 +173,33 @@ function getValidReportIdxs() {
 }
 
 function setupSlider() {
+  if (typeof Chart !== 'undefined' && Chart.defaults) {
+    Chart.defaults.animation = { duration: 140 };
+  }
+  // Precargar avatares en caché de memoria del navegador para evitar parpadeos al mover el slider
+  if (typeof Image !== 'undefined') {
+    ['PABEL_MUNOZ.png', 'HAROLD_BURBANO.png', 'JORGE_YUNDA.png', 'WILSON_MERINO.png', 'BERNARDO_JIJON.png', 'ALEXANDRO_TONELLO.png', 'GIOVANNA_UBIDIA.png', 'CARLA_CEVALLOS.png', 'JUAN_ZAPATA.png'].forEach(fn => {
+      const img = new Image();
+      img.src = `./assets/${fn}`;
+    });
+  }
   const slider = document.getElementById('reportSlider');
   slider.min = 0;
   slider.max = maxAvailableIdx;
   slider.value = currentReportIdx;
+  let rafId = 0;
   slider.addEventListener('input', function() {
-    setReportIndex(parseInt(this.value));
+    const val = parseInt(this.value, 10);
+    if (val === currentReportIdx) return;
+    if (rafId && typeof cancelAnimationFrame === 'function') cancelAnimationFrame(rafId);
+    if (typeof requestAnimationFrame === 'function') {
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        if (val !== currentReportIdx) setReportIndex(val);
+      });
+    } else {
+      setReportIndex(val);
+    }
   });
 }
 
@@ -1663,65 +1670,82 @@ function renderInteractiveMap(fitBoundsFlag = false) {
     }
   }
 
-  // Limpiar capas previas
-  if (leafletGeoLayer) {
-    leafletMap.removeLayer(leafletGeoLayer);
-    leafletGeoLayer = null;
-  }
   if (leafletPointsLayer) leafletPointsLayer.clearLayers();
+  let fitBoundsBox = null;
 
-  const boundsGroup = L.featureGroup();
+  // 1. Capa de Parroquias (reutilizada en memoria cuando no cambia la zona; sin sticky mousemove continuo)
+  if (!leafletGeoLayer || leafletGeoLayer._lastCircFilter !== mapCircFilter) {
+    if (leafletGeoLayer) leafletMap.removeLayer(leafletGeoLayer);
+    leafletGeoLayer = L.geoJSON(quitoGeoJson, {
+      filter: (feat) => {
+        if (mapCircFilter === 'ALL') return true;
+        const cp = String(feat.properties.CODPAR || '').trim();
+        return Boolean(parrAgg[cp]);
+      },
+      onEachFeature: (feat, layer) => {
+        layer.bindTooltip('', { direction: 'top', sticky: false, opacity: 0.96 });
+      }
+    }).addTo(leafletMap);
+    leafletGeoLayer._lastCircFilter = mapCircFilter;
+  }
 
-  // 1. Capa de Parroquias
-  leafletGeoLayer = L.geoJSON(quitoGeoJson, {
-    filter: (feat) => {
-      if (mapCircFilter === 'ALL') return true;
-      const cp = String(feat.properties.CODPAR || '').trim();
-      return Boolean(parrAgg[cp]);
-    },
-    style: (feat) => {
-      const cp = String(feat.properties.CODPAR || '').trim();
-      const agg = parrAgg[cp];
-      if (mapViewMode === 'puntos') {
-        return {
-          color: '#334155',
-          weight: 1.2,
-          fillColor: '#94a3b8',
-          fillOpacity: agg ? 0.05 : 0.01
-        };
+  leafletGeoLayer.eachLayer(layer => {
+    const feat = layer.feature;
+    const cp = String(feat.properties.CODPAR || '').trim();
+    const parrName = feat.properties.PARROQUIA || '';
+    const agg = parrAgg[cp];
+    if (fitBoundsFlag && agg && typeof layer.getBounds === 'function') {
+      const b = layer.getBounds();
+      if (b && b.isValid()) {
+        fitBoundsBox = fitBoundsBox ? fitBoundsBox.extend(b) : L.latLngBounds(b.getSouthWest(), b.getNorthEast());
       }
-      if (!agg || agg.n === 0) {
-        return { color: '#cbd5e1', weight: 0.8, fillColor: '#e2e8f0', fillOpacity: 0.2 };
-      }
-      if (mapCandFilter !== 'ALL') {
-        const cInfo = getMapCandInfo(mapCandFilter);
-        const pct = ((agg.counts[mapCandFilter] || 0) / agg.n) * 100;
-        const opacity = Math.min(0.85, Math.max(0.12, (pct / 50) * 0.78));
-        return { color: '#ffffff', weight: 1.3, fillColor: cInfo.color, fillOpacity: opacity };
-      }
-      // Ganador de la parroquia (entre candidatos válidos, excluyendo indecisos/nulos si hay votos)
+    }
+
+    // Actualizar estilo en caliente (cero recreación de SVG)
+    if (mapViewMode === 'puntos') {
+      layer.setStyle({ color: '#334155', weight: 1.2, fillColor: '#94a3b8', fillOpacity: agg ? 0.05 : 0.01 });
+    } else if (!agg || agg.n === 0) {
+      layer.setStyle({ color: '#cbd5e1', weight: 0.8, fillColor: '#e2e8f0', fillOpacity: 0.2 });
+    } else if (mapCandFilter !== 'ALL') {
+      const cInfo = getMapCandInfo(mapCandFilter);
+      const pct = ((agg.counts[mapCandFilter] || 0) / agg.n) * 100;
+      const opacity = Math.min(0.85, Math.max(0.12, (pct / 50) * 0.78));
+      layer.setStyle({ color: '#ffffff', weight: 1.3, fillColor: cInfo.color, fillOpacity: opacity });
+    } else {
       const cands = Object.entries(agg.counts).filter(([k]) => k !== 'indecisos' && k !== 'nulo_blanco');
       cands.sort((a, b) => b[1] - a[1]);
       const leaderId = cands.length > 0 ? cands[0][0] : 'otros';
       const cInfo = getMapCandInfo(leaderId);
-      return { color: '#ffffff', weight: 1.3, fillColor: cInfo.color, fillOpacity: 0.62 };
-    },
-    onEachFeature: (feat, layer) => {
-      const cp = String(feat.properties.CODPAR || '').trim();
-      const parrName = feat.properties.PARROQUIA || '';
-      const agg = parrAgg[cp];
-      if (agg) boundsGroup.addLayer(layer);
-      if (!agg || agg.n === 0) {
-        layer.bindTooltip(`<div class="text-xs font-bold">${parrName}</div><div class="text-[10px] text-slate-500">Sin encuestas en el filtro</div>`, { sticky: true });
-        return;
-      }
-      const candsSorted = Object.entries(agg.counts)
-        .filter(([k]) => k !== 'indecisos' && k !== 'nulo_blanco')
-        .sort((a, b) => b[1] - a[1]);
-      const leaderTuple = candsSorted.length > 0 ? candsSorted[0] : ['otros', agg.counts['otros'] || 0];
-      const leaderInfo = getMapCandInfo(leaderTuple[0]);
-      const leaderPct = ((leaderTuple[1] / agg.n) * 100).toFixed(1);
+      layer.setStyle({ color: '#ffffff', weight: 1.3, fillColor: cInfo.color, fillOpacity: 0.62 });
+    }
 
+    // Actualizar textos de tooltip y popup ligero diferido al clic
+    if (!agg || agg.n === 0) {
+      layer.setTooltipContent(`<div class="text-xs font-bold">${parrName}</div><div class="text-[10px] text-slate-500">Sin encuestas en el filtro</div>`);
+      layer.off('click').on('click', (e) => {
+        L.popup().setLatLng(e.latlng).setContent(`<div class="text-xs font-bold">${parrName}</div>`).openOn(leafletMap);
+      });
+      return;
+    }
+    const candsSorted = Object.entries(agg.counts)
+      .filter(([k]) => k !== 'indecisos' && k !== 'nulo_blanco')
+      .sort((a, b) => b[1] - a[1]);
+    const leaderTuple = candsSorted.length > 0 ? candsSorted[0] : ['otros', agg.counts['otros'] || 0];
+    const leaderInfo = getMapCandInfo(leaderTuple[0]);
+    const leaderPct = ((leaderTuple[1] / agg.n) * 100).toFixed(1);
+
+    const tipFocus = mapCandFilter !== 'ALL'
+      ? (() => {
+          const ci = getMapCandInfo(mapCandFilter);
+          const pct = (((agg.counts[mapCandFilter] || 0) / agg.n) * 100).toFixed(1);
+          return `<div style="font-size:11px;margin-top:2px;"><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${ci.color};margin-right:4px;"></span><strong>${ci.full}: ${pct}%</strong></div>`;
+        })()
+      : `<div style="font-size:11px;margin-top:2px;"><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${leaderInfo.color};margin-right:4px;"></span>Gana: <strong style="color:${leaderInfo.color};">${leaderInfo.full} (${leaderPct}%)</strong></div>`;
+
+    layer.setTooltipContent(`<div style="font-family:Poppins,sans-serif;line-height:1.25;"><div style="font-weight:800;font-size:11.5px;color:#0f172a;">${parrName} <span style="font-weight:600;color:#64748b;font-size:10px;">(n = ${agg.n})</span></div>${tipFocus}</div>`);
+
+    // Generar HTML del popup solo cuando el usuario hace clic en la parroquia (lazy)
+    layer.off('click').on('click', (e) => {
       const topRows = Object.entries(agg.counts)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 5)
@@ -1730,39 +1754,39 @@ function renderInteractiveMap(fitBoundsFlag = false) {
           const pct = ((cnt / agg.n) * 100).toFixed(1);
           return `<div style="display:flex;justify-content:space-between;gap:10px;font-size:11px;margin-top:2px;"><span><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${ci.color};margin-right:5px;"></span>${ci.full}</span><strong>${pct}%</strong></div>`;
         }).join('');
-      layer.bindPopup(`<div style="min-width:175px;font-family:Poppins,sans-serif;"><div style="font-weight:800;font-size:12px;color:#0f172a;">${parrName}</div><div style="font-size:10px;color:#64748b;margin-bottom:5px;">${agg.circ} · n = ${agg.n}</div>${topRows}</div>`);
+      L.popup()
+        .setLatLng(e.latlng)
+        .setContent(`<div style="min-width:175px;font-family:Poppins,sans-serif;"><div style="font-weight:800;font-size:12px;color:#0f172a;">${parrName}</div><div style="font-size:10px;color:#64748b;margin-bottom:5px;">${agg.circ} · n = ${agg.n}</div>${topRows}</div>`)
+        .openOn(leafletMap);
+    });
+  });
 
-      const tipFocus = mapCandFilter !== 'ALL'
-        ? (() => {
-            const ci = getMapCandInfo(mapCandFilter);
-            const pct = (((agg.counts[mapCandFilter] || 0) / agg.n) * 100).toFixed(1);
-            return `<div style="font-size:11px;margin-top:2px;"><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${ci.color};margin-right:4px;"></span><strong>${ci.full}: ${pct}%</strong></div>`;
-          })()
-        : `<div style="font-size:11px;margin-top:2px;"><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${leaderInfo.color};margin-right:4px;"></span>Gana: <strong style="color:${leaderInfo.color};">${leaderInfo.full} (${leaderPct}%)</strong></div>`;
-
-      layer.bindTooltip(`<div style="font-family:Poppins,sans-serif;line-height:1.25;"><div style="font-weight:800;font-size:11.5px;color:#0f172a;">${parrName} <span style="font-weight:600;color:#64748b;font-size:10px;">(n = ${agg.n})</span></div>${tipFocus}</div>`, { sticky: true });
-    }
-  }).addTo(leafletMap);
-
-  // 2. Capa de Puntos (solo en Modo Puntos)
+  // 2. Capa de Puntos en Canvas con Popup diferido (lazy click, 0 sobrecarga de memoria)
   if (mapViewMode === 'puntos') {
-    filteredPts.forEach(pt => {
+    const rad = mapCandFilter === 'ALL' ? 3.5 : 4.2;
+    for (let i = 0; i < filteredPts.length; i++) {
+      const pt = filteredPts[i];
       const ci = getMapCandInfo(pt[fieldKey]);
       const marker = L.circleMarker([pt.la, pt.lo], {
         renderer: leafletCanvasRenderer,
-        radius: mapCandFilter === 'ALL' ? 3.5 : 4.2,
+        radius: rad,
         color: '#ffffff',
         weight: 0.8,
         fillColor: ci.color,
         fillOpacity: 0.88
       });
-      marker.bindPopup(`<div style="font-family:Poppins,sans-serif;font-size:11px;"><div style="font-weight:800;color:#0f172a;">${pt.p}</div><div style="color:#64748b;margin-bottom:3px;">${pt.c}</div><div>Voto: <strong style="color:${ci.color};">${ci.full}</strong></div></div>`);
+      marker.on('click', () => {
+        L.popup()
+          .setLatLng([pt.la, pt.lo])
+          .setContent(`<div style="font-family:Poppins,sans-serif;font-size:11px;"><div style="font-weight:800;color:#0f172a;">${pt.p}</div><div style="color:#64748b;margin-bottom:3px;">${pt.c}</div><div>Voto: <strong style="color:${ci.color};">${ci.full}</strong></div></div>`)
+          .openOn(leafletMap);
+      });
       leafletPointsLayer.addLayer(marker);
-    });
+    }
   }
 
-  if (fitBoundsFlag && boundsGroup.getLayers().length > 0) {
-    leafletMap.fitBounds(boundsGroup.getBounds(), { padding: [18, 18], maxZoom: 13 });
+  if (fitBoundsFlag && fitBoundsBox && fitBoundsBox.isValid()) {
+    leafletMap.fitBounds(fitBoundsBox, { padding: [18, 18], maxZoom: 13 });
   }
 }
 

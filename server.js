@@ -435,14 +435,17 @@ app.get("/api/admin/accesos", (req, res) => {
   });
 });
 
-// 4. SERVIR ARCHIVOS ESTÁTICOS PÚBLICOS (HTML Y ASSETS MINIFICADOS) CON ZERO-CACHE
+// 4. SERVIR ARCHIVOS ESTÁTICOS PÚBLICOS (CACHE INTELIGENTE EN ASSETS, ZERO-CACHE EN HTML/JS)
 app.use(express.static(path.join(__dirname, "public"), {
-  etag: false,
-  maxAge: 0,
-  setHeaders: (res, path) => {
-    res.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
-    res.set("Pragma", "no-cache");
-    res.set("Expires", "0");
+  etag: true,
+  setHeaders: (res, filePath) => {
+    if (filePath.includes(`${path.sep}assets${path.sep}`)) {
+      res.set("Cache-Control", "public, max-age=86400");
+    } else {
+      res.set("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+      res.set("Pragma", "no-cache");
+      res.set("Expires", "0");
+    }
   }
 }));
 
