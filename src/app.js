@@ -1598,6 +1598,7 @@ function resetMapFilters() {
 
 let quitoCantonGeoJson = null;
 let leafletCantonLayer = null;
+let leafletLabelsLayer = null;
 
 async function initInteractiveMap() {
   const card = document.getElementById('mapaInteractivoCard');
@@ -1626,20 +1627,18 @@ async function initInteractiveMap() {
       zoomSnap: 0.25,
       zoomDelta: 0.5,
       minZoom: 10,
-      maxZoom: 17,
+      maxZoom: 18,
       maxBounds: quitoMaxBounds,
       maxBoundsViscosity: 0.9
     }).setView([-0.16, -78.45], 10.5);
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
       attribution: '&copy; Esri &copy; OpenStreetMap',
+      maxNativeZoom: 16,
       maxZoom: 18
-    }).addTo(leafletMap);
-    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
-      maxZoom: 18,
-      opacity: 0.75
     }).addTo(leafletMap);
     leafletCanvasRenderer = L.canvas({ padding: 0.5 });
     leafletPointsLayer = L.layerGroup().addTo(leafletMap);
+    leafletLabelsLayer = L.layerGroup().addTo(leafletMap);
   }
 
   renderMapCandidatePills();
@@ -1689,8 +1688,10 @@ function renderInteractiveMap(fitBoundsFlag = false) {
   let fitBoundsBox = null;
 
   // 1. Capa de Parroquias con límites parroquiales negros nítidos (reutilizada en memoria)
-  if (!leafletGeoLayer || leafletGeoLayer._lastCircFilter !== mapCircFilter) {
+  const needsGeoRebuild = !leafletGeoLayer || leafletGeoLayer._lastCircFilter !== mapCircFilter;
+  if (needsGeoRebuild) {
     if (leafletGeoLayer) leafletMap.removeLayer(leafletGeoLayer);
+    if (leafletLabelsLayer) leafletLabelsLayer.clearLayers();
     leafletGeoLayer = L.geoJSON(quitoGeoJson, {
       filter: (feat) => {
         if (mapCircFilter === 'ALL') return true;
@@ -1698,7 +1699,21 @@ function renderInteractiveMap(fitBoundsFlag = false) {
         return Boolean(parrAgg[cp]);
       },
       onEachFeature: (feat, layer) => {
-        layer.bindTooltip('', { direction: 'top', sticky: false, opacity: 0.96 });
+        layer.bindTooltip('', { direction: 'auto', sticky: false, opacity: 0.97 });
+        const pName = feat.properties.PARROQUIA || '';
+        const lx = feat.properties.lx;
+        const ly = feat.properties.ly;
+        if (leafletLabelsLayer && pName && typeof lx === 'number' && typeof ly === 'number') {
+          L.marker([ly, lx], {
+            interactive: false,
+            keyboard: false,
+            icon: L.divIcon({
+              className: 'parr-label-icon',
+              html: `<span class="parr-label-text">${pName}</span>`,
+              iconSize: [0, 0]
+            })
+          }).addTo(leafletLabelsLayer);
+        }
       }
     }).addTo(leafletMap);
     leafletGeoLayer._lastCircFilter = mapCircFilter;
@@ -1758,22 +1773,19 @@ function renderInteractiveMap(fitBoundsFlag = false) {
       });
       return;
     }
-    const candsSorted = Object.entries(agg.counts)
-      .filter(([k]) => k !== 'indecisos' && k !== 'nulo_blanco')
-      .sort((a, b) => b[1] - a[1]);
-    const leaderTuple = candsSorted.length > 0 ? candsSorted[0] : ['otros', agg.counts['otros'] || 0];
-    const leaderInfo = getMapCandInfo(leaderTuple[0]);
-    const leaderPct = ((leaderTuple[1] / agg.n) * 100).toFixed(1);
+    // Tooltip con los 5 candidatos ordenados al pasar el mouse
+    const top5Cands = (MAP_CAND_CONFIG[scen] || MAP_CAND_CONFIG.alcalde)
+      .slice(0, 5)
+      .map(c => ({ ...c, cnt: agg.counts[c.id] || 0 }))
+      .sort((a, b) => b.cnt - a.cnt);
 
-    const tipFocus = mapCandFilter !== 'ALL'
-      ? (() => {
-          const ci = getMapCandInfo(mapCandFilter);
-          const pct = (((agg.counts[mapCandFilter] || 0) / agg.n) * 100).toFixed(1);
-          return `<div style="font-size:11px;margin-top:2px;"><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${ci.color};margin-right:4px;"></span><strong>${ci.full}: ${pct}%</strong></div>`;
-        })()
-      : `<div style="font-size:11px;margin-top:2px;"><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${leaderInfo.color};margin-right:4px;"></span>Gana: <strong style="color:${leaderInfo.color};">${leaderInfo.full} (${leaderPct}%)</strong></div>`;
+    const rowsHtml = top5Cands.map((c, idx) => {
+      const pct = ((c.cnt / agg.n) * 100).toFixed(1);
+      const isFocus = mapCandFilter !== 'ALL' ? mapCandFilter === c.id : idx === 0;
+      return `<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:10.5px;margin-top:2px;${isFocus ? 'font-weight:800;color:#0f172a;' : 'font-weight:500;color:#334155;'}"><span><span style="display:inline-block;width:7px;height:7px;border-radius:99px;background:${c.color};margin-right:5px;"></span>${c.full}</span><span>${pct}%</span></div>`;
+    }).join('');
 
-    layer.setTooltipContent(`<div style="font-family:Poppins,sans-serif;line-height:1.25;"><div style="font-weight:800;font-size:11.5px;color:#0f172a;">${parrName} <span style="font-weight:600;color:#64748b;font-size:10px;">(n = ${agg.n})</span></div>${tipFocus}</div>`);
+    layer.setTooltipContent(`<div style="min-width:165px;font-family:Poppins,sans-serif;line-height:1.25;"><div style="font-weight:800;font-size:11.5px;color:#0f172a;border-bottom:1px solid #e2e8f0;padding-bottom:3px;margin-bottom:3px;">${parrName} <span style="font-weight:600;color:#64748b;font-size:10px;">(n = ${agg.n})</span></div>${rowsHtml}</div>`);
 
     // Generar HTML del popup solo cuando el usuario hace clic en la parroquia (lazy)
     layer.off('click').on('click', (e) => {
