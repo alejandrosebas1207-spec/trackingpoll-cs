@@ -227,7 +227,7 @@ app.use((req, res, next) => {
     "X-Frame-Options": "DENY",
     "Referrer-Policy": "no-referrer",
     "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
-    "Content-Security-Policy": "default-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
+    "Content-Security-Policy": "default-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://unpkg.com https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
   });
   next();
 });
@@ -288,6 +288,41 @@ app.get("/api/tracking/data", (req, res) => {
     ok: true,
     data: trackingDataCache
   });
+});
+
+// 2b. ENDPOINT PROTEGIDO PARA MAPA INTERACTIVO TERRITORIAL (KOBO + CONALI)
+const MAP_DATA_FILE = path.join(__dirname, "private", "mapa_quito.json");
+let mapDataCache = null;
+
+app.get("/api/tracking/mapa", (req, res) => {
+  const authHeader = req.headers.authorization || "";
+  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
+
+  if (!verifySessionToken(token)) {
+    return res.status(401).json({
+      ok: false,
+      error: "Sesión no válida o expirada."
+    });
+  }
+
+  if (!mapDataCache && fs.existsSync(MAP_DATA_FILE)) {
+    try {
+      mapDataCache = JSON.parse(fs.readFileSync(MAP_DATA_FILE, "utf-8"));
+    } catch (err) {
+      console.warn("[Mapa] Error cargando mapa_quito.json:", err.message);
+    }
+  }
+
+  res.set({
+    "Cache-Control": "no-store, no-cache, must-revalidate, private",
+    "Pragma": "no-cache",
+    "Expires": "0"
+  });
+
+  if (!mapDataCache) {
+    return res.status(200).json({ ok: true, data: null });
+  }
+  return res.status(200).json({ ok: true, data: mapDataCache });
 });
 
 // 3. ENDPOINT ADMINISTRATIVO PARA INGESTA DIARIA DE TABLAS DEPURADAS (CORTE 18:00H)

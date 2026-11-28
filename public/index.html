@@ -6,6 +6,8 @@
   <title>Tracking Poll Quito 2026 · Clima Social</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -383,9 +385,51 @@
       </div>
     </div>
 
+    <!-- MAPA TERRITORIAL INTERACTIVO (PARROQUIAS Y PUNTOS POR CANDIDATO) -->
+    <div class="card-clean p-3.5 sm:p-4 rounded-xl overflow-hidden hidden" id="mapaInteractivoCard">
+      <div class="flex flex-wrap justify-between items-center gap-2 bg-slate-800 text-white -mx-3.5 -mt-3.5 sm:-mx-4 sm:-mt-4 px-4 py-2.5 mb-3 border-b border-slate-700">
+        <div class="flex items-center gap-2">
+          <h3 class="text-sm sm:text-base font-extrabold text-white">Mapa Territorial de Intención de Voto · Quito</h3>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <div class="flex items-center gap-0.5 bg-slate-900/90 p-0.5 rounded-lg border border-slate-600">
+            <button id="btnMapViewParroquias" onclick="setMapViewMode('parroquias')" class="px-2.5 py-0.5 rounded-md bg-emerald-500 text-slate-950 font-extrabold text-[10.5px] transition-all cursor-pointer">
+              Por Parroquias
+            </button>
+            <button id="btnMapViewPuntos" onclick="setMapViewMode('puntos')" class="px-2.5 py-0.5 rounded-md text-slate-300 hover:text-white font-bold text-[10.5px] transition-all cursor-pointer">
+              Puntos por Candidato
+            </button>
+          </div>
+          <span id="mapTotalBadge" class="text-[10px] font-bold text-emerald-300 bg-slate-700/90 border border-slate-600 px-2 py-0.5 rounded whitespace-nowrap">● --</span>
+        </div>
+      </div>
+
+      <!-- Filtros del Mapa -->
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+        <div id="mapCandPills" class="flex flex-wrap items-center gap-1.5"></div>
+        <div class="flex items-center gap-1.5">
+          <span class="text-[10.5px] font-bold text-slate-600 uppercase">Zona:</span>
+          <select id="mapCircSelect" onchange="setMapCirc(this.value)" class="bg-white border border-slate-300 text-slate-800 font-bold rounded-lg px-2.5 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
+            <option value="ALL">Todo Quito</option>
+            <option value="Urbana Norte">Urbana Norte</option>
+            <option value="Urbana Centro">Urbana Centro</option>
+            <option value="Urbana Sur">Urbana Sur</option>
+            <option value="Rural">Rural</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="quitoMapCanvas" class="h-[440px] sm:h-[520px] w-full rounded-xl border border-slate-300 z-10 bg-slate-100"></div>
+
+      <div class="flex flex-wrap justify-between items-center pt-2 mt-2 border-t border-slate-300/70 text-[10.5px] text-slate-500 gap-2">
+        <div>Fuente: Georreferenciación acumulada de campo (KoboToolbox) sobre límites parroquiales oficiales CONALI</div>
+        <div id="mapLegendSummary" class="font-semibold text-slate-700">Toca una parroquia o punto para ver el detalle</div>
+      </div>
+    </div>
+
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v65"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v66"></script>
 </body>
 </html>

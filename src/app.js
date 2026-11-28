@@ -69,6 +69,15 @@
 
 // Variables de Estado del Tablero
 let rawDecryptedData = null;
+let rawMapData = null;
+let quitoGeoJson = null;
+let leafletMap = null;
+let leafletGeoLayer = null;
+let leafletPointsLayer = null;
+let leafletCanvasRenderer = null;
+let mapViewMode = 'parroquias'; // 'parroquias' | 'puntos'
+let mapCandFilter = 'ALL';
+let mapCircFilter = 'ALL';
 let currentScenario = 'alcalde';
 let currentVoteMode = 'total'; // 'total' | 'valido' (aplica en Alcalde)
 let currentReportIdx = 2; // Inicia en Nov 2026 (índice 2)
@@ -123,8 +132,12 @@ async function handleAuth(event) {
     // No se almacena en sessionStorage para exigir clave en cada recarga
     try { sessionStorage.removeItem('cs_warroom_token'); } catch {}
 
-    const data = await fetchTrackingData(token);
+    const [data, mapResp] = await Promise.all([
+      fetchTrackingData(token),
+      fetch('/api/tracking/mapa', { headers: { Authorization: `Bearer ${token}` } }).then(r => r.ok ? r.json() : null).catch(() => null)
+    ]);
     rawDecryptedData = data;
+    rawMapData = mapResp && mapResp.ok ? mapResp.data : null;
 
     document.getElementById('authGateModal').classList.add('hidden');
     document.getElementById('dashboardApp').classList.remove('blur-gate');
@@ -160,6 +173,7 @@ function initDashboard() {
   initChart();
   // Pasa por setReportIndex para que la etiqueta "Corte Activo" refleje el corte real al cargar
   setReportIndex(currentReportIdx, 0);
+  if (typeof initInteractiveMap === 'function') initInteractiveMap();
 }
 
 // Cortes que sí tienen datos (se saltan los días sin medición, p. ej. Sáb 14 y Dom 15 Nov)
@@ -257,6 +271,11 @@ function setVoteMode(mode) {
   updateChartTitleLabel();
   updateChartDatasets();
   renderActiveView();
+  if (leafletMap) {
+    mapCandFilter = 'ALL';
+    renderMapCandidatePills();
+    renderInteractiveMap();
+  }
 }
 
 function setScenario(scen) {
@@ -284,6 +303,11 @@ function setScenario(scen) {
   updateChartTitleLabel();
   updateChartDatasets();
   renderActiveView();
+  if (leafletMap) {
+    mapCandFilter = 'ALL';
+    renderMapCandidatePills();
+    renderInteractiveMap();
+  }
 }
 
 function getCandidateKey(c) {
@@ -1485,6 +1509,218 @@ function updateChartProgress() {
   updateAntivotoChartDatasets();
 }
 
+// ================================================================================
+// MAPA TERRITORIAL INTERACTIVO (PARROQUIAS + PUNTOS KOBO)
+// ================================================================================
+const MAP_CAND_CONFIG = {
+  alcalde: [
+    { id: 'pabel', label: 'Pabel', full: 'Pabel Muñoz', color: '#dc2626' },
+    { id: 'burbano', label: 'Burbano', full: 'Harold Burbano', color: '#7c3aed' },
+    { id: 'yunda', label: 'Yunda', full: 'Jorge Yunda', color: '#0284c7' },
+    { id: 'merino', label: 'Merino', full: 'Wilson Merino', color: '#ea580c' },
+    { id: 'jijon', label: 'Jijón', full: 'Bernardo Jijón', color: '#15803d' },
+    { id: 'otros', label: 'Otros', full: 'Otros', color: '#64748b' },
+    { id: 'indecisos', label: 'Indeciso', full: 'Indecisos', color: '#f59e0b' },
+    { id: 'nulo_blanco', label: 'Nulo', full: 'Nulo / Blanco', color: '#94a3b8' }
+  ],
+  prefecto: [
+    { id: 'tonello', label: 'Tonello', full: 'Alexandro Tonello', color: '#dc2626' },
+    { id: 'ubidia', label: 'Ubidia', full: 'Giovanna Ubidia', color: '#7c3aed' },
+    { id: 'zapata', label: 'Zapata', full: 'Juan Zapata', color: '#ea580c' },
+    { id: 'cevallos', label: 'Cevallos', full: 'Carla Cevallos', color: '#0284c7' },
+    { id: 'churuchumbi', label: 'Churuchumbi', full: 'Guillermo Churuchumbi', color: '#15803d' },
+    { id: 'otros', label: 'Otros', full: 'Otros', color: '#64748b' },
+    { id: 'indecisos', label: 'Indeciso', full: 'Indecisos', color: '#f59e0b' },
+    { id: 'nulo_blanco', label: 'Nulo', full: 'Nulo / Blanco', color: '#94a3b8' }
+  ]
+};
+
+function getMapCandInfo(id) {
+  const list = MAP_CAND_CONFIG[currentScenario] || MAP_CAND_CONFIG.alcalde;
+  return list.find(c => c.id === id) || { id, label: id, full: id, color: '#64748b' };
+}
+
+function renderMapCandidatePills() {
+  const box = document.getElementById('mapCandPills');
+  if (!box) return;
+  const list = (MAP_CAND_CONFIG[currentScenario] || MAP_CAND_CONFIG.alcalde).slice(0, 6);
+  const allActive = mapCandFilter === 'ALL';
+  let html = `<button onclick="setMapCandidate('ALL')" class="px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all cursor-pointer ${allActive ? 'bg-slate-900 text-white border-slate-900 shadow-xs' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'}">Todos</button>`;
+  list.forEach(c => {
+    const active = mapCandFilter === c.id;
+    html += `<button onclick="setMapCandidate('${c.id}')" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all cursor-pointer ${active ? 'text-white shadow-xs' : 'bg-white text-slate-800 border-slate-300 hover:bg-slate-50'}" style="${active ? `background-color:${c.color};border-color:${c.color};` : ''}"><span class="w-2 h-2 rounded-full" style="background-color:${active ? '#ffffff' : c.color};"></span>${c.label}</button>`;
+  });
+  box.innerHTML = html;
+}
+
+function setMapViewMode(mode) {
+  mapViewMode = mode === 'puntos' ? 'puntos' : 'parroquias';
+  const bParr = document.getElementById('btnMapViewParroquias');
+  const bPts = document.getElementById('btnMapViewPuntos');
+  if (bParr && bPts) {
+    if (mapViewMode === 'parroquias') {
+      bParr.className = 'px-2.5 py-0.5 rounded-md bg-emerald-500 text-slate-950 font-extrabold text-[10.5px] transition-all cursor-pointer';
+      bPts.className = 'px-2.5 py-0.5 rounded-md text-slate-300 hover:text-white font-bold text-[10.5px] transition-all cursor-pointer';
+    } else {
+      bPts.className = 'px-2.5 py-0.5 rounded-md bg-emerald-500 text-slate-950 font-extrabold text-[10.5px] transition-all cursor-pointer';
+      bParr.className = 'px-2.5 py-0.5 rounded-md text-slate-300 hover:text-white font-bold text-[10.5px] transition-all cursor-pointer';
+    }
+  }
+  renderInteractiveMap(true);
+}
+
+function setMapCandidate(candId) {
+  mapCandFilter = candId || 'ALL';
+  renderMapCandidatePills();
+  renderInteractiveMap(false);
+}
+
+function setMapCirc(circ) {
+  mapCircFilter = circ || 'ALL';
+  renderInteractiveMap(true);
+}
+
+async function initInteractiveMap() {
+  const card = document.getElementById('mapaInteractivoCard');
+  if (!card || !rawMapData || !rawMapData.puntos || !rawMapData.puntos.length || typeof L === 'undefined') return;
+  card.classList.remove('hidden');
+
+  if (!quitoGeoJson) {
+    try {
+      const resp = await fetch('./assets/quito_parroquias.geojson');
+      if (resp.ok) quitoGeoJson = await resp.json();
+    } catch (err) {
+      console.warn('[Mapa] Error cargando quito_parroquias.geojson:', err.message);
+    }
+  }
+  if (!quitoGeoJson) return;
+
+  if (!leafletMap) {
+    leafletMap = L.map('quitoMapCanvas', { preferCanvas: true, zoomControl: true }).setView([-0.1807, -78.4678], 11);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      subdomains: 'abcd',
+      maxZoom: 18
+    }).addTo(leafletMap);
+    leafletCanvasRenderer = L.canvas({ padding: 0.5 });
+    leafletPointsLayer = L.layerGroup().addTo(leafletMap);
+  }
+
+  renderMapCandidatePills();
+  renderInteractiveMap(true);
+  setTimeout(() => { if (leafletMap) leafletMap.invalidateSize(); }, 250);
+}
+
+function renderInteractiveMap(fitBoundsFlag = false) {
+  if (!leafletMap || !rawMapData || !quitoGeoJson) return;
+  const scen = currentScenario === 'prefecto' ? 'prefecto' : 'alcalde';
+  const fieldKey = scen === 'alcalde' ? 'a' : 'pr';
+
+  // Filtrar puntos según circunscripción y candidato
+  const circPts = rawMapData.puntos.filter(pt => mapCircFilter === 'ALL' || pt.c === mapCircFilter);
+  const filteredPts = circPts.filter(pt => mapCandFilter === 'ALL' || pt[fieldKey] === mapCandFilter);
+
+  // Recalcular agregados por parroquia sobre circPts (para mostrar ganador o intensidad del candidato)
+  const parrAgg = {};
+  circPts.forEach(pt => {
+    if (!parrAgg[pt.cp]) parrAgg[pt.cp] = { n: 0, counts: {}, nombre: pt.p, circ: pt.c };
+    parrAgg[pt.cp].n++;
+    const v = pt[fieldKey];
+    parrAgg[pt.cp].counts[v] = (parrAgg[pt.cp].counts[v] || 0) + 1;
+  });
+
+  const badge = document.getElementById('mapTotalBadge');
+  if (badge) {
+    badge.innerText = `● ${filteredPts.length.toLocaleString('es-EC')} encuestas · ${Object.keys(parrAgg).length} parroquias`;
+  }
+
+  // Limpiar capas previas
+  if (leafletGeoLayer) {
+    leafletMap.removeLayer(leafletGeoLayer);
+    leafletGeoLayer = null;
+  }
+  if (leafletPointsLayer) leafletPointsLayer.clearLayers();
+
+  const boundsGroup = L.featureGroup();
+
+  // 1. Capa de Parroquias
+  leafletGeoLayer = L.geoJSON(quitoGeoJson, {
+    filter: (feat) => {
+      if (mapCircFilter === 'ALL') return true;
+      const cp = String(feat.properties.CODPAR || '').trim();
+      return Boolean(parrAgg[cp]);
+    },
+    style: (feat) => {
+      const cp = String(feat.properties.CODPAR || '').trim();
+      const agg = parrAgg[cp];
+      if (mapViewMode === 'puntos') {
+        return {
+          color: '#334155',
+          weight: 1.2,
+          fillColor: '#94a3b8',
+          fillOpacity: agg ? 0.05 : 0.01
+        };
+      }
+      if (!agg || agg.n === 0) {
+        return { color: '#cbd5e1', weight: 0.8, fillColor: '#e2e8f0', fillOpacity: 0.2 };
+      }
+      if (mapCandFilter !== 'ALL') {
+        const cInfo = getMapCandInfo(mapCandFilter);
+        const pct = ((agg.counts[mapCandFilter] || 0) / agg.n) * 100;
+        const opacity = Math.min(0.85, Math.max(0.12, (pct / 50) * 0.78));
+        return { color: '#ffffff', weight: 1.3, fillColor: cInfo.color, fillOpacity: opacity };
+      }
+      // Ganador de la parroquia (entre candidatos válidos, excluyendo indecisos/nulos si hay votos)
+      const cands = Object.entries(agg.counts).filter(([k]) => k !== 'indecisos' && k !== 'nulo_blanco');
+      cands.sort((a, b) => b[1] - a[1]);
+      const leaderId = cands.length > 0 ? cands[0][0] : 'otros';
+      const cInfo = getMapCandInfo(leaderId);
+      return { color: '#ffffff', weight: 1.3, fillColor: cInfo.color, fillOpacity: 0.62 };
+    },
+    onEachFeature: (feat, layer) => {
+      const cp = String(feat.properties.CODPAR || '').trim();
+      const parrName = feat.properties.PARROQUIA || '';
+      const agg = parrAgg[cp];
+      if (agg) boundsGroup.addLayer(layer);
+      if (!agg || agg.n === 0) {
+        layer.bindTooltip(`<div class="text-xs font-bold">${parrName}</div><div class="text-[10px] text-slate-500">Sin encuestas en el filtro</div>`, { sticky: true });
+        return;
+      }
+      const topRows = Object.entries(agg.counts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 5)
+        .map(([k, cnt]) => {
+          const ci = getMapCandInfo(k);
+          const pct = ((cnt / agg.n) * 100).toFixed(1);
+          return `<div style="display:flex;justify-content:space-between;gap:10px;font-size:11px;margin-top:2px;"><span><span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:${ci.color};margin-right:5px;"></span>${ci.full}</span><strong>${pct}%</strong></div>`;
+        }).join('');
+      layer.bindPopup(`<div style="min-width:170px;font-family:Poppins,sans-serif;"><div style="font-weight:800;font-size:12px;color:#0f172a;">${parrName}</div><div style="font-size:10px;color:#64748b;margin-bottom:5px;">${agg.circ} · n = ${agg.n}</div>${topRows}</div>`);
+      layer.bindTooltip(`<strong>${parrName}</strong> (n = ${agg.n})`, { sticky: true });
+    }
+  }).addTo(leafletMap);
+
+  // 2. Capa de Puntos (solo en Modo Puntos)
+  if (mapViewMode === 'puntos') {
+    filteredPts.forEach(pt => {
+      const ci = getMapCandInfo(pt[fieldKey]);
+      const marker = L.circleMarker([pt.la, pt.lo], {
+        renderer: leafletCanvasRenderer,
+        radius: mapCandFilter === 'ALL' ? 3.5 : 4.2,
+        color: '#ffffff',
+        weight: 0.8,
+        fillColor: ci.color,
+        fillOpacity: 0.88
+      });
+      marker.bindPopup(`<div style="font-family:Poppins,sans-serif;font-size:11px;"><div style="font-weight:800;color:#0f172a;">${pt.p}</div><div style="color:#64748b;margin-bottom:3px;">${pt.c}</div><div>Voto: <strong style="color:${ci.color};">${ci.full}</strong></div></div>`);
+      leafletPointsLayer.addLayer(marker);
+    });
+  }
+
+  if (fitBoundsFlag && boundsGroup.getLayers().length > 0) {
+    leafletMap.fitBounds(boundsGroup.getBounds(), { padding: [18, 18], maxZoom: 13 });
+  }
+}
+
 // Exportar controladores al scope global
 window.onSingleFilterChange = onSingleFilterChange;
 window.resetFilters = resetFilters;
@@ -1493,4 +1729,7 @@ window.setScenario = setScenario;
 window.setVoteMode = setVoteMode;
 window.stepReport = stepReport;
 window.handleAuth = handleAuth;
+window.setMapViewMode = setMapViewMode;
+window.setMapCandidate = setMapCandidate;
+window.setMapCirc = setMapCirc;
 
