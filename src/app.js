@@ -1548,7 +1548,7 @@ function renderMapCandidatePills() {
   let html = `<button onclick="setMapCandidate('ALL')" class="px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all cursor-pointer ${allActive ? 'bg-slate-900 text-white border-slate-900 shadow-xs' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'}">Todos</button>`;
   list.forEach(c => {
     const active = mapCandFilter === c.id;
-    html += `<button onclick="setMapCandidate('${c.id}')" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all cursor-pointer ${active ? 'text-white shadow-xs' : 'bg-white text-slate-800 border-slate-300 hover:bg-slate-50'}" style="${active ? `background-color:${c.color};border-color:${c.color};` : ''}"><span class="w-2 h-2 rounded-full" style="background-color:${active ? '#ffffff' : c.color};"></span>${c.label}</button>`;
+    html += `<button onclick="setMapCandidate('${c.id}')" class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all cursor-pointer ${active ? 'text-white shadow-xs' : 'bg-white text-slate-800 border-slate-300 hover:bg-slate-50'}" style="${active ? `background-color:${c.color};border-color:${c.color};` : ''}"><span class="w-2 h-2 rounded-full" style="background-color:${active ? '#ffffff' : c.color};"></span>${c.full}</button>`;
   });
   box.innerHTML = html;
 }
@@ -1597,10 +1597,13 @@ async function initInteractiveMap() {
 
   if (!leafletMap) {
     leafletMap = L.map('quitoMapCanvas', { preferCanvas: true, zoomControl: true }).setView([-0.1807, -78.4678], 11);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap &copy; CARTO',
-      subdomains: 'abcd',
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      attribution: '&copy; Esri &copy; OpenStreetMap',
       maxZoom: 18
+    }).addTo(leafletMap);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 18,
+      opacity: 0.75
     }).addTo(leafletMap);
     leafletCanvasRenderer = L.canvas({ padding: 0.5 });
     leafletPointsLayer = L.layerGroup().addTo(leafletMap);
@@ -1631,7 +1634,16 @@ function renderInteractiveMap(fitBoundsFlag = false) {
 
   const badge = document.getElementById('mapTotalBadge');
   if (badge) {
-    badge.innerText = `● ${filteredPts.length.toLocaleString('es-EC')} encuestas · ${Object.keys(parrAgg).length} parroquias`;
+    const nZone = circPts.length;
+    const nFilt = filteredPts.length;
+    const nParr = Object.keys(parrAgg).length;
+    if (mapCandFilter !== 'ALL') {
+      const ci = getMapCandInfo(mapCandFilter);
+      const pct = nZone > 0 ? ((nFilt / nZone) * 100).toFixed(1) : '0.0';
+      badge.innerText = `● ${ci.full}: n = ${nFilt.toLocaleString('es-EC')} de ${nZone.toLocaleString('es-EC')} (${pct}%) · ${nParr} parroquias`;
+    } else {
+      badge.innerText = `● n = ${nFilt.toLocaleString('es-EC')} de ${rawMapData.total_puntos.toLocaleString('es-EC')} encuestas · ${nParr} parroquias`;
+    }
   }
 
   // Limpiar capas previas
