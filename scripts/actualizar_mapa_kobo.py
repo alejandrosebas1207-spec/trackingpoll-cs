@@ -84,10 +84,16 @@ def main():
     points = []
     parish_stats = {}
     skipped_consent = 0
+    skipped_test98 = 0
     skipped_geo = 0
     skipped_outside = 0
 
     for row in subs:
+        csup = str(row.get("group_id/csup", "")).strip()
+        cencu = str(row.get("group_id/cencu", "")).strip()
+        if csup == "98" or cencu == "98":
+            skipped_test98 += 1
+            continue
         if str(row.get("consentimiento", "")).strip() != "1":
             skipped_consent += 1
             continue
@@ -161,7 +167,7 @@ def main():
         json.dump(payload, f, ensure_ascii=False)
 
     print(f"Puntos validos dentro de Quito: {len(points)} | Parroquias cubiertas: {len(parish_stats)}")
-    print(f"Descartados -> consentimiento!=1: {skipped_consent}, sin GPS: {skipped_geo}, fuera de Quito: {skipped_outside}")
+    print(f"Descartados -> prueba(98): {skipped_test98}, consentimiento!=1: {skipped_consent}, sin GPS: {skipped_geo}, fuera de Quito: {skipped_outside}")
 
 
 if __name__ == "__main__":
