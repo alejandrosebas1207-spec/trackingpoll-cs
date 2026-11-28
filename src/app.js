@@ -1596,31 +1596,40 @@ function resetMapFilters() {
   renderInteractiveMap(true);
 }
 
+let quitoCantonGeoJson = null;
+let leafletCantonLayer = null;
+
 async function initInteractiveMap() {
   const card = document.getElementById('mapaInteractivoCard');
   if (!card || !rawMapData || !rawMapData.puntos || !rawMapData.puntos.length || typeof L === 'undefined') return;
   card.classList.remove('hidden');
 
-  if (!quitoGeoJson) {
+  if (!quitoGeoJson || !quitoCantonGeoJson) {
     try {
-      const resp = await fetch('./assets/quito_parroquias.geojson');
-      if (resp.ok) quitoGeoJson = await resp.json();
+      const [respParr, respCant] = await Promise.all([
+        quitoGeoJson ? Promise.resolve(null) : fetch('./assets/quito_parroquias.geojson'),
+        quitoCantonGeoJson ? Promise.resolve(null) : fetch('./assets/quito_canton.geojson')
+      ]);
+      if (respParr && respParr.ok) quitoGeoJson = await respParr.json();
+      if (respCant && respCant.ok) quitoCantonGeoJson = await respCant.json();
     } catch (err) {
-      console.warn('[Mapa] Error cargando quito_parroquias.geojson:', err.message);
+      console.warn('[Mapa] Error cargando cartografía de Quito:', err.message);
     }
   }
   if (!quitoGeoJson) return;
 
   if (!leafletMap) {
-    const quitoBounds = L.geoJSON(quitoGeoJson).getBounds().pad(0.12);
+    const quitoMaxBounds = L.latLngBounds([-1.05, -79.45], [0.75, -77.35]);
     leafletMap = L.map('quitoMapCanvas', {
       preferCanvas: true,
       zoomControl: true,
+      zoomSnap: 0.25,
+      zoomDelta: 0.5,
       minZoom: 10,
       maxZoom: 17,
-      maxBounds: quitoBounds,
+      maxBounds: quitoMaxBounds,
       maxBoundsViscosity: 0.9
-    }).setView([-0.1807, -78.4678], 11);
+    }).setView([-0.16, -78.45], 10.5);
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
       attribution: '&copy; Esri &copy; OpenStreetMap',
       maxZoom: 18
@@ -1634,8 +1643,14 @@ async function initInteractiveMap() {
   }
 
   renderMapCandidatePills();
+  leafletMap.invalidateSize();
   renderInteractiveMap(true);
-  setTimeout(() => { if (leafletMap) leafletMap.invalidateSize(); }, 250);
+  setTimeout(() => {
+    if (leafletMap) {
+      leafletMap.invalidateSize();
+      renderInteractiveMap(true);
+    }
+  }, 220);
 }
 
 function renderInteractiveMap(fitBoundsFlag = false) {
@@ -1673,7 +1688,7 @@ function renderInteractiveMap(fitBoundsFlag = false) {
   if (leafletPointsLayer) leafletPointsLayer.clearLayers();
   let fitBoundsBox = null;
 
-  // 1. Capa de Parroquias (reutilizada en memoria cuando no cambia la zona; sin sticky mousemove continuo)
+  // 1. Capa de Parroquias con límites parroquiales negros nítidos (reutilizada en memoria)
   if (!leafletGeoLayer || leafletGeoLayer._lastCircFilter !== mapCircFilter) {
     if (leafletGeoLayer) leafletMap.removeLayer(leafletGeoLayer);
     leafletGeoLayer = L.geoJSON(quitoGeoJson, {
@@ -1689,6 +1704,22 @@ function renderInteractiveMap(fitBoundsFlag = false) {
     leafletGeoLayer._lastCircFilter = mapCircFilter;
   }
 
+  // Contorno cantonal exterior de Quito en negro intenso
+  if (quitoCantonGeoJson && !leafletCantonLayer) {
+    leafletCantonLayer = L.geoJSON(quitoCantonGeoJson, {
+      interactive: false,
+      style: { color: '#000000', weight: 2.5, opacity: 0.95, fill: false }
+    }).addTo(leafletMap);
+  }
+  if (leafletCantonLayer) {
+    if (mapCircFilter === 'ALL') {
+      if (!leafletMap.hasLayer(leafletCantonLayer)) leafletCantonLayer.addTo(leafletMap);
+      leafletCantonLayer.bringToFront();
+    } else if (leafletMap.hasLayer(leafletCantonLayer)) {
+      leafletMap.removeLayer(leafletCantonLayer);
+    }
+  }
+
   leafletGeoLayer.eachLayer(layer => {
     const feat = layer.feature;
     const cp = String(feat.properties.CODPAR || '').trim();
@@ -1701,22 +1732,22 @@ function renderInteractiveMap(fitBoundsFlag = false) {
       }
     }
 
-    // Actualizar estilo en caliente (cero recreación de SVG)
+    // Actualizar estilo en caliente (límites parroquiales en negro para máxima distinción)
     if (mapViewMode === 'puntos') {
-      layer.setStyle({ color: '#334155', weight: 1.2, fillColor: '#94a3b8', fillOpacity: agg ? 0.05 : 0.01 });
+      layer.setStyle({ color: '#0f172a', weight: 1.05, fillColor: '#94a3b8', fillOpacity: agg ? 0.06 : 0.03 });
     } else if (!agg || agg.n === 0) {
-      layer.setStyle({ color: '#cbd5e1', weight: 0.8, fillColor: '#e2e8f0', fillOpacity: 0.2 });
+      layer.setStyle({ color: '#1f2937', weight: 1.0, fillColor: '#e2e8f0', fillOpacity: 0.42 });
     } else if (mapCandFilter !== 'ALL') {
       const cInfo = getMapCandInfo(mapCandFilter);
       const pct = ((agg.counts[mapCandFilter] || 0) / agg.n) * 100;
-      const opacity = Math.min(0.85, Math.max(0.12, (pct / 50) * 0.78));
-      layer.setStyle({ color: '#ffffff', weight: 1.3, fillColor: cInfo.color, fillOpacity: opacity });
+      const opacity = Math.min(0.86, Math.max(0.14, (pct / 50) * 0.78));
+      layer.setStyle({ color: '#0f172a', weight: 1.15, fillColor: cInfo.color, fillOpacity: opacity });
     } else {
       const cands = Object.entries(agg.counts).filter(([k]) => k !== 'indecisos' && k !== 'nulo_blanco');
       cands.sort((a, b) => b[1] - a[1]);
       const leaderId = cands.length > 0 ? cands[0][0] : 'otros';
       const cInfo = getMapCandInfo(leaderId);
-      layer.setStyle({ color: '#ffffff', weight: 1.3, fillColor: cInfo.color, fillOpacity: 0.62 });
+      layer.setStyle({ color: '#0f172a', weight: 1.15, fillColor: cInfo.color, fillOpacity: 0.66 });
     }
 
     // Actualizar textos de tooltip y popup ligero diferido al clic
@@ -1761,6 +1792,10 @@ function renderInteractiveMap(fitBoundsFlag = false) {
     });
   });
 
+  if (leafletCantonLayer && mapCircFilter === 'ALL') {
+    leafletCantonLayer.bringToFront();
+  }
+
   // 2. Capa de Puntos en Canvas con Popup diferido (lazy click, 0 sobrecarga de memoria)
   if (mapViewMode === 'puntos') {
     const rad = mapCandFilter === 'ALL' ? 3.5 : 4.2;
@@ -1785,8 +1820,13 @@ function renderInteractiveMap(fitBoundsFlag = false) {
     }
   }
 
-  if (fitBoundsFlag && fitBoundsBox && fitBoundsBox.isValid()) {
-    leafletMap.fitBounds(fitBoundsBox, { padding: [18, 18], maxZoom: 13 });
+  if (fitBoundsFlag) {
+    if (mapCircFilter === 'ALL') {
+      const quitoVisualBounds = L.latLngBounds([-0.592, -78.74], [0.278, -78.14]);
+      leafletMap.fitBounds(quitoVisualBounds, { padding: [14, 14], maxZoom: 13 });
+    } else if (fitBoundsBox && fitBoundsBox.isValid()) {
+      leafletMap.fitBounds(fitBoundsBox, { padding: [18, 18], maxZoom: 13 });
+    }
   }
 }
 
