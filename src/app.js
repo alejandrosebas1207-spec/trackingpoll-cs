@@ -1545,14 +1545,26 @@ const MAP_CAND_CONFIG = {
 };
 
 function getMapCandInfo(id) {
+  if (id === 'blanco_indeciso') {
+    return { id: 'blanco_indeciso', label: 'Blanco/Nulo + Indeciso', full: 'Blanco/Nulo + Indeciso', color: '#f59e0b' };
+  }
   const list = MAP_CAND_CONFIG[currentScenario] || MAP_CAND_CONFIG.alcalde;
   return list.find(c => c.id === id) || { id, label: id, full: id, color: '#64748b' };
+}
+
+function matchesMapFilter(val, filter) {
+  if (filter === 'ALL') return true;
+  if (filter === 'blanco_indeciso') return val === 'indecisos' || val === 'nulo_blanco';
+  return val === filter;
 }
 
 function renderMapCandidatePills() {
   const box = document.getElementById('mapCandPills');
   if (!box) return;
-  const list = (MAP_CAND_CONFIG[currentScenario] || MAP_CAND_CONFIG.alcalde).slice(0, 6);
+  const list = [
+    ...(MAP_CAND_CONFIG[currentScenario] || MAP_CAND_CONFIG.alcalde).slice(0, 6),
+    getMapCandInfo('blanco_indeciso')
+  ];
   const allActive = mapCandFilter === 'ALL';
   let html = `<button onclick="setMapCandidate('ALL')" class="px-2.5 py-1 rounded-lg text-[11px] font-bold border transition-all cursor-pointer ${allActive ? 'bg-slate-900 text-white border-slate-900 shadow-xs' : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'}">Todos</button>`;
   list.forEach(c => {
@@ -1661,7 +1673,7 @@ function renderInteractiveMap(fitBoundsFlag = false) {
 
   // Filtrar puntos según circunscripción y candidato
   const circPts = rawMapData.puntos.filter(pt => mapCircFilter === 'ALL' || pt.c === mapCircFilter);
-  const filteredPts = circPts.filter(pt => mapCandFilter === 'ALL' || pt[fieldKey] === mapCandFilter);
+  const filteredPts = circPts.filter(pt => matchesMapFilter(pt[fieldKey], mapCandFilter));
 
   // Recalcular agregados por parroquia sobre circPts (para mostrar ganador o intensidad del candidato)
   const parrAgg = {};
@@ -1758,7 +1770,10 @@ function renderInteractiveMap(fitBoundsFlag = false) {
       layer.setStyle({ color: '#1f2937', weight: 1.0, fillColor: '#e2e8f0', fillOpacity: 0.42 });
     } else if (mapCandFilter !== 'ALL') {
       const cInfo = getMapCandInfo(mapCandFilter);
-      const pct = ((agg.counts[mapCandFilter] || 0) / agg.n) * 100;
+      const matchCnt = mapCandFilter === 'blanco_indeciso'
+        ? ((agg.counts['indecisos'] || 0) + (agg.counts['nulo_blanco'] || 0))
+        : (agg.counts[mapCandFilter] || 0);
+      const pct = (matchCnt / agg.n) * 100;
       const opacity = Math.min(0.86, Math.max(0.14, (pct / 50) * 0.78));
       layer.setStyle({ color: '#0f172a', weight: 1.15, fillColor: cInfo.color, fillOpacity: opacity });
     } else {
@@ -1789,7 +1804,13 @@ function renderInteractiveMap(fitBoundsFlag = false) {
       return `<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:10.5px;margin-top:2px;${isFocus ? 'font-weight:800;color:#0f172a;' : 'font-weight:500;color:#334155;'}"><span><span style="display:inline-block;width:7px;height:7px;border-radius:99px;background:${c.color};margin-right:5px;"></span>${c.full}</span><span>${pct}%</span></div>`;
     }).join('');
 
-    layer.setTooltipContent(`<div style="min-width:165px;font-family:Poppins,sans-serif;line-height:1.25;"><div style="font-weight:800;font-size:11.5px;color:#0f172a;border-bottom:1px solid #e2e8f0;padding-bottom:3px;margin-bottom:3px;">${parrName} <span style="font-weight:600;color:#64748b;font-size:10px;">(n = ${agg.n})</span></div>${rowsHtml}</div>`);
+    const bniCnt = (agg.counts['indecisos'] || 0) + (agg.counts['nulo_blanco'] || 0);
+    const bniPct = ((bniCnt / agg.n) * 100).toFixed(1);
+    const bniRow = mapCandFilter === 'blanco_indeciso'
+      ? `<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:10.5px;margin-top:4px;padding-top:3px;border-top:1px dashed #cbd5e1;font-weight:800;color:#b45309;"><span><span style="display:inline-block;width:7px;height:7px;border-radius:99px;background:#f59e0b;margin-right:5px;"></span>Blanco/Nulo + Indeciso</span><span>${bniPct}%</span></div>`
+      : '';
+
+    layer.setTooltipContent(`<div style="min-width:165px;font-family:Poppins,sans-serif;line-height:1.25;"><div style="font-weight:800;font-size:11.5px;color:#0f172a;border-bottom:1px solid #e2e8f0;padding-bottom:3px;margin-bottom:3px;">${parrName} <span style="font-weight:600;color:#64748b;font-size:10px;">(n = ${agg.n})</span></div>${rowsHtml}${bniRow}</div>`);
 
     // Generar HTML del popup solo cuando el usuario hace clic en la parroquia (lazy)
     layer.off('click').on('click', (e) => {
