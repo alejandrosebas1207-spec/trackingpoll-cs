@@ -281,6 +281,7 @@ function setVoteMode(mode) {
   if (leafletMap) {
     mapCandFilter = 'ALL';
     renderMapCandidatePills();
+    leafletMap.invalidateSize();
     renderInteractiveMap();
   }
 }
@@ -313,6 +314,7 @@ function setScenario(scen) {
   if (leafletMap) {
     mapCandFilter = 'ALL';
     renderMapCandidatePills();
+    leafletMap.invalidateSize();
     renderInteractiveMap();
   }
 }
@@ -1699,7 +1701,7 @@ function renderInteractiveMap(fitBoundsFlag = false) {
         return Boolean(parrAgg[cp]);
       },
       onEachFeature: (feat, layer) => {
-        layer.bindTooltip('', { direction: 'auto', sticky: false, opacity: 0.97 });
+        layer.bindTooltip('', { direction: 'auto', sticky: true, opacity: 0.97 });
         const cp = String(feat.properties.CODPAR || '').trim();
         const pName = feat.properties.PARROQUIA || '';
         const lx = feat.properties.lx;
