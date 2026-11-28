@@ -409,7 +409,7 @@
       <!-- Filtros del Mapa -->
       <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
         <div id="mapCandPills" class="flex flex-wrap items-center gap-1.5"></div>
-        <div class="flex items-center gap-1.5">
+        <div class="flex items-center gap-1.5 flex-wrap">
           <span class="text-[10.5px] font-bold text-slate-600 uppercase">Zona:</span>
           <select id="mapCircSelect" onchange="setMapCirc(this.value)" class="bg-white border border-slate-300 text-slate-800 font-bold rounded-lg px-2.5 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-slate-900 cursor-pointer">
             <option value="ALL">Todo Quito</option>
@@ -418,6 +418,9 @@
             <option value="Urbana Sur">Urbana Sur</option>
             <option value="Rural">Rural</option>
           </select>
+          <button id="btnMapReset" onclick="resetMapFilters()" class="px-2.5 py-1 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 text-slate-700 font-bold text-xs transition-all cursor-pointer" title="Restablecer filtros del mapa">
+            ✕ Borrar filtros
+          </button>
         </div>
       </div>
 
@@ -432,6 +435,6 @@
   </div>
 
   <!-- MOTOR DEL DASHBOARD Y AUTENTICACIÓN OFUSCADA CON CACHE-BUSTER -->
-  <script src="./app.bundle.min.js?v=cs2026_warroom_v68"></script>
+  <script src="./app.bundle.min.js?v=cs2026_warroom_v69"></script>
 </body>
 </html>

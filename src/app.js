@@ -1580,6 +1580,15 @@ function setMapCirc(circ) {
   renderInteractiveMap(true);
 }
 
+function resetMapFilters() {
+  mapCandFilter = 'ALL';
+  mapCircFilter = 'ALL';
+  const sel = document.getElementById('mapCircSelect');
+  if (sel) sel.value = 'ALL';
+  renderMapCandidatePills();
+  renderInteractiveMap(true);
+}
+
 async function initInteractiveMap() {
   const card = document.getElementById('mapaInteractivoCard');
   if (!card || !rawMapData || !rawMapData.puntos || !rawMapData.puntos.length || typeof L === 'undefined') return;
@@ -1596,7 +1605,15 @@ async function initInteractiveMap() {
   if (!quitoGeoJson) return;
 
   if (!leafletMap) {
-    leafletMap = L.map('quitoMapCanvas', { preferCanvas: true, zoomControl: true }).setView([-0.1807, -78.4678], 11);
+    const quitoBounds = L.geoJSON(quitoGeoJson).getBounds().pad(0.12);
+    leafletMap = L.map('quitoMapCanvas', {
+      preferCanvas: true,
+      zoomControl: true,
+      minZoom: 10,
+      maxZoom: 17,
+      maxBounds: quitoBounds,
+      maxBoundsViscosity: 0.9
+    }).setView([-0.1807, -78.4678], 11);
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
       attribution: '&copy; Esri &copy; OpenStreetMap',
       maxZoom: 18
@@ -1760,4 +1777,5 @@ window.handleAuth = handleAuth;
 window.setMapViewMode = setMapViewMode;
 window.setMapCandidate = setMapCandidate;
 window.setMapCirc = setMapCirc;
+window.resetMapFilters = resetMapFilters;
 
